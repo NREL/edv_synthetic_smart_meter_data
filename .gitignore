@@ -1,0 +1,11 @@
+.DS_Store
+.idea
+.bundle/
+config.rb
+Gemfile.lock
+gitignore/
+rubocop-results.xml
+gems/
+output/
+bdgp_output/
+
