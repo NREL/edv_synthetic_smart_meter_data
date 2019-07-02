@@ -4,6 +4,7 @@ require 'openstudio/extension'
 require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
 require 'buildingsync/translator'
+require 'openstudio/occupant_variability'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file'
@@ -11,8 +12,16 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   exit(1)
 end
 
-xml_path = ARGV[0]
+ObjectSpace.each_object(::Class) do |obj|
+  puts obj
+  puts obj.ancestors.class
+  next if !obj.ancestors.include?(OpenStudio::Extension::Extension)
+  result << obj
+end
 
+
+xml_path = ARGV[0]
+root_dir = File.join(File.dirname(__FILE__), '..')
 out_path = File.expand_path("../output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
 
 if File.exist?(out_path)
@@ -28,4 +37,9 @@ translator = BuildingSync::Translator.new(xml_path, out_path, epw_file_path, sta
 translator.write_osm
 translator.write_osws
 
-puts 'hi'
+osws = Dir.glob("#{out_path}/**/in.osw")
+
+runner = OpenStudio::Extension::Runner.new(root_dir)
+runner.run_osws(osws, 4)
+
+puts 'bye'
