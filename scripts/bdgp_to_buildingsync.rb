@@ -1,8 +1,6 @@
 # convert Building Data Genome Project metadata to BuildingSync XML files
+# Notes: Dates in csv are in DD/MM/YY format
 
-# Notes: Dates are in DD/MM/YYYY format (convert)
-# TODO: Map space types
-# TODO: Add checks:  what's the minimum data fields we 'require'?
 
 require 'csv'
 require 'rexml/document'
@@ -126,6 +124,56 @@ def create_site(feature)
   ownership.text = 'Unknown'
   site.add_element(ownership)
   
+  if feature.key?(:zipcode) || feature.key?(:city) || feature.key?(:state)
+    address = REXML::Element.new('auc:Address')
+  
+    if feature.key?(:city) && !feature[:city].nil?
+      city = REXML::Element.new('auc:City')
+      city.text = feature[:city]
+      address.add_element(city)
+    end
+
+    if feature.key?(:state) && !feature[:state].nil?
+      state = REXML::Element.new('auc:State')
+      state.text = feature[:state]
+      address.add_element(state)
+    end
+
+    # zipcode (if present)
+    if feature.key?(:zipcode) && /\A\d+\z/.match(feature[:zipcode])
+      postal_code = REXML::Element.new('auc:PostalCode')
+      postal_code.text = feature[:zipcode]
+      address.add_element(postal_code)
+    end
+
+    site.add_element(address)
+
+  end
+
+  # climate zone
+  if feature.key?(:climate_zone) && !feature[:climate_zone].nil?
+    climate_zone = REXML::Element.new('auc:ClimateZoneType')
+    ashrae = REXML::Element.new('auc:ASHRAE')
+    ashrae_climate = REXML::Element.new('auc:ClimateZone')
+    ashrae_climate.text = feature[:climate_zone]
+    ashrae.add_element(ashrae_climate)
+    climate_zone.add_element(ashrae)
+  end
+
+  # lat/lng (if present)
+  if feature.key?(:lng) && !feature[:lng].nil?
+    longitude = REXML::Element.new('auc:Longitude')
+    longitude.text = feature[:lng]
+    site.add_element(longitude)
+  end
+
+  # latitude (if present)
+  if feature.key?(:lat) && !feature[:lat].nil?
+    latitude = REXML::Element.new('auc:Latitude')
+    latitude.text = feature[:lat]
+    site.add_element(latitude)
+  end
+
   # buildings
   buildings = REXML::Element.new('auc:Buildings')
   building = REXML::Element.new('auc:Building')
@@ -766,13 +814,18 @@ def create_scenarios(feature)
     start_ts = REXML::Element.new('auc:StartTimeStamp')
     end_ts = REXML::Element.new('auc:EndTimeStamp')
 
-    d = feature[:datastart][0,2]
-    m = feature[:datastart][3,2]
-    y = feature[:datastart][6,2]
-    h = feature[:datastart][9,2]
-    min = feature[:datastart][12,2]
+    splitdate = feature[:datastart].split('/')
+    splityr = splitdate[2].split(' ')
+    splittime = splityr[1].split(':')
+
+    d = splitdate[0]
+    m = splitdate[1]
+    y = splityr[0]
+    h = splittime[0]
+    min = splittime[1]
 
     start_ts.text = '20' + y + '-' + m + '-' + d + ' ' + h + ':' + min + ':00'
+    #puts "reformatted starttime: #{start_ts}"
 
 
     d = feature[:dataend][0,2]

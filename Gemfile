@@ -3,10 +3,12 @@ ruby '~>2.2'
 
 allow_local = false
 
-gem 'rake'
+gem 'rake', '12.3.1'
 gem 'rexml', '3.2.2'
+
 gem 'rspec', '~> 3.8'
 gem 'multipart-post', '2.1.1'
+gem 'geocoder'
 
 if allow_local && File.exist?('../OpenStudio-extension-gem')
   # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
@@ -53,5 +55,3 @@ end
 
 # simplecov has an unneccesary dependency on native json gem, use fork that does not require this
 gem 'simplecov', github: 'NREL/simplecov'
-
-
