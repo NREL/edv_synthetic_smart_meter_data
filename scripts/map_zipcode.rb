@@ -62,7 +62,7 @@ headers << :climate_zone
 
 # write new array to file
 # output directory
-outdir = '../output'
+outdir = '../bdgp_output'
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 CSV.open(outdir + "/bdgp_withclimatezones.csv", "w") do |csv|
