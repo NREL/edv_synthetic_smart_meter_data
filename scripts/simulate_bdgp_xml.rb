@@ -12,14 +12,6 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   exit(1)
 end
 
-ObjectSpace.each_object(::Class) do |obj|
-  puts obj
-  puts obj.ancestors.class
-  next if !obj.ancestors.include?(OpenStudio::Extension::Extension)
-  result << obj
-end
-
-
 xml_path = ARGV[0]
 root_dir = File.join(File.dirname(__FILE__), '..')
 out_path = File.expand_path("../output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
