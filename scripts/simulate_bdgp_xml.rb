@@ -26,6 +26,7 @@ epw_file_path = File.expand_path(File.join(File.dirname(__FILE__), 'temporary.ep
 standard_to_be_used = 'CaliforniaTitle24'
 
 translator = BuildingSync::Translator.new(xml_path, out_path, epw_file_path, standard_to_be_used)
+translator.add_measure('Occupancy_Simulator')
 translator.write_osm
 translator.write_osws
 
