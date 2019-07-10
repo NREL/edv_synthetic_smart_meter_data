@@ -47,6 +47,21 @@ RSpec.describe 'EDV Experiment 1' do
     expect(result).to be true
   end
 
+  it 'should translate all xml files to osm baselines' do
+    root_dir = File.join(File.dirname(__FILE__), '../../')
+    puts root_dir
+    xml_files = []
+    Dir.glob("#{root_dir}/*/*.xml") { |xml| xml_files << xml }
+
+    xml_files.each do |xml_file|
+      puts "processing: #{xml_file}"
+      out_path = File.expand_path("../../output/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
+      puts "output path: #{out_path}"
+      result = run_simulate_bdgp_xml_path(xml_file, 'CaliforniaTitle24')
+      puts "completed: #{result}"
+      expect(File.exist?("#{out_path}/in.osm")).to be true
+    end
+  end
 
   def run_simulate_bdgp_xml(xml_name, epw_name = nil)
 
@@ -58,6 +73,22 @@ RSpec.describe 'EDV Experiment 1' do
     runner = OpenStudio::Extension::Runner.new(root_dir)
     cli = OpenStudio.getOpenStudioCLI
     
+    #cmd = "dir"
+    cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{xml_path}\""
+
+    return runner.run_command(cmd, runner.get_clean_env)
+
+  end
+
+  def run_simulate_bdgp_xml_path(xml_path, epw_name = nil)
+
+    root_dir = File.join(File.dirname(__FILE__), '../../')
+    script_path = File.join(root_dir, 'scripts/simulate_bdgp_xml.rb')
+    epw_path = File.join(root_dir, "spec/files/#{epw_name}")
+
+    runner = OpenStudio::Extension::Runner.new(root_dir)
+    cli = OpenStudio.getOpenStudioCLI
+
     #cmd = "dir"
     cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{xml_path}\""
 
