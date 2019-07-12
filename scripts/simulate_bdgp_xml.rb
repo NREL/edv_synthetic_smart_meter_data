@@ -6,16 +6,22 @@ require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 
-if ARGV[0].nil? || !File.exist?(ARGV[0])
+if ARGV[0].nil?
   puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional)'
-  puts ".xml files only"
+  puts "must provide at least a .xml file"
+  exit(1)
+end
+
+if !File.exist?(ARGV[0])
+  puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional)'
+  puts "XML file does not exist: #{ARGV[0]}"
   exit(1)
 end
 
 xml_path = ARGV[0]
 
 standard_to_be_used = 'CaliforniaTitle24'
-if !ARGV[1].nil? && (ARGV[1] == 'CaliforniaTitle24' || ARV[1] == 'ASHRAE90.1')
+if !ARGV[1].nil? && (ARGV[1] == 'CaliforniaTitle24' || ARGV[1] == 'ASHRAE90.1')
   standard_to_be_used = ARGV[1]
 end
 
@@ -32,10 +38,6 @@ if File.exist?(out_path)
   FileUtils.rm_rf(out_path)
 end
 FileUtils.mkdir_p(out_path)
-
-
-
-
 
 translator = BuildingSync::Translator.new(xml_path, out_path, epw_file_path, standard_to_be_used)
 #translator.add_measure('Occupancy_Simulator')
