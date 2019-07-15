@@ -10,3 +10,4 @@ output/
 bdgp_output/
 SR1/
 /*.rspec_status
+*.log

@@ -105,7 +105,7 @@ def get_occupancy_classification(feature)
   when 'Dormitory'
   	result = 'Lodging'
   when 'College Laboratory'
-  	rsult = 'Office'
+  	result = 'Office'
   else
     raise "Unknown classification #{classification}"
   end
