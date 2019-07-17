@@ -250,10 +250,15 @@ def create_site(feature)
 
   # subsections
   subsections = REXML::Element.new('auc:Subsections')
-  
   # create single subsection
   subsection = REXML::Element.new('auc:Subsection')
   subsection.attributes['ID'] = "Default_Subsection"
+
+  # # KAF: uncomment later when we update to BuildingSync 2.0. Delete Subsections above
+  # subsections = REXML::Element.new('auc:Sections')
+  # # create single subsection
+  # subsection = REXML::Element.new('auc:Section')
+  # subsection.attributes['ID'] = "Default_Subsection"
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
   occupancy_classification.text = get_occupancy_classification(feature)
