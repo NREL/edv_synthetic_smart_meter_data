@@ -38,6 +38,24 @@ task :simulate_bdgp_xml do
   end
 end
 
+desc 'simulate a batch of BDGP BuildingSync XML files'
+task :simulate_batch_bdgp_xml do
+
+  ARGV.each { |a| task a.to_sym do ; end }
+
+  if ARGV[1]
+
+    # ARGV[1] should be a path to a BDGP BuildingSync XML file
+    ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]}"
+
+  else
+    # need path to csv file
+    puts "Error - No CSV file specified that would contain the BldgSync files to be process in this batch"
+    puts "Usage: bundle exec rake process_all_bldg_sync_files_in_csv path/to/csv/file"
+
+  end
+end
+
 desc 'append lat/lng/zipcode information to CSV'
 task :geocode_meta_csv do
 
