@@ -39,7 +39,7 @@ if File.exist?(out_path)
 end
 FileUtils.mkdir_p(out_path)
 
-translator = BuildingSync::Translator.new(xml_path, out_path, epw_file_path, standard_to_be_used)
+translator = BuildingSync::Translator.new(xml_path, out_path, epw_file_path, standard_to_be_used, false)
 #translator.add_measure('Occupancy_Simulator')
 translator.write_osm
 translator.write_osws
