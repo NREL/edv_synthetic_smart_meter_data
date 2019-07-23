@@ -68,6 +68,16 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))
 require 'bundler/setup'
 require 'buildingsync/translator'
 
+def run_script(script_name)
+  root_dir = File.join(File.dirname(__FILE__), '../')
+  script_path = File.join(root_dir, "scripts/#{script_name}")
+  runner = OpenStudio::Extension::Runner.new(root_dir)
+  cli = OpenStudio.getOpenStudioCLI
+  cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" "
+
+  runner.run_command(cmd, runner.get_clean_env)
+end
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'

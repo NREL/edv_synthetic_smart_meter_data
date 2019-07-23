@@ -48,40 +48,31 @@ RSpec.describe 'EDV Experiment 1' do
     expect(result).to be true
   end
 
-  it 'should translate all buildingsync files contained in csv file to osm baselines ' do
-    process_all_bldg_sync_files_in_csv("all.csv")
-  end
-
   it 'should translate one buildingsync file per type contained in csv file to osm baselines' do
     process_all_bldg_sync_files_in_csv("one_each_type.csv")
   end
 
   it 'should generate the csv file containing all xml files' do
-    csv_file_path = File.expand_path('../../csv_file/all.csv', File.dirname(__FILE__))
-    root_dir = File.join(File.dirname(__FILE__), '../../')
-    puts root_dir
-    xml_files = []
-    Dir.glob("#{root_dir}/*/*.xml") { |xml| xml_files << xml }
-    csv = File.open(csv_file_path, 'w')
-    xml_files.each do |xml_file|
-      csv.puts("#{File.basename(xml_file)},ASHRAE90.1,temporary.epw")
-    end
-    csv.close
+    run_script('generate_csv_containing_all_bldgs.rb')
   end
 
   def process_all_bldg_sync_files_in_csv(csv_file_name)
-    root_dir = File.expand_path(File.dirname(__FILE__), '../../')
-    csv_file_path = File.expand_path("../../csv_file/#{csv_file_name}", File.dirname(__FILE__))
-    log_file_path = File.expand_path("../../csv_file/#{File.basename(csv_file_name)}.log", File.dirname(__FILE__))
+    root_dir = File.join(File.dirname(__FILE__), '../../')
+    puts "root_dir: #{root_dir}"
+
+    csv_file_path = File.join(root_dir, "/spec/files/#{csv_file_name}")
+    puts "csv_file_path: #{csv_file_path}"
+    log_file_path = File.join(root_dir, "/spec/output/#{File.basename(csv_file_name)}.log")
+    puts "log_file_path: #{log_file_path}"
     csv_table = CSV.read(csv_file_path)
     log = File.open(log_file_path, 'w')
     csv_table.each do |xml_file, standard, epw_file|
       puts "processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}"
       log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
-      xml_file_path = File.expand_path("../../bdgp_output/#{xml_file}/", File.dirname(__FILE__))
-      out_path = File.expand_path("../../output/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
-      epw_file_path = File.expand_path("../../script/#{epw_file}/", File.dirname(__FILE__))
+      xml_file_path = File.join(root_dir, "/bdgp_output/#{xml_file}")
+      out_path = File.join(root_dir,"/spec/output/#{File.basename(xml_file, File.extname(xml_file))}/")
+      epw_file_path = File.join(root_dir, "/script/#{epw_file}/")
       result = run_simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
 
       puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"

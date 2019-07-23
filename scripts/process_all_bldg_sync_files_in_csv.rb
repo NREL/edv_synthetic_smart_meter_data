@@ -59,6 +59,7 @@ csv_table.each do |xml_file, standard, epw_file|
         sql_file = File.expand_path(output_dir, "/eplusout.sql")
         if !File.exist?(sql_file)
           log.puts("...ERROR: #{sql_file} does not exist, simulation was unsucessful}")
+          log.flush
         end
       end
     end

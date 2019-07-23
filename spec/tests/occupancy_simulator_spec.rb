@@ -53,7 +53,7 @@ RSpec.describe 'EDV Experiment 1' do
     root_dir = File.join(File.dirname(__FILE__), '../../')
     xml_path = File.join(root_dir, "spec/files/#{xml_name}")
     epw_path = File.join(root_dir, "scripts/#{epw_name}")
-    out_path = File.expand_path("../../output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
+    out_path = File.expand_path("../../spec/output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
 
     if File.exist?(out_path)
       FileUtils.rm_rf(out_path)

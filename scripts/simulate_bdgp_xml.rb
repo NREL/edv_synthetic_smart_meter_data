@@ -32,7 +32,7 @@ end
 
 
 root_dir = File.join(File.dirname(__FILE__), '..')
-out_path = File.expand_path("../output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
+out_path = File.expand_path("../spec/output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
 
 if File.exist?(out_path)
   FileUtils.rm_rf(out_path)
