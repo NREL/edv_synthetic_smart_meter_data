@@ -45,9 +45,8 @@ require 'openstudio-occupant-variability'
 RSpec.describe 'EDV Experiment 1' do
   it 'should run test file 1 with occupancy measure' do
     result = test_occupancy_mesure('test1.xml', 'temporary.epw')
-    #expect(result).to be true
+    expect(result).to be true
   end
-
 
   def test_occupancy_mesure(xml_name, epw_name = nil)
     root_dir = File.join(File.dirname(__FILE__), '../../')
@@ -61,7 +60,7 @@ RSpec.describe 'EDV Experiment 1' do
     FileUtils.mkdir_p(out_path)
 
     translator = BuildingSync::Translator.new(xml_path, out_path, epw_path, 'ASHRAE90.1')
-    translator.write_osm
+    translator.write_osm(true)
 
     occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
     translator.add_measure_path(occupant_variability_instance.measures_dir)
@@ -85,6 +84,13 @@ RSpec.describe 'EDV Experiment 1' do
     runner = OpenStudio::Extension::Runner.new(root_dir)
     runner.run_osws(osws, 4)
 
-    puts 'bye'
+    successful = true
+    osws.each do |osw|
+      sql_file = osw.gsub('in.osw', 'eplusout.sql')
+      puts "Simulation not completed successfully for file: #{osw}" if !File.exist?(sql_file)
+      successful = false  if !File.exist?(sql_file)
+      expect(File.exist?(sql_file)).to be true
+    end
+    return successful
   end
 end
