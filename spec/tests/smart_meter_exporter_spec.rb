@@ -35,42 +35,29 @@
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # *******************************************************************************
 require_relative './../spec_helper'
-
-require 'fileutils'
-require 'parallel'
-require 'open3'
+require 'json'
 require 'csv'
 
 RSpec.describe 'EDV Experiment 1' do
+  it 'first test of the csv generator' do
+    json_file_path = File.expand_path("../files/generation_script.json", File.dirname(__FILE__))
 
-  it 'should run test file 1' do
-    result = run_simulate_bdgp_xml('test1.xml')
-    expect(result).to be true
+    json_content = File.read(json_file_path)
+    puts "file content: #{json_content}"
+    parsed = JSON.parse(json_content) # returns a hash
+
+    puts "building_id: #{parsed["building_id"]}"
+    puts "default_scenario: #{parsed["default_scenario"]}"
+    puts "start_date: #{parsed["start_date"]}"
+    puts "end_date: #{parsed["end_date"]}"
+    puts "active_scenarios: #{parsed["active_scenarios"]}"
+
+    # initialize the headers
+    csv_array = [["Test", 1], ["Test", 2]]
+    CSV.open("file.csv", "wb") do |csv|
+      csv_array.each do |row|
+        csv << row
+      end
+    end
   end
-
-  it 'should translate one buildingsync file per type contained in csv file to osm baselines' do
-    process_all_bldg_sync_files_in_csv("one_each_type.csv")
-  end
-
-  it 'should generate the csv file containing all xml files' do
-    run_script('generate_csv_containing_all_bldgs.rb')
-  end
-
-  def run_simulate_bdgp_xml(xml_name, epw_name = nil)
-
-    root_dir = File.join(File.dirname(__FILE__), '../../')
-    script_path = File.join(root_dir, 'scripts/simulate_bdgp_xml.rb')
-    xml_path = File.join(root_dir, "spec/files/#{xml_name}")
-    epw_path = File.join(root_dir, "spec/files/#{epw_name}")
-
-    runner = OpenStudio::Extension::Runner.new(root_dir)
-    cli = OpenStudio.getOpenStudioCLI
-
-    #cmd = "dir"
-    cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{xml_path}\""
-
-    return runner.run_command(cmd, runner.get_clean_env)
-
-  end
-
 end

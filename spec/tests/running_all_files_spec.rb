@@ -42,35 +42,16 @@ require 'open3'
 require 'csv'
 
 RSpec.describe 'EDV Experiment 1' do
-
-  it 'should run test file 1' do
-    result = run_simulate_bdgp_xml('test1.xml')
-    expect(result).to be true
+  it 'should translate all buildingsync files contained in csv file to osm baselines' do
+    process_all_bldg_sync_files_in_csv("all.csv")
   end
 
-  it 'should translate one buildingsync file per type contained in csv file to osm baselines' do
-    process_all_bldg_sync_files_in_csv("one_each_type.csv")
+
+  it 'should translate all buildingsync files in 5 chucks contained in csv file to osm baselines' do
+    process_all_bldg_sync_files_in_csv("offices.csv")
+    process_all_bldg_sync_files_in_csv("prim_class.csv")
+    process_all_bldg_sync_files_in_csv("univ_class.csv")
+    process_all_bldg_sync_files_in_csv("univ_dorm.csv")
+    process_all_bldg_sync_files_in_csv("univ_lab.csv")
   end
-
-  it 'should generate the csv file containing all xml files' do
-    run_script('generate_csv_containing_all_bldgs.rb')
-  end
-
-  def run_simulate_bdgp_xml(xml_name, epw_name = nil)
-
-    root_dir = File.join(File.dirname(__FILE__), '../../')
-    script_path = File.join(root_dir, 'scripts/simulate_bdgp_xml.rb')
-    xml_path = File.join(root_dir, "spec/files/#{xml_name}")
-    epw_path = File.join(root_dir, "spec/files/#{epw_name}")
-
-    runner = OpenStudio::Extension::Runner.new(root_dir)
-    cli = OpenStudio.getOpenStudioCLI
-
-    #cmd = "dir"
-    cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{xml_path}\""
-
-    return runner.run_command(cmd, runner.get_clean_env)
-
-  end
-
 end

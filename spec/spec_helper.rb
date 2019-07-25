@@ -78,6 +78,60 @@ def run_script(script_name)
   runner.run_command(cmd, runner.get_clean_env)
 end
 
+def process_all_bldg_sync_files_in_csv(csv_file_name)
+  root_dir = File.join(File.dirname(__FILE__), '../')
+  puts "root_dir: #{root_dir}"
+
+  csv_file_path = File.join(root_dir, "/spec/files/#{csv_file_name}")
+  puts "csv_file_path: #{csv_file_path}"
+  log_file_path = File.join(root_dir, "/spec/output/#{File.basename(csv_file_name)}.log")
+  puts "log_file_path: #{log_file_path}"
+  csv_table = CSV.read(csv_file_path)
+  log = File.open(log_file_path, 'w')
+  csv_table.each do |xml_file, standard, epw_file|
+    puts "processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}"
+    log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
+
+    xml_file_path = File.join(root_dir, "/bdgp_output/#{xml_file}")
+    out_path = File.join(root_dir,"/spec/output/#{File.basename(xml_file, File.extname(xml_file))}/")
+    epw_file_path = File.join(root_dir, "/script/#{epw_file}/")
+    result = run_simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
+
+    puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
+    log.puts("...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
+
+    output_dirs = []
+    Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
+    output_dirs.each do |output_dir|
+      if !output_dir.include? "/SR"
+        if output_dir != out_path
+          sql_file = File.expand_path(output_dir, "/eplusout.sql")
+          if !File.exist?(sql_file)
+            log.puts("...ERROR: #{sql_file} does not exist, simulation was unsucessful}")
+          end
+        end
+      end
+    end
+  end
+  log.close
+end
+
+def run_simulate_bdgp_xml_path(xml_path, standard = "ASHRAE90.1", epw_name = nil)
+
+  root_dir = File.join(File.dirname(__FILE__), '../')
+  script_path = File.join(root_dir, 'scripts/simulate_bdgp_xml.rb')
+  epw_path = File.join(root_dir, "spec/files/#{epw_name}")
+
+  runner = OpenStudio::Extension::Runner.new(root_dir)
+  cli = OpenStudio.getOpenStudioCLI
+
+  #cmd = "dir"
+  cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{xml_path}\" \"#{standard}\" \"#{epw_name}\""
+
+  return runner.run_command(cmd, runner.get_clean_env)
+
+end
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
