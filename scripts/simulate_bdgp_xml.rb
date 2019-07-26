@@ -32,7 +32,7 @@ end
 
 
 root_dir = File.join(File.dirname(__FILE__), '..')
-out_path = File.expand_path("../spec/output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
+out_path = File.expand_path("../output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
 
 if File.exist?(out_path)
   FileUtils.rm_rf(out_path)
@@ -40,7 +40,8 @@ end
 FileUtils.mkdir_p(out_path)
 
 translator = BuildingSync::Translator.new(xml_path, out_path, epw_file_path, standard_to_be_used, false)
-#translator.add_measure('Occupancy_Simulator')
+translator.add_measure_path("#{root_dir}/lib/measures")
+translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
 translator.write_osm
 translator.write_osws
 
