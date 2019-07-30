@@ -2,7 +2,9 @@
 
 ## Installation
 
-Clone the repo and run
+Install Ruby and OpenStudio as [described here](https://github.com/NREL/openstudio-extension-gem/blob/develop/README.md#installation).
+
+Clone this repo and run
 
 ``` bundle install ```
 
