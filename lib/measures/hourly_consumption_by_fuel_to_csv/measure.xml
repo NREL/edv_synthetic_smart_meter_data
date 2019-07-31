@@ -1,0 +1,94 @@
+<measure>
+  <schema_version>3.0</schema_version>
+  <name>hourly_consumption_by_fuel_to_csv</name>
+  <uid>95f23d7d-0aae-4099-9835-9d773d348bfb</uid>
+  <version_id>c6a7e5cf-c50a-4c10-b66c-474dc33c6648</version_id>
+  <version_modified>20190411T040022Z</version_modified>
+  <xml_checksum>D286A798</xml_checksum>
+  <class_name>HourlyConsumptionByFuelToCSV</class_name>
+  <display_name>Hourly Consumption By Fuel to CSV</display_name>
+  <description>Exported hourly consumption by fuel to a CSV file.</description>
+  <modeler_description>This doesn't produce an HTML file, rather it creates a CSV file for use in post processing.</modeler_description>
+  <arguments/>
+  <outputs/>
+  <provenances/>
+  <tags>
+    <tag>Reporting.QAQC</tag>
+  </tags>
+  <attributes>
+    <attribute>
+      <name>Measure Type</name>
+      <value>ReportingMeasure</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>OpenStudio Application</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Parametric Analysis Tool</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Software Tool</name>
+      <value>Analysis Spreadsheet</value>
+      <datatype>string</datatype>
+    </attribute>
+    <attribute>
+      <name>Intended Use Case</name>
+      <value>Automatic Report Generation</value>
+      <datatype>string</datatype>
+    </attribute>
+  </attributes>
+  <files>
+    <file>
+      <filename>example_model.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>D6C71F6E</checksum>
+    </file>
+    <file>
+      <filename>DesignDoc_HourlyConsumptionByFuelToCSV.docx</filename>
+      <filetype>docx</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>08B10AF9</checksum>
+    </file>
+    <file>
+      <filename>USA_CO_Golden-NREL.724666_TMY3.epw</filename>
+      <filetype>epw</filetype>
+      <usage_type>test</usage_type>
+      <checksum>BDF687C1</checksum>
+    </file>
+    <file>
+      <filename>0524_b.osm</filename>
+      <filetype>osm</filetype>
+      <usage_type>test</usage_type>
+      <checksum>6E69E9E2</checksum>
+    </file>
+    <file>
+      <version>
+        <software_program>OpenStudio</software_program>
+        <identifier>2.0.0</identifier>
+        <min_compatible>2.0.0</min_compatible>
+      </version>
+      <filename>measure.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>script</usage_type>
+      <checksum>FFF2232A</checksum>
+    </file>
+    <file>
+      <filename>rename_and_gather_hourly_csv_files.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>resource</usage_type>
+      <checksum>C5387210</checksum>
+    </file>
+    <file>
+      <filename>hourly_consumption_by_fuel_to_csv_test.rb</filename>
+      <filetype>rb</filetype>
+      <usage_type>test</usage_type>
+      <checksum>84B9905D</checksum>
+    </file>
+  </files>
+</measure>
