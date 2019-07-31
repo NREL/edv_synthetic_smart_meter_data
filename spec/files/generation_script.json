@@ -1,4 +1,7 @@
 {
+  "realization_name": "Baseline, LED and package 1",
+  "building_sync_file": "test1.xml",
+  "epw_file": "temporary.epw",
   "building_id": 4,
   "default_scenario": "Baseline",
   "start_date": "1/1/2017",
@@ -10,8 +13,8 @@
       "active_after": "3/1/2017"
     },
     {
-      "scenario_name": "Retrofit Package 1",
-      "active_after": "7/9/2018"
+      "scenario_name": "All Package",
+      "active_after": "7/9/2017"
     }
   ]
 }
