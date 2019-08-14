@@ -79,10 +79,10 @@ RSpec.describe 'EDV Experiment 1' do
 
     translator.write_osws
 
-    osws = Dir.glob("#{out_path}/**/in.osw")
+    osws = Dir.glob("#{out_path}/**/in.osw") - Dir.glob("#{out_path}/SR/in.osw")
 
     runner = OpenStudio::Extension::Runner.new(root_dir)
-    runner.run_osws(osws, 4)
+    runner.run_osws(osws, 1)
 
     successful = true
     osws.each do |osw|
