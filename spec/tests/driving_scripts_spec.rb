@@ -42,10 +42,35 @@ require 'open3'
 require 'csv'
 
 RSpec.describe 'EDV Experiment 1' do
+  # first we want to convert the data from the csv file into building sync files
+  # bundle exec rake generate_bdgp_xmls R:\NREL\the-building-data-genome-project\data\raw\meta_open.csv
+  it 'should produce all building sync files' do
+    # csv_file_path = File.join(root_dir, "bdgp_output/bdgp_summary.csv")
+    csv_file_path = File.join(File.expand_path('../../../.', File.dirname(__FILE__)), 'the-building-data-genome-project\data\raw\meta_open.csv')
+    puts "csv_file_path: #{csv_file_path}"
+
+    result = run_script("bdgp_to_buildingsync", csv_file_path)
+
+    puts "and the result is: #{result}"
+  end
+
+  # then we want to simulate the files
+  it 'should translate 5 buildingsync files one from each type to osm baselines' do
+    csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/one_each_type.csv')
+    puts "csv_file_path: #{csv_file_path}"
+
+    result = run_script("process_all_bldg_sync_files_in_csv", csv_file_path)
+
+    puts "and the result is: #{result}"
+  end
+
   it 'should translate all buildingsync files contained in csv file to osm baselines' do
     process_all_bldg_sync_files_in_csv("all.csv")
   end
 
+  it 'should translate all buildingsync files in 5 chucks contained in csv file to osm baselines' do
+    process_all_bldg_sync_files_in_csv("offices.csv")
+  end
 
   it 'should translate all buildingsync files in 5 chucks contained in csv file to osm baselines' do
     process_all_bldg_sync_files_in_csv("offices.csv")
@@ -53,5 +78,18 @@ RSpec.describe 'EDV Experiment 1' do
     process_all_bldg_sync_files_in_csv("univ_class.csv")
     process_all_bldg_sync_files_in_csv("univ_dorm.csv")
     process_all_bldg_sync_files_in_csv("univ_lab.csv")
+  end
+
+  def run_script(script_file_name, argument1)
+    root_dir = File.expand_path('../../.', File.dirname(__FILE__))
+    script_path = File.join(root_dir, "scripts/#{script_file_name}.rb")
+    puts "script_path: #{script_path}"
+    runner = OpenStudio::Extension::Runner.new(root_dir)
+    cli = OpenStudio.getOpenStudioCLI
+
+    #cmd = "dir"
+    cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{argument1}\""
+
+    return runner.run_command(cmd, runner.get_clean_env)
   end
 end

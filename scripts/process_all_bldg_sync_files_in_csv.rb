@@ -43,8 +43,8 @@ log = File.open(log_file_path, 'w')
 csv_table.each do |xml_file, standard, epw_file|
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
-  xml_file_path = File.expand_path("../bdgp_output/#{xml_file}/", File.dirname(__FILE__))
-  out_path = File.expand_path("../output/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
+  xml_file_path = File.expand_path("../spec/output/bdgp_output/#{xml_file}/", File.dirname(__FILE__))
+  out_path = File.expand_path("..spec/output/bdgp_output/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
   epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
 

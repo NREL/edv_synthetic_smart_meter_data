@@ -1,10 +1,9 @@
 # convert Building Data Genome Project metadata to BuildingSync XML files
 # Notes: Dates in csv are in DD/MM/YY format
 
-
 require 'csv'
 require 'rexml/document'
-require 'FileUtils'
+require 'fileutils'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'usage: bundle exec ruby bdgp_to_buildingsync.rb /path/to/csv'
@@ -248,17 +247,11 @@ def create_site(feature)
   year_of_construction.text = get_year_built(feature)
   building.add_element(year_of_construction)
 
-  # subsections
-  subsections = REXML::Element.new('auc:Subsections')
+  # KAF: uncomment later when we update to BuildingSync 2.0. Delete Subsections above
+  subsections = REXML::Element.new('auc:Sections')
   # create single subsection
-  subsection = REXML::Element.new('auc:Subsection')
-  subsection.attributes['ID'] = "Default_Subsection"
-
-  # # KAF: uncomment later when we update to BuildingSync 2.0. Delete Subsections above
-  # subsections = REXML::Element.new('auc:Sections')
-  # # create single subsection
-  # subsection = REXML::Element.new('auc:Section')
-  # subsection.attributes['ID'] = "Default_Subsection"
+  subsection = REXML::Element.new('auc:Section')
+  subsection.attributes['ID'] = "Default_Section"
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
   occupancy_classification.text = get_occupancy_classification(feature)
@@ -1014,7 +1007,7 @@ def convert_building(feature)
 end
 
 # output directory
-outdir = './bdgp_output'
+outdir = './spec/output/bdgp_output'
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file
