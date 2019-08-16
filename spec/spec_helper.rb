@@ -79,11 +79,15 @@ def run_script(script_name)
 end
 
 def process_all_bldg_sync_files_in_csv(csv_file_name)
-  root_dir = File.join(File.dirname(__FILE__), '../')
+  root_dir = File.expand_path('../.', File.dirname(__FILE__))
   puts "root_dir: #{root_dir}"
 
   csv_file_path = File.join(root_dir, "/spec/files/#{csv_file_name}")
   puts "csv_file_path: #{csv_file_path}"
+
+  output_path = File.join(root_dir, "/spec/output/")
+  Dir.mkdir output_path if !Dir.exists? output_path
+
   log_file_path = File.join(root_dir, "/spec/output/#{File.basename(csv_file_name)}.log")
   puts "log_file_path: #{log_file_path}"
   csv_table = CSV.read(csv_file_path)

@@ -42,7 +42,6 @@ require 'open3'
 require 'csv'
 
 RSpec.describe 'EDV Experiment 1' do
-
   it 'should run test file 1' do
     result = run_simulate_bdgp_xml('test1.xml')
     expect(result).to be true
@@ -70,7 +69,5 @@ RSpec.describe 'EDV Experiment 1' do
     cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{xml_path}\""
 
     return runner.run_command(cmd, runner.get_clean_env)
-
   end
-
 end

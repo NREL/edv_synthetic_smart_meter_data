@@ -48,6 +48,11 @@ RSpec.describe 'EDV Experiment 1' do
     expect(result).to be true
   end
 
+  #it 'should run test file without any other measures with occupancy measure' do
+  #  result = test_occupancy_mesure('test1_no_measures.xml', 'temporary.epw')
+  #  expect(result).to be true
+  #end
+
   def test_occupancy_mesure(xml_name, epw_name = nil)
     root_dir = File.join(File.dirname(__FILE__), '../../')
     xml_path = File.join(root_dir, "spec/files/#{xml_name}")
@@ -82,8 +87,9 @@ RSpec.describe 'EDV Experiment 1' do
     osws = Dir.glob("#{out_path}/**/in.osw") - Dir.glob("#{out_path}/SR/in.osw")
 
     runner = OpenStudio::Extension::Runner.new(root_dir)
-    runner.run_osws(osws, 1)
+    runner.run_osws(osws, 4)
 
+    puts "after runner"
     successful = true
     osws.each do |osw|
       sql_file = osw.gsub('in.osw', 'eplusout.sql')
