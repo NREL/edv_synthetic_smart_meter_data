@@ -40,58 +40,61 @@ require 'fileutils'
 require 'parallel'
 require 'open3'
 require 'csv'
+require 'openstudio-occupant-variability'
 
 RSpec.describe 'EDV Experiment 1' do
-  # first we want to convert the data from the csv file into building sync files
-  # bundle exec rake generate_bdgp_xmls R:\NREL\the-building-data-genome-project\data\raw\meta_open.csv
-  it 'should produce all building sync files' do
-    # csv_file_path = File.join(root_dir, "bdgp_output/bdgp_summary.csv")
-    csv_file_path = File.join(File.expand_path('../../../.', File.dirname(__FILE__)), 'the-building-data-genome-project\data\raw\meta_open.csv')
-    puts "csv_file_path: #{csv_file_path}"
-
-    result = run_script("bdgp_to_buildingsync", csv_file_path)
-
-    puts "and the result is: #{result}"
+  it 'should run test file without any other measures with occupancy measure' do
+    result = test_occupancy_mesure('test1_no_measures.xml', 'temporary.epw')
     expect(result).to be true
   end
 
-  # then we want to simulate the files
-  it 'should translate buildingsync files to osm/osw and run simulations' do
-    csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/one_each_type.csv')
-    #csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/all.csv')
-    #csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/offices.csv')
-    #csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/prim_class.csv')
-    #csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/univ_class.csv')
-    #csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/univ_dorm.csv')
-    #csv_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'spec/files/univ_lab.csv')
-    puts "csv_file_path: #{csv_file_path}"
+  def test_occupancy_mesure(xml_name, epw_name = nil)
+    root_dir = File.join(File.dirname(__FILE__), '../../')
+    xml_path = File.join(root_dir, "spec/files/#{xml_name}")
+    epw_path = File.join(root_dir, "scripts/#{epw_name}")
+    out_path = File.expand_path("../../spec/output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
 
-    result = run_script("process_all_bldg_sync_files_in_csv", csv_file_path)
+    if File.exist?(out_path)
+      FileUtils.rm_rf(out_path)
+    end
+    FileUtils.mkdir_p(out_path)
 
-    puts "and the result is: #{result}"
-    expect(result).to be true
-  end
+    translator = BuildingSync::Translator.new(xml_path, out_path, epw_path, 'ASHRAE90.1')
+    translator.clear_all_measures
+    translator.write_osm(true)
 
-  # then we want to combine results
-  it 'should combine results into a csv' do
-    csv_file_path = File.expand_path("../files/generation_script.csv", File.dirname(__FILE__))
+    occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
+    translator.add_measure_path(occupant_variability_instance.measures_dir)
+    args_hash = {}
+    i = 1
+    space_types = translator.get_space_types
+    space_types.each do |space_type|
+      current_spaces = space_type.spaces
+      next if not current_spaces.size > 0
+      current_spaces.each do |space|
+        #args_hash["Space_#{i}_#{space.name}"] = 'Office Type 1'
+        args_hash["#{space.name}"] = 'Office Type 1'
+        i += 1
+      end
+    end
+    translator.insert_energyplus_measure('Occupancy_Simulator', 0, args_hash)
 
-    result = run_script("export_synthetic_data", csv_file_path)
-    puts "and the result is: #{result}"
-    expect(result).to be true
-  end
+    translator.write_osws
 
+    osws = Dir.glob("#{out_path}/**/in.osw") - Dir.glob("#{out_path}/SR/in.osw")
 
-  def run_script(script_file_name, argument1)
-    root_dir = File.expand_path('../../.', File.dirname(__FILE__))
-    script_path = File.join(root_dir, "scripts/#{script_file_name}.rb")
-    puts "script_path: #{script_path}"
     runner = OpenStudio::Extension::Runner.new(root_dir)
-    cli = OpenStudio.getOpenStudioCLI
+    runner.run_osws(osws, 4)
 
-    #cmd = "dir"
-    cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{argument1}\""
-
-    return runner.run_command(cmd, runner.get_clean_env)
+    successful = true
+    osws.each do |osw|
+      sql_file = osw.gsub('in.osw', 'eplusout.sql')
+      if !File.exist?(sql_file)
+        puts "Simulation not completed successfully for file: #{osw}, could not find: #{sql_file}"
+        successful = false
+      end
+    end
+    expect(successful).to be true
+    return successful
   end
 end
