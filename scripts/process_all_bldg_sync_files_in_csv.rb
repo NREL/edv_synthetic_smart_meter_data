@@ -17,6 +17,8 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
   root_dir = File.join(File.dirname(__FILE__), '..')
 
   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard)
+  translator.add_measure_path("#{root_dir}/lib/measures")
+  translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
   translator.write_osm
   translator.write_osws
 
@@ -28,13 +30,13 @@ end
 
 csv_file_path = ARGV[0]
 
+root_dir = File.join(File.dirname(__FILE__), '..')
 
-out_path = File.expand_path("../output/#{File.basename(csv_file_path, File.extname(csv_file_path))}/", File.dirname(__FILE__))
+out_path = File.join(root_dir, "/spec/output/")
 
 if File.exist?(out_path)
-  FileUtils.rm_rf(out_path)
+  FileUtils.mkdir_p(out_path)
 end
-FileUtils.mkdir_p(out_path)
 
 log_file_path = csv_file_path + '.log'
 
@@ -44,7 +46,7 @@ csv_table.each do |xml_file, standard, epw_file|
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
   xml_file_path = File.expand_path("../spec/output/bdgp_output/#{xml_file}/", File.dirname(__FILE__))
-  out_path = File.expand_path("..spec/output/bdgp_output/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
+  out_path = File.expand_path("../spec/output/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
   epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
 
@@ -56,7 +58,7 @@ csv_table.each do |xml_file, standard, epw_file|
   output_dirs.each do |output_dir|
     if !output_dir.include? "/SR"
       if output_dir != out_path
-        sql_file = File.expand_path(output_dir, "/eplusout.sql")
+        sql_file = File.join(output_dir, "/eplusout.sql")
         if !File.exist?(sql_file)
           log.puts("...ERROR: #{sql_file} does not exist, simulation was unsucessful}")
           log.flush

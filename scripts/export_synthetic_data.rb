@@ -74,6 +74,7 @@ for i in 1..column_headers.count-1
   current_scenario << "Baseline"
   puts "current_scenario: #{current_scenario[0]}"
   current_path = csvs[current_scenario[0]]
+  puts "current_path: #{current_path}"
   puts "csvs: #{csvs}"
   file = File.open current_path
   values = file.to_a
