@@ -89,7 +89,6 @@ RSpec.describe 'EDV Experiment 1' do
     runner = OpenStudio::Extension::Runner.new(root_dir)
     runner.run_osws(osws, 4)
 
-    puts "after runner"
     successful = true
     osws.each do |osw|
       sql_file = osw.gsub('in.osw', 'eplusout.sql')
