@@ -4,6 +4,7 @@
 require 'csv'
 require 'rexml/document'
 require 'fileutils'
+require_relative 'constants'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'usage: bundle exec ruby bdgp_to_buildingsync.rb /path/to/csv'
@@ -1007,7 +1008,7 @@ def convert_building(feature)
 end
 
 # output directory
-outdir = './spec/output/bdgp_output'
+outdir = "./#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file

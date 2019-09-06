@@ -5,6 +5,7 @@ require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
+require_relative 'constants'
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -13,7 +14,7 @@ if ARGV[0].nil?
 end
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
-  out_path = File.expand_path("../output/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
+  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   root_dir = File.join(File.dirname(__FILE__), '..')
 
   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard)
@@ -45,8 +46,8 @@ log = File.open(log_file_path, 'w')
 csv_table.each do |xml_file, standard, epw_file|
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
-  xml_file_path = File.expand_path("../spec/output/bdgp_output/#{xml_file}/", File.dirname(__FILE__))
-  out_path = File.expand_path("../spec/output/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
+  xml_file_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files/#{xml_file}/", File.dirname(__FILE__))
+  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
   epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
 
