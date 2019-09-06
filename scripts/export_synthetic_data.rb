@@ -5,6 +5,7 @@ require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
+require_relative 'constants'
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby export_synthetic_data.rb path/to/csv/file'
@@ -54,7 +55,7 @@ for i in 1..column_headers.count-1
   puts "active_scenarios: #{active_scenarios}"
 
   building_sync_file_path = File.dirname(csv_file_path) + "/" + base_dir
-  out_path = File.expand_path("../spec/output/#{File.basename(building_sync_file_path, File.extname(building_sync_file_path))}/", File.dirname(__FILE__))
+  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(building_sync_file_path, File.extname(building_sync_file_path))}/", File.dirname(__FILE__))
 
   puts "out_path: #{out_path}"
 

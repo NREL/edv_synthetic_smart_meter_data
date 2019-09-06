@@ -46,7 +46,8 @@ RSpec.describe 'EDV Experiment 1' do
   # bundle exec rake generate_bdgp_xmls R:\NREL\the-building-data-genome-project\data\raw\meta_open.csv
   it 'should produce all building sync files' do
     # csv_file_path = File.join(root_dir, "bdgp_output/bdgp_summary.csv")
-    csv_file_path = File.join(File.expand_path('../../../.', File.dirname(__FILE__)), 'the-building-data-genome-project\data\raw\meta_open.csv')
+    # csv_file_path = File.join(File.expand_path('../../../.', File.dirname(__FILE__)), 'the-building-data-genome-project\data\raw\meta_open.csv')
+    csv_file_path = File.join(File.expand_path('../../../.', File.dirname(__FILE__)), 'edv-experiment-1-files\bdgp_with_climatezones_epw.csv')
     puts "csv_file_path: #{csv_file_path}"
 
     result = run_script("bdgp_to_buildingsync", csv_file_path)
