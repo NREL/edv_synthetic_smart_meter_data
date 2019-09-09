@@ -76,6 +76,24 @@ task :simulate_all_bdgp_xml do
   end
 end
 
+desc 'export the synthetic data'
+task :export_synthetic_data do
+  ARGV.each { |a| task a.to_sym do ; end }
+
+  if ARGV[1]
+
+    # ARGV[1] should be a path to a BDGP BuildingSync XML file
+    ruby "scripts/export_synthetic_data.rb #{ARGV[1]}"
+
+  else
+    # need path to csv file
+    puts "Error - No CSV file specified that would contain information about the export process"
+    puts "Usage: bundle exec rake export_synthetic_data path/to/csv/file"
+
+  end
+end
+
+
 desc 'append lat/lng/zipcode information to CSV'
 task :geocode_meta_csv do
 
