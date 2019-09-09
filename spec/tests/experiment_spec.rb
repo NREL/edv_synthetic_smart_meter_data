@@ -51,10 +51,6 @@ RSpec.describe 'EDV Experiment 1' do
     process_all_bldg_sync_files_in_csv("one_each_type.csv")
   end
 
-  it 'should generate the csv file containing all xml files' do
-    run_script('generate_csv_containing_all_bldgs.rb')
-  end
-
   def run_simulate_bdgp_xml(xml_name, epw_name = nil)
 
     root_dir = File.join(File.dirname(__FILE__), '../../')

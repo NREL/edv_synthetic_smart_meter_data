@@ -4,8 +4,6 @@ RSpec::Core::RakeTask.new(:spec)
 desc 'generate BDGP BuildingSync XMLs'
 task :generate_bdgp_xmls do
 
-  ARGV.each { |a| task a.to_sym do ; end }
-
   if ARGV[1]
 
   	# ARGV[1] should be a path to a CSV file
@@ -23,8 +21,6 @@ end
 desc 'simulate a BDGP BuildingSync XML'
 task :simulate_bdgp_xml do
 
-  ARGV.each { |a| task a.to_sym do ; end }
-
   if ARGV[1]
 
   	# ARGV[1] should be a path to a BDGP BuildingSync XML file
@@ -40,8 +36,6 @@ end
 
 desc 'simulate a batch of BDGP BuildingSync XML files'
 task :simulate_batch_bdgp_xml do
-
-  ARGV.each { |a| task a.to_sym do ; end }
 
   if ARGV[1]
 
@@ -59,10 +53,6 @@ end
 desc 'simulate all BDGP BuildingSync XML files'
 task :simulate_all_bdgp_xml do
 
-  ARGV.each { |a| task a.to_sym do ; end }
-
-
-
   if ARGV[1]
 
     # ARGV[1] should be a path to a BDGP BuildingSync XML file
@@ -78,7 +68,6 @@ end
 
 desc 'export the synthetic data'
 task :export_synthetic_data do
-  ARGV.each { |a| task a.to_sym do ; end }
 
   if ARGV[1]
 
@@ -97,8 +86,6 @@ end
 desc 'append lat/lng/zipcode information to CSV'
 task :geocode_meta_csv do
 
-  ARGV.each { |a| task a.to_sym do ; end }
-
   if ARGV[1] && ARGV[2]
 
   	# ARGV[1] should be a path to a CSV file
@@ -114,8 +101,6 @@ end
 
 desc 'lookup and append climate_zone information to CSV'
 task :lookup_climate_zone_csv do
-
-  ARGV.each { |a| task a.to_sym do ; end }
 
   if ARGV[1] && ARGV[2]
 
