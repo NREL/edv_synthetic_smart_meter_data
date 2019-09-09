@@ -248,7 +248,6 @@ def create_site(feature)
   year_of_construction.text = get_year_built(feature)
   building.add_element(year_of_construction)
 
-  # KAF: uncomment later when we update to BuildingSync 2.0. Delete Subsections above
   subsections = REXML::Element.new('auc:Sections')
   # create single subsection
   subsection = REXML::Element.new('auc:Section')
@@ -944,36 +943,19 @@ def convert_building(feature)
   	<auc:Facilities>
   		<auc:Facility>
     		<auc:Sites>
-    		</auc:Sites> 
+    		</auc:Sites>
         <auc:Systems>
         </auc:Systems>
         <auc:Measures>
-        </auc:Measures>        
-        <auc:Report>
-        </auc:Report>
+        </auc:Measures>
+        <auc:Reports>
+          <auc:Report>
+          </auc:Report>
+        </auc:Reports>
   		</auc:Facility>
-	</auc:Facilities>
+	  </auc:Facilities>
   </auc:BuildingSync>
   "
-  # DLM: uncomment later when we update to BuildingSync 2.0
-  # source = "
-  # <auc:BuildingSync #{xml_namespace}>
-  	# <auc:Facilities>
-  		# <auc:Facility>
-    		# <auc:Sites>
-    		# </auc:Sites> 
-        # <auc:Systems>
-        # </auc:Systems>
-        # <auc:Measures>
-        # </auc:Measures>
-        # <auc:Reports>
-          # <auc:Report>
-          # </auc:Report>
-        # </auc:Reports>
-  		# </auc:Facility>
-	# </auc:Facilities>
-  # </auc:BuildingSync>
-  # "
   
   doc = REXML::Document.new(source)
   sites = doc.elements['*/*/*/auc:Sites']
@@ -997,9 +979,7 @@ def convert_building(feature)
   # add scenario (energystarscore, datastart, dataend?)
   scenarios = create_scenarios(feature)
   if !scenarios.nil?
-    # DLM: uncomment later when we update to BuildingSync 2.0
-    #report = doc.elements['*/*/*/auc:Reports/auc:Report']
-    report = doc.elements['*/*/*/auc:Report']
+    report = doc.elements['*/*/*/auc:Reports/auc:Report']
     report.add_element(scenarios)
   end
 
