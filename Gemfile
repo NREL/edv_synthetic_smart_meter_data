@@ -14,7 +14,7 @@ if allow_local && File.exist?('../OpenStudio-extension-gem')
   # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
   gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
 else
-  gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
+  gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'DA'
 end
 
 if allow_local && File.exist?('../openstudio-model-articulation-gem')
@@ -42,7 +42,7 @@ if allow_local && File.exists?('../BuildingSync-gem')
   # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
-  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
+  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA_Level1_BldgSync2.0'
 end
 
 if allow_local && File.exists?('../openstudio-occupant-variability-gem')

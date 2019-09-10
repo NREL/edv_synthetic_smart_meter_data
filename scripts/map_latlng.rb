@@ -39,7 +39,7 @@ CSV.foreach(ARGV[0], options) do |feature|
 	id = feature[:uid]
 
 	matches = lat_lng_arr.select {|row| row[:uid] === id }
-	# puts "num matches: #{matches.size}"
+	puts "num matches: #{matches.size}"
 	if matches.size > 0
 		the_match = matches[0]
 		feature[:lat] = the_match[:lat]
@@ -69,6 +69,7 @@ puts "HEADERS: #{headers}"
 outdir = '../bdgp_output'
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
+puts "outdir: #{outdir}"
 CSV.open(outdir + "/bdgp_withlatlng.csv", "w") do |csv|
   csv << headers
   new_csv_arr.each do |row|

@@ -7,6 +7,8 @@ require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 require_relative 'constants'
 
+OpenStudio::Extension::Extension::DO_SIMULATIONS = true
+
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
   puts "must provide a .csv file"
@@ -15,7 +17,7 @@ end
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
-  root_dir = File.join(File.dirname(__FILE__), '..')
+  root_dir = File.expand_path('..', File.dirname(__FILE__))
 
   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard)
   translator.add_measure_path("#{root_dir}/lib/measures")
@@ -48,7 +50,13 @@ csv_table.each do |xml_file, standard, epw_file|
 
   xml_file_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files/#{xml_file}/", File.dirname(__FILE__))
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
-  epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
+  epw_file_path = ''
+  if File.exist?(epw_file)
+    epw_file_path = epw_file
+  else
+    epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
+  end
+
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
 
   puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"

@@ -48,16 +48,6 @@ rescue LoadError, StandardError
 
     # one or more file paths
     OPENSTUDIO_FILES = [].freeze
-
-    # max number of datapoints to run
-    MAX_DATAPOINTS = Float::INFINITY
-    # MAX_DATAPOINTS = 2
-
-    # number of parallel jobs
-    NUM_PARALLEL = 7
-
-    # do simulations
-    DO_SIMULATIONS = false
   end
 end
 

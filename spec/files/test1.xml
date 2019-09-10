@@ -30,8 +30,8 @@
                 </auc:FloorArea>
               </auc:FloorAreas>
               <auc:YearOfConstruction>1930</auc:YearOfConstruction>
-              <auc:Subsections>
-                <auc:Subsection ID="Default_Subsection">
+              <auc:Sections>
+                <auc:Section ID="Default_Section">
                   <auc:OccupancyClassification>Office</auc:OccupancyClassification>
                   <auc:FloorAreas>
                     <auc:FloorArea>
@@ -43,8 +43,8 @@
                       <auc:FloorAreaValue>0.0</auc:FloorAreaValue>
                     </auc:FloorArea>
                   </auc:FloorAreas>
-                </auc:Subsection>
-              </auc:Subsections>
+                </auc:Section>
+              </auc:Sections>
             </auc:Building>
           </auc:Buildings>
         </auc:Site>
@@ -293,7 +293,8 @@
           </auc:UserDefinedFields>
         </auc:Measure>
       </auc:Measures>
-      <auc:Report>
+      <auc:Reports>
+        <auc:Report>
         <auc:Scenarios>
           <auc:Scenario ID="Baseline">
             <auc:ScenarioName>Baseline</auc:ScenarioName>
@@ -418,6 +419,7 @@
           </auc:Scenario>
         </auc:Scenarios>
       </auc:Report>
+      </auc:Reports>
     </auc:Facility>
   </auc:Facilities>
 </auc:BuildingSync>
