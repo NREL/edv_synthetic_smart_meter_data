@@ -44,14 +44,10 @@ require 'openstudio-occupant-variability'
 
 RSpec.describe 'EDV Experiment 1' do
   it 'should run test file 1 with occupancy measure' do
+    OpenStudio::Extension::Extension::DO_SIMULATIONS = true
     result = test_occupancy_mesure('test1.xml', 'temporary.epw')
     expect(result).to be true
   end
-
-  #it 'should run test file without any other measures with occupancy measure' do
-  #  result = test_occupancy_mesure('test1_no_measures.xml', 'temporary.epw')
-  #  expect(result).to be true
-  #end
 
   def test_occupancy_mesure(xml_name, epw_name = nil)
     root_dir = File.join(File.dirname(__FILE__), '../../')
@@ -69,25 +65,14 @@ RSpec.describe 'EDV Experiment 1' do
 
     occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
     translator.add_measure_path(occupant_variability_instance.measures_dir)
-    args_hash = {}
-    i = 1
-    space_types = translator.get_space_types
-    space_types.each do |space_type|
-      current_spaces = space_type.spaces
-      next if not current_spaces.size > 0
-      current_spaces.each do |space|
-        args_hash["Space_#{i}_#{space.name}"] = 'Office Type 1'
-        i += 1
-      end
-    end
-    translator.insert_energyplus_measure('Occupancy_Simulator', 0, args_hash)
+    translator.insert_energyplus_measure('Occupancy_Simulator', 0)
 
     translator.write_osws
 
     osws = Dir.glob("#{out_path}/**/in.osw") - Dir.glob("#{out_path}/SR/in.osw")
 
     runner = OpenStudio::Extension::Runner.new(root_dir)
-    runner.run_osws(osws, 4)
+    runner.run_osws(osws)
 
     successful = true
     osws.each do |osw|

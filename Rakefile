@@ -18,6 +18,29 @@ task :generate_bdgp_xmls do
 
 end
 
+desc 'generate csv control file 1'
+task :generate_control_csv_1 do
+
+  if  ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
+    # ARGV[1] should be a path to a directory with BldgSync files
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
+  elsif  ARGV[1] && ARGV[2] && ARGV[3]
+    # ARGV[1] should be a path to a directory with BldgSync files
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
+  elsif  ARGV[1] && ARGV[2]
+    # ARGV[1] should be a path to a directory with BldgSync files
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]}"
+  elsif ARGV[1]
+    # ARGV[1] should be a path to a directory with BldgSync files
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} "
+  else
+    # need path to a directory with BldgSync files
+    puts "Error - No directory with BuildingSync files specified"
+    puts "Usage: bundle exec rake generate_csv_containing_all_bldgs path/to/bldgsync/dir"
+
+  end
+end
+
 desc 'simulate a BDGP BuildingSync XML'
 task :simulate_bdgp_xml do
 

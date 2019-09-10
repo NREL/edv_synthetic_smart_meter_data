@@ -49,7 +49,7 @@ RSpec.describe 'EDV Experiment 1' do
 
     #cmd = "dir"
     cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{csv_file_path}\""
-
+    puts cmd
     runner.run_command(cmd, runner.get_clean_env)
   end
 end

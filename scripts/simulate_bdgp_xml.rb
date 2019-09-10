@@ -6,6 +6,8 @@ require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 
+OpenStudio::Extension::Extension::DO_SIMULATIONS = true
+
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional)'
   puts "must provide at least a .xml file"
