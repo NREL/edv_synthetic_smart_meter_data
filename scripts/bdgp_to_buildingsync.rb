@@ -158,6 +158,7 @@ def create_site(feature)
     ashrae_climate.text = feature[:climate_zone]
     ashrae.add_element(ashrae_climate)
     climate_zone.add_element(ashrae)
+    site.add_element(climate_zone)
   end
 
   # lat/lng (if present)
