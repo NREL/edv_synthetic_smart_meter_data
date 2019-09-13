@@ -34,36 +34,45 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # *******************************************************************************
-require_relative './../spec_helper'
 
-require 'fileutils'
-require 'parallel'
-require 'open3'
-require 'csv'
+class MonthlyData
 
-RSpec.describe 'EDV Experiment 1' do
-  it 'should run test file 1' do
-    result = run_simulate_bdgp_xml('test1.xml')
-    expect(result).to be true
+  def initialize
+    @month = nil
+    @year = nil
+    @start_time_stamp = nil
+    @end_time_stamp = nil
+    @total_value = {}
   end
 
-  it 'should translate one buildingsync file per type contained in csv file to osm baselines' do
-    process_all_bldg_sync_files_in_csv('one_each_type.csv')
+  def update_month(month_value)
+    @month = month_value
   end
 
-  def run_simulate_bdgp_xml(xml_name, epw_name = nil)
-
-    root_dir = File.join(File.dirname(__FILE__), '../../')
-    script_path = File.join(root_dir, 'scripts/simulate_bdgp_xml.rb')
-    xml_path = File.join(root_dir, "spec/files/#{xml_name}")
-    epw_path = File.join(root_dir, "spec/files/#{epw_name}")
-
-    runner = OpenStudio::Extension::Runner.new(root_dir)
-    cli = OpenStudio.getOpenStudioCLI
-
-    #cmd = "dir"
-    cmd = "\"#{cli}\" --verbose --bundle '#{runner.gemfile_path}' --bundle_path '#{runner.bundle_install_path}' \"#{script_path}\" \"#{xml_path}\""
-
-    runner.run_command(cmd, runner.get_clean_env)
+  def update_year(year_value)
+    @year = year_value
   end
+
+  def update_start_time(start_time)
+    @start_time_stamp = start_time
+  end
+
+  def update_end_time(end_time)
+    @end_time_stamp = end_time
+  end
+
+  def update_values(value, counter)
+    csv_value = value.to_f
+    if @total_value[counter].nil?
+      @total_value[counter] = csv_value
+    else
+      @total_value[counter] += csv_value
+    end
+  end
+
+  def get_values
+    return @total_value
+  end
+
+  attr_reader :month, :year, :start_time_stamp, :end_time_stamp
 end

@@ -2,12 +2,9 @@ require 'fileutils'
 require 'csv'
 require_relative 'constants'
 
-root_dir = File.expand_path( '../', File.dirname(__FILE__))
+root_dir = File.expand_path('../', File.dirname(__FILE__))
 
-if !ARGV[0].nil?  && Dir.exist?(ARGV[0])
-  root_dir = ARGV[0]
-end
-puts "root_dir:#{root_dir}"
+root_dir = ARGV[0] if !ARGV[0].nil? && Dir.exist?(ARGV[0])
 
 standard_to_be_used = 'ASHRAE90.1'
 if !ARGV[1].nil? && (ARGV[1] == 'CaliforniaTitle24' || ARGV[1] == 'ASHRAE90.1')
