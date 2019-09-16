@@ -33,8 +33,9 @@ if !ARGV[2].nil? && File.exist?(ARGV[2])
 end
 
 
-root_dir = File.join(File.dirname(__FILE__), '..')
+root_dir =  File.expand_path('../..', File.absolute_path(__FILE__))
 out_path = File.expand_path("../output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
+puts "root dir: #{root_dir}"
 
 if File.exist?(out_path)
   FileUtils.rm_rf(out_path)
@@ -50,6 +51,9 @@ translator.write_osws
 osws = Dir.glob("#{out_path}/**/in.osw")
 
 runner = OpenStudio::Extension::Runner.new(root_dir)
-runner.run_osws(osws, 4)
+runner.run_osws(osws)
+
+translator.gather_results(out_path)
+translator.save_xml(File.join(out_path, 'results.xml'))
 
 puts 'bye'
