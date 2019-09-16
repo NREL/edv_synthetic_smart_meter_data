@@ -13,6 +13,12 @@ Clone this repo and run
 All output will go into a path this is defined with the constant NAME_OF_OUTPUT_DIR in the constants.rb file, 
 below the edv-experiment-1 main folder. 
 
+## Script overview
+
+The following figure contains an overview of the scripts and input as well as output files/paths:
+
+![alt text](ScriptOverview.PNG)
+
 ## Convert CSV Data to BuildingSync XML
 
 Run the following command to generate BuildingSync XMLs from CSV data:
