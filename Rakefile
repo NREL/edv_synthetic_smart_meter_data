@@ -139,17 +139,17 @@ task :lookup_climate_zone_csv do
 end
 
 desc 'Read the CSV file and update the XML files'
-task :csv_to_xmls do
+task :add_measured_data do
 
   if ARGV[1] && ARGV[2]
 
     # ARGV[1] should be a path to a CSV file
-    ruby "scripts/update_xml_data.rb #{ARGV[1]} #{ARGV[2]}"
+    ruby "scripts/add_measured_data.rb #{ARGV[1]} #{ARGV[2]}"
 
   else
     # need path to csv file
     puts 'Error - No CSV files specified'
-    puts 'Usage: rake csv_to_xmls /path/to/meta/with/csv /path/to/xmlFolder'
+    puts 'Usage: rake add_measured_data /path/to/meta/with/csv /path/to/buildingsync/folder/XML/files'
 
   end
 end
