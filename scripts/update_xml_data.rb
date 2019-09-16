@@ -20,10 +20,33 @@ def update_xml_file(xml_file, csv_month_class_collection, counter)
   ns = 'auc'
   doc = create_xml_file_object(xml_file)
   file_value_collection = []
-  scenario_element = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios/#{ns}:Scenario"]
-
+  measured_scenario_element = nil
+  scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
+  scenario_elements.each do |scenario_element|
+    measured_scenario_element = scenario_element if scenario_element.attributes["ID"] == "Measured"
+  end
+  if measured_scenario_element.nil?
+    measured_scenario_element = REXML::Element.new("#{ns}:Scenario")
+    measured_scenario_element.add_attribute('ID', 'Measured')
+    scenario_name = REXML::Element.new("#{ns}:ScenarioName")
+    scenario_name.text = "Measured"
+    measured_scenario_element.add(scenario_name)
+    scenario_type = REXML::Element.new("#{ns}:ScenarioType")
+    measured_scenario_element.add(scenario_type)
+    package_of_measures = REXML::Element.new("#{ns}:PackageOfMeasures")
+    scenario_type.add(package_of_measures)
+    reference_case = REXML::Element.new("#{ns}:ReferenceCase")
+    reference_case.add_attribute('IDref', 'Baseline')
+    package_of_measures.add(reference_case)
+    calculation_method = REXML::Element.new("#{ns}:CalculationMethod")
+    package_of_measures.add(calculation_method)
+    measured = REXML::Element.new("#{ns}:Measured")
+    calculation_method.add(measured)
+    other = REXML::Element.new("#{ns}:Other")
+    measured.add(other)
+  end
   time_series_data = REXML::Element.new("#{ns}:TimeSeriesData")
-  scenario_element.add_element(time_series_data)
+  measured_scenario_element.add_element(time_series_data)
 
   csv_month_class_collection.each do |single_csv_class|
     next unless single_csv_class.get_values[counter] > 0
@@ -52,7 +75,7 @@ def update_xml_file(xml_file, csv_month_class_collection, counter)
     file_value_collection.push(single_csv_class.get_values[counter])
   end
 
-  calculate_annual_value(file_value_collection, scenario_element)
+  calculate_annual_value(file_value_collection, measured_scenario_element)
   saveXML(xml_file, doc)
 end
 
