@@ -16,7 +16,7 @@ if ARGV[0].nil? || !File.exist?(ARGV[0]) || ARGV[1].nil? || !Dir.exist?(ARGV[1])
   exit(1)
 end
 
-def update_xml_file(xml_file, csv_month_class_collection, counter)
+def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
   ns = 'auc'
   doc = create_xml_file_object(xml_file)
   file_value_collection = []
@@ -190,7 +190,7 @@ if !csv_file_path.nil? && !csv_file_path.empty?
     if counter > 0
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
-        update_xml_file(xml_file, csv_month_class_collection, counter)
+        add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
       else
         p "file #{file_name} does not exist"
       end
