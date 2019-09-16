@@ -22,21 +22,21 @@ desc 'generate csv control file 1'
 task :generate_control_csv_1 do
 
   if  ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
-    # ARGV[1] should be a path to a directory with BldgSync files
+    # ARGV[4] should be a path to a directory with weather files
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
   elsif  ARGV[1] && ARGV[2] && ARGV[3]
-    # ARGV[1] should be a path to a directory with BldgSync files
+    # ARGV[3] should be a path to csv_file_with_EPWs
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
   elsif  ARGV[1] && ARGV[2]
-    # ARGV[1] should be a path to a directory with BldgSync files
+    # ARGV[2] should be the standard_to_be_used
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]}"
   elsif ARGV[1]
-    # ARGV[1] should be a path to a directory with BldgSync files
+    # ARGV[1] should be a path to a directory with BldgSync files (root_dir)
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} "
   else
     # need path to a directory with BldgSync files
     puts "Error - No directory with BuildingSync files specified"
-    puts "Usage: bundle exec rake generate_csv_containing_all_bldgs path/to/bldgsync/dir"
+    puts "Usage: bundle exec rake generate_csv_containing_all_bldgs path/to/bldgsync/dir (optional) standard_to_be_used csv/file/with/EPWs weather/file/source/dir"
 
   end
 end
