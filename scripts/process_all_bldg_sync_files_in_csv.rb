@@ -28,7 +28,10 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
   osws = Dir.glob("#{out_path}/**/in.osw")
 
   runner = OpenStudio::Extension::Runner.new(root_dir)
-  return runner.run_osws(osws, 4)
+  runner.run_osws(osws)
+
+  translator.gather_results(out_path)
+  translator.save_xml(xml_file_path)
 end
 
 csv_file_path = ARGV[0]

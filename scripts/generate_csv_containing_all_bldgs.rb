@@ -57,4 +57,3 @@ csv.close
 puts "ARGV[0]:#{ARGV[0]} ARGV[1]:#{ARGV[1]} ARGV[2]:#{ARGV[2]} ARGV[3]:#{ARGV[3]}"
 
 puts 'bye'
-
