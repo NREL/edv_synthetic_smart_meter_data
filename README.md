@@ -34,7 +34,7 @@ This script is designed to work with the metadata `meta_open.csv` from the [Buil
 ## Simulate BuildingSync XML file (one)
 Run the following command to translate one BuildingSync XML to OSM and simulate:
 
-``` bundle exec rake simulate_batch_bdgp_xml path/to/xml/file ```
+``` bundle exec rake simulate_bdgp_xml path/to/xml/file ```
 
 ## Simulate BuildingSync XML file (batch of files)
 
