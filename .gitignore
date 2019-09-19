@@ -12,3 +12,4 @@ SR1/
 /*.rspec_status
 *.log
 /scripts.txt
+/Test_output/
