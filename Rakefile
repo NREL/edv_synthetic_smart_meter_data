@@ -138,7 +138,7 @@ task :lookup_climate_zone_csv do
   end
 end
 
-desc 'Read the CSV file and update the XML files'
+desc 'Read the CSV file and update the BuildingSync files'
 task :add_measured_data do
 
   if ARGV[1] && ARGV[2]
@@ -150,6 +150,22 @@ task :add_measured_data do
     # need path to csv file
     puts 'Error - No CSV files specified'
     puts 'Usage: rake add_measured_data /path/to/meta/with/csv /path/to/buildingsync/folder/XML/files'
+
+  end
+end
+
+desc 'Read the CSV file and update a BuildingSync file with actual energy use timeseries and modeled energy use timeseries calculate.'
+task :add_calculate_measure_data do
+
+  if ARGV[1] && ARGV[2]
+
+    # ARGV[1] should be a path to a CSV file
+    ruby "scripts/add_calculate_measure_data.rb #{ARGV[1]} #{ARGV[2]}"
+
+  else
+    # need path to csv file
+    puts 'Error - No CSV files specified'
+    puts 'Usage: rake add_calculate_measure_data /path/to/meta/with/csv /path/to/buildingsync/folder/XML/files'
 
   end
 end
