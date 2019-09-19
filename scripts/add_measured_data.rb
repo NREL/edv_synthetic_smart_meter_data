@@ -1,4 +1,4 @@
-
+require_relative 'constants'
 require_relative '../scripts/helper/measured_data_calculation'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0]) || ARGV[1].nil? || !Dir.exist?(ARGV[1])
