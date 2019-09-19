@@ -81,7 +81,7 @@ class MeasuredDataCalculation
       advance_measured_data_calculation.calculate_modeled_eui_value
       advance_measured_data_calculation.cvrmse_nmbe_calculation(csv_month_class_collection, counter)
     end
-    save_xml(xml_file, doc)
+    save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
   def calculate_annual_value(file_value_collection, scenario_element)
