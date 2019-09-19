@@ -1,11 +1,10 @@
-
-
 require 'fileutils'
 require 'parallel'
 require 'open3'
 require 'csv'
 require 'date'
 require 'rexml/document'
+require_relative 'constants'
 
 # require_relative '../spec/spec_helper'
 require_relative '../scripts/helper/csv_monthly_data'
@@ -16,6 +15,10 @@ if ARGV[0].nil? || !File.exist?(ARGV[0]) || ARGV[1].nil? || !Dir.exist?(ARGV[1])
   exit(1)
 end
 
+# output directory
+outdir = "./#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Measured_Data"
+FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
+
 def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
   ns = 'auc'
   doc = create_xml_file_object(xml_file)
@@ -23,7 +26,9 @@ def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
   measured_scenario_element = nil
   scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
   scenario_elements.each do |scenario_element|
-    measured_scenario_element = scenario_element if scenario_element.attributes["ID"] == "Measured"
+    if !scenario_element.attributes.nil?
+      measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == "Measured"
+    end
   end
   if measured_scenario_element.nil?
     measured_scenario_element = REXML::Element.new("#{ns}:Scenario")
@@ -76,7 +81,7 @@ def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
   end
 
   calculate_annual_value(file_value_collection, measured_scenario_element)
-  saveXML(xml_file, doc)
+  saveXML(xml_file.sub!('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
 end
 
 def calculate_annual_value(file_value_collection, scenario_element)
