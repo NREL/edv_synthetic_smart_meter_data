@@ -12,8 +12,12 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   exit(1)
 end
 
+buildingsync_schema_url = ''
+# BuildingSync 1.0: https://raw.githubusercontent.com/BuildingSync/schema/v1.0/BuildingSync.xsd
+# BuildingSync 2.0-prerelease: https://raw.githubusercontent.com/BuildingSync/schema/1c73127d389b779c6b74029be72c6e9ff3187113/BuildingSync.xsd
+
 def xml_namespace()
-  'xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 https://raw.githubusercontent.com/BuildingSync/schema/v1.0/BuildingSync.xsd"'
+  'xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 https://raw.githubusercontent.com/BuildingSync/schema/1c73127d389b779c6b74029be72c6e9ff3187113/BuildingSync.xsd"'
 end
 
 def convert(value, unit_in, unit_out)
@@ -735,8 +739,7 @@ def create_measures(feature)
 
   # add measures
   measures.each do |measure|
-    text = "
-        <auc:Measure ID=\"#{measure[:ID]}\" #{xml_namespace}>
+    text = "<auc:Measure ID=\"#{measure[:ID]}\" #{xml_namespace}>
         <auc:SystemCategoryAffected>#{measure[:SystemCategoryAffected]}</auc:SystemCategoryAffected>
 			  <auc:LinkedPremises>
 					<auc:Building>
@@ -929,8 +932,7 @@ def convert_building(feature)
   building_id = get_building_id(feature)
   floor_area = get_floor_area(feature)
 
-  source = "
-  <auc:BuildingSync #{xml_namespace}>
+  source = "<auc:BuildingSync #{xml_namespace}>
   	<auc:Facilities>
   		<auc:Facility>
     		<auc:Sites>

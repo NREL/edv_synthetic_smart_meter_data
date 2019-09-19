@@ -34,7 +34,7 @@ This script is designed to work with the metadata `meta_open.csv` from the [Buil
 ## Simulate BuildingSync XML file (one)
 Run the following command to translate one BuildingSync XML to OSM and simulate:
 
-``` bundle exec rake simulate_batch_bdgp_xml path/to/xml/file ```
+``` bundle exec rake simulate_bdgp_xml path/to/xml/file ```
 
 ## Simulate BuildingSync XML file (batch of files)
 
@@ -50,9 +50,11 @@ The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/Simulation_
 
 The following script will generate a csv file with all BuildingSync files found in the NAME_OF_OUTPUT_DIR/Bldg_Sync_Files directory. 
 
-``` bundle exec rake process_all_bldg_sync_files_in_csv path/to/bldg_snyc_files ```
+``` bundle exec rake generate_control_csv_1 path/to/bldg_snyc_files (optional) standard_to_be_used csv/file/with/EPWs path/to/weather/files```
 
-bundle exec rake process_all_bldg_sync_files_in_csv R:\NREL\edv-experiment-1\Test_output\Bldg_Sync_Files
+The first argument is required and should be the path to the BuildingSync files
+The other three arguments are optional. The 2nd one can set the standard (ASHRAE 90.1 or T24), 
+the 3rd and forth can also use actual weather files based on the related csv file and a path to the weather files
 
 ## Export data using the synthetic exporter
 
