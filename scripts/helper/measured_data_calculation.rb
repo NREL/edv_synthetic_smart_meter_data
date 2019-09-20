@@ -128,6 +128,10 @@ class MeasuredDataCalculation
   end
 
   def save_xml(filename, doc)
+    unless Dir.exist?(File.dirname(filename))
+      FileUtils.mkdir_p(File.dirname(filename))
+    end
+
     File.open(filename, 'w') do |file|
       doc.write(file)
     end
