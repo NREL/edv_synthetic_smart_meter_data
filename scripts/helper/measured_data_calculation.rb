@@ -79,7 +79,7 @@ class MeasuredDataCalculation
     if is_advance_calculation
       advance_measured_data_calculation = AdvanceMeasuredDataCalculation.new(doc, unit_converted_value, ns)
       advance_measured_data_calculation.calculate_modeled_eui_value
-      advance_measured_data_calculation.cvrmse_nmbe_calculation(csv_month_class_collection, counter)
+      advance_measured_data_calculation.cvrmse_nmbe_calculation
     end
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end

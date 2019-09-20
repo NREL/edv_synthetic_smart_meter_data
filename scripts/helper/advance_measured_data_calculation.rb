@@ -28,8 +28,6 @@ class AdvanceMeasuredDataCalculation
   end
 
   def calculate_actual_eui_value(floor_area)
-    p "unit converted value :- #{@unit_converted_value}"
-    p "floor value :- #{floor_area}"
     return @unit_converted_value.to_f / floor_area.to_f if floor_area.to_f > 0
   end
 
@@ -54,27 +52,27 @@ class AdvanceMeasuredDataCalculation
     end
   end
 
-  def cvrmse_nmbe_calculation(csv_month_class_collection, counter)
+  def cvrmse_nmbe_calculation
     scenario_elements = @doc.elements["#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
       next unless scenario_element.attributes['ID'] != 'Measured'
-      monthly_billing_period_calculation(scenario_element, csv_month_class_collection, counter)
+      monthly_billing_period_calculation(scenario_element)
     end
   end
 
-  def monthly_billing_period_calculation(scenario_element, csv_month_class_collection, counter)
+  def monthly_billing_period_calculation(scenario_element)
     ysum = 0
     squared_error = 0
     sum_error = 0
     match_counter = 0
-
-    csv_month_class_collection.each do |single_csv_class|
-      measured_value = single_csv_class.get_values[counter]
+    time_series_collection = get_measured_data_collection
+    time_series_collection.each do |time_series|
+      measured_value = time_series.elements["#{@ns}:IntervalReading"].text.to_f
       next unless measured_value > 0
-      measured_date = single_csv_class.start_time_stamp.to_date
+      measured_date = get_date(time_series.elements["#{@ns}:StartTimeStamp"].text)
       simulated_value = find_same_date_simulation_data(scenario_element, measured_date)
       next unless simulated_value > 0
-      ysum += single_csv_class.get_values[counter]
+      ysum += measured_value
       squared_error += (measured_value - simulated_value)**2
       sum_error += (measured_value - simulated_value)
       match_counter += 1
@@ -86,6 +84,18 @@ class AdvanceMeasuredDataCalculation
       nmbe_result = 100.0 * (sum_error / (match_counter - 1)) / ybar
       add_cvrmse_and_nmbe_into_xml(scenario_element, cvrmse_result, nmbe_result)
     end
+  end
+
+  def get_measured_data_collection
+    time_series_collection = []
+    scenario_elements = @doc.elements["#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
+    scenario_elements.each do |scenario_element|
+      next unless scenario_element.attributes['ID'] == 'Measured'
+      scenario_element.elements["#{@ns}:TimeSeriesData"].each do |time_series|
+        time_series_collection.push(time_series)
+      end
+    end
+    time_series_collection
   end
 
   def find_same_date_simulation_data(scenario_element, measured_date)
@@ -100,10 +110,10 @@ class AdvanceMeasuredDataCalculation
   end
 
   def get_date(date_string)
-    if date_string.include?('T')
+    if date_string.to_s.include?('T')
       Date.strptime(date_string.split('T').first, '%Y-%m-%d')
     else
-      Date.strptime(date_string, '%Y-%m-%d')
+      Date.strptime(date_string.to_s, '%Y-%m-%d')
     end
   end
 
