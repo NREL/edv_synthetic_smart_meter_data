@@ -92,7 +92,7 @@ class AdvanceMeasuredDataCalculation
     scenario_element.elements["#{@ns}:TimeSeriesData"].each do |time_series|
       simulated_date = time_series.elements["#{@ns}:StartTimeStamp"].text
       interval_reading = time_series.elements["#{@ns}:IntervalReading"].text
-      puts "interval_reading: #{interval_reading}"
+
       next unless !interval_reading.nil? && interval_reading.to_f > 0
       return interval_reading.to_f if get_date(simulated_date) == measured_date
     end
@@ -100,12 +100,10 @@ class AdvanceMeasuredDataCalculation
   end
 
   def get_date(date_string)
-    puts "date_string: #{date_string}"
     if date_string.include?('T')
-      puts "date_string(first): #{date_string.split('T').first}"
-      return date_string.split('T').first.to_date
+      Date.strptime(date_string.split('T').first, '%Y-%m-%d')
     else
-      return date_string.to_date
+      date_string.to_date
     end
   end
 
