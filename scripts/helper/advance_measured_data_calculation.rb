@@ -103,7 +103,7 @@ class AdvanceMeasuredDataCalculation
     if date_string.include?('T')
       Date.strptime(date_string.split('T').first, '%Y-%m-%d')
     else
-      date_string.to_date
+      Date.strptime(date_string, '%Y-%m-%d')
     end
   end
 
