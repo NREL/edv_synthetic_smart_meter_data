@@ -15,8 +15,14 @@ if ARGV[0].nil?
   exit(1)
 end
 
+bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files"
+if !ARGV[1].nil?
+  bldg_sync_file_dir = ARGV[1]
+end
+
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
+  out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard)
@@ -31,7 +37,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
   runner.run_osws(osws)
 
   translator.gather_results(out_path)
-  translator.save_xml(xml_file_path)
+  translator.save_xml(out_xml)
 end
 
 csv_file_path = ARGV[0]
@@ -51,7 +57,7 @@ log = File.open(log_file_path, 'w')
 csv_table.each do |xml_file, standard, epw_file|
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
-  xml_file_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files/#{xml_file}/", File.dirname(__FILE__))
+  xml_file_path = File.expand_path("#{bldg_sync_file_dir}/#{xml_file}/", File.dirname(__FILE__))
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
   epw_file_path = ''
   if File.exist?(epw_file)

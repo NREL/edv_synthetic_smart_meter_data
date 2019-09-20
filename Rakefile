@@ -45,30 +45,29 @@ desc 'simulate a BDGP BuildingSync XML'
 task :simulate_bdgp_xml do
 
   if ARGV[1]
-
     # ARGV[1] should be a path to a BDGP BuildingSync XML file
     ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]}"
-
   else
     # need path to csv file
     puts 'Error - No BDGP BuildingSync XML file specified'
     puts 'Usage: bundle exec rake simulate_bdgp_xml path/to/xml/file'
-
   end
 end
 
 desc 'simulate a batch of BDGP BuildingSync XML files'
 task :simulate_batch_bdgp_xml do
 
-  if ARGV[1]
-
+  if  ARGV[1] && ARGV[2]
+    # ARGV[2] would be the folder with building sync files
+    ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]} #{ARGV[2]}"
+  elsif  ARGV[1]
     # ARGV[1] should be a path to a BDGP BuildingSync XML file
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]}"
 
   else
     # need path to csv file
     puts 'Error - No CSV file specified that would contain the BldgSync files to be process in this batch'
-    puts 'Usage: bundle exec rake process_all_bldg_sync_files_in_csv path/to/csv/file'
+    puts 'Usage: bundle exec rake process_all_bldg_sync_files_in_csv path/to/csv/file (optional) path/to/dir/with/bldgsyncfiles'
 
   end
 end
