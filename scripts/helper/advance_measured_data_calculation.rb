@@ -92,10 +92,21 @@ class AdvanceMeasuredDataCalculation
     scenario_element.elements["#{@ns}:TimeSeriesData"].each do |time_series|
       simulated_date = time_series.elements["#{@ns}:StartTimeStamp"].text
       interval_reading = time_series.elements["#{@ns}:IntervalReading"].text
-      next unless !interval_reading.nil? && interval_reading > 0
-      return interval_reading if simulated_date.to_date == measured_date
+      puts "interval_reading: #{interval_reading}"
+      next unless !interval_reading.nil? && interval_reading.to_f > 0
+      return interval_reading.to_f if get_date(simulated_date) == measured_date
     end
     0
+  end
+
+  def get_date(date_string)
+    puts "date_string: #{date_string}"
+    if date_string.include?('T')
+      puts "date_string(first): #{date_string.split('T').first}"
+      return date_string.split('T').first.to_date
+    else
+      return date_string.to_date
+    end
   end
 
   def add_cvrmse_and_nmbe_into_xml(scenario_element, cvrmse_result, nmbe_result)
