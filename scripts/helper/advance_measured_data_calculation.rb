@@ -19,8 +19,12 @@ class AdvanceMeasuredDataCalculation
     measured_floor_element = nil
     floor_areas = @doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Sites/#{@ns}:Site/#{@ns}:Buildings/#{@ns}:Building/#{@ns}:FloorAreas"]
     floor_areas.each do |floor_element|
-      if floor_element.elements["#{@ns}:FloorAreaType"].text == 'Gross'
-        measured_floor_element = floor_element
+      begin
+        if floor_element.elements["#{@ns}:FloorAreaType"].text == 'Gross'
+          measured_floor_element = floor_element
+        end
+      rescue
+        puts "scenario issue found floor_areas: #{floor_areas}"
       end
     end
 
@@ -35,19 +39,25 @@ class AdvanceMeasuredDataCalculation
     floor_area = get_floor_area_value
     scenario_elements = @doc.elements["#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
-      next unless scenario_element.attributes['ID'] == 'Measured'
-      scenario_element.elements["#{@ns}:ResourceUses"].each do |resource_use_element|
-        annual_fuel_use_consistent_units = resource_use_element.elements["#{@ns}:AnnualFuelUseConsistentUnits"].text
+      begin
+        next unless scenario_element.attributes['ID'] == 'Measured'
+        scenario_element.elements["#{@ns}:ResourceUses"].each do |resource_use_element|
+          if resource_use_element.element("#{@ns}:EnergyResource").Text == "Electricity"
+            annual_fuel_use_consistent_units = resource_use_element.elements["#{@ns}:AnnualFuelUseConsistentUnits"].text
 
-        site_energy_use_intensity = REXML::Element.new("#{@ns}:SiteEnergyUseIntensity")
-        actual_aui = REXML::Element.new("#{@ns}:ActualEUI")
-        actual_aui.text = calculate_actual_eui_value(floor_area)
-        modeled_aui = REXML::Element.new("#{@ns}:ModeledEUI")
-        modeled_aui.text = annual_fuel_use_consistent_units.to_f / floor_area.to_f
+            site_energy_use_intensity = REXML::Element.new("#{@ns}:SiteEnergyUseIntensity")
+            actual_aui = REXML::Element.new("#{@ns}:ActualEUI")
+            actual_aui.text = calculate_actual_eui_value(floor_area)
+            modeled_aui = REXML::Element.new("#{@ns}:ModeledEUI")
+            modeled_aui.text = annual_fuel_use_consistent_units.to_f / floor_area.to_f
 
-        resource_use_element.add_element(site_energy_use_intensity)
-        site_energy_use_intensity.add_element(actual_aui)
-        site_energy_use_intensity.add_element(modeled_aui)
+            resource_use_element.add_element(site_energy_use_intensity)
+            site_energy_use_intensity.add_element(actual_aui)
+            site_energy_use_intensity.add_element(modeled_aui)
+          end
+        end
+      rescue
+        puts "issue found in scenarios: #{scenario_elements}"
       end
     end
   end
@@ -55,8 +65,12 @@ class AdvanceMeasuredDataCalculation
   def cvrmse_nmbe_calculation
     scenario_elements = @doc.elements["#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
-      next unless scenario_element.attributes['ID'] != 'Measured'
-      monthly_billing_period_calculation(scenario_element)
+      begin
+        next unless scenario_element.attributes['ID'] != 'Measured'
+        monthly_billing_period_calculation(scenario_element)
+      rescue
+        puts "issue with scenario_elements #{scenario_elements}"
+      end
     end
   end
 
