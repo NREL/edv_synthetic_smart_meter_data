@@ -21,7 +21,12 @@ class MeasuredDataCalculation
     measured_scenario_element = nil
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
-      measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == 'Measured'
+      begin
+        measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == 'Measured'
+      rescue
+        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
+        puts "scenario_elements: #{scenario_elements}"
+      end
     end
     if measured_scenario_element.nil?
       measured_scenario_element = REXML::Element.new("#{ns}:Scenario")

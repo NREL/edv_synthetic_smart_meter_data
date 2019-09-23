@@ -64,13 +64,14 @@ class MonthlyData
   def update_values(value, counter)
     csv_value = value.to_f
     if @total_value[counter].nil?
-      @total_value[counter] = csv_value
+      @total_value[counter] = csv_value * 3.142
     else
-      @total_value[counter] += csv_value
+      @total_value[counter] += csv_value * 3.142
     end
   end
 
   def get_values
+    # converting from kWh to kBtu (multiply by 3.142)
     return @total_value
   end
 
