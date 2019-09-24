@@ -125,6 +125,9 @@ def summary_existing_xmls()
 	  puts "NMBE monthly electricity = #{nmbeelec}"
 	  puts "NMBE monthly gas = #{nmbegas}"
 	  puts "######################################################"
+	  
+	  #TODO: create array for including all outputs above. e.g., each row will include all outputs which represents characteristics of one building
+	  #TODO: create csv file that contains the array.
 
 
     end
