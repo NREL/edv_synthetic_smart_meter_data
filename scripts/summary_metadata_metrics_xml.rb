@@ -37,10 +37,7 @@ end
 def summary_existing_xmls()
 
   #path to xml files
-  dir_xml = 'C:/Users/JKIM4/Work/4 EDV/Samples'
-  
-  #path to bdgp_with_climatezones_epw_ddy.csv (includes latitude, longitude, city, state zip code)
-  dir_meta = 'C:/Users/JKIM4/Documents/GitHub/edv-experiment-1-files/bdgp_with_climatezones_epw_ddy.csv'
+  dir_xml = 'C:/Users/JKIM4/Work/4 EDV/Samples' #TODO: change path to be more generic later on
   
   #run for each xml file line by line
   if(File.exist?(dir_xml))
@@ -51,8 +48,7 @@ def summary_existing_xmls()
 
 
 	  #########################################################
-      # find line number of specified outputs
-	  # TODO: need to differentiate measured and modeled metrics
+      # find line numbers of metadata
 	  #########################################################
       list_site = ["<auc:IdentifierValue>",\
 	  "<auc:YearOfConstruction>",\
@@ -63,6 +59,10 @@ def summary_existing_xmls()
 	  "<auc:PostalCode>",\
 	  "<auc:Latitude>",\
 	  "<auc:Longitude>"]
+	  #########################################################
+      # find line numbers of metrics
+	  # TODO: need to differentiate measured and modeled metrics
+	  #########################################################
 	  list_metric = ["<auc:SiteEnergyUseIntensity>",\
 	  "<auc:CVRMSE>",\
 	  "<auc:NMBE>",\
@@ -85,7 +85,7 @@ def summary_existing_xmls()
 	  #parse value for each parameter
 	  #########################################################
       value_list_site = value_index(file, list_site, index_list_site["<auc:Site>"], index_list_site["</auc:Site>"])
-	  value_list_metric = value_index(file, list_metric, index_list_metric['<auc:Scenario ID="Baseline">'], index_list_metric['<auc:Scenario ID="Baseline">']+280)
+	  value_list_metric = value_index(file, list_metric, index_list_metric['<auc:Scenario ID="Baseline">'], index_list_metric['<auc:Scenario ID="Baseline">']+280) #TODO: double check assuming 280 lines is reasonable
 	  #########################################################
 	  	  
 		  
