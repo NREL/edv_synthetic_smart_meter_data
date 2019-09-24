@@ -1,16 +1,32 @@
 # return value of element
-def value_index(file, list)
+def value_index(file, list, startline, endline)
   tag = Hash.new
 
-  # find value for output
+  # find value for outputs within specific line numbers
+  (startline..endline).each {|linenum|
+    (0...list.size).each { |i|
+      if File.readlines(file)[linenum-1].include?list[i]  
+	    strings = File.readlines(file)[linenum-1].split(list[i]).last
+	    #puts strings
+	    strings = strings.split(list[i].insert 1, "/").first
+	    #puts strings
+        tag[list[i]] = strings
+	  end
+	}
+  }
+
+  return tag
+end
+
+# return line index of element
+def line_index(file, list)
+  tag = Hash.new
+
+  # find line number for outputs in the list 
   File.foreach(file).with_index(1) do |line, index|
     (0...list.size).each { |i|
       if line.include?list[i]
-	    strings = line.split(list[i]).last
-		#puts strings
-		strings = strings.split(list[i].insert 1, "/").first
-		#puts strings
-        tag[list[i]] = strings
+        tag[list[i]] = index
       end
     }
   end
@@ -33,36 +49,64 @@ def summary_existing_xmls()
 	  puts file
 	  puts "######################################################"
 
+
 	  #########################################################
       # find line number of specified outputs
-	  # TODO: need to add country, zip code, lat, lon, actual EUI, modeled EUI, CVRMSE monthly electricity, CVRMSE monthly gas, NMBE monthly electricity, NMBE monthly gas
+	  # TODO: need to differentiate measured and modeled metrics
 	  #########################################################
-      list = ["<auc:IdentifierValue>",\
+      list_site = ["<auc:IdentifierValue>",\
 	  "<auc:YearOfConstruction>",\
 	  "<auc:OccupancyClassification>",\
 	  "<auc:FloorsAboveGrade>",\
-	  "<auc:FloorAreaValue>"]
+	  "<auc:FloorAreaValue>",\
+	  "<auc:State>",\
+	  "<auc:PostalCode>",\
+	  "<auc:Latitude>",\
+	  "<auc:Longitude>"]
+	  list_metric = ["<auc:SiteEnergyUseIntensity>",\
+	  "<auc:CVRMSE>",\
+	  "<auc:NMBE>",\
+	  "<auc:CVRMSE>",\
+	  "<auc:NMBE>"]
 	  #########################################################
 	  
+	  
+	  #########################################################
+	  #find line numbers within necessary field
+	  #########################################################
+	  index_list_site = line_index(file, ["<auc:Site>","</auc:Site>"])
+	  #puts index_list_site
+	  index_list_metric = line_index(file, ['<auc:Scenario ID="Baseline">'])
+	  #puts index_list_metric
+	  #########################################################
+	  
+	  
+	  #########################################################
 	  #parse value for each parameter
-      index_list = value_index(file, list)
-	  
 	  #########################################################
-	  buildingid = index_list["<auc:IdentifierValue>".insert 1, "/"]
-	  yearbuilt = index_list["<auc:YearOfConstruction>".insert 1, "/"]
-	  buildingtype = index_list["<auc:OccupancyClassification>".insert 1, "/"]
-	  numberofstories = index_list["<auc:FloorsAboveGrade>".insert 1, "/"]
-	  squarefootage = index_list["<auc:FloorAreaValue>".insert 1, "/"]
-	  country = ""
-	  zipcode = ""
-	  latitude = ""
-	  longitude = ""
-	  actualeui = ""
-	  modeleui = ""
-	  cvrmseelec = ""
-	  cvrmsegas = ""
-	  nmbeelec = ""
-	  nmbegas = ""
+      value_list_site = value_index(file, list_site, index_list_site["<auc:Site>"], index_list_site["</auc:Site>"])
+	  value_list_metric = value_index(file, list_metric, index_list_metric['<auc:Scenario ID="Baseline">'], index_list_metric['<auc:Scenario ID="Baseline">']+280)
+	  #########################################################
+	  	  
+		  
+	  #########################################################
+	  #assign values to each output parameter
+	  #########################################################
+	  buildingid = value_list_site["<auc:IdentifierValue>".insert 1, "/"]
+	  yearbuilt = value_list_site["<auc:YearOfConstruction>".insert 1, "/"]
+	  buildingtype = value_list_site["<auc:OccupancyClassification>".insert 1, "/"]
+	  numberofstories = value_list_site["<auc:FloorsAboveGrade>".insert 1, "/"]
+	  squarefootage = value_list_site["<auc:FloorAreaValue>".insert 1, "/"]
+	  country = value_list_site["<auc:State>".insert 1, "/"]
+	  zipcode = value_list_site["<auc:PostalCode>".insert 1, "/"]
+	  latitude = value_list_site["<auc:Latitude>".insert 1, "/"]
+	  longitude = value_list_site["<auc:Longitude>".insert 1, "/"]
+	  actualeui = value_list_metric["<auc:SiteEnergyUseIntensity>".insert 1, "/"]
+	  modeleui = value_list_metric["<auc:SiteEnergyUseIntensity>".insert 1, "/"]
+	  cvrmseelec = value_list_metric["<auc:CVRMSE>".insert 1, "/"]
+	  cvrmsegas = value_list_metric["<auc:NMBE>".insert 1, "/"]
+	  nmbeelec = value_list_metric["<auc:CVRMSE>".insert 1, "/"]
+	  nmbegas = value_list_metric["<auc:NMBE>".insert 1, "/"]
 	  #########################################################
 	  
 	  puts "Building ID = #{buildingid}"
@@ -70,7 +114,7 @@ def summary_existing_xmls()
 	  puts "Building type = #{buildingtype}"
 	  puts "Number of stories = #{numberofstories}"
 	  puts "Square footage = #{squarefootage}"
-	  puts "Country = #{country}"
+	  puts "US State / Country = #{country}"
 	  puts "Zip code = #{zipcode}"
 	  puts "Latitude = #{latitude}"
 	  puts "Longitude = #{longitude}"
