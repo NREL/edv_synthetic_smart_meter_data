@@ -19,7 +19,7 @@ The following figure contains an overview of the scripts and input as well as ou
 
 ![alt text](ScriptOverview.PNG)
 
-## Convert CSV Data to BuildingSync XML
+## Step 1: Generate BuildingSync XML from csv data
 
 Run the following command to generate BuildingSync XMLs from CSV data:
 
@@ -31,22 +31,13 @@ This script is designed to work with the metadata `meta_open.csv` from the [Buil
 
 *Note*: Do not commit generated BuildingSync XMLs to this repo.  Do not commit the CSV data to the repo either.\
 
-## Simulate BuildingSync XML file (one)
-Run the following command to translate one BuildingSync XML to OSM and simulate:
+## Step 2: Add measured data to BuildingSync 
 
-``` bundle exec rake simulate_bdgp_xml path/to/xml/file ```
+Run the following command to add measured monthly electricity data to the BuildingSync XMLs generated in step 1:
 
-## Simulate BuildingSync XML file (batch of files)
+``` bundle exec rake add_measured_data path/to/csv/file/with/measured/data path/to/dir/for/resulting/xml/files```
 
-Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
-
-``` bundle exec rake simulate_batch_bdgp_xml path/to/csv/file ```
-
-In this case the CSV file contains the name of the BuildingSync file, the Standard to use and the weather file in comma separated format.
-
-The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
-
-#### Generate the csv file
+## Step 3: Generate the control csv file
 
 The following script will generate a csv file with all BuildingSync files found in the NAME_OF_OUTPUT_DIR/Bldg_Sync_Files directory. 
 
@@ -56,7 +47,30 @@ The first argument is required and should be the path to the BuildingSync files
 The other three arguments are optional. The 2nd one can set the standard (ASHRAE 90.1 or T24), 
 the 3rd and forth can also use actual weather files based on the related csv file and a path to the weather files
 
-## Export data using the synthetic exporter
+
+## Step 4.1: Simulate BuildingSync XML file (one)
+Run the following command to translate one BuildingSync XML to OSM and simulate:
+
+``` bundle exec rake simulate_bdgp_xml path/to/xml/file ```
+
+## Step 4.2: Simulate BuildingSync XML file (batch of files)
+
+Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
+
+``` bundle exec rake simulate_batch_bdgp_xml path/to/csv/file ```
+
+In this case the CSV file contains the name of the BuildingSync file, the Standard to use and the weather file in comma separated format.
+
+The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
+
+## Step 5: Calculate EUI and other parameters
+
+Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated monthly electricity data to the BuildingSync XMLs
+
+``` bundle exec rake add_calculate_measure_data path/to/csv/file/with/measured/data path/to/dir/with/simulation/results```
+
+
+## Step 6: Export data using the synthetic exporter
 
 The following script will export data according to the instructions in the csv file. 
 
