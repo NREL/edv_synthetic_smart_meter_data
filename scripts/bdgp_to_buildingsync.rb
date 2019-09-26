@@ -62,6 +62,11 @@ def get_year_built(feature)
   end
 end
 
+def get_climate_zone(feature)
+  # remove "pre" and "post"
+  return feature[:climate_zone]
+end
+
 def get_building_classification(feature)
   classification = feature[:primaryspaceusage]
 
@@ -986,7 +991,7 @@ FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file
 summary_file = File.open(outdir + '/bdgp_summary.csv', 'w')
-summary_file.puts 'building_id,xml_filename,OccupancyClassification,BuildingName,FloorArea(ft2),YearBuilt'
+summary_file.puts 'building_id,xml_filename,OccupancyClassification,BuildingName,FloorArea(ft2),YearBuilt,ClimateZone'
 
 options = {headers:true,
            header_converters: :symbol}
@@ -1008,9 +1013,11 @@ CSV.foreach(ARGV[0], options) do |feature|
   floor_area = get_floor_area(feature)
   building_type = get_occupancy_classification(feature)
   year_built = get_year_built(feature) # default
+  climate_zone = get_climate_zone(feature) # default
 
   building_name = "Building #{id}"
 
-  summary_file.puts "#{id},#{id}.xml,#{building_type},#{building_name},#{floor_area},#{year_built}"
+  puts "climate zone is not given for building with name #{building_name}" if climate_zone.nil?
+  summary_file.puts "#{id},#{id}.xml,#{building_type},#{building_name},#{floor_area},#{year_built},#{climate_zone}"
 
 end
