@@ -23,6 +23,7 @@ if !ARGV[2].nil? && File.exist?(ARGV[2])
     the_hash = {}
     the_hash[:uid] = row[:uid]
     the_hash[:epw] = row[:epw]
+    the_hash[:ddy] = row[:ddy]
     epw_arr << the_hash
   end
   puts "custom epw_files found in :#{csv_file_with_EPWs}"
@@ -47,9 +48,10 @@ Dir.glob("#{root_dir}/*.xml").each do |xml_file|
   matches = epw_arr.select {|row| row[:uid] === File.basename(xml_file, ".xml") }
   if matches.size > 0
     epw_file = File.expand_path(matches[0][:epw], weather_file_source_dir)
+    ddy_file = File.expand_path(matches[0][:ddy], weather_file_source_dir)
   end
-  puts " epw: #{epw_file}"
-  csv.puts("#{File.basename(xml_file)},#{standard_to_be_used},#{epw_file}")
+  puts " epw: #{epw_file} ddy: #{ddy_file}"
+  csv.puts("#{File.basename(xml_file)},#{standard_to_be_used},#{epw_file},#{ddy_file}")
   csv.flush
 end
 csv.close
