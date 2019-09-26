@@ -20,7 +20,7 @@ if !ARGV[1].nil?
   bldg_sync_file_dir = ARGV[1]
 end
 
-def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
+def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
   root_dir = File.expand_path('..', File.dirname(__FILE__))
@@ -28,7 +28,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
   translator.add_measure_path("#{root_dir}/lib/measures")
   translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
-  translator.write_osm
+  translator.write_osm(ddy_file_path)
   translator.write_osws
 
   osws = Dir.glob("#{out_path}/**/in.osw")
@@ -54,7 +54,7 @@ log_file_path = csv_file_path + '.log'
 
 csv_table = CSV.read(csv_file_path)
 log = File.open(log_file_path, 'w')
-csv_table.each do |xml_file, standard, epw_file|
+csv_table.each do |xml_file, standard, epw_file, ddy_file|
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
   xml_file_path = File.expand_path("#{bldg_sync_file_dir}/#{xml_file}/", File.dirname(__FILE__))
@@ -66,7 +66,14 @@ csv_table.each do |xml_file, standard, epw_file|
     epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
   end
 
-  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path)
+  ddy_file_path = ''
+  if File.exist?(ddy_file)
+    ddy_file_path = ddy_file
+  else
+    ddy_file_path = File.expand_path("../scripts/#{ddy_file}/", File.dirname(__FILE__))
+  end
+
+  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
 
   puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
   log.puts("...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
@@ -76,9 +83,10 @@ csv_table.each do |xml_file, standard, epw_file|
   output_dirs.each do |output_dir|
     if !output_dir.include? "/SR"
       if output_dir != out_path
-        sql_file = File.join(output_dir, "/eplusout.sql")
-        if !File.exist?(sql_file)
-          log.puts("...ERROR: #{sql_file} does not exist, simulation was unsucessful}")
+        idf_file = File.join(output_dir, "/in.idf")
+        sql_file = File.join(output_dir, "/results.json")
+        if File.exist?(idf_file) && !File.exist?(sql_file)
+          log.puts("...ERROR: #{sql_file} does not exist, simulation was unsuccessful}")
           log.flush
         end
       end
