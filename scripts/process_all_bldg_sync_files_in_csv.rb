@@ -8,6 +8,8 @@ require 'openstudio/occupant_variability'
 require_relative 'constants'
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
+OpenStudio::Extension::Extension::NUM_PARALLEL = 7
+BUILDINGS_PARALLEL = 1
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -19,6 +21,9 @@ bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files"
 if !ARGV[1].nil?
   bldg_sync_file_dir = ARGV[1]
 end
+
+start = Time.now
+puts "Simulation script started at #{start}"
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
@@ -58,7 +63,10 @@ log_file_path = csv_file_path + '.log'
 
 csv_table = CSV.read(csv_file_path)
 log = File.open(log_file_path, 'w')
-csv_table.each do |xml_file, standard, epw_file, ddy_file|
+
+Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, epw_file, ddy_file|
+
+#csv_table.each do |xml_file, standard, epw_file, ddy_file|
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
   xml_file_path = File.expand_path("#{bldg_sync_file_dir}/#{xml_file}/", File.dirname(__FILE__))
@@ -99,4 +107,10 @@ csv_table.each do |xml_file, standard, epw_file, ddy_file|
 end
 log.close
 
-puts 'bye'
+finish = Time.now
+puts "Simulation script completed at #{finish}"
+diff = finish - start
+puts "Simulation script completed in #{diff} seconds"
+puts "Simulation script completed in #{diff.to_f/60} minutes"
+puts "Simulation script completed in #{diff.to_f/3600} hours"
+puts "Simulation script completed in #{diff.to_f/3600/24} days"
