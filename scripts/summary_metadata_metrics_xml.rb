@@ -1,4 +1,5 @@
 require 'json'
+require "rexml/document" 
 
 # return value of element
 def value_index(file, list, startline, endline)
@@ -41,11 +42,15 @@ end
 def summary_existing_xmls()
 
   #path to xml files
-  dir_xml = 'C:/Users/kimja/Documents/GitHub/test' #TODO: change path to be more generic later on
+  dir_xml = 'C:/Users/JKIM4/Box Sync/Project Files/4 EDV/Example XMLs' #TODO: change path to be more generic later on
   
   #run for each xml file line by line
   if(File.exist?(dir_xml))
     puts "######################################################"
+	numxml = Dir.glob(File.join(dir_xml, "*.xml")).size
+	#puts "number of xmls = #{numxml}"
+	iter = 1
+	File.open("summary.json","ab"){ |f| f.write "[" }
     Dir.glob(File.join(dir_xml, "*.xml")).each do |file|
 	  puts file
 	  puts "######################################################"
@@ -80,11 +85,11 @@ def summary_existing_xmls()
 	  #########################################################
 	  total_line_numbers = File.readlines(file).size
 	  index_list_site = line_index(file, ['<auc:Site>','<auc:YearOfConstruction>'],1,total_line_numbers)
-	  #puts index_list_site
+	  puts index_list_site
 	  index_list_baseline_model = line_index(file, ['<auc:ResourceUse ID="Baseline_Electricity">'],1,total_line_numbers)
-	  #puts index_list_baseline_model
+	  puts index_list_baseline_model
 	  index_list_baseline_actual = line_index(file, ['<auc:ResourceUse>','</auc:ResourceUse>'],1,total_line_numbers)
-	  #puts index_list_baseline_actual
+	  puts index_list_baseline_actual
 	  #########################################################
 	  
 	  
@@ -146,7 +151,13 @@ def summary_existing_xmls()
 	  #puts "JSON: #{summary_json}"
 	  
       File.open("summary.json","ab"){ |f| f.write summary_json }
-
+	  if iter == numxml
+	    File.open("summary.json","ab"){ |f| f.write "]" }
+	  else
+	    File.open("summary.json","ab"){ |f| f.write "," }
+	  end
+	  
+      iter += 1
     end
   end
 end
