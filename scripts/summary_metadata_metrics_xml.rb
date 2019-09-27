@@ -1,3 +1,5 @@
+require 'json'
+
 # return value of element
 def value_index(file, list, startline, endline)
   tag = Hash.new
@@ -39,7 +41,7 @@ end
 def summary_existing_xmls()
 
   #path to xml files
-  dir_xml = 'C:/Users/JKIM4/Box Sync/Project Files/4 EDV/Example XMLs' #TODO: change path to be more generic later on
+  dir_xml = 'C:/Users/kimja/Documents/GitHub/test' #TODO: change path to be more generic later on
   
   #run for each xml file line by line
   if(File.exist?(dir_xml))
@@ -138,8 +140,12 @@ def summary_existing_xmls()
 	  puts "NMBE monthly gas = #{summary['nmbegas']}"
 	  puts "######################################################"
 	  
-
-
+      summary_json = summary.to_json
+	  
+	  #puts "HASH: #{summary}"
+	  #puts "JSON: #{summary_json}"
+	  
+      File.open("summary.json","ab"){ |f| f.write summary_json }
 
     end
   end
