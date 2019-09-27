@@ -41,7 +41,7 @@ end
 def summary_existing_xmls()
 
   #path to xml files
-  dir_xml = 'C:/Users/kimja/Documents/GitHub/test' #TODO: change path to be more generic later on
+  dir_xml = 'C:/Users/JKIM4/Box Sync/Project Files/4 EDV/Example XMLs' #TODO: change path to be more generic later on
   
   #run for each xml file line by line
   if(File.exist?(dir_xml))
@@ -80,11 +80,11 @@ def summary_existing_xmls()
 	  #########################################################
 	  total_line_numbers = File.readlines(file).size
 	  index_list_site = line_index(file, ['<auc:Site>','<auc:YearOfConstruction>'],1,total_line_numbers)
-	  #puts index_list_site
+	  puts index_list_site
 	  index_list_baseline_model = line_index(file, ['<auc:ResourceUse ID="Baseline_Electricity">'],1,total_line_numbers)
-	  #puts index_list_baseline_model
+	  puts index_list_baseline_model
 	  index_list_baseline_actual = line_index(file, ['<auc:ResourceUse>','</auc:ResourceUse>'],1,total_line_numbers)
-	  #puts index_list_baseline_actual
+	  puts index_list_baseline_actual
 	  #########################################################
 	  
 	  

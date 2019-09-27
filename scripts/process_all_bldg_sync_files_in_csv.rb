@@ -15,7 +15,7 @@ if ARGV[0].nil?
   exit(1)
 end
 
-bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files"
+bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Measured_Data"
 if !ARGV[1].nil?
   bldg_sync_file_dir = ARGV[1]
 end
