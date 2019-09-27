@@ -44,7 +44,16 @@ end
 desc 'simulate a BDGP BuildingSync XML'
 task :simulate_bdgp_xml do
 
-  if ARGV[1]
+  if  ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
+    # ARGV[4] should be a path to DDY file
+    ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
+  elsif  ARGV[1] && ARGV[2] && ARGV[3]
+    # ARGV[3] should be a path to EPW file
+    ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
+  elsif  ARGV[1] && ARGV[2]
+    # ARGV[2] should be the standard_to_be_used
+    ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]} #{ARGV[2]}"
+  elsif ARGV[1]
     # ARGV[1] should be a path to a BDGP BuildingSync XML file
     ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]}"
   else

@@ -9,13 +9,13 @@ require 'openstudio/occupant_variability'
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 
 if ARGV[0].nil?
-  puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional)'
+  puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional) ddy_file_path (optional)'
   puts "must provide at least a .xml file"
   exit(1)
 end
 
 if !File.exist?(ARGV[0])
-  puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional)'
+  puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional) ddy_file_path (optional)'
   puts "XML file does not exist: #{ARGV[0]}"
   exit(1)
 end
@@ -32,6 +32,10 @@ if !ARGV[2].nil? && File.exist?(ARGV[2])
   epw_file_path = ARGV[2]
 end
 
+ddy_file_path = File.expand_path(File.join(File.dirname(__FILE__), 'temporary.ddy'))
+if !ARGV[3].nil? && File.exist?(ARGV[3])
+  ddy_file_path = ARGV[3]
+end
 
 root_dir =  File.expand_path('../..', File.absolute_path(__FILE__))
 out_path = File.expand_path("../output/#{File.basename(xml_path, File.extname(xml_path))}/", File.dirname(__FILE__))
@@ -45,7 +49,7 @@ FileUtils.mkdir_p(out_path)
 translator = BuildingSync::Translator.new(xml_path, out_path, epw_file_path, standard_to_be_used, false)
 translator.add_measure_path("#{root_dir}/lib/measures")
 translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
-translator.write_osm
+translator.write_osm(ddy_file_path)
 translator.write_osws
 
 osws = Dir.glob("#{out_path}/**/in.osw")
