@@ -1,4 +1,5 @@
 require 'json'
+require "rexml/document" 
 
 # return value of element
 def value_index(file, list, startline, endline)
@@ -46,6 +47,10 @@ def summary_existing_xmls()
   #run for each xml file line by line
   if(File.exist?(dir_xml))
     puts "######################################################"
+	numxml = Dir.glob(File.join(dir_xml, "*.xml")).size
+	#puts "number of xmls = #{numxml}"
+	iter = 1
+	File.open("summary.json","ab"){ |f| f.write "[" }
     Dir.glob(File.join(dir_xml, "*.xml")).each do |file|
 	  puts file
 	  puts "######################################################"
@@ -146,7 +151,13 @@ def summary_existing_xmls()
 	  #puts "JSON: #{summary_json}"
 	  
       File.open("summary.json","ab"){ |f| f.write summary_json }
-
+	  if iter == numxml
+	    File.open("summary.json","ab"){ |f| f.write "]" }
+	  else
+	    File.open("summary.json","ab"){ |f| f.write "," }
+	  end
+	  
+      iter += 1
     end
   end
 end
