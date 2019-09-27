@@ -25,19 +25,23 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
   out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
-  translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
-  translator.add_measure_path("#{root_dir}/lib/measures")
-  translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
-  translator.write_osm(ddy_file_path)
-  translator.write_osws
+  begin
+    translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
+    translator.add_measure_path("#{root_dir}/lib/measures")
+    translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
+    translator.write_osm(ddy_file_path)
+    translator.write_osws
 
-  osws = Dir.glob("#{out_path}/**/in.osw")
+    osws = Dir.glob("#{out_path}/**/in.osw")
 
-  runner = OpenStudio::Extension::Runner.new(root_dir)
-  runner.run_osws(osws)
+    runner = OpenStudio::Extension::Runner.new(root_dir)
+    runner.run_osws(osws)
 
-  translator.gather_results(out_path)
-  translator.save_xml(out_xml)
+    translator.gather_results(out_path)
+    translator.save_xml(out_xml)
+  rescue StandardError => e
+    puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
+  end
 end
 
 csv_file_path = ARGV[0]
