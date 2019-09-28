@@ -4,10 +4,18 @@ require 'csv'
 xml_dir = File.join(File.dirname(__FILE__), '..', 'Test_output/Simulation_Files')
 csv_dir = File.join(File.dirname(__FILE__), '..', 'Test_output/results')
 
+
+if !File.exists?(xml_dir)
+  puts "Does not exist: " + xml_dir
+  puts "Buildingsync xml files should be stored in edv-experiment-1/Test_output/Simulation_Files"
+  exit(1)
+end
+
 xml_dir = File.realpath(xml_dir)
 
 if !File.exists?(csv_dir)
   FileUtils.mkdir_p(csv_dir)
+  csv_dir = File.realpath(csv_dir)
   puts 'Creating: ' + csv_dir.to_s
 end
 
@@ -73,6 +81,12 @@ def create_building_dicts(xml_dir, csv_dir)
   results = []
 
   files = Dir[xml_dir + '/*.xml']
+
+  if files.size == 0
+    puts "No XML files in directory: " + xml_dir
+    exit(1)
+  end
+
   files.each do |f|
     result = create_building_dict(f)
     results << result
