@@ -63,11 +63,11 @@ In this case the CSV file contains the name of the BuildingSync file, the Standa
 
 The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
 
-## Step 5: Calculate EUI and other parameters
+## Step 5: Calculate metrics
 
 Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated monthly electricity data to the BuildingSync XMLs
 
-``` bundle exec rake add_calculate_measure_data path/to/csv/file/with/measured/data path/to/dir/with/simulation/results```
+``` bundle exec rake calculate_metrics path/to/dir/with/simulation/results```
 
 
 ## Step 6: Export data using the synthetic exporter
