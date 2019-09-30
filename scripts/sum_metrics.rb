@@ -48,8 +48,8 @@ def create_building_dict(file)
 
   cvrm_elec = doc.xpath(elec_metrics_string +  "//auc:CVRMSE/text()").to_s
   nmbe_elec = doc.xpath(elec_metrics_string +  "//auc:NMBE/text()").to_s
-  puts cvrm_elec
-  puts nmbe_elec
+  # puts cvrm_elec
+  # puts nmbe_elec
 
   b_dict["buildingid"] = b_id
   b_dict["yearbuilt"] = year
@@ -97,7 +97,10 @@ def create_building_dicts(xml_dir, csv_dir)
 
 end
 
-f = File.join(xml_dir, 'PrimClass_Jill.xml')
+###############################################
+# To use for testing purposes
+# f = File.join(xml_dir, 'PrimClass_Jill.xml')
+###############################################
 
 # create_building_dict(f)
 create_building_dicts(xml_dir, csv_dir)
