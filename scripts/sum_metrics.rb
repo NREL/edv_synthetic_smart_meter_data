@@ -40,9 +40,9 @@ def create_building_dict(file)
   zip = doc.xpath(site_string + '/auc:Address//auc:PostalCode/text()').to_s
   lat = doc.xpath(site_string + '/auc:Latitude/text()').to_s
   long = doc.xpath(site_string + '/auc:Longitude/text()').to_s
-  cons_act = doc.xpath(scenarios_string + "/auc:Scenario[@ID='Baseline']//auc:ResourceUse[@ID='Baseline_Electricity']" +
+  cons_model = doc.xpath(scenarios_string + "/auc:Scenario[@ID='Baseline']//auc:ResourceUse[@ID='Baseline_Electricity']" +
                            "/auc:AnnualFuelUseNativeUnits/text()").to_s
-  cons_model = doc.xpath('(' + scenarios_string +
+  cons_act = doc.xpath('(' + scenarios_string +
                              "/auc:Scenario[@ID='Measured']//auc:ResourceUse[auc:EnergyResource='Electricity']" + ")[1]" +
                              "/auc:AnnualFuelUseNativeUnits/text()").to_s
 
