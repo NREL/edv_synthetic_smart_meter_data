@@ -53,6 +53,13 @@ class MonthlyData
     @year = year_value
   end
 
+  def add_start_date_string(start_date)
+    @start_time_stamp = start_date
+    split = start_date.split('-')
+    @year = split.first
+    @month = split[1]
+  end
+
   def update_start_time(start_time)
     @start_time_stamp = start_time
   end
@@ -64,15 +71,24 @@ class MonthlyData
   def update_values(value, counter)
     csv_value = value.to_f
     if @total_value[counter].nil?
+      # converting from kWh to kBtu (multiply by 3.142)
       @total_value[counter] = csv_value * 3.142
     else
+      # converting from kWh to kBtu (multiply by 3.142)
       @total_value[counter] += csv_value * 3.142
     end
   end
 
   def get_values
-    # converting from kWh to kBtu (multiply by 3.142)
     return @total_value
+  end
+
+  def get_sum
+    total = 0
+    @total_value.each do |item, value|
+      total += value.to_f
+    end
+    return total
   end
 
   attr_reader :month, :year, :start_time_stamp, :end_time_stamp
