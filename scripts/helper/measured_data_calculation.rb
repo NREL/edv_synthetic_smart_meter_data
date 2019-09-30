@@ -1,5 +1,4 @@
 require_relative 'csv_monthly_data'
-require_relative 'advance_measured_data_calculation'
 
 require 'fileutils'
 require 'parallel'
@@ -14,7 +13,7 @@ class MeasuredDataCalculation
     # This is a stub, used for indexing
   end
 
-  def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, is_advance_calculation)
+  def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
     file_value_collection = []
@@ -81,11 +80,6 @@ class MeasuredDataCalculation
 
     unit_converted_value = calculate_annual_value(file_value_collection, measured_scenario_element)
 
-    if is_advance_calculation
-      advance_measured_data_calculation = AdvanceMeasuredDataCalculation.new(doc, unit_converted_value, ns)
-      advance_measured_data_calculation.calculate_modeled_eui_value
-      advance_measured_data_calculation.cvrmse_nmbe_calculation
-    end
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
@@ -168,7 +162,7 @@ class MeasuredDataCalculation
     monthly_csv_obj
   end
 
-  def intiate_measure_data_calculation(csv_file_path, xml_file_path, is_advance_calculation = false)
+  def intiate_measure_data_calculation(csv_file_path, xml_file_path)
     csv_row_collection = []
     csv_month_class_collection = []
 
@@ -201,7 +195,7 @@ class MeasuredDataCalculation
       if counter > 0
         xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
         if File.exist?(xml_file)
-          add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, is_advance_calculation)
+          add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
           completed_files += 1
         else
           puts "file #{file_name} does not exist"
