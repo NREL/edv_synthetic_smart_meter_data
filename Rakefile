@@ -162,4 +162,18 @@ task :add_calculate_measure_data do
   end
 end
 
-task default: :spec
+desc 'Read the directory, iterate over BldgSync files and calcuate the metrics'
+task :calculate_metrics do
+
+  if ARGV[1]
+
+    # ARGV[1] should be a path to a CSV file
+    ruby "scripts/calculate_metrics.rb #{ARGV[1]}"
+
+  else
+    # need path to csv file
+    puts 'Error - No directory with BldgSync files specified'
+    puts 'Usage: rake calculate_metrics /path/to/dir/with/simulated/data'
+
+  end
+end
