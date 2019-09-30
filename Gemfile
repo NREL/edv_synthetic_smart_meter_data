@@ -9,8 +9,7 @@ gem 'rexml', '3.2.2'
 gem 'rspec', '~> 3.8'
 gem 'multipart-post', '2.1.1'
 gem 'geocoder'
-gem 'nokogiri'
-gem 'csv'
+gem 'nokogiri', '1.6.8.1'
 
 if allow_local && File.exist?('../OpenStudio-extension-gem')
   # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
