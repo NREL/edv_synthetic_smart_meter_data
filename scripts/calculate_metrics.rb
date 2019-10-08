@@ -59,7 +59,7 @@ def read_time_series_data(scenario_element, ns, resource_use_id = nil)
   return monthly_data
 end
 
-Dir.glob(File.join(indir, "*.xml")) do |xml_file_path|
+Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
   # open the xml file
   doc = nil
   File.open(xml_file_path, 'r') do |xml_file_path|
