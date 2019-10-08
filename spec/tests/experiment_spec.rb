@@ -47,12 +47,7 @@ RSpec.describe 'EDV Experiment 1' do
     expect(result).to be true
   end
 
-  it 'should translate one buildingsync file per type contained in csv file to osm baselines' do
-    process_all_bldg_sync_files_in_csv('one_each_type.csv')
-  end
-
   def run_simulate_bdgp_xml(xml_name, epw_name = nil)
-
     root_dir = File.join(File.dirname(__FILE__), '../../')
     script_path = File.join(root_dir, 'scripts/simulate_bdgp_xml.rb')
     xml_path = File.join(root_dir, "spec/files/#{xml_name}")
