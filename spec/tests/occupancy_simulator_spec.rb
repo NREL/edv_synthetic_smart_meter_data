@@ -61,7 +61,7 @@ RSpec.describe 'EDV Experiment 1' do
     FileUtils.mkdir_p(out_path)
 
     translator = BuildingSync::Translator.new(xml_path, out_path, epw_path, 'ASHRAE90.1')
-    translator.write_osm(nil, true)
+    translator.write_osm(nil)
 
     occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
     translator.add_measure_path(occupant_variability_instance.measures_dir)
