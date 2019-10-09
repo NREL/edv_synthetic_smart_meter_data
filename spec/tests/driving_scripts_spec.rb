@@ -41,6 +41,10 @@ require 'parallel'
 require 'open3'
 require 'csv'
 
+NUM_OF_FILES = 10
+
+# NOTE: you need to run these test in this order, since files are dependent on earlier test output
+
 RSpec.describe 'EDV Experiment 1' do
   # first we want to convert the data from the csv file into building sync files
   # bundle exec rake generate_bdgp_xmls R:\NREL\the-building-data-genome-project\data\raw\meta_open.csv
@@ -56,8 +60,8 @@ RSpec.describe 'EDV Experiment 1' do
     outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Bldg_Sync_Files')
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
-    puts "Found #{iNewFileCount} files in #{outdir} (should be 5!)"
-    expect(iNewFileCount).to eq 5
+    puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES}!)"
+    expect(iNewFileCount).to eq NUM_OF_FILES
   end
 
   it 'should add measured data to the 5 bldg sync files' do
@@ -74,8 +78,8 @@ RSpec.describe 'EDV Experiment 1' do
     outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Bldg_Sync_Files_w_Measured_Data')
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
-    puts "Found #{iNewFileCount} files in #{outdir} (should be 5!)"
-    expect(iNewFileCount).to eq 5
+    puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES}!)"
+    expect(iNewFileCount).to eq NUM_OF_FILES
   end
 
   it 'should generate a csv files to drive the simulation script' do
@@ -111,8 +115,8 @@ RSpec.describe 'EDV Experiment 1' do
     outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Simulation_Files')
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
-    puts "Found #{iNewFileCount} files in #{outdir} (should be 5)"
-    expect(iNewFileCount).to eq 5
+    puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES})"
+    expect(iNewFileCount).to eq NUM_OF_FILES
 
     osm_files = []
     osm_sr_files = []
@@ -125,13 +129,13 @@ RSpec.describe 'EDV Experiment 1' do
 
     puts "found #{osm_files.size} osm files and #{osm_sr_files.size} SR osm files"
     # we compare the counts, by also considering the two potential osm files in the SR directory
-    expect(osm_files.size - osm_sr_files.size).to eq 35
+    expect(osm_files.size - osm_sr_files.size).to eq NUM_OF_FILES * 7
 
     result_Json_files = []
     Dir.glob("#{outdir}/**/**/results.json") { |json| result_Json_files << json }
 
     # we compare the counts, by also considering the two potential sql files in the SR directory
-    expect(result_Json_files.size).to eq 35
+    expect(result_Json_files.size).to eq NUM_OF_FILES * 7
   end
 
 
@@ -148,8 +152,8 @@ RSpec.describe 'EDV Experiment 1' do
     outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Simulation_Files')
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
-    puts "Found #{iNewFileCount} files in #{outdir} (should be 5)"
-    expect(iNewFileCount).to eq 5
+    puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES})"
+    expect(iNewFileCount).to eq NUM_OF_FILES
   end
 
   # then we want to combine results
@@ -159,6 +163,12 @@ RSpec.describe 'EDV Experiment 1' do
     puts "csv_file_path: #{csv_file_path}"
     result = run_script("export_synthetic_data", csv_file_path)
     expect(result).to be true
+
+    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Simulation_Files')
+
+    iNewFileCount = Dir.glob("#{outdir}/*/*.csv").count
+    puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES})"
+    expect(iNewFileCount).to eq NUM_OF_FILES
   end
 
   def run_script(script_file_name, argument1, argument2 = nil, argument3 = nil, argument4 = nil)

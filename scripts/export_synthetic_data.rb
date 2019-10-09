@@ -46,11 +46,24 @@ for i in 1..column_headers.count-1
 
   # create an array of active scenarios
   active_scenarios = Array.new
-  until parsed[scenario_count][i].nil?
-    puts "scenario_count: #{scenario_count} parsed[scenario_count][1]: #{parsed[scenario_count][1]}"
-    active_scenarios << [parsed[scenario_count][i].gsub!(/\A"|"\Z/, ''), parsed[scenario_count + 1][i]]
-    scenario_count +=2
+  active_scenarios << [default_scenario, start_date]
+  puts "parsed[scenario_count].nil? #{parsed[scenario_count].nil?}"
+  if !parsed[scenario_count].nil?
+    until parsed[scenario_count][i].nil?
+      puts "scenario_count: #{scenario_count} parsed[scenario_count][i]: #{parsed[scenario_count][i]}"
+      scenario_name_org = parsed[scenario_count][i]
+      scenario_name = parsed[scenario_count][i].gsub!(/\A"|"\Z/, '')
+      if scenario_name.nil?
+        scenario_name = scenario_name_org
+      end
+      scenario_start_date = parsed[scenario_count + 1][i]
+      puts "scenario_name_org #{scenario_name_org} scenario_name #{scenario_name} scenario_start_date #{scenario_start_date}"
+      active_scenarios << [scenario_name, scenario_start_date]
+      scenario_count +=2
+      break if parsed[scenario_count].nil?
+    end
   end
+
 
   puts "active_scenarios: #{active_scenarios}"
 
@@ -72,16 +85,21 @@ for i in 1..column_headers.count-1
   puts "start_date: #{start_date}"
   end_date_array = end_date.split('/')
   end_date = Time.local(end_date_array[2],end_date_array[0],end_date_array[1])
-  current_scenario << "Baseline"
-  puts "current_scenario: #{current_scenario[0]}"
-  current_path = csvs[current_scenario[0]]
+
+  scenario_counter = 0
+  current_scenario = active_scenarios[scenario_counter]
+  current_scenario_name = current_scenario[0]
+  current_path = csvs[current_scenario_name]
+  puts "current_scenario: #{current_scenario}"
+  puts "current_scenario_name: #{current_scenario_name}"
   puts "current_path: #{current_path}"
   puts "csvs: #{csvs}"
+  puts "active_scenarios: #{active_scenarios}"
   file = File.open current_path
   values = file.to_a
   puts "values[0]: #{values[0]}"
 
-  scenario_counter = 0
+  scenario_counter = 1
   next_scenario = active_scenarios[scenario_counter]
   puts "active_scenarios: #{active_scenarios}"
   # initialize the headers
