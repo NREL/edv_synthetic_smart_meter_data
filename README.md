@@ -17,7 +17,23 @@ below the edv-experiment-1 main folder.
 
 The following figure contains an overview of the scripts and input as well as output files/paths:
 
+
 ![alt text](ScriptOverview.PNG)
+
+## workflow_part_1
+Steps 1 - 3 of the workflow have been aggregated into a single Rake task.
+```
+bundle exec rake workflow_part_1
+```
+The Rake task makes the following assumptions:
+1. The user has cloned the edv-experiment-1-files repository and it is at the same level as the edv-experiment-1 dir, i.e.
+    ```
+    dir/edv-experiment-1
+    dir/edv-experiment-files
+    ```
+2. The `edv-experiment-1-files/bdgp_with_climatezones_epw_ddy.csv` is used for Step 1.
+
+By the end of the run, all outputs from Steps 1 - 3 should be available.
 
 ## Step 1: Generate BuildingSync XML from csv data
 
