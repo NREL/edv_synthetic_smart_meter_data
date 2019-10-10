@@ -8,4 +8,11 @@ rubocop-results.xml
 gems/
 output/
 bdgp_output/
-
+SR1/
+/*.rspec_status
+*.log
+/scripts.txt
+/Test_output/
+.rakeTasks
+.ipynb_checkpoints/
+.ruby-version
