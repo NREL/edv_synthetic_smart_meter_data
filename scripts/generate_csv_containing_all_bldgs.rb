@@ -42,20 +42,20 @@ csv = File.open(csv_file_path, 'w')
 puts "Looking for #{"#{root_dir}/*.xml"} "
 puts "found #{Dir.glob("#{root_dir}/*.xml").count} xml files in this directory. "
 Dir.glob("#{root_dir}/*.xml").each do |xml_file|
-  puts "xml_file: #{xml_file} "
-  puts "xml_file: #{File.basename(xml_file, ".xml")}"
-  puts "standard: #{standard_to_be_used}"
+  # puts "xml_file: #{xml_file} "
+  # puts "xml_file: #{File.basename(xml_file, ".xml")}"
+  # puts "standard: #{standard_to_be_used}"
   matches = epw_arr.select {|row| row[:uid] === File.basename(xml_file, ".xml") }
   if matches.size > 0
     epw_file = File.expand_path(matches[0][:epw], weather_file_source_dir)
     ddy_file = File.expand_path(matches[0][:ddy], weather_file_source_dir)
   end
-  puts " epw: #{epw_file} ddy: #{ddy_file}"
+  # puts " epw: #{epw_file} ddy: #{ddy_file}"
   csv.puts("#{File.basename(xml_file)},#{standard_to_be_used},#{epw_file},#{ddy_file}")
   csv.flush
 end
 csv.close
 
-puts "ARGV[0]:#{ARGV[0]} ARGV[1]:#{ARGV[1]} ARGV[2]:#{ARGV[2]} ARGV[3]:#{ARGV[3]}"
+# puts "ARGV[0]:#{ARGV[0]} ARGV[1]:#{ARGV[1]} ARGV[2]:#{ARGV[2]} ARGV[3]:#{ARGV[3]}"
 
-puts 'bye'
+# puts 'bye'
