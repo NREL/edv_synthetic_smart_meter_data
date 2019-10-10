@@ -13,6 +13,5 @@ SR1/
 *.log
 /scripts.txt
 /Test_output/
-data/
 .rakeTasks
 .ipynb_checkpoints/
