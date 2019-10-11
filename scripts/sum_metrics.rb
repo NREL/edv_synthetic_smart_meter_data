@@ -1,5 +1,6 @@
-require 'nokogiri'
+require 'rexml/document'
 require 'csv'
+include REXML
 
 xml_dir = File.join(File.dirname(__FILE__), '..', 'Test_output/Bldg_Sync_Files_w_Metrics')
 csv_dir = File.join(File.dirname(__FILE__), '..', 'Test_output/results')
@@ -21,35 +22,30 @@ end
 
 csv_dir = File.realpath(csv_dir)
 
-
 def create_building_dict(file)
   b_dict = {}
-  doc = File.open(file) { |f| Nokogiri::XML(f) }
-
+  doc = File.open(file) { |f| Document.new(f) }
   site_string = '//auc:Site[1]'
   building_string = site_string + '/auc:Buildings/auc:Building[1]'
   scenarios_string = '//auc:Reports/auc:Report[1]/auc:Scenarios'
   elec_metrics_string = scenarios_string + "/auc:Scenario[@ID='Baseline']//auc:ResourceUse[@ID='Baseline_Electricity']"
 
-  b_id = doc.xpath(building_string + '/@ID').to_s
-  year = doc.xpath(building_string + '/auc:YearOfConstruction/text()').to_s
-  occ = doc.xpath(building_string + '/auc:OccupancyClassification/text()').to_s
-  num_stories = doc.xpath(building_string + '/auc:FloorsAboveGrade/text()').to_s
-  area = doc.xpath(building_string + "/auc:FloorAreas/auc:FloorArea[auc:FloorAreaType='Gross']/auc:FloorAreaValue/text()").to_s
-  state = doc.xpath(site_string + '/auc:Address/auc:State/text()').to_s
-  zip = doc.xpath(site_string + '/auc:Address//auc:PostalCode/text()').to_s
-  lat = doc.xpath(site_string + '/auc:Latitude/text()').to_s
-  long = doc.xpath(site_string + '/auc:Longitude/text()').to_s
-  cons_model = doc.xpath(scenarios_string + "/auc:Scenario[@ID='Baseline']//auc:ResourceUse[@ID='Baseline_Electricity']" +
-                           "/auc:AnnualFuelUseNativeUnits/text()").to_s
-  cons_act = doc.xpath('(' + scenarios_string +
-                             "/auc:Scenario[@ID='Measured']//auc:ResourceUse[auc:EnergyResource='Electricity']" + ")[1]" +
-                             "/auc:AnnualFuelUseNativeUnits/text()").to_s
+  b_id = XPath.first(doc, building_string + '/@ID').to_s
+  year = XPath.first(doc, building_string + '/auc:YearOfConstruction/text()').to_s
+  occ = XPath.first(doc, building_string + '/auc:OccupancyClassification/text()').to_s
+  num_stories = XPath.first(doc, building_string + '/auc:FloorsAboveGrade/text()').to_s
+  area = XPath.first(doc, building_string + "/auc:FloorAreas/auc:FloorArea[auc:FloorAreaType='Gross']/auc:FloorAreaValue/text()").to_s
+  state = XPath.first(doc, site_string + '/auc:Address/auc:State/text()').to_s
+  zip = XPath.first(doc, site_string + '/auc:Address//auc:PostalCode/text()').to_s
+  lat = XPath.first(doc, site_string + '/auc:Latitude/text()').to_s
+  long = XPath.first(doc, site_string + '/auc:Longitude/text()').to_s
+  cons_model = XPath.first(doc, scenarios_string + "/auc:Scenario[@ID='Baseline']//auc:ResourceUse[@ID='Baseline_Electricity']" +
+      "/auc:AnnualFuelUseNativeUnits/text()").to_s
+  cons_act = XPath.first(doc, scenarios_string + "/auc:Scenario[@ID='Measured']//auc:ResourceUse[auc:EnergyResource='Electricity']" +
+      "/auc:AnnualFuelUseNativeUnits/text() ").to_s
 
-  cvrm_elec = doc.xpath(elec_metrics_string +  "//auc:CVRMSE/text()").to_s
-  nmbe_elec = doc.xpath(elec_metrics_string +  "//auc:NMBE/text()").to_s
-  # puts cvrm_elec
-  # puts nmbe_elec
+  cvrm_elec = XPath.first(doc, elec_metrics_string +  "//auc:CVRMSE/text()").to_s
+  nmbe_elec = XPath.first(doc, elec_metrics_string +  "//auc:NMBE/text()").to_s
 
   b_dict["buildingid"] = b_id
   b_dict["yearbuilt"] = year
@@ -64,7 +60,6 @@ def create_building_dict(file)
   b_dict["consumption_model"] = cons_model
   b_dict["cvrmseelec"] = cvrm_elec
   b_dict["nmbeelec"] = nmbe_elec
-
   return b_dict
 end
 
@@ -76,7 +71,6 @@ def write_file(list_dict, csv_dir)
     end
   end
 end
-
 
 def create_building_dicts(xml_dir, csv_dir)
   results = []
@@ -99,8 +93,8 @@ end
 
 ###############################################
 # To use for testing purposes
-# f = File.join(xml_dir, 'PrimClass_Jill.xml')
+# f = File.join(xml_dir, 'Office_Gisselle.xml')
+# create_building_dict(f)
 ###############################################
 
-# create_building_dict(f)
 create_building_dicts(xml_dir, csv_dir)
