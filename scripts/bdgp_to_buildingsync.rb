@@ -104,7 +104,7 @@ def get_occupancy_classification(feature)
   when 'College Classroom'
     result = 'Office'
   when 'Dormitory'
-    result = 'MidriseApartment'
+    result = 'Office'
   when 'College Laboratory'
     result = 'Office'
   else
