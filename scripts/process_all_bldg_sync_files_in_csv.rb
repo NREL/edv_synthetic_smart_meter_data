@@ -1,15 +1,18 @@
 # Run a BuildingSync XML file to generate synthetic smart meter data
 
-require 'openstudio/extension'
+# require 'openstudio/extension'
 require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
 require 'buildingsync/translator'
+require 'openstudio/extension'
+require 'openstudio/extension/runner'
 require 'openstudio/occupant_variability'
 require_relative 'constants'
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 7
-BUILDINGS_PARALLEL = 1
+BuildingSync::Extension::SIMULATE_BASELINE_ONLY = true
+OpenStudio::Extension::Extension::BUILDINGS_PARALLEL = 1
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -31,6 +34,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
   begin
+    puts "Starting Translator"
     translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
     translator.add_measure_path("#{root_dir}/lib/measures")
     translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
@@ -64,7 +68,7 @@ log_file_path = csv_file_path + '.log'
 csv_table = CSV.read(csv_file_path)
 log = File.open(log_file_path, 'w')
 
-Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, epw_file, ddy_file|
+Parallel.each(csv_table, in_threads: OpenStudio::Extension::Extension::BUILDINGS_PARALLEL) do |xml_file, standard, epw_file, ddy_file|
 
 #csv_table.each do |xml_file, standard, epw_file, ddy_file|
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
