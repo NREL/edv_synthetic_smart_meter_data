@@ -285,7 +285,7 @@ task :workflow_part_2 do
   ruby "scripts/calculate_metrics.rb " + sim_results_dir
   puts("")
   if Dir.glob(bldg_sync_files_w_metrics + "/*.xml").length >= 1
-    rec_file = Dir.glob(bldg_sync_files_w__metrics + "/*.xml").max_by { |f| File.mtime(f) }
+    rec_file = Dir.glob(bldg_sync_files_w_metrics + "/*.xml").max_by { |f| File.mtime(f) }
     puts "Rake: Most recently modified file: " + rec_file.to_s
     puts "Rake: File modified at: " + File.mtime(rec_file).to_s
   else
