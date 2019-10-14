@@ -42,13 +42,13 @@ require 'open3'
 require 'csv'
 
 NUM_OF_FILES = 10
-
+NAME_OF_OUTPUT_DIR = "../Test_output"
 # NOTE: you need to run these test in this order, since files are dependent on earlier test output
 
 RSpec.describe 'EDV Experiment 1' do
   # first we want to convert the data from the csv file into building sync files
   # bundle exec rake generate_bdgp_xmls R:\NREL\the-building-data-genome-project\data\raw\meta_open.csv
-  it 'should produce all 5 sync files based on a modified csv file with only 5 buildings ' do
+  it 'should produce all 10 sync files based on a modified csv file with only 10 buildings ' do
     csv_file_path = File.join(File.expand_path('../.', File.dirname(__FILE__)), 'files/meta_open_epw_ddy.csv')
     puts "csv_file_path: #{csv_file_path}"
 
@@ -57,17 +57,17 @@ RSpec.describe 'EDV Experiment 1' do
     puts "and the result is: #{result}"
     expect(result).to be true
 
-    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Bldg_Sync_Files')
+    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files")
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
     puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES}!)"
     expect(iNewFileCount).to eq NUM_OF_FILES
   end
 
-  it 'should add measured data to the 5 bldg sync files' do
+  it 'should add measured data to the 10 bldg sync files' do
     csv_file_path = File.join(File.expand_path('../.', File.dirname(__FILE__)), 'files/temp_open_utc.csv')
     puts "csv_file_path: #{csv_file_path}"
-    bldg_sync_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Bldg_Sync_Files')
+    bldg_sync_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files")
     puts "bldg_sync_file_path: #{bldg_sync_file_path}"
 
     result = run_script("add_measured_data", csv_file_path, bldg_sync_file_path)
@@ -75,7 +75,7 @@ RSpec.describe 'EDV Experiment 1' do
     puts "and the result is: #{result}"
     expect(result).to be true
 
-    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Bldg_Sync_Files_w_Measured_Data')
+    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Measured_Data")
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
     puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES}!)"
@@ -85,7 +85,7 @@ RSpec.describe 'EDV Experiment 1' do
   it 'should generate a csv files to drive the simulation script' do
     csv_file_path = File.join(File.expand_path('../.', File.dirname(__FILE__)), 'files/meta_open_epw_ddy.csv')
     puts "csv_file_path: #{csv_file_path}"
-    bldg_sync_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Bldg_Sync_Files')
+    bldg_sync_file_path = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files")
     puts "bldg_sync_file_path: #{bldg_sync_file_path}"
     weather_file_path = File.join(File.expand_path('../.', File.dirname(__FILE__)), 'weather')
     puts "weather_file_path: #{weather_file_path}"
@@ -95,7 +95,7 @@ RSpec.describe 'EDV Experiment 1' do
     puts "and the result is: #{result}"
     expect(result).to be true
 
-    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Control_Files')
+    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Control_Files")
 
     iNewFileCount = Dir.glob("#{outdir}/all.csv").count
     puts "Found #{iNewFileCount} files in #{outdir} (should be 1)"
@@ -104,7 +104,7 @@ RSpec.describe 'EDV Experiment 1' do
 
   # then we want to simulate the files
   it 'should translate buildingsync files to osm/osw and run simulations' do
-    csv_file_path =  File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Control_Files/all.csv')
+    csv_file_path =  File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Control_Files/all.csv")
     puts "csv_file_path: #{csv_file_path}"
 
     result = run_script("process_all_bldg_sync_files_in_csv", csv_file_path)
@@ -112,7 +112,7 @@ RSpec.describe 'EDV Experiment 1' do
     puts "and the result is: #{result}"
     expect(result).to be true
 
-    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), 'Test_output/Simulation_Files')
+    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Simulation_Files")
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
     puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES})"
