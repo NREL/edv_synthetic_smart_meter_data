@@ -53,6 +53,9 @@ translator.write_osm(ddy_file_path)
 translator.write_osws
 
 osws = Dir.glob("#{out_path}/**/in.osw")
+if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
+  osws = Dir.glob("#{out_path}/Baseline/in.osw")
+end
 
 runner = OpenStudio::Extension::Runner.new(root_dir)
 runner.run_osws(osws)
