@@ -42,7 +42,7 @@ require 'open3'
 require 'csv'
 
 NUM_OF_FILES = 10
-NAME_OF_OUTPUT_DIR = "../Test_output"
+NAME_OF_OUTPUT_DIR = "Test_output"
 # NOTE: you need to run these test in this order, since files are dependent on earlier test output
 
 RSpec.describe 'EDV Experiment 1' do
