@@ -8,8 +8,9 @@ require 'openstudio/occupant_variability'
 require_relative 'constants'
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
-OpenStudio::Extension::Extension::NUM_PARALLEL = 7
-BUILDINGS_PARALLEL = 1
+OpenStudio::Extension::Extension::NUM_PARALLEL = 1
+BUILDINGS_PARALLEL = 7
+BuildingSync::Extension::SIMULATE_BASELINE_ONLY = true
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -38,7 +39,12 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     translator.write_osws
 
     osws = Dir.glob("#{out_path}/**/in.osw")
+    if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
+      osws = Dir.glob("#{out_path}/Baseline/in.osw")
+    end
 
+    puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
+    puts "osws: #{osws}"
     runner = OpenStudio::Extension::Runner.new(root_dir)
     runner.run_osws(osws)
 
