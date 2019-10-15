@@ -257,6 +257,8 @@ task :workflow_part_2 do
   all_csv_file = output_dir + "/Control_Files/all.csv"
   sim_results_dir = output_dir + "/Simulation_Files"
   bldg_sync_files_w_metrics = output_dir + "/Bldg_Sync_Files_w_Metrics"
+  results_dir = output_dir + '/results'
+  results_file = results_dir + '/results.csv'
 
   if !File.exists?(all_csv_file)
     puts "Rake: " + all_csv_file.to_s + " file does not exist.  Exiting program"
@@ -292,6 +294,20 @@ task :workflow_part_2 do
     puts "Rake: No files located in " + sim_results_dir.to_s + ". Exiting program"
     exit(1)
   end
+
+  puts("")
+  ruby "scripts/sum_metrics.rb"
+  puts("")
+  if File.exists?(results_dir)
+    puts "Rake: " + results_dir.to_s + " directory exists"
+    if File.exists?(results_file)
+      puts "Rake: " + results_file.to_s + " file exists."
+    else
+      puts "Rake: " + sim_results_dir.to_s + " file does not exist. Exiting program"
+      exit(1)
+    end
+  end
+
 
   puts("")
   puts "Rake: Finishing workflow_part_2"
