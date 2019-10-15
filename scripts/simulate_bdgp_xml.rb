@@ -6,8 +6,6 @@ require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 
-OpenStudio::Extension::Extension::DO_SIMULATIONS = true
-
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional) ddy_file_path (optional)'
   puts "must provide at least a .xml file"
@@ -53,6 +51,9 @@ translator.write_osm(ddy_file_path)
 translator.write_osws
 
 osws = Dir.glob("#{out_path}/**/in.osw")
+if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
+  osws = Dir.glob("#{out_path}/Baseline/in.osw")
+end
 
 runner = OpenStudio::Extension::Runner.new(root_dir)
 runner.run_osws(osws)
