@@ -16,3 +16,6 @@ SR1/
 .rakeTasks
 .ipynb_checkpoints/
 .ruby-version
+analysis/tests
+cory_test.rb
+inputs/building_type_scenarios.json
