@@ -9,7 +9,7 @@ require_relative 'constants'
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 1
-BUILDINGS_PARALLEL = 7
+BUILDINGS_PARALLEL = 4
 BuildingSync::Extension::SIMULATE_BASELINE_ONLY = true
 
 if ARGV[0].nil?
@@ -46,7 +46,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
     puts "osws: #{osws}"
     runner = OpenStudio::Extension::Runner.new(root_dir)
-    runner.run_osws(osws)
+    runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
 
     translator.gather_results(out_path)
     translator.save_xml(out_xml)
