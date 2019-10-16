@@ -128,6 +128,8 @@ end
 
 def get_occupancy_classification(feature, scenario_hash = nil)
   classification = feature[:primaryspaceusage]
+  # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
+  # to: see BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb for up to date mappings
   result = nil
   case classification
   when 'Office'
