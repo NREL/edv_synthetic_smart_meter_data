@@ -4,12 +4,47 @@
 require 'csv'
 require 'rexml/document'
 require 'fileutils'
+require 'json'
 require_relative 'constants'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
-  puts 'usage: bundle exec ruby bdgp_to_buildingsync.rb /path/to/csv'
+  puts 'usage: bundle exec ruby bdgp_to_buildingsync.rb /path/to/csv scenario_file.json'
   puts '.csv files only'
+  puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
+  puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
+  puts "The key shall designate the BDGP 'primaryspaceusage' column, and the value"
+  puts "shall designate the desired OpenStudio occupancy classification."
+  puts 'Valid values for primaryspaceusage: Office, College Classroom, Primary/Secondary Classroom, '
+  puts 'College Laboratory, Dormitory.  Valid values for OpenStudio occupancy classifications'
+  puts 'are maintained in the BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb'
   exit(1)
+end
+
+occ_classification_file = NAME_OF_INPUT_DIR + '/default_scenario.json'
+scenario_hash = nil
+if !ARGV[1].nil?
+  if File.exist?(ARGV[1])
+    occ_classification_file = "#{ARGV[1]}"
+  else
+    puts 'usage: bundle exec ruby bdgp_to_buildingsync.rb /path/to/csv scenario_file.json'
+    puts '.csv files only'
+    puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
+    puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
+    puts "The key shall designate the BDGP 'primaryspaceusage' column, and the value"
+    puts "shall designate the desired OpenStudio occupancy classification."
+    puts 'Valid values for primaryspaceusage: Office, College Classroom, Primary/Secondary Classroom, '
+    puts 'College Laboratory, Dormitory.  Valid values for OpenStudio occupancy classifications'
+    puts 'are maintained in the BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb'
+    exit(1)
+  end
+else
+  if !File.exists?(occ_classification_file)
+    puts "#{occ_classification_file} does not exist."
+    occ_classification_file = nil
+  else
+    puts "No scenario file provided.  Using #{occ_classification_file}"
+  end
+
 end
 
 buildingsync_schema_url = ''
@@ -69,7 +104,6 @@ end
 
 def get_building_classification(feature)
   classification = feature[:primaryspaceusage]
-
   # possible mappings: Commercial, Residential, Mixed use commercial, Other
   # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
 
@@ -92,29 +126,43 @@ def get_building_classification(feature)
   result
 end
 
-def get_occupancy_classification(feature)
+def get_occupancy_classification(feature, scenario_hash = nil)
   classification = feature[:primaryspaceusage]
-  # for now, only doing Office, Retail, and Small Hotels
   result = nil
   case classification
   when 'Office'
-    result = 'Office'
+    result = scenario_hash[:Office]
   when 'Primary/Secondary Classroom'
-    result = 'Office'
+    result = scenario_hash[:"Primary/Secondary Classroom"]
   when 'College Classroom'
-    result = 'Office'
+    result = scenario_hash[:"College Classroom"]
   when 'Dormitory'
-    result = 'Office'
+    result = scenario_hash[:Dormitory]
   when 'College Laboratory'
-    result = 'Office'
+    result = scenario_hash[:"College Laboratory"]
   else
     raise "Unknown classification #{classification}"
   end
-
-  result
+  if result.nil?
+    result = "Office"
+  end
+  return result
 end
 
-def create_site(feature)
+def json_to_hash(json_file)
+  begin
+    File.open(json_file, 'r') do |file|
+      hash = JSON.parse(file.read, symbolize_names: true)
+      return hash
+    end
+  rescue => e
+    puts "Unable to read file #{json_file}.  Exiting."
+    puts e.message
+    exit(1)
+  end
+end
+
+def create_site(feature, scenario_hash = nil)
   site = REXML::Element.new('auc:Site')
   feature_id = get_building_id(feature)
 
@@ -211,7 +259,7 @@ def create_site(feature)
   building.add_element(building_classification)
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
-  occupancy_classification.text = get_occupancy_classification(feature)
+  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash)
   building.add_element(occupancy_classification)
 
   floors_above_grade = REXML::Element.new('auc:FloorsAboveGrade')
@@ -256,7 +304,7 @@ def create_site(feature)
   subsection.attributes['ID'] = 'Default_Section'
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
-  occupancy_classification.text = get_occupancy_classification(feature)
+  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash)
   subsection.add_element(occupancy_classification)
 
   if feature[:occupants]
@@ -344,7 +392,7 @@ def create_system(feature)
     when 'oil'
       new_fuel = 'Fuel Oil'
     when 'steam'
-      new_fuel = 'Dry steam'  # or Flash steam
+      new_fuel = 'Dry steam' # or Flash steam
     when 'biomass'
       new_fuel = 'Biomass'
     end
@@ -400,7 +448,7 @@ def create_measures(feature)
                ScenarioName: 'LED',
                OpenStudioMeasureName: 'TBD',
                UsefulLife: 12,
-               MeasureTotalFirstCost: 3.85*floor_area}
+               MeasureTotalFirstCost: 3.85 * floor_area}
 
   measures << {ID: 'Measure2',
                SingleMeasure: true,
@@ -411,7 +459,7 @@ def create_measures(feature)
                ScenarioName: 'Electric_Appliance_30%_Reduction',
                OpenStudioMeasureName: 'TBD',
                UsefulLife: 9,
-               MeasureTotalFirstCost: 0.51*floor_area}
+               MeasureTotalFirstCost: 0.51 * floor_area}
 
   measures << {ID: 'Measure3',
                SingleMeasure: true,
@@ -422,7 +470,7 @@ def create_measures(feature)
                ScenarioName: 'Air_Seal_Infiltration_30%_More_Airtight',
                OpenStudioMeasureName: 'TBD',
                UsefulLife: 11,
-               MeasureTotalFirstCost: 2.34*floor_area}
+               MeasureTotalFirstCost: 2.34 * floor_area}
 
   measures << {ID: 'Measure4',
                SingleMeasure: true,
@@ -433,282 +481,282 @@ def create_measures(feature)
                ScenarioName: 'Cooling_System_SEER 14',
                OpenStudioMeasureName: 'TBD',
                UsefulLife: 15,
-               MeasureTotalFirstCost: 4.18*floor_area}
+               MeasureTotalFirstCost: 4.18 * floor_area}
 
   # measures << {ID: 'Measure5',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Heating System',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Replace burner',
-               # LongDescription: 'Replace burner',
-               # ScenarioName: 'Heating_System_Efficiency_0.93',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 20,
-               # MeasureTotalFirstCost: 0.89*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Heating System',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Replace burner',
+  # LongDescription: 'Replace burner',
+  # ScenarioName: 'Heating_System_Efficiency_0.93',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 20,
+  # MeasureTotalFirstCost: 0.89*floor_area}
 
   # measures << {ID: 'Measure6',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Lighting',
-               # TechnologyCategory: 'LightingImprovements',
-               # MeasureName: 'Add daylight controls',
-               # LongDescription: 'Add daylight controls',
-               # ScenarioName: 'Add daylight controls',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 8,
-               # MeasureTotalFirstCost: 0.53*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Lighting',
+  # TechnologyCategory: 'LightingImprovements',
+  # MeasureName: 'Add daylight controls',
+  # LongDescription: 'Add daylight controls',
+  # ScenarioName: 'Add daylight controls',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 8,
+  # MeasureTotalFirstCost: 0.53*floor_area}
 
   # measures << {ID: 'Measure7',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Lighting',
-               # TechnologyCategory: 'LightingImprovements',
-               # MeasureName: 'Add occupancy sensors',
-               # LongDescription: 'Add occupancy sensors',
-               # ScenarioName: 'Add occupancy sensors',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 8,
-               # MeasureTotalFirstCost: 1.55*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Lighting',
+  # TechnologyCategory: 'LightingImprovements',
+  # MeasureName: 'Add occupancy sensors',
+  # LongDescription: 'Add occupancy sensors',
+  # ScenarioName: 'Add occupancy sensors',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 8,
+  # MeasureTotalFirstCost: 1.55*floor_area}
 
   # measures << {ID: 'Measure8',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Plug Load',
-               # TechnologyCategory: 'PlugLoadReductions',
-               # MeasureName: 'Install plug load controls',
-               # LongDescription: 'Install plug load controls',
-               # ScenarioName: 'Install plug load controls',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 5.6,
-               # MeasureTotalFirstCost: 0.82*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Plug Load',
+  # TechnologyCategory: 'PlugLoadReductions',
+  # MeasureName: 'Install plug load controls',
+  # LongDescription: 'Install plug load controls',
+  # ScenarioName: 'Install plug load controls',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 5.6,
+  # MeasureTotalFirstCost: 0.82*floor_area}
 
   # measures << {ID: 'Measure9',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Wall',
-               # TechnologyCategory: 'BuildingEnvelopeModifications',
-               # MeasureName: 'Increase wall insulation',
-               # LongDescription: 'Increase wall insulation',
-               # ScenarioName: 'Increase wall insulation',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 20,
-               # MeasureTotalFirstCost: 1.63*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Wall',
+  # TechnologyCategory: 'BuildingEnvelopeModifications',
+  # MeasureName: 'Increase wall insulation',
+  # LongDescription: 'Increase wall insulation',
+  # ScenarioName: 'Increase wall insulation',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 20,
+  # MeasureTotalFirstCost: 1.63*floor_area}
 
   # measures << {ID: 'Measure10',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Wall',
-               # TechnologyCategory: 'BuildingEnvelopeModifications',
-               # MeasureName: 'Insulate thermal bypasses',
-               # LongDescription: 'Insulate thermal bypasses',
-               # ScenarioName: 'Insulate thermal bypasses',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 20,
-               # MeasureTotalFirstCost: 1.00*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Wall',
+  # TechnologyCategory: 'BuildingEnvelopeModifications',
+  # MeasureName: 'Insulate thermal bypasses',
+  # LongDescription: 'Insulate thermal bypasses',
+  # ScenarioName: 'Insulate thermal bypasses',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 20,
+  # MeasureTotalFirstCost: 1.00*floor_area}
 
   # measures << {ID: 'Measure11',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Roof',
-               # TechnologyCategory: 'BuildingEnvelopeModifications',
-               # MeasureName: 'Increase roof insulation',
-               # LongDescription: 'Increase roof insulation',
-               # ScenarioName: 'Increase roof insulation',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 20,
-               # MeasureTotalFirstCost: 14.46*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Roof',
+  # TechnologyCategory: 'BuildingEnvelopeModifications',
+  # MeasureName: 'Increase roof insulation',
+  # LongDescription: 'Increase roof insulation',
+  # ScenarioName: 'Increase roof insulation',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 20,
+  # MeasureTotalFirstCost: 14.46*floor_area}
 
   # measures << {ID: 'Measure12',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Ceiling',
-               # TechnologyCategory: 'BuildingEnvelopeModifications',
-               # MeasureName: 'Increase ceiling insulation',
-               # LongDescription: 'Increase ceiling insulation',
-               # ScenarioName: 'Increase ceiling insulation',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 20,
-               # MeasureTotalFirstCost: 2.67*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Ceiling',
+  # TechnologyCategory: 'BuildingEnvelopeModifications',
+  # MeasureName: 'Increase ceiling insulation',
+  # LongDescription: 'Increase ceiling insulation',
+  # ScenarioName: 'Increase ceiling insulation',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 20,
+  # MeasureTotalFirstCost: 2.67*floor_area}
 
   # measures << {ID: 'Measure13',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Fenestration',
-               # TechnologyCategory: 'BuildingEnvelopeModifications',
-               # MeasureName: 'Add window films',
-               # LongDescription: 'Add window films',
-               # ScenarioName: 'Add window films',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 10,
-               # MeasureTotalFirstCost: 1.00*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Fenestration',
+  # TechnologyCategory: 'BuildingEnvelopeModifications',
+  # MeasureName: 'Add window films',
+  # LongDescription: 'Add window films',
+  # ScenarioName: 'Add window films',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 10,
+  # MeasureTotalFirstCost: 1.00*floor_area}
 
   # measures << {ID: 'Measure14',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'General Controls and Operations',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Upgrade operating protocols, calibration, and/or sequencing',
-               # LongDescription: 'Upgrade operating protocols, calibration, and/or sequencing',
-               # ScenarioName: 'Upgrade operating protocols calibration and-or sequencing',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 11,
-               # MeasureTotalFirstCost: 0.005*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'General Controls and Operations',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Upgrade operating protocols, calibration, and/or sequencing',
+  # LongDescription: 'Upgrade operating protocols, calibration, and/or sequencing',
+  # ScenarioName: 'Upgrade operating protocols calibration and-or sequencing',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 11,
+  # MeasureTotalFirstCost: 0.005*floor_area}
 
   # measures << {ID: 'Measure15',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Domestic Hot Water',
-               # TechnologyCategory: 'ChilledWaterHotWaterAndSteamDistributionSystems',
-               # MeasureName: 'Replace or upgrade water heater',
-               # LongDescription: 'Replace or upgrade water heater',
-               # ScenarioName: 'Replace or upgrade water heater',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 10,
-               # MeasureTotalFirstCost: 0.17*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Domestic Hot Water',
+  # TechnologyCategory: 'ChilledWaterHotWaterAndSteamDistributionSystems',
+  # MeasureName: 'Replace or upgrade water heater',
+  # LongDescription: 'Replace or upgrade water heater',
+  # ScenarioName: 'Replace or upgrade water heater',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 10,
+  # MeasureTotalFirstCost: 0.17*floor_area}
 
   # measures << {ID: 'Measure16',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Refrigeration',
-               # TechnologyCategory: 'Refrigeration',
-               # MeasureName: 'Replace ice/refrigeration equipment with high efficiency units',
-               # LongDescription: 'Replace ice/refrigeration equipment with high efficiency units',
-               # ScenarioName: 'Replace ice-refrigeration equipment with high efficiency units',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 12.5,
-               # MeasureTotalFirstCost: 1.95*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Refrigeration',
+  # TechnologyCategory: 'Refrigeration',
+  # MeasureName: 'Replace ice/refrigeration equipment with high efficiency units',
+  # LongDescription: 'Replace ice/refrigeration equipment with high efficiency units',
+  # ScenarioName: 'Replace ice-refrigeration equipment with high efficiency units',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 12.5,
+  # MeasureTotalFirstCost: 1.95*floor_area}
 
   # measures << {ID: 'Measure17',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Fenestration',
-               # TechnologyCategory: 'BuildingEnvelopeModifications',
-               # MeasureName: 'Replace windows',
-               # LongDescription: 'Replace windows',
-               # ScenarioName: 'Replace windows',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 20,
-               # MeasureTotalFirstCost: 2.23*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Fenestration',
+  # TechnologyCategory: 'BuildingEnvelopeModifications',
+  # MeasureName: 'Replace windows',
+  # LongDescription: 'Replace windows',
+  # ScenarioName: 'Replace windows',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 20,
+  # MeasureTotalFirstCost: 2.23*floor_area}
 
   # measures << {ID: 'Measure18',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Heating System',
-               # TechnologyCategory: 'BoilerPlantImprovements',
-               # MeasureName: 'Replace boiler',
-               # LongDescription: 'Replace boiler',
-               # ScenarioName: 'Replace boiler',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 20,
-               # MeasureTotalFirstCost: 0.95*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Heating System',
+  # TechnologyCategory: 'BoilerPlantImprovements',
+  # MeasureName: 'Replace boiler',
+  # LongDescription: 'Replace boiler',
+  # ScenarioName: 'Replace boiler',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 20,
+  # MeasureTotalFirstCost: 0.95*floor_area}
 
   # measures << {ID: 'Measure19',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Other HVAC',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Replace AC and heating units with ground coupled heat pump systems',
-               # LongDescription: 'Replace AC and heating units with ground coupled heat pump systems',
-               # ScenarioName: 'Replace HVAC with GSHP and DOAS',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 15,
-               # MeasureTotalFirstCost: 14.00*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Other HVAC',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Replace AC and heating units with ground coupled heat pump systems',
+  # LongDescription: 'Replace AC and heating units with ground coupled heat pump systems',
+  # ScenarioName: 'Replace HVAC with GSHP and DOAS',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 15,
+  # MeasureTotalFirstCost: 14.00*floor_area}
 
   # measures << {ID: 'Measure20',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Other HVAC',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Other',
-               # LongDescription: 'VRF with DOAS',
-               # ScenarioName: 'VRF with DOAS',
-               # OpenStudioMeasureName: 'Replace HVAC system type to VRF',
-               # UsefulLife: 10,
-               # MeasureTotalFirstCost: 16.66*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Other HVAC',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Other',
+  # LongDescription: 'VRF with DOAS',
+  # ScenarioName: 'VRF with DOAS',
+  # OpenStudioMeasureName: 'Replace HVAC system type to VRF',
+  # UsefulLife: 10,
+  # MeasureTotalFirstCost: 16.66*floor_area}
 
   # measures << {ID: 'Measure21',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Other HVAC',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Other',
-               # LongDescription: 'Replace HVAC system type to PZHP',
-               # ScenarioName: 'Replace HVAC system type to PZHP',
-               # OpenStudioMeasureName: 'Replace HVAC system type to PZHP',
-               # UsefulLife: 15,
-               # MeasureTotalFirstCost: 4.26*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Other HVAC',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Other',
+  # LongDescription: 'Replace HVAC system type to PZHP',
+  # ScenarioName: 'Replace HVAC system type to PZHP',
+  # OpenStudioMeasureName: 'Replace HVAC system type to PZHP',
+  # UsefulLife: 15,
+  # MeasureTotalFirstCost: 4.26*floor_area}
 
   # measures << {ID: 'Measure22',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Fan',
-               # TechnologyCategory: 'OtherElectricMotorsAndDrives',
-               # MeasureName: 'Replace with higher efficiency',
-               # LongDescription: 'Replace with higher efficiency',
-               # ScenarioName: 'Replace with higher efficiency',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 15,
-               # MeasureTotalFirstCost: 10.75*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Fan',
+  # TechnologyCategory: 'OtherElectricMotorsAndDrives',
+  # MeasureName: 'Replace with higher efficiency',
+  # LongDescription: 'Replace with higher efficiency',
+  # ScenarioName: 'Replace with higher efficiency',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 15,
+  # MeasureTotalFirstCost: 10.75*floor_area}
 
   # measures << {ID: 'Measure23',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Air Distribution',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Improve ventilation fans',
-               # LongDescription: 'Improve ventilation fans',
-               # ScenarioName: 'Improve ventilation fans',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 4.4,
-               # MeasureTotalFirstCost: 1.00*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Air Distribution',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Improve ventilation fans',
+  # LongDescription: 'Improve ventilation fans',
+  # ScenarioName: 'Improve ventilation fans',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 4.4,
+  # MeasureTotalFirstCost: 1.00*floor_area}
 
   # measures << {ID: 'Measure24',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Air Distribution',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Install demand control ventilation',
-               # LongDescription: 'Install demand control ventilation',
-               # ScenarioName: 'Install demand control ventilation',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 10,
-               # MeasureTotalFirstCost: 0.33*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Air Distribution',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Install demand control ventilation',
+  # LongDescription: 'Install demand control ventilation',
+  # ScenarioName: 'Install demand control ventilation',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 10,
+  # MeasureTotalFirstCost: 0.33*floor_area}
 
   # measures << {ID: 'Measure25',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Air Distribution',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Add or repair economizer',
-               # LongDescription: 'Add or repair economizer',
-               # ScenarioName: 'Add or repair economizer',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 12.5,
-               # MeasureTotalFirstCost: 0.80*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Air Distribution',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Add or repair economizer',
+  # LongDescription: 'Add or repair economizer',
+  # ScenarioName: 'Add or repair economizer',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 12.5,
+  # MeasureTotalFirstCost: 0.80*floor_area}
 
   # measures << {ID: 'Measure26',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Heat Recovery',
-               # TechnologyCategory: 'OtherHVAC',
-               # MeasureName: 'Add energy recovery',
-               # LongDescription: 'Add energy recovery',
-               # ScenarioName: 'Add energy recovery',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 14,
-               # MeasureTotalFirstCost: 4.53*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Heat Recovery',
+  # TechnologyCategory: 'OtherHVAC',
+  # MeasureName: 'Add energy recovery',
+  # LongDescription: 'Add energy recovery',
+  # ScenarioName: 'Add energy recovery',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 14,
+  # MeasureTotalFirstCost: 4.53*floor_area}
 
   # measures << {ID: 'Measure27',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Domestic Hot Water',
-               # TechnologyCategory: 'ChilledWaterHotWaterAndSteamDistributionSystems',
-               # MeasureName: 'Add pipe insulation',
-               # LongDescription: 'Add pipe insulation',
-               # ScenarioName: 'Add pipe insulation',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 12,
-                # MeasureTotalFirstCost: 0.14*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Domestic Hot Water',
+  # TechnologyCategory: 'ChilledWaterHotWaterAndSteamDistributionSystems',
+  # MeasureName: 'Add pipe insulation',
+  # LongDescription: 'Add pipe insulation',
+  # ScenarioName: 'Add pipe insulation',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 12,
+  # MeasureTotalFirstCost: 0.14*floor_area}
 
   # measures << {ID: 'Measure28',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Domestic Hot Water',
-               # TechnologyCategory: 'ChilledWaterHotWaterAndSteamDistributionSystems',
-               # MeasureName: 'Add recirculating pumps',
-               # LongDescription: 'Add recirculating pumps',
-               # ScenarioName: 'Add recirculating pumps',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 15,
-               # MeasureTotalFirstCost: 0.18*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Domestic Hot Water',
+  # TechnologyCategory: 'ChilledWaterHotWaterAndSteamDistributionSystems',
+  # MeasureName: 'Add recirculating pumps',
+  # LongDescription: 'Add recirculating pumps',
+  # ScenarioName: 'Add recirculating pumps',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 15,
+  # MeasureTotalFirstCost: 0.18*floor_area}
 
   # measures << {ID: 'Measure29',
-               # SingleMeasure: true,
-               # SystemCategoryAffected: 'Water Use',
-               # TechnologyCategory: 'WaterAndSewerConservationSystems',
-               # MeasureName: 'Install low-flow faucets and showerheads',
-               # LongDescription: 'Install low-flow faucets and showerheads',
-               # ScenarioName: 'Install low-flow faucets and showerheads',
-               # OpenStudioMeasureName: 'TBD',
-               # UsefulLife: 10,
-               # MeasureTotalFirstCost: 1.00*floor_area}
+  # SingleMeasure: true,
+  # SystemCategoryAffected: 'Water Use',
+  # TechnologyCategory: 'WaterAndSewerConservationSystems',
+  # MeasureName: 'Install low-flow faucets and showerheads',
+  # LongDescription: 'Install low-flow faucets and showerheads',
+  # ScenarioName: 'Install low-flow faucets and showerheads',
+  # OpenStudioMeasureName: 'TBD',
+  # UsefulLife: 10,
+  # MeasureTotalFirstCost: 1.00*floor_area}
 
   packages = []
   packages << {ScenarioName: 'All Package',
@@ -889,11 +937,11 @@ def create_scenarios(feature)
     scenarios.add_element(element)
   end
 
-   # add measure packages
-   packages = $Packages
-   packages.each do |package|
+  # add measure packages
+  packages = $Packages
+  packages.each do |package|
 
-     measure_ids = []
+    measure_ids = []
     package[:MeasureIDs].each do |measure_id|
       measure_ids << "<auc:MeasureID IDref=\"#{measure_id}\"/>"
     end
@@ -925,14 +973,13 @@ def create_scenarios(feature)
     element = REXML::Document.new(text)
     element = element.root.delete_namespace('auc').delete_namespace('xsi').delete_attribute('xsi:schemaLocation')
     scenarios.add_element(element)
-   end
+  end
 
   scenarios
 end
 
 
-
-def convert_building(feature)
+def convert_building(feature, scenario_hash = nil)
 
   building_id = get_building_id(feature)
   floor_area = get_floor_area(feature)
@@ -957,7 +1004,7 @@ def convert_building(feature)
 
   doc = REXML::Document.new(source)
   sites = doc.elements['*/*/*/auc:Sites']
-  site = create_site(feature)
+  site = create_site(feature, scenario_hash)
   sites.add_element(site)
 
   # add hvac system if heatingtype is present
@@ -971,7 +1018,7 @@ def convert_building(feature)
   measures = create_measures(feature)
   unless measures.nil?
     old_measures = doc.elements['*/*/*/auc:Measures']
-    old_measures.parent.replace_child(old_measures, measures )
+    old_measures.parent.replace_child(old_measures, measures)
   end
 
   # add scenario (energystarscore, datastart, dataend?)
@@ -993,25 +1040,40 @@ FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 summary_file = File.open(outdir + '/bdgp_summary.csv', 'w')
 summary_file.puts 'building_id,xml_filename,OccupancyClassification,BuildingName,FloorArea(ft2),YearBuilt,ClimateZone'
 
-options = {headers:true,
+options = {headers: true,
            header_converters: :symbol}
+
+if !occ_classification_file.nil?
+  scenario_hash = json_to_hash(occ_classification_file)
+  puts "Using scenario from file: #{occ_classification_file}"
+  puts "Defines the following mapping: #{scenario_hash}"
+else
+  scenario_hash = {}
+  a = "Office"
+  scenario_hash[:Office] = a
+  scenario_hash[:"Primary/Secondary Classroom"] = a
+  scenario_hash[:"College Classroom"] = a
+  scenario_hash[:Dormitory] = a
+  scenario_hash[:"College Laboratory"] = a
+  puts "No scenario file available.  Using the following mapping: #{scenario_hash}"
+end
 
 CSV.foreach(ARGV[0], options) do |feature|
   id = feature[:uid]
   begin
-    doc = convert_building(feature)
+    doc = convert_building(feature, scenario_hash)
     filename = File.join(outdir, "#{id}.xml")
     File.open(filename, 'w') do |file|
       doc.write(file)
     end
   rescue => e
     puts "Building #{id} not converted, #{e.message}"
-    #puts e.backtrace # DLM: uncomment for debugging
+    # puts e.backtrace # DLM: uncomment for debugging
     next
   end
 
   floor_area = get_floor_area(feature)
-  building_type = get_occupancy_classification(feature)
+  building_type = get_occupancy_classification(feature, scenario_hash)
   year_built = get_year_built(feature) # default
   climate_zone = get_climate_zone(feature) # default
 

@@ -201,7 +201,11 @@ task :workflow_part_1 do
 
   # Generate buildingsync xml files from epw_csv_file
   puts("")
-  ruby "scripts/bdgp_to_buildingsync.rb " + epw_csv_file_location
+  if ARGV[1]
+    ruby "scripts/bdgp_to_buildingsync.rb " + epw_csv_file_location + " #{ARGV[1]}"
+  else
+    ruby "scripts/bdgp_to_buildingsync.rb " + epw_csv_file_location
+  end
   if File.exists?(bldg_sync_files)
     puts("")
     puts "Rake: " + bldg_sync_files + " directory exists."
