@@ -76,7 +76,7 @@ RSpec.describe 'EDV Experiment 1' do
 
     successful = true
     osws.each do |osw|
-      sql_file = osw.gsub('in.osw', 'eplusout.sql')
+      sql_file = osw.gsub('in\\.osw', 'eplusout\\.sql')
       puts "Simulation not completed successfully for file: #{osw}" if !File.exist?(sql_file)
       successful = false  if !File.exist?(sql_file)
       expect(File.exist?(sql_file)).to be true

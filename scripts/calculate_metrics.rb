@@ -19,6 +19,10 @@ puts "found #{Dir.glob(File.join(indir, "*.xml")).count} files "
 
 def get_electric_resource_use_id(scenario_element, ns)
   resource_uses = scenario_element.elements["#{ns}:ResourceUses"]
+  if resource_uses.nil?
+    puts scenario_element.elements["#{ns}:ScenarioName"].to_s + " has nil ResourceUses"
+    return nil
+  end
   resource_uses.each do |resource_use_element|
     if resource_use_element.elements["#{ns}:EnergyResource"].text == "Electricity"
       return resource_use_element.attributes['ID']
@@ -88,16 +92,19 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
     scenario_elements.each do |scenario_element|
       if scenario_element.attributes['ID'] != 'Measured'
         electricity_resource_use_id = get_electric_resource_use_id(scenario_element, ns)
-        monthly_simulated_data = read_time_series_data(scenario_element, ns, electricity_resource_use_id)
+        if electricity_resource_use_id
 
-        eui = MetricsCalc.calculate_eui_value(monthly_simulated_data.get_sum, floor_area)
-        eui_sim_count += MetricsCalc.add_eui(scenario_element, eui, ns)
+          monthly_simulated_data = read_time_series_data(scenario_element, ns, electricity_resource_use_id)
 
-        cvrmse = MetricsCalc.calculate_cvrmse(monthly_measured_data, monthly_simulated_data)
-        cvrmse_count += MetricsCalc.add_user_defined_field(scenario_element, "CVRMSE", cvrmse, ns)
+          eui = MetricsCalc.calculate_eui_value(monthly_simulated_data.get_sum, floor_area)
+          eui_sim_count += MetricsCalc.add_eui(scenario_element, eui, ns)
 
-        nmbe = MetricsCalc.calculate_nmbe(monthly_measured_data, monthly_simulated_data)
-        nmbe_count += MetricsCalc.add_user_defined_field(scenario_element, "NMBE", nmbe, ns)
+          cvrmse = MetricsCalc.calculate_cvrmse(monthly_measured_data, monthly_simulated_data)
+          cvrmse_count += MetricsCalc.add_user_defined_field(scenario_element, "CVRMSE", cvrmse, ns)
+
+          nmbe = MetricsCalc.calculate_nmbe(monthly_measured_data, monthly_simulated_data)
+          nmbe_count += MetricsCalc.add_user_defined_field(scenario_element, "NMBE", nmbe, ns)
+        end
       end
     end
 
