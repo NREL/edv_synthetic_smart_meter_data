@@ -132,4 +132,56 @@ RSpec.describe 'EDV Experiment 1' do
     puts "nmbe: #{nmbe}"
     expect(calculated_nmbe).to eq nmbe
   end
+
+  it 'correctly add an sum up measured data into BldgSync xml and be the same value as original measured data' do
+    ns = 'auc'
+
+    measured_file_path = File.join(File.expand_path('../.', File.dirname(__FILE__)), 'files/temp_open_utc.csv')
+    # read the column headers so we now how many files we need to process
+    column_headers = CSV.read(measured_file_path, headers: true).headers
+    # read in the CSV file into an array
+    parsed = CSV.read(measured_file_path, headers: true)
+
+    successful = 0
+    # find the right columns
+    for i in 1..column_headers.count-1
+ #     if column_headers[i] == 'UnivLab_Andre'
+        puts "processing file: #{column_headers[i]}"
+        measured_total_csv_data = 0
+        parsed[column_headers[i]].each do |value|
+ #         puts "value: #{value}"
+          measured_total_csv_data += value.to_f
+        end
+        measured_total_csv_data = measured_total_csv_data * 3.142
+
+        measured_total_xml_data = 0
+        bldg_sync_office_caleb = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "Test_output/Bldg_Sync_Files_w_Measured_Data/#{column_headers[i]}.xml")
+        doc = nil
+        File.open(bldg_sync_office_caleb, 'r') do |bldg_sync_office_caleb|
+          doc = REXML::Document.new(bldg_sync_office_caleb)
+          # first we get the measured scenario
+          scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
+          # for the first pass we just look for the measured scenario
+          counter = 0
+          scenario_elements.each do |scenario_element|
+            if scenario_element.attributes['ID'] == 'Measured'
+              scenario_element.elements["#{ns}:TimeSeriesData"].each do |time_series|
+                counter += 1
+       #         puts "monthly value #{counter}: #{time_series.elements["#{ns}:IntervalReading"].text.to_f}"
+                measured_total_xml_data += time_series.elements["#{ns}:IntervalReading"].text.to_f
+              end
+            end
+          end
+        end
+
+        if (measured_total_csv_data - measured_total_xml_data).abs > 0.0001
+          puts "FAILED:::: measured_total_csv_data: #{measured_total_csv_data} versus measured_total_xml_data: #{measured_total_xml_data}"
+        else
+          successful += 1
+          puts "measured_total_csv_data: #{measured_total_csv_data} versus measured_total_xml_data: #{measured_total_xml_data}"
+        end
+  #    end
+    end
+    expect(successful).to be 10
+  end
 end
