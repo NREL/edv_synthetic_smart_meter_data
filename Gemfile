@@ -32,10 +32,10 @@ else
 end
 
 if allow_local && File.exist?('../openstudio-standards-gem')
-  gem 'openstudio-standards', '0.2.9'
+  gem 'openstudio-standards', '>=0.2.9'
   # gem 'openstudio-standards', path: '../openstudio-standards'
 else
-  gem 'openstudio-standards', '0.2.9'
+  gem 'openstudio-standards', '>=0.2.9'
 end
 
 if allow_local && File.exists?('../BuildingSync-gem')
@@ -50,7 +50,7 @@ if allow_local && File.exists?('../openstudio-occupant-variability-gem')
   gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
 else
   #gem 'openstudio-occupant-variability', github: 'tsbyq/openstudio-occupant-variability-gem', branch: 'master'
-  gem 'openstudio-occupant-variability', github: 'macumber/openstudio-occupant-variability-gem', branch: 'master'
+  gem 'openstudio-occupant-variability', github: 'tsbyq/openstudio-occupant-variability-gem', branch: 'master'
 end
 
 # simplecov has an unneccesary dependency on native json gem, use fork that does not require this

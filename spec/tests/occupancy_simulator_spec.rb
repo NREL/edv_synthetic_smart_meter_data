@@ -45,11 +45,11 @@ require 'openstudio-occupant-variability'
 RSpec.describe 'EDV Experiment 1' do
   it 'should run test file 1 with occupancy measure' do
     OpenStudio::Extension::Extension::DO_SIMULATIONS = true
-    result = test_occupancy_mesure('test1.xml', 'temporary.epw')
+    result = test_occupancy_mesure('test1.xml', 'temporary.epw', 6)
     expect(result).to be true
   end
 
-  def test_occupancy_mesure(xml_name, epw_name = nil)
+  def test_occupancy_mesure(xml_name, epw_name = nil, max_number_parallel_run=4)
     root_dir = File.join(File.dirname(__FILE__), '../../')
     xml_path = File.join(root_dir, "spec/files/#{xml_name}")
     epw_path = File.join(root_dir, "scripts/#{epw_name}")
@@ -66,19 +66,24 @@ RSpec.describe 'EDV Experiment 1' do
     occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
     translator.add_measure_path(occupant_variability_instance.measures_dir)
     translator.insert_energyplus_measure('Occupancy_Simulator', 0)
+    # Update other schedules based on occupancy count schedule
+    translator.insert_energyplus_measure('create_lighting_schedule_from_occupant_count', 0)
+    translator.insert_energyplus_measure('create_mels_schedule_from_occupant_count', 0)
+    translator.insert_energyplus_measure('update_hvac_setpoint_schedule', 0)
 
     translator.write_osws
 
     osws = Dir.glob("#{out_path}/**/in.osw") - Dir.glob("#{out_path}/SR/in.osw")
 
     runner = OpenStudio::Extension::Runner.new(root_dir)
-    expect(runner.run_osws(osws).count).to be 0
+    runner.run_osws(osws, max_number_parallel_run) # Maximum number of parallel run allowed
+    # expect(runner.run_osws(osws).count).to be 0
 
     successful = true
     osws.each do |osw|
       sql_file = osw.gsub('in\\.osw', 'eplusout\\.sql')
       puts "Simulation not completed successfully for file: #{osw}" if !File.exist?(sql_file)
-      successful = false  if !File.exist?(sql_file)
+      successful = false if !File.exist?(sql_file)
       expect(File.exist?(sql_file)).to be true
     end
     return successful
