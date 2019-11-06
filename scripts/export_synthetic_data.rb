@@ -47,6 +47,9 @@ for i in 1..column_headers.count-1
   # create an array of active scenarios
   active_scenarios = Array.new
   active_scenarios << [default_scenario, start_date]
+  puts "------------------------------------------------------"
+  puts "- Verify simulation scenarios for case #{i}"
+  puts "------------------------------------------------------"
   puts "parsed[scenario_count].nil? #{parsed[scenario_count].nil?}"
   if !parsed[scenario_count].nil?
     until parsed[scenario_count][i].nil?
@@ -64,14 +67,20 @@ for i in 1..column_headers.count-1
     end
   end
 
-
   puts "active_scenarios: #{active_scenarios}"
+  puts "------------------------------------------------------"
+  puts "- Verify the path for creating output file(s) for case #{i}"
+  puts "------------------------------------------------------"
 
   building_sync_file_path = File.dirname(csv_file_path) + "/" + base_dir
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(building_sync_file_path, File.extname(building_sync_file_path))}/", File.dirname(__FILE__))
 
   puts "out_path: #{out_path}"
 
+  puts "------------------------------------------------------"
+  puts "- Create hash for matching measure name and timeseries file for case #{i}"
+  puts "------------------------------------------------------"
+  # searching for report.csv file under each building folder and creating a hash where "measure name" and "path to the corresponding report.csv file" is matched
   csvs = Hash.new
   Dir.glob("#{out_path}/**/**/report.csv").each do |csv|
     measure_name = csv.split(File::Separator)[-3]
@@ -79,6 +88,10 @@ for i in 1..column_headers.count-1
     csvs[measure_name] = csv
   end
 
+
+  puts "------------------------------------------------------"
+  puts "- Create/stich synthetic timeseries data for case #{i}"
+  puts "------------------------------------------------------"
   current_scenario = Array.new
   date_array = start_date.split('/')
   start_date = Time.local(date_array[2],date_array[0],date_array[1])
@@ -93,22 +106,19 @@ for i in 1..column_headers.count-1
   puts "current_scenario: #{current_scenario}"
   puts "current_scenario_name: #{current_scenario_name}"
   puts "current_path: #{current_path}"
-  puts "csvs: #{csvs}"
-  puts "active_scenarios: #{active_scenarios}"
   file = File.open current_path
   values = file.to_a
   puts "values[0]: #{values[0]}"
 
   scenario_counter = 1
   next_scenario = active_scenarios[scenario_counter]
-  puts "active_scenarios: #{active_scenarios}"
   # initialize the headers
   CSV.open(out_path + "/#{base_dir}-#{i}.csv", "wb") do |csv|
     csv << ["", "Building-Smart-Meter-Export"]
     csv << ["", "Realization Name: #{name}"]
-    csv << ["", "Export Date: #{Time.now.strftime("%d/%m/%Y %H:%M")}"]
+    csv << ["", "Export Date: #{Time.now.strftime("%m/%d/%Y %H:%M")}"]
     csv << [""]
-    csv << ["Timestamp", "Building Id #{building_id} - Electricity Used - whole building [J]", "Building Id #{building_id} - Natural Gas - whole building [J]"]
+    csv << ["Timestamp", "Building_Id_#{building_id}_Electricity_[J]", "Building_Id_#{building_id}_NaturalGas_[J]", "Scenario"]
     counter = 0
     8760.times do
       current_date = start_date + (counter) * 3600
@@ -135,9 +145,9 @@ for i in 1..column_headers.count-1
         next_scenario = active_scenarios[scenario_counter]
       end
       if(current_values.nil?)
-        csv << [current_date.strftime("%d/%m/%Y %H:%M"), "", "", current_scenario[0]]
+        csv << [current_date.strftime("%m/%d/%Y %H:%M"), "", "", current_scenario[0]]
       else
-        csv << [current_date.strftime("%d/%m/%Y %H:%M"), current_values.split(',')[0], current_values.split(',')[1], current_scenario[0]]
+        csv << [current_date.strftime("%m/%d/%Y %H:%M"), current_values.split(',')[0], current_values.split(',')[1], current_scenario[0]]
       end
       counter += 1
     end
