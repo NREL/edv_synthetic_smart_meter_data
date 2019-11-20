@@ -1,4 +1,10 @@
-# edv-experiment-1
+# EDV Experiment 1
+
+Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
+
+## Overall workflow
+
+![alt text](overallworkflow.PNG)
 
 ## Installation
 
