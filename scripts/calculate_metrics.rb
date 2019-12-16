@@ -10,7 +10,7 @@ end
 
 indir = ARGV[0]
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Metrics"
+outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 ns = 'auc'

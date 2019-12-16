@@ -8,7 +8,7 @@ if ARGV[0].nil? || !File.exist?(ARGV[0]) || ARGV[1].nil? || !Dir.exist?(ARGV[1])
 end
 
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Measured_Data"
+outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # csv_file_path = 'E:\Bricr\edv-experiment-1\spec\files\temp_open_utc.csv'
