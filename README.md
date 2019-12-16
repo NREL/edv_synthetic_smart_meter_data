@@ -30,9 +30,9 @@ The following figure contains an overview of the scripts and input as well as ou
 
 Run the following command to generate BuildingSync XMLs from CSV data:
 
-``` bundle exec rake generate_bdgp_xmls path/to/csv/file ```
+``` bundle exec rake generate_xmls path/to/csv/file ```
 
-The generated XML files will be put in the NAME_OF_OUTPUT_DIR/Bldg_Sync_Files directory.
+The generated XML files will be put in the NAME_OF_OUTPUT_DIR/BldgSync directory.
 
 This script is designed to work with the metadata `meta_open.csv` from the [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw).
 
@@ -40,7 +40,7 @@ This script is designed to work with the metadata `meta_open.csv` from the [Buil
 
 ## Step 2: Add monthly measured data into BuildingSync xmls 
 
-Run the following command to add measured monthly electricity data to the BuildingSync XMLs generated in step 1:
+Run the following command to add measured monthly energy consumptions to the BuildingSync XMLs generated in step 1:
 
 ``` bundle exec rake add_measured_data path/to/csv/file/with/measured/data path/to/dir/for/resulting/xml/files```
 
@@ -58,13 +58,13 @@ the 3rd and forth can also use actual weather files based on the related csv fil
 
 Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
 
-``` bundle exec rake simulate_batch_bdgp_xml path/to/csv/file ```
+``` bundle exec rake simulate_batch_xml path/to/csv/file ```
 
 In this case the CSV file contains the name of the BuildingSync file, the Standard to use and the weather file in comma separated format.
 
-The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
+The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/SimulationFiles directory.
 
-## Step 5: Calculate CVRMSE and NMBE between synthetic and real building data
+## Step 5: Calculate metrics based on information from both real and synthetic data
 
 Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated monthly electricity data to the BuildingSync XMLs
 

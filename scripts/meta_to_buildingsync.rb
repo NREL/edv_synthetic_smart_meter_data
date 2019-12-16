@@ -8,7 +8,7 @@ require 'json'
 require_relative 'constants'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
-  puts 'usage: bundle exec ruby bdgp_to_buildingsync.rb /path/to/csv scenario_file.json'
+  puts 'usage: bundle exec ruby meta_to_buildingsync.rb /path/to/csv scenario_file.json'
   puts '.csv files only'
   puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
   puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
@@ -26,7 +26,7 @@ if !ARGV[1].nil?
   if File.exist?(ARGV[1])
     occ_classification_file = "#{ARGV[1]}"
   else
-    puts 'usage: bundle exec ruby bdgp_to_buildingsync.rb /path/to/csv scenario_file.json'
+    puts 'usage: bundle exec ruby meta_to_buildingsync.rb /path/to/csv scenario_file.json'
     puts '.csv files only'
     puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
     puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
@@ -1035,11 +1035,11 @@ def convert_building(feature, scenario_hash = nil)
 end
 
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files"
+outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file
-summary_file = File.open(outdir + '/bdgp_summary.csv', 'w')
+summary_file = File.open(outdir + '/meta_summary.csv', 'w')
 summary_file.puts 'building_id,xml_filename,OccupancyClassification,BuildingName,FloorArea(ft2),YearBuilt,ClimateZone'
 
 options = {headers: true,

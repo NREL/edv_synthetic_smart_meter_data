@@ -18,7 +18,7 @@ if ARGV[0].nil?
   exit(1)
 end
 
-bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Measured_Data"
+bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/BldgSync"
 if !ARGV[1].nil?
   bldg_sync_file_dir = ARGV[1]
 end
@@ -27,8 +27,8 @@ start = Time.now
 puts "Simulation script started at #{start}"
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
-  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
-  out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
+  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
+  out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
   begin
@@ -76,7 +76,7 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
   log.puts("processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}")
 
   xml_file_path = File.expand_path("#{bldg_sync_file_dir}/#{xml_file}/", File.dirname(__FILE__))
-  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
+  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
   epw_file_path = ''
   if File.exist?(epw_file)
     epw_file_path = epw_file
