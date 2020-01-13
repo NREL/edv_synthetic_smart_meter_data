@@ -865,6 +865,8 @@ def create_scenarios(feature)
   end
 
   scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
+
+  # add time series data
   time_series_data = REXML::Element.new('auc:TimeSeriesData')
 
   if !feature[:dataend].nil? && !feature[:datastart].nil?
@@ -901,6 +903,20 @@ def create_scenarios(feature)
 #    scenario.add_element(time_series_data) 
   end
 
+  # add resource type
+  resource_uses = REXML::Element.new('auc:ResourceUses')
+
+  # electricity time series data
+  resource_use = REXML::Element.new('auc:ResourceUse')
+  energy_resource = REXML::Element.new('auc:EnergyResource')
+  energy_resource.text = 'Electrity'
+  resource_unit = REXML::Element.new('auc:ResourceUnits')
+  resource_unit.text = 'kWh'
+  resource_use.add_element(energy_resource)
+  resource_use.add_element(resource_unit)
+  resource_uses.add_element(resource_use)
+  scenario.add_element(resource_uses)
+
   feature.headers.each do |header|
     if header.match(/seed_2018_([1-9]|1[0-2])_elec_kwh/)
       time_series = REXML::Element.new('auc:TimeSeries')
@@ -918,9 +934,88 @@ def create_scenarios(feature)
       time_series_data.add_element(time_series)
     end
   end
-  
+
   scenario.add_element(time_series_data)
+
+  # add electricity total
+  all_elec_totals = REXML::Element.new('auc:AllResourceTotals')
+
+  feature.headers.each do |header|
+    if header.match(/seed_2018_([1-9]|1[0-2])_elec_kwh/)
+      all_elec_total = REXML::Element.new('auc:AllResourceTotal')
+      # add EndUse
+      # add ReourceBoundary
+      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_elec_kwh/).join('')
+      site_energy_use = REXML::Element.new('auc:SiteEnergyUse')
+      site_energy_use.text = feature[header]
+      # add EnergyCost
+      # add UDFs
+      all_elec_total.add_element(site_energy_use)
+      all_elec_totals.add_element(all_elec_total)
+    end
+  end
+  
+  scenario.add_element(all_elec_totals)
   scenarios.add_element(scenario) unless scenario.nil?
+
+  # add gas time series data and totals
+  scenario_gas = REXML::Element.new('auc:Scenario')
+  time_series_data_gas = REXML::Element.new('auc:TimeSeriesData')
+
+  # add resource type
+  resource_uses_gas = REXML::Element.new('auc:ResourceUses')
+
+  # electricity time series data
+  resource_use_gas = REXML::Element.new('auc:ResourceUse')
+  energy_resource_gas = REXML::Element.new('auc:EnergyResource')
+  energy_resource_gas.text = 'Gas'
+  resource_unit_therm = REXML::Element.new('auc:ResourceUnits')
+  resource_unit_therm.text = 'therm'
+  resource_use_gas.add_element(energy_resource_gas)
+  resource_use_gas.add_element(resource_unit_therm)
+  resource_uses_gas.add_element(resource_use_gas)
+  scenario_gas.add_element(resource_uses_gas)
+
+  feature.headers.each do |header|
+    if header.match(/seed_2018_([1-9]|1[0-2])_gas_therm/)
+      time_series = REXML::Element.new('auc:TimeSeries')
+      start_ts = REXML::Element.new('auc:StartTimeStamp')
+      end_ts = REXML::Element.new('auc:EndTimeStamp')
+
+      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_gas_therm/).join('')
+      d = Date.new(2018, m.to_i, -1).day
+#      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
+      start_ts.text = '2018' + '-' + m + '-' + '1' + ' 00:00:00'
+      end_ts.text = '2018' + '-' + m + '-' + d.to_s + ' 23:59:59'
+
+      time_series.add_element(start_ts)
+      time_series.add_element(end_ts)
+      time_series_data_gas.add_element(time_series)
+    end
+  end
+
+  scenario_gas.add_element(time_series_data_gas)
+
+  # add electricity total
+  all_gas_totals = REXML::Element.new('auc:AllResourceTotals')
+
+  feature.headers.each do |header|
+    if header.match(/seed_2018_([1-9]|1[0-2])_gas_therm/)
+      all_gas_total = REXML::Element.new('auc:AllResourceTotal')
+      # add EndUse
+      # add ReourceBoundary
+      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_gas_therm/).join('')
+      site_energy_use = REXML::Element.new('auc:SiteEnergyUse')
+      site_energy_use.text = feature[header]
+      # add EnergyCost
+      # add UDFs
+      all_gas_total.add_element(site_energy_use)
+      all_gas_totals.add_element(all_gas_total)
+    end
+  end
+  
+  scenario_gas.add_element(all_gas_totals)
+  scenarios.add_element(scenario_gas)
 
   # add baseline scenario
   text = "<auc:Scenario ID=\"Baseline\" #{xml_namespace}>
@@ -1110,6 +1205,9 @@ CSV.foreach(ARGV[0], options) do |feature|
   building_type = get_occupancy_classification(feature, scenario_hash)
   year_built = get_year_built(feature) # default
   climate_zone = get_climate_zone(feature) # default
+  if !(File.basename(ARGV[0]) =~ /monthlyenergy_bricr_filtered*/).nil?
+    climate_zone = '3C'
+  end
   building_name = "Building #{id}"
 
   puts "climate zone is not given for building with name #{building_name}" if climate_zone.nil?
