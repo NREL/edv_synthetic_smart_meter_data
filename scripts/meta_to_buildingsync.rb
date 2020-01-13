@@ -5,6 +5,8 @@ require 'csv'
 require 'rexml/document'
 require 'fileutils'
 require 'json'
+require 'date'
+require 'time'
 require_relative 'constants'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
@@ -68,10 +70,12 @@ def convert(value, unit_in, unit_out)
 end
 
 def get_building_id(feature)
-  feature[:uid]
+#  feature[:uid]
+  feature[:id]
 end
 
 def get_floor_area(feature)
+  feature[:sqft] = feature[:bricr_gfa_ft2]
   raise 'Floor Area (SQFT) is empty' if feature[:sqft].nil?
 
   convert(feature[:sqft], 'ft2', 'ft2')
@@ -103,13 +107,16 @@ def get_climate_zone(feature)
 end
 
 def get_building_classification(feature)
-  classification = feature[:primaryspaceusage]
+#  classification = feature[:primaryspaceusage]
+  classification = feature[:seed_primary_property_type]
   # possible mappings: Commercial, Residential, Mixed use commercial, Other
   # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
 
   result = nil
   case classification
   when 'Office'
+    result = 'Commercial'
+  when'Retail Store'
     result = 'Commercial'
   when 'Primary/Secondary Classroom'
     result = 'Commercial'
@@ -127,13 +134,16 @@ def get_building_classification(feature)
 end
 
 def get_occupancy_classification(feature, scenario_hash = nil)
-  classification = feature[:primaryspaceusage]
+#  classification = feature[:primaryspaceusage]
+  classification = feature[:seed_primary_property_type]
   # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
   # to: see BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb for up to date mappings
   result = nil
   case classification
   when 'Office'
     result = scenario_hash[:Office]
+  when 'Retail Store'
+    result = scenario_hash[:"Retail Store"]
   when 'Primary/Secondary Classroom'
     result = scenario_hash[:"Primary/Secondary Classroom"]
   when 'College Classroom'
@@ -854,9 +864,12 @@ def create_scenarios(feature)
     scenario.add_element(scenario_type)
   end
 
+  scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
+  time_series_data = REXML::Element.new('auc:TimeSeriesData')
+
   if !feature[:dataend].nil? && !feature[:datastart].nil?
-    scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
-    time_series_data = REXML::Element.new('auc:TimeSeriesData')
+#    scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
+#    time_series_data = REXML::Element.new('auc:TimeSeriesData')
     time_series = REXML::Element.new('auc:TimeSeries')
     start_ts = REXML::Element.new('auc:StartTimeStamp')
     end_ts = REXML::Element.new('auc:EndTimeStamp')
@@ -874,7 +887,6 @@ def create_scenarios(feature)
     start_ts.text = '20' + y + '-' + m + '-' + d + ' ' + h + ':' + min + ':00'
     # puts "reformatted starttime: #{start_ts}"
 
-
     d = feature[:dataend][0, 2]
     m = feature[:dataend][3, 2]
     y = feature[:dataend][6, 2]
@@ -886,10 +898,29 @@ def create_scenarios(feature)
     time_series.add_element(start_ts)
     time_series.add_element(end_ts)
     time_series_data.add_element(time_series)
-    scenario.add_element(time_series_data)
+#    scenario.add_element(time_series_data) 
   end
 
-  scenarios.add_element(scenario) if scenario.nil?
+  feature.headers.each do |header|
+    if header.match(/seed_2018_([1-9]|1[0-2])_elec_kwh/)
+      time_series = REXML::Element.new('auc:TimeSeries')
+      start_ts = REXML::Element.new('auc:StartTimeStamp')
+      end_ts = REXML::Element.new('auc:EndTimeStamp')
+
+      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_elec_kwh/).join('')
+      d = Date.new(2018, m.to_i, -1).day
+#      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
+      start_ts.text = '2018' + '-' + m + '-' + '1' + ' 00:00:00'
+      end_ts.text = '2018' + '-' + m + '-' + d.to_s + ' 23:59:59'
+
+      time_series.add_element(start_ts)
+      time_series.add_element(end_ts)
+      time_series_data.add_element(time_series)
+    end
+  end
+  
+  scenario.add_element(time_series_data)
+  scenarios.add_element(scenario) unless scenario.nil?
 
   # add baseline scenario
   text = "<auc:Scenario ID=\"Baseline\" #{xml_namespace}>
@@ -1061,7 +1092,8 @@ else
 end
 
 CSV.foreach(ARGV[0], options) do |feature|
-  id = feature[:uid]
+#  id = feature[:uid]  
+  id = feature[:id]
   begin
     doc = convert_building(feature, scenario_hash)
     filename = File.join(outdir, "#{id}.xml")
@@ -1078,7 +1110,6 @@ CSV.foreach(ARGV[0], options) do |feature|
   building_type = get_occupancy_classification(feature, scenario_hash)
   year_built = get_year_built(feature) # default
   climate_zone = get_climate_zone(feature) # default
-
   building_name = "Building #{id}"
 
   puts "climate zone is not given for building with name #{building_name}" if climate_zone.nil?
