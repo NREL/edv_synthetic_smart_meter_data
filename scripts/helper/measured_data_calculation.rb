@@ -162,7 +162,7 @@ class MeasuredDataCalculation
     monthly_csv_obj
   end
 
-  def intiate_measure_data_calculation(csv_file_path, xml_file_path)
+  def initiate_measure_data_calculation(csv_file_path, xml_file_path)
     csv_row_collection = []
     csv_month_class_collection = []
 
