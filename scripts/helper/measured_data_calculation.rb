@@ -16,7 +16,8 @@ class MeasuredDataCalculation
   def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
-    file_value_collection = []
+    file_consistent_value_collection = []
+    file_native_value_collection = []
     measured_scenario_element = nil
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
@@ -52,7 +53,7 @@ class MeasuredDataCalculation
     measured_scenario_element.add_element(time_series_data)
 
     csv_month_class_collection.each do |single_csv_class|
-      next unless single_csv_class.get_values[counter] > 0
+      next unless single_csv_class.get_total_values[counter] > 0
       time_series = REXML::Element.new("#{ns}:TimeSeries")
       reading_type = REXML::Element.new("#{ns}:ReadingType")
       reading_type.text = 'Total'
@@ -65,7 +66,7 @@ class MeasuredDataCalculation
       interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
       interval_frequency.text = 'Month'
       interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-      interval_reading.text = single_csv_class.get_values[counter]
+      interval_reading.text = single_csv_class.get_total_values[counter]
 
       time_series.add_element(reading_type)
       time_series.add_element(time_series_reading_quantity)
@@ -75,36 +76,45 @@ class MeasuredDataCalculation
       time_series.add_element(interval_reading)
       time_series_data.add_element(time_series)
 
-      file_value_collection.push(single_csv_class.get_values[counter])
+      file_consistent_value_collection.push(single_csv_class.get_total_values[counter])
+      file_native_value_collection.push(single_csv_class.get_native_values[counter])
     end
 
-    unit_converted_value = calculate_annual_value(file_value_collection, measured_scenario_element)
+    calculate_annual_value(file_consistent_value_collection, file_native_value_collection, measured_scenario_element)
 
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
-  def calculate_annual_value(file_value_collection, scenario_element)
+  def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, scenario_element)
+#    file_consistent_value_collection is an array of 120 total monthly values for 10 buildings, 12 month, in kBtu.
+#    puts file_consistent_value_collection
     ns = 'auc'
-    annual_total_value = file_value_collection.inject(0, :+)
-    unit_converted_value = unit_converted_value(annual_total_value)
-    annual_max_value = file_value_collection.max
+    annual_total_value_kbtu = file_consistent_value_collection.inject(0, :+)
+    annual_total_value_kwh = file_native_value_collection.inject(0, :+)
+    annual_max_value_kbtu = file_consistent_value_collection.max
+    annual_max_value_kwh = file_native_value_collection.max
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
     energy_resource = REXML::Element.new("#{ns}:EnergyResource")
     energy_resource.text = 'Electricity'
     resource_units = REXML::Element.new("#{ns}:ResourceUnits")
-    resource_units.text = 'kBtu'
+    resource_units.text = 'MMBtu'
+    # annual fuel use native units: Sum of all time series values for the past year, in the original units. (units/yr)
     annual_fuel_use_native_units = REXML::Element.new("#{ns}:AnnualFuelUseNativeUnits")
-    annual_fuel_use_native_units.text = annual_total_value
+    annual_fuel_use_native_units.text = annual_total_value_kwh
+    # annual fuel use consistent units: 
+    # Sum of all time series values for a particular or typical year, converted into million Btu of site energy. (MMBtu/yr)
     annual_fuel_use_consistent_units = REXML::Element.new("#{ns}:AnnualFuelUseConsistentUnits")
-    annual_fuel_use_consistent_units.text = unit_converted_value
+    annual_fuel_use_consistent_units.text = annual_total_value_kbtu / 1000
     peak_resource_units = REXML::Element.new("#{ns}:PeakResourceUnits")
+    # annual peak native units: Largest 15-min peak
     peak_resource_units.text = 'kW'
     annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
-    annual_peak_native_units.text = annual_max_value
+    annual_peak_native_units.text = annual_max_value_kwh / 4
+    # annual peak consistent units: Largest 15-min peak (kW)
     annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
-    annual_peak_consistent_units.text = annual_max_value
+    annual_peak_consistent_units.text = annual_max_value_kbtu / 4
 
     scenario_element.add_element(resource_uses)
     resource_uses.add_element(resource_use)
@@ -115,13 +125,13 @@ class MeasuredDataCalculation
     resource_use.add_element(peak_resource_units)
     resource_use.add_element(annual_peak_native_units)
     resource_use.add_element(annual_peak_consistent_units)
-    unit_converted_value
+#    unit_converted_value
   end
 
-  def unit_converted_value(annual_total_value)
-    if annual_total_value > 0
-      annual_value_kwh = annual_total_value / 720
-      return  annual_value_kwh * 3.41214163513307
+  def unit_converted_value(value)
+    if value > 0
+      annual_value_kwh = value / 3.41214163513307
+      return  annual_value_kwh
     end
     0
   end
@@ -203,6 +213,7 @@ class MeasuredDataCalculation
       end
       counter += 1
     end
-    puts "successfully processed #{completed_files} of #{counter} possible files"
+    # counter hack: counter always increased by 1 after the last processed file:
+    puts "successfully processed #{completed_files} of #{counter-1} possible files"
   end
 end
