@@ -640,8 +640,7 @@ def create_measures(feature)
 
   # measures << {ID: 'Measure18',
   # SingleMeasure: true,
-  # SystemCategoryAffected: 'Heating System',
-  # TechnologyCategory: 'BoilerPlantImprovements',
+  # SystemCategoryAffected: 'Heating System',  # TechnologyCategory: 'BoilerPlantImprovements',
   # MeasureName: 'Replace boiler',
   # LongDescription: 'Replace boiler',
   # ScenarioName: 'Replace boiler',
@@ -865,6 +864,26 @@ def create_scenarios(feature)
   end
 
   scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
+  if !(File.basename(ARGV[0]) =~ /monthlyenergy_bricr_filtered*/).nil?
+    scenario.add_attribute('ID', 'Measured')
+    measured_scenario = REXML::Element.new('auc:ScenarioName')
+    measured_scenario.text = 'Measured'
+    scenario.add_element(measured_scenario)
+
+    scenario_type = REXML::Element.new("auc:ScenarioType")
+    scenario.add_element(scenario_type)
+    package_of_measures = REXML::Element.new("auc:PackageOfMeasures")
+    scenario_type.add_element(package_of_measures)
+    reference_case = REXML::Element.new("auc:ReferenceCase")
+    reference_case.add_attribute('IDref', 'Baseline')
+    package_of_measures.add_element(reference_case)
+    calculation_method = REXML::Element.new("auc:CalculationMethod")
+    package_of_measures.add_element(calculation_method)
+    measured = REXML::Element.new("auc:Measured")
+    calculation_method.add_element(measured)
+    other = REXML::Element.new("auc:Other")
+    measured.add_element(other)
+  end
 
   # add time series data
   time_series_data = REXML::Element.new('auc:TimeSeriesData')
@@ -903,6 +922,46 @@ def create_scenarios(feature)
 #    scenario.add_element(time_series_data) 
   end
 
+  annual_total = 0
+
+  feature.headers.each do |header|
+    if header.match(/seed_2018_([1-9]|1[0-2])_elec_kwh/)
+      time_series = REXML::Element.new('auc:TimeSeries')
+
+      reading_type = REXML::Element.new('auc:RedingType')
+      reading_type.text = 'Total'
+
+      reading_quantity = REXML::Element.new('auc:TimeSeriesReadingQuantity')
+      reading_quantity.text = 'Energy'
+
+      start_ts = REXML::Element.new('auc:StartTimeStamp')
+      end_ts = REXML::Element.new('auc:EndTimeStamp')
+
+      interval_frequency = REXML::Element.new('auc:IntervalFrequency')
+      interval_frequency.text = 'Month'
+
+      interval_reading = REXML::Element.new('auc:IntervalReading')
+      interval_reading.text = feature[header]
+      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_elec_kwh/).join('')
+      annual_total += interval_reading.text.to_f
+      d = Date.new(2018, m.to_i, -1).day
+#      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
+      start_ts.text = '2018' + '-' + '%02d'%m + '-' + '1' + ' 00:00:00'
+      end_ts.text = '2018' + '-' + '%02d'%m + '-' + d.to_s + ' 23:00:00+00:00'
+
+      time_series.add_element(reading_type)
+      time_series.add_element(reading_quantity)
+      time_series.add_element(start_ts)
+      time_series.add_element(end_ts)
+      time_series.add_element(interval_frequency)
+      time_series.add_element(interval_reading)
+      time_series_data.add_element(time_series)
+    end
+  end
+
+  puts "annual_#{feature[:id]}: #{annual_total}"
+  scenario.add_element(time_series_data)
+
   # add resource type
   resource_uses = REXML::Element.new('auc:ResourceUses')
 
@@ -910,33 +969,19 @@ def create_scenarios(feature)
   resource_use = REXML::Element.new('auc:ResourceUse')
   energy_resource = REXML::Element.new('auc:EnergyResource')
   energy_resource.text = 'Electrity'
+  resource_units = REXML::Element.new("auc:ResourceUnits")
+  resource_units.text = 'kBtu'
+  annual_fuel_use_native_units = REXML::Element.new("auc:AnnualFuelUseNativeUnits")
+  annual_fuel_use_native_units.text = annual_total * 3.142
   resource_unit = REXML::Element.new('auc:ResourceUnits')
-  resource_unit.text = 'kWh'
+  resource_unit.text = 'kW'
   resource_use.add_element(energy_resource)
   resource_use.add_element(resource_unit)
   resource_uses.add_element(resource_use)
   scenario.add_element(resource_uses)
 
-  feature.headers.each do |header|
-    if header.match(/seed_2018_([1-9]|1[0-2])_elec_kwh/)
-      time_series = REXML::Element.new('auc:TimeSeries')
-      start_ts = REXML::Element.new('auc:StartTimeStamp')
-      end_ts = REXML::Element.new('auc:EndTimeStamp')
-
-      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_elec_kwh/).join('')
-      d = Date.new(2018, m.to_i, -1).day
-#      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
-      start_ts.text = '2018' + '-' + m + '-' + '1' + ' 00:00:00'
-      end_ts.text = '2018' + '-' + m + '-' + d.to_s + ' 23:59:59'
-
-      time_series.add_element(start_ts)
-      time_series.add_element(end_ts)
-      time_series_data.add_element(time_series)
-    end
-  end
-
-  scenario.add_element(time_series_data)
-
+  scenarios.add_element(scenario) unless scenario.nil?
+=begin
   # add electricity total
   all_elec_totals = REXML::Element.new('auc:AllResourceTotals')
 
@@ -956,7 +1001,6 @@ def create_scenarios(feature)
   end
   
   scenario.add_element(all_elec_totals)
-  scenarios.add_element(scenario) unless scenario.nil?
 
   # add gas time series data and totals
   scenario_gas = REXML::Element.new('auc:Scenario')
@@ -996,7 +1040,7 @@ def create_scenarios(feature)
 
   scenario_gas.add_element(time_series_data_gas)
 
-  # add electricity total
+  # add gas total
   all_gas_totals = REXML::Element.new('auc:AllResourceTotals')
 
   feature.headers.each do |header|
@@ -1016,6 +1060,7 @@ def create_scenarios(feature)
   
   scenario_gas.add_element(all_gas_totals)
   scenarios.add_element(scenario_gas)
+=end
 
   # add baseline scenario
   text = "<auc:Scenario ID=\"Baseline\" #{xml_namespace}>
@@ -1161,7 +1206,7 @@ def convert_building(feature, scenario_hash = nil)
 end
 
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync"
+outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync_SF_2018"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file
