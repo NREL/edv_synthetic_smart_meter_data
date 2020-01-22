@@ -65,7 +65,7 @@ class MeasuredDataCalculation
       interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
       interval_frequency.text = 'Month'
       interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-      interval_reading.text = single_csv_class.get_values[counter]
+      interval_reading.text = single_csv_class.get_values[counter] 
 
       time_series.add_element(reading_type)
       time_series.add_element(time_series_reading_quantity)
@@ -75,7 +75,7 @@ class MeasuredDataCalculation
       time_series.add_element(interval_reading)
       time_series_data.add_element(time_series)
 
-      file_value_collection.push(single_csv_class.get_values[counter])
+      file_value_collection.push(single_csv_class.get_values[counter]) 
     end
 
     unit_converted_value = calculate_annual_value(file_value_collection, measured_scenario_element)
