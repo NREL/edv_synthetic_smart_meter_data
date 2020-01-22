@@ -120,7 +120,8 @@ class MeasuredDataCalculation
 
   def unit_converted_value(annual_total_value)
     if annual_total_value > 0
-      annual_value_kwh = annual_total_value / 720
+      #annual_value_kwh = annual_total_value / 720 #not sure why 720 was applied in the previous code (this function is basically converting kWh to kBtu (1 kWh = 3.412 kBtu)
+	  annual_value_kwh = annual_total_value
       return  annual_value_kwh * 3.41214163513307
     end
     0
