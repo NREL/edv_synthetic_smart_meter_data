@@ -972,7 +972,7 @@ def create_scenarios(feature)
   resource_units = REXML::Element.new("auc:ResourceUnits")
   resource_units.text = 'kBtu'
   annual_fuel_use_native_units = REXML::Element.new("auc:AnnualFuelUseNativeUnits")
-  annual_fuel_use_native_units.text = annual_total * 3.142
+  annual_fuel_use_native_units.text = annual_total * 3.412
   resource_unit = REXML::Element.new('auc:ResourceUnits')
   resource_unit.text = 'kW'
   resource_use.add_element(energy_resource)
