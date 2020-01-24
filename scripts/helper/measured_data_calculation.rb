@@ -24,8 +24,8 @@ class MeasuredDataCalculation
       begin
         measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == 'Measured'
       rescue
-        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
-        puts "scenario_elements: #{scenario_elements}"
+#        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
+#        puts "scenario_elements: #{scenario_elements}"
       end
     end
     if measured_scenario_element.nil?
@@ -77,7 +77,7 @@ class MeasuredDataCalculation
       time_series_data.add_element(time_series)
 
       file_consistent_value_collection.push(single_csv_class.get_total_values[counter])
-      file_native_value_collection.push(single_csv_class.get_native_values[counter])
+      file_native_value_collection.push(single_csv_class.get_native_values[counter])      
     end
 
     calculate_annual_value(file_consistent_value_collection, file_native_value_collection, measured_scenario_element)
@@ -86,8 +86,6 @@ class MeasuredDataCalculation
   end
 
   def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, scenario_element)
-#    file_consistent_value_collection is an array of 120 total monthly values for 10 buildings, 12 month, in kBtu.
-#    puts file_consistent_value_collection
     ns = 'auc'
     annual_total_value_kbtu = file_consistent_value_collection.inject(0, :+)
     annual_total_value_kwh = file_native_value_collection.inject(0, :+)
@@ -111,10 +109,10 @@ class MeasuredDataCalculation
     # annual peak native units: Largest 15-min peak
     peak_resource_units.text = 'kW'
     annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
-    annual_peak_native_units.text = annual_max_value_kwh / 4
+#    annual_peak_native_units.text = 
     # annual peak consistent units: Largest 15-min peak (kW)
     annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
-    annual_peak_consistent_units.text = annual_max_value_kbtu / 4
+#    annual_peak_consistent_units.text = 
 
     scenario_element.add_element(resource_uses)
     resource_uses.add_element(resource_use)
@@ -161,11 +159,11 @@ class MeasuredDataCalculation
     monthly_csv_obj.update_year(datetime.year)
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_end_time(csv_row_collection.last[0])
-
     csv_row_collection.each do |single_row|
       counter = 0
       single_row.each do |single_value|
         monthly_csv_obj.update_values(single_value, counter) if counter > 0
+        monthly_csv_obj.get_peak_values(single_value, counter) if counter > 0
         counter += 1
       end
     end
@@ -178,25 +176,27 @@ class MeasuredDataCalculation
 
     csv_table = CSV.read(csv_file_path)
     header_name = csv_table[0]
-    counter = 0
     csv_month_value = 0
 
-    csv_table.each do |csv_row|
-      if counter > 0
-        datetime = Date.parse csv_row[0]
+    csv_table.shift
 
+    months = []
+    csv_table.each do |csv_row|
+        datetime = Date.parse csv_row[0]
         if csv_month_value != datetime.month
           csv_month_value = datetime.month
-          if csv_row_collection.count > 0
-            csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection))
-            csv_row_collection.clear
-          end
+          months.push(csv_month_value)
         end
+    end
 
-        csv_row_collection.push(csv_row)
-
+    months.each do |month|
+      csv_table.each do |row|
+        if Date.parse(row[0]).month == month
+          csv_row_collection.push(row)
+        end
       end
-      counter += 1
+      csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection))
+      csv_row_collection.clear
     end
 
     counter = 0
