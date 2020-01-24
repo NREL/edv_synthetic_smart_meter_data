@@ -75,36 +75,43 @@ class MeasuredDataCalculation
       time_series.add_element(interval_reading)
       time_series_data.add_element(time_series)
 
-      file_value_collection.push(single_csv_class.get_values[counter]) 
+      file_value_collection.push(single_csv_class.get_values[counter])
     end
 
-    unit_converted_value = calculate_annual_value(file_value_collection, measured_scenario_element)
+    calculate_annual_value(file_value_collection, measured_scenario_element)
 
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
   def calculate_annual_value(file_value_collection, scenario_element)
     ns = 'auc'
-    annual_total_value = file_value_collection.inject(0, :+)
-    unit_converted_value = unit_converted_value(annual_total_value)
-    annual_max_value = file_value_collection.max
+    annual_total_value_kbtu = file_value_collection.inject(0, :+)
+    annual_max_value_kbtu = file_value_collection.max
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
     energy_resource = REXML::Element.new("#{ns}:EnergyResource")
     energy_resource.text = 'Electricity'
     resource_units = REXML::Element.new("#{ns}:ResourceUnits")
-    resource_units.text = 'kBtu'
+	
+    resource_units.text = 'MMBtu'
+    # annual fuel use native units: Sum of all time series values for the past year, in the original units.
     annual_fuel_use_native_units = REXML::Element.new("#{ns}:AnnualFuelUseNativeUnits")
-    annual_fuel_use_native_units.text = annual_total_value
+	#TODO: check if this conversion is doing correctly from kBtu to kWh
+    annual_fuel_use_native_units.text = annual_total_value_kbtu / 3.412
+    # annual fuel use consistent units: 
+    # Sum of all time series values for a particular or typical year, converted into million Btu of site energy. (MMBtu)
     annual_fuel_use_consistent_units = REXML::Element.new("#{ns}:AnnualFuelUseConsistentUnits")
-    annual_fuel_use_consistent_units.text = unit_converted_value
+    annual_fuel_use_consistent_units.text = annual_total_value_kbtu / 1000
     peak_resource_units = REXML::Element.new("#{ns}:PeakResourceUnits")
+    # annual peak native units: Largest 15-min peak
+	
     peak_resource_units.text = 'kW'
     annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
-    annual_peak_native_units.text = annual_max_value
+    annual_peak_native_units.text = annual_max_value_kbtu / 3.412
+    # annual peak consistent units: Largest 15-min peak (kW)
     annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
-    annual_peak_consistent_units.text = annual_max_value
+    annual_peak_consistent_units.text = annual_max_value_kbtu
 
     scenario_element.add_element(resource_uses)
     resource_uses.add_element(resource_use)
@@ -115,14 +122,13 @@ class MeasuredDataCalculation
     resource_use.add_element(peak_resource_units)
     resource_use.add_element(annual_peak_native_units)
     resource_use.add_element(annual_peak_consistent_units)
-    unit_converted_value
+#    unit_converted_value
   end
 
-  def unit_converted_value(annual_total_value)
-    if annual_total_value > 0
-      #annual_value_kwh = annual_total_value / 720 #not sure why 720 was applied in the previous code (this function is basically converting kWh to kBtu (1 kWh = 3.412 kBtu)
-	  annual_value_kwh = annual_total_value
-      return  annual_value_kwh * 3.41214163513307
+  def unit_converted_value(value)
+    if value > 0
+      annual_value_kwh = value / 3.41214163513307
+      return  annual_value_kwh
     end
     0
   end
@@ -163,7 +169,7 @@ class MeasuredDataCalculation
     monthly_csv_obj
   end
 
-  def intiate_measure_data_calculation(csv_file_path, xml_file_path)
+  def initiate_measure_data_calculation(csv_file_path, xml_file_path)
     csv_row_collection = []
     csv_month_class_collection = []
 
@@ -204,6 +210,7 @@ class MeasuredDataCalculation
       end
       counter += 1
     end
-    puts "successfully processed #{completed_files} of #{counter} possible files"
+    # counter hack: counter always increased by 1 after the last processed file:
+    puts "successfully processed #{completed_files} of #{counter-1} possible files"
   end
 end
