@@ -177,10 +177,9 @@ class MeasuredDataCalculation
     csv_table = CSV.read(csv_file_path)
     header_name = csv_table[0]
     csv_month_value = 0
-
     csv_table.shift
-
     months = []
+
     csv_table.each do |csv_row|
         datetime = Date.parse csv_row[0]
         if csv_month_value != datetime.month
