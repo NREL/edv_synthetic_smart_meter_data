@@ -198,21 +198,19 @@ class MeasuredDataCalculation
       csv_row_collection.clear
     end
 
-    counter = 0
     completed_files = 0
-    header_name.each do |file_name|
-      if counter > 0
-        xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
-        if File.exist?(xml_file)
-          add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
-          completed_files += 1
-        else
-          puts "file #{file_name} does not exist"
+    header_name.drop(1).each do |file_name|
+      xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
+      if File.exist?(xml_file)
+        (0...csv_month_class_collection.length).each do |counter|
+          puts csv_month_class_collection[counter].inspect
         end
+        #add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
+        completed_files += 1
+      else
+        puts "file #{file_name} does not exist"
       end
-      counter += 1
     end
-    # counter hack: counter always increased by 1 after the last processed file:
-    puts "successfully processed #{completed_files} of #{counter-1} possible files"
+    puts "successfully processed #{completed_files} of #{header_name.drop(1).length} possible files"
   end
 end

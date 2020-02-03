@@ -73,17 +73,13 @@ class MonthlyData
   def update_values(value, counter)
     csv_value = value.to_f
     if @total_value[counter].nil? || @total_native_value[counter].nil?
-      # converting from kWh to kBtu (multiply by 3.41214)
       @total_native_value[counter] = csv_value
-      @total_value[counter] = csv_value * 3.412
-#      puts "1. native_value_#{counter}: ",@total_native_value[counter]
-#      puts "1. totall_value_#{counter}:",@total_value[counter]
+      @total_value[counter] = csv_value * 3.41214
+      @annual_peak_value[counter] = csv_value
     else
-      # converting from kWh to kBtu (multiply by 3.41214)
       @total_native_value[counter] += csv_value
-      @total_value[counter] += csv_value * 3.412
-#      puts "2. native_value_#{counter}: ",@total_native_value[counter]
-#      puts "2. totall_value_#{counter}: ",@total_value[counter]
+      @total_value[counter] += csv_value * 3.41214
+      @annual_peak_value.push(csv_value)
     end
   end
 
@@ -96,7 +92,7 @@ class MonthlyData
   end
 
   def get_peak_values(value, counter)
-   # puts "single_cell: #{value.to_f}"
+   return @annual_peak_value
   end
 
   def peak_value
