@@ -18,6 +18,7 @@ class MeasuredDataCalculation
     doc = create_xml_file_object(xml_file)
     file_consistent_value_collection = []
     file_native_value_collection = []
+    file_peak_value_collection = []
     measured_scenario_element = nil
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
@@ -53,44 +54,47 @@ class MeasuredDataCalculation
     measured_scenario_element.add_element(time_series_data)
 
     csv_month_class_collection.each do |single_csv_class|
-      next unless single_csv_class.get_total_values[counter] > 0
-      time_series = REXML::Element.new("#{ns}:TimeSeries")
-      reading_type = REXML::Element.new("#{ns}:ReadingType")
-      reading_type.text = 'Total'
-      time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
-      time_series_reading_quantity.text = 'Energy'
-      start_time_stamp = REXML::Element.new("#{ns}:StartTimeStamp")
-      start_time_stamp.text = single_csv_class.start_time_stamp
-      end_time_stamp = REXML::Element.new("#{ns}:EndTimeStamp")
-      end_time_stamp.text = single_csv_class.end_time_stamp
-      interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
-      interval_frequency.text = 'Month'
-      interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-      interval_reading.text = single_csv_class.get_total_values[counter]
+      unless single_csv_class.get_total_values[counter].nil?
+        next unless single_csv_class.get_total_values[counter] > 0
+        time_series = REXML::Element.new("#{ns}:TimeSeries")
+        reading_type = REXML::Element.new("#{ns}:ReadingType")
+        reading_type.text = 'Total'
+        time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
+        time_series_reading_quantity.text = 'Energy'
+        start_time_stamp = REXML::Element.new("#{ns}:StartTimeStamp")
+        start_time_stamp.text = single_csv_class.start_time_stamp
+        end_time_stamp = REXML::Element.new("#{ns}:EndTimeStamp")
+        end_time_stamp.text = single_csv_class.end_time_stamp
+        interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
+        interval_frequency.text = 'Month'
+        interval_reading = REXML::Element.new("#{ns}:IntervalReading")
+        interval_reading.text = single_csv_class.get_total_values[counter]
 
-      time_series.add_element(reading_type)
-      time_series.add_element(time_series_reading_quantity)
-      time_series.add_element(start_time_stamp)
-      time_series.add_element(end_time_stamp)
-      time_series.add_element(interval_frequency)
-      time_series.add_element(interval_reading)
-      time_series_data.add_element(time_series)
+        time_series.add_element(reading_type)
+        time_series.add_element(time_series_reading_quantity)
+        time_series.add_element(start_time_stamp)
+        time_series.add_element(end_time_stamp)
+        time_series.add_element(interval_frequency)
+        time_series.add_element(interval_reading)
+        time_series_data.add_element(time_series)
 
-      file_consistent_value_collection.push(single_csv_class.get_total_values[counter])
-      file_native_value_collection.push(single_csv_class.get_native_values[counter])      
+        file_consistent_value_collection.push(single_csv_class.get_total_values[counter])
+        file_native_value_collection.push(single_csv_class.get_native_values[counter])
+        file_peak_value_collection.push(single_csv_class.get_peak_values[counter])
+      end
     end
 
-    calculate_annual_value(file_consistent_value_collection, file_native_value_collection, measured_scenario_element)
+    calculate_annual_value(file_consistent_value_collection, file_native_value_collection, file_peak_value_collection, measured_scenario_element)
 
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
-  def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, scenario_element)
+  def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, file_peak_value_collection, scenario_element)
     ns = 'auc'
     annual_total_value_kbtu = file_consistent_value_collection.inject(0, :+)
     annual_total_value_kwh = file_native_value_collection.inject(0, :+)
     annual_max_value_kbtu = file_consistent_value_collection.max
-    annual_max_value_kwh = file_native_value_collection.max
+    annual_max_value_kwh = file_peak_value_collection.max
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
@@ -163,7 +167,6 @@ class MeasuredDataCalculation
       counter = 0
       single_row.each do |single_value|
         monthly_csv_obj.update_values(single_value, counter) if counter > 0
-        monthly_csv_obj.get_peak_values(single_value, counter) if counter > 0
         counter += 1
       end
     end
@@ -198,14 +201,17 @@ class MeasuredDataCalculation
       csv_row_collection.clear
     end
 
+    #csv_month_class_collection[0]: December, 2014 data
+    #csv_month_class_collection[0]: Janurary, 2015 data
+    #csv_month_class_collection[0]: Feburary, 2015 data
     completed_files = 0
     header_name.drop(1).each do |file_name|
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
         (0...csv_month_class_collection.length).each do |counter|
-          puts csv_month_class_collection.inspect
+          #add_measured_data_to_xml_file(xml_file, csv_month_class_collection[counter], counter)
+          puts "#{File.basename(xml_file)}: #{csv_month_class_collection[counter].inspect}"
         end
-          #add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
         completed_files += 1
       else
         puts "file #{file_name} does not exist"
