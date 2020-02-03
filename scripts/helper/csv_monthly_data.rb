@@ -91,12 +91,8 @@ class MonthlyData
     return @total_native_value
   end
 
-  def get_peak_values(value, counter)
+  def get_peak_values
    return @annual_peak_value
-  end
-
-  def peak_value
-    return @annual_peak_value
   end
 
   def get_sum

@@ -203,9 +203,9 @@ class MeasuredDataCalculation
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
         (0...csv_month_class_collection.length).each do |counter|
-          puts csv_month_class_collection[counter].inspect
+          puts csv_month_class_collection.inspect
         end
-        #add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
+          #add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
         completed_files += 1
       else
         puts "file #{file_name} does not exist"
