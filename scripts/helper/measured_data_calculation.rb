@@ -14,6 +14,7 @@ class MeasuredDataCalculation
   end
 
   def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
+    # want raw hourly data of each month for each building separated by buildings (not months)
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
     file_consistent_value_collection = []
@@ -80,7 +81,7 @@ class MeasuredDataCalculation
 
         file_consistent_value_collection.push(single_csv_class.get_total_values[counter])
         file_native_value_collection.push(single_csv_class.get_native_values[counter])
-        file_peak_value_collection.push(single_csv_class.get_peak_values[counter])
+#        file_peak_value_collection.push(single_csv_class.get_peak_values[counter])
       end
     end
 
@@ -156,13 +157,20 @@ class MeasuredDataCalculation
     doc
   end
 
-  def create_monthly_csv_data(csv_row_collection)
+  def create_monthly_csv_data(csv_row_collection, header)
     monthly_csv_obj = MonthlyData.new
     datetime = Date.parse csv_row_collection[0][0]
     monthly_csv_obj.update_start_time(datetime)
     monthly_csv_obj.update_year(datetime.year)
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_end_time(csv_row_collection.last[0])
+    (1...header.length).each do |headers|
+      puts "date and building: #{datetime}, #{header[headers]}:"
+      (0...csv_row_collection.length).each do |hourly|
+        monthly_csv_obj.update_monthly(csv_row_collection, hourly, headers)
+      end
+      puts "#{monthly_csv_obj.get_monthly_peak_values}"
+    end
     csv_row_collection.each do |single_row|
       counter = 0
       single_row.each do |single_value|
@@ -192,26 +200,36 @@ class MeasuredDataCalculation
     end
 
     months.each do |month|
+#      puts "month #{month}:"
       csv_table.each do |row|
         if Date.parse(row[0]).month == month
+=begin
+          # add this to MonthlyData class for process:
+          (1...header_name.length).each.with_index(1) do |i, header|
+            puts "#{month} #{header_name[i]}, #{row[header]}"
+          end
+=end
           csv_row_collection.push(row)
         end
       end
-      csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection))
-      csv_row_collection.clear
+#      (0...header_name.length).drop(1).each do |building|
+#        puts header_name[building]
+        csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, header_name))
+        csv_row_collection.clear
+#      end
     end
 
     #csv_month_class_collection[0]: December, 2014 data
-    #csv_month_class_collection[0]: Janurary, 2015 data
-    #csv_month_class_collection[0]: Feburary, 2015 data
+    #csv_month_class_collection[1]: Janurary, 2015 data
+    #csv_month_class_collection[2]: Feburary, 2015 data
     completed_files = 0
     header_name.drop(1).each do |file_name|
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
-        (0...csv_month_class_collection.length).each do |counter|
-          #add_measured_data_to_xml_file(xml_file, csv_month_class_collection[counter], counter)
-          puts "#{File.basename(xml_file)}: #{csv_month_class_collection[counter].inspect}"
-        end
+#        (0...csv_month_class_collection.length).each do |counter|
+          #add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
+          #puts "#{File.basename(xml_file)}: #{csv_month_class_collection[counter].inspect}"
+#        end
         completed_files += 1
       else
         puts "file #{file_name} does not exist"

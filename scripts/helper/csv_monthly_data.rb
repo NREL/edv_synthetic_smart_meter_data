@@ -45,6 +45,8 @@ class MonthlyData
     @total_value = {}
     @total_native_value = {}
     @annual_peak_value = []
+    @building_monthly = []
+    @local_header = ''
   end
 
   def update_month(month_value)
@@ -75,12 +77,19 @@ class MonthlyData
     if @total_value[counter].nil? || @total_native_value[counter].nil?
       @total_native_value[counter] = csv_value
       @total_value[counter] = csv_value * 3.41214
-      @annual_peak_value[counter] = csv_value
     else
       @total_native_value[counter] += csv_value
       @total_value[counter] += csv_value * 3.41214
-      @annual_peak_value.push(csv_value)
     end
+  end
+
+  def update_monthly(collection, hour, header)
+    if header != @local_header
+      @local_header = header
+      @building_monthly.clear
+    else
+    end
+    @building_monthly.push collection[hour][header].to_f
   end
 
   def get_total_values
@@ -91,8 +100,8 @@ class MonthlyData
     return @total_native_value
   end
 
-  def get_peak_values
-   return @annual_peak_value
+  def get_monthly_peak_values
+    return @building_monthly.max
   end
 
   def get_sum
