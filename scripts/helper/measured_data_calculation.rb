@@ -26,8 +26,8 @@ class MeasuredDataCalculation
       begin
         measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == 'Measured'
       rescue
-#        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
-#        puts "scenario_elements: #{scenario_elements}"
+        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
+        puts "scenario_elements: #{scenario_elements}"
       end
     end
     if measured_scenario_element.nil?
@@ -157,20 +157,21 @@ class MeasuredDataCalculation
     doc
   end
 
-  def create_monthly_csv_data(csv_row_collection, header)
+  def create_monthly_csv_data(csv_row_collection, header, max)
     monthly_csv_obj = MonthlyData.new
     datetime = Date.parse csv_row_collection[0][0]
     monthly_csv_obj.update_start_time(datetime)
     monthly_csv_obj.update_year(datetime.year)
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_end_time(csv_row_collection.last[0])
+
     (1...header.length).each do |headers|
-      puts "date and building: #{datetime}, #{header[headers]}:"
       (0...csv_row_collection.length).each do |hourly|
         monthly_csv_obj.update_monthly(csv_row_collection, hourly, headers)
       end
-      puts "#{monthly_csv_obj.get_monthly_peak_values}"
+      max.push monthly_csv_obj.get_monthly_peak_values
     end
+
     csv_row_collection.each do |single_row|
       counter = 0
       single_row.each do |single_value|
@@ -198,30 +199,28 @@ class MeasuredDataCalculation
           months.push(csv_month_value)
         end
     end
-
+    max = []
     months.each do |month|
-#      puts "month #{month}:"
       csv_table.each do |row|
         if Date.parse(row[0]).month == month
-=begin
-          # add this to MonthlyData class for process:
-          (1...header_name.length).each.with_index(1) do |i, header|
-            puts "#{month} #{header_name[i]}, #{row[header]}"
-          end
-=end
           csv_row_collection.push(row)
         end
       end
-#      (0...header_name.length).drop(1).each do |building|
-#        puts header_name[building]
-        csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, header_name))
+        csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, header_name, max))
         csv_row_collection.clear
-#      end
+    end
+    max_value = []
+    one = []
+    (0...header_name.drop(1).length).each do |header|
+      one[header] = []
+      (header...max.length).step(header_name.drop(1).length).each do |maxes|
+        one[header].push max[maxes]
+      end
+      max_value.push one[header].max
     end
 
-    #csv_month_class_collection[0]: December, 2014 data
-    #csv_month_class_collection[1]: Janurary, 2015 data
-    #csv_month_class_collection[2]: Feburary, 2015 data
+    puts max_value
+
     completed_files = 0
     header_name.drop(1).each do |file_name|
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
