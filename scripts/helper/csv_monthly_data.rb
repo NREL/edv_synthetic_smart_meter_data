@@ -45,7 +45,7 @@ class MonthlyData
     @total_value = {}
     @total_native_value = {}
     @annual_peak_value = []
-    @building_monthly = []
+    @monthly_values = []
     @local_header = ''
   end
 
@@ -72,7 +72,7 @@ class MonthlyData
     @end_time_stamp = end_time
   end
 
-  def update_values(value, counter)
+  def update_total_values(value, counter)
     csv_value = value.to_f
     if @total_value[counter].nil? || @total_native_value[counter].nil?
       @total_native_value[counter] = csv_value
@@ -83,12 +83,12 @@ class MonthlyData
     end
   end
 
-  def update_monthly(collection, hour, header)
+  def update_monthly_values(monthly_collection, hour, header)
     if header != @local_header
       @local_header = header
-      @building_monthly.clear
+      @monthly_values.clear
     end
-    @building_monthly.push collection[hour][header].to_f
+    @monthly_values.push monthly_collection[hour][header].to_f
   end
 
   def get_total_values
@@ -100,7 +100,7 @@ class MonthlyData
   end
 
   def get_monthly_peak_values
-    return @building_monthly.max
+    return @monthly_values.max
   end
 
   def get_sum

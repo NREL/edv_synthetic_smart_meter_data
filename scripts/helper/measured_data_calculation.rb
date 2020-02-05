@@ -14,7 +14,6 @@ class MeasuredDataCalculation
   end
 
   def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, annual_max)
-    # want raw hourly data of each month for each building separated by buildings (not months)
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
     file_consistent_value_collection = []
@@ -102,18 +101,22 @@ class MeasuredDataCalculation
     energy_resource.text = 'Electricity'
     resource_units = REXML::Element.new("#{ns}:ResourceUnits")
     resource_units.text = 'MMBtu'
+
     # annual fuel use native units: Sum of all time series values for the past year, in the original units. (units/yr)
     annual_fuel_use_native_units = REXML::Element.new("#{ns}:AnnualFuelUseNativeUnits")
     annual_fuel_use_native_units.text = annual_total_value_kwh
+
     # annual fuel use consistent units: 
     # Sum of all time series values for a particular or typical year, converted into million Btu of site energy. (MMBtu/yr)
     annual_fuel_use_consistent_units = REXML::Element.new("#{ns}:AnnualFuelUseConsistentUnits")
     annual_fuel_use_consistent_units.text = annual_total_value_kbtu / 1000
     peak_resource_units = REXML::Element.new("#{ns}:PeakResourceUnits")
+
     # annual peak native units: Largest 15-min peak
     peak_resource_units.text = 'kW'
     annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
     annual_peak_native_units.text = annual_max_value_kwh
+
     # annual peak consistent units: Largest 15-min peak (kW)
     annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
     annual_peak_consistent_units.text = annual_max_value_kwh
@@ -127,15 +130,6 @@ class MeasuredDataCalculation
     resource_use.add_element(peak_resource_units)
     resource_use.add_element(annual_peak_native_units)
     resource_use.add_element(annual_peak_consistent_units)
-#    unit_converted_value
-  end
-
-  def unit_converted_value(value)
-    if value > 0
-      annual_value_kwh = value / 3.41214163513307
-      return  annual_value_kwh
-    end
-    0
   end
 
   def save_xml(filename, doc)
@@ -166,7 +160,7 @@ class MeasuredDataCalculation
 
     (1...header.length).each do |headers|
       (0...csv_row_collection.length).each do |hourly|
-        monthly_csv_obj.update_monthly(csv_row_collection, hourly, headers)
+        monthly_csv_obj.update_monthly_values(csv_row_collection, hourly, headers)
       end
       max.push monthly_csv_obj.get_monthly_peak_values
     end
@@ -174,7 +168,7 @@ class MeasuredDataCalculation
     csv_row_collection.each do |single_row|
       counter = 0
       single_row.each do |single_value|
-        monthly_csv_obj.update_values(single_value, counter) if counter > 0
+        monthly_csv_obj.update_total_values(single_value, counter) if counter > 0
         counter += 1
       end
     end
@@ -199,6 +193,7 @@ class MeasuredDataCalculation
         end
     end
 
+    # Monthly peak values for individual buildings
     monthly_max = []
     months.each do |month|
       csv_table.each do |row|
@@ -209,6 +204,8 @@ class MeasuredDataCalculation
         csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, header_name, monthly_max))
         csv_row_collection.clear
     end
+
+    # Annual peak values for individual buildings
     annual_max = []
     one = []
     (0...header_name.drop(1).length).each do |header|
@@ -219,20 +216,19 @@ class MeasuredDataCalculation
       annual_max.push one[header].max
     end
 
+    # Create BuildingSync xml files with measured data
     completed_files = 0
     header_name.drop(1).each do |file_name|
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
         (0...csv_month_class_collection.length).each do |counter|
-#          puts csv_month_class_collection[counter].month
           add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, annual_max[completed_files])
-          #puts "#{File.basename(xml_file)}: #{csv_month_class_collection[counter].inspect}"
         end
         completed_files += 1
       else
-        puts "file #{file_name} does not exist"
+        puts "File #{file_name} does not exist"
       end
     end
-    puts "successfully processed #{completed_files} of #{header_name.drop(1).length} possible files"
+    puts "Successfully processed #{completed_files} of #{header_name.drop(1).length} possible files"
   end
 end
