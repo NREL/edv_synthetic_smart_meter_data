@@ -13,7 +13,7 @@ class MeasuredDataCalculation
     # This is a stub, used for indexing
   end
 
-  def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
+  def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, annual_max)
     # want raw hourly data of each month for each building separated by buildings (not months)
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
@@ -81,21 +81,20 @@ class MeasuredDataCalculation
 
         file_consistent_value_collection.push(single_csv_class.get_total_values[counter])
         file_native_value_collection.push(single_csv_class.get_native_values[counter])
-#        file_peak_value_collection.push(single_csv_class.get_peak_values[counter])
       end
     end
 
-    calculate_annual_value(file_consistent_value_collection, file_native_value_collection, file_peak_value_collection, measured_scenario_element)
+    calculate_annual_value(file_consistent_value_collection, file_native_value_collection, measured_scenario_element, annual_max)
 
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
-  def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, file_peak_value_collection, scenario_element)
+  def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, scenario_element, annual_max)
     ns = 'auc'
     annual_total_value_kbtu = file_consistent_value_collection.inject(0, :+)
     annual_total_value_kwh = file_native_value_collection.inject(0, :+)
     annual_max_value_kbtu = file_consistent_value_collection.max
-    annual_max_value_kwh = file_peak_value_collection.max
+    annual_max_value_kwh = annual_max
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
@@ -114,10 +113,10 @@ class MeasuredDataCalculation
     # annual peak native units: Largest 15-min peak
     peak_resource_units.text = 'kW'
     annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
-#    annual_peak_native_units.text = 
+    annual_peak_native_units.text = annual_max_value_kwh
     # annual peak consistent units: Largest 15-min peak (kW)
     annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
-#    annual_peak_consistent_units.text = 
+    annual_peak_consistent_units.text = annual_max_value_kwh
 
     scenario_element.add_element(resource_uses)
     resource_uses.add_element(resource_use)
@@ -199,36 +198,36 @@ class MeasuredDataCalculation
           months.push(csv_month_value)
         end
     end
-    max = []
+
+    monthly_max = []
     months.each do |month|
       csv_table.each do |row|
         if Date.parse(row[0]).month == month
           csv_row_collection.push(row)
         end
       end
-        csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, header_name, max))
+        csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, header_name, monthly_max))
         csv_row_collection.clear
     end
-    max_value = []
+    annual_max = []
     one = []
     (0...header_name.drop(1).length).each do |header|
       one[header] = []
-      (header...max.length).step(header_name.drop(1).length).each do |maxes|
-        one[header].push max[maxes]
+      (header...monthly_max.length).step(header_name.drop(1).length).each do |maxes|
+        one[header].push monthly_max[maxes]
       end
-      max_value.push one[header].max
+      annual_max.push one[header].max
     end
-
-    puts max_value
 
     completed_files = 0
     header_name.drop(1).each do |file_name|
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
-#        (0...csv_month_class_collection.length).each do |counter|
-          #add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
+        (0...csv_month_class_collection.length).each do |counter|
+#          puts csv_month_class_collection[counter].month
+          add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, annual_max[completed_files])
           #puts "#{File.basename(xml_file)}: #{csv_month_class_collection[counter].inspect}"
-#        end
+        end
         completed_files += 1
       else
         puts "file #{file_name} does not exist"
