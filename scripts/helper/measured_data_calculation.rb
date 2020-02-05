@@ -26,8 +26,8 @@ class MeasuredDataCalculation
       begin
         measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == 'Measured'
       rescue
-        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
-        puts "scenario_elements: #{scenario_elements}"
+#        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
+#        puts "scenario_elements: #{scenario_elements}"
       end
     end
     if measured_scenario_element.nil?
