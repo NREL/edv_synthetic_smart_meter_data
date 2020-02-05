@@ -87,7 +87,6 @@ class MonthlyData
     if header != @local_header
       @local_header = header
       @building_monthly.clear
-    else
     end
     @building_monthly.push collection[hour][header].to_f
   end
