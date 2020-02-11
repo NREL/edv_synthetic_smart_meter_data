@@ -42,7 +42,8 @@ if allow_local && File.exists?('../BuildingSync-gem')
   # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
-  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
+  #gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
+  gem 'buildingsync', github: 'JanghyunJK/BuildingSync-gem', branch: 'develop'
 end
 
 if allow_local && File.exists?('../openstudio-occupant-variability-gem')
