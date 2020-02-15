@@ -28,7 +28,7 @@ end
 start = Time.now
 puts "Simulation script started at #{start}"
 
-def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
+def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
   out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
   root_dir = File.expand_path('..', File.dirname(__FILE__))
@@ -93,7 +93,7 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
     ddy_file_path = File.expand_path("../scripts/#{ddy_file}/", File.dirname(__FILE__))
   end
 
-  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
+  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
 
   puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
   log.puts("...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
