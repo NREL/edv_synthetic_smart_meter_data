@@ -7,10 +7,12 @@ require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 require_relative 'constants'
 
+baseline_only = true
+
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 1
 BUILDINGS_PARALLEL = 4
-BuildingSync::Extension::SIMULATE_BASELINE_ONLY = true
+BuildingSync::Extension::SIMULATE_BASELINE_ONLY = baseline_only
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -48,7 +50,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     runner = OpenStudio::Extension::Runner.new(root_dir)
     runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
 
-    translator.gather_results(out_path)
+    translator.gather_results(out_path, baseline_only)
     translator.save_xml(out_xml)
   rescue StandardError => e
     puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
