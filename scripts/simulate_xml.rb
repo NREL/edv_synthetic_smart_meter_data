@@ -61,7 +61,7 @@ end
 runner = OpenStudio::Extension::Runner.new(root_dir)
 runner.run_osws(osws)
 
-translator.gather_results(out_path)
+translator.gather_results(out_path, baseline_only)
 translator.save_xml(File.join(out_path, 'results.xml'))
 
 puts 'bye'
