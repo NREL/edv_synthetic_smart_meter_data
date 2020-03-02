@@ -7,13 +7,17 @@ require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 require_relative 'constants'
 
+<<<<<<< HEAD
 start = Time.now
 puts "Simulation script started at #{start}"
+=======
+baseline_only = true
+>>>>>>> unit-conversion-checking-for-BDGP
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 1
 BUILDINGS_PARALLEL = 4
-BuildingSync::Extension::SIMULATE_BASELINE_ONLY = true
+BuildingSync::Extension::SIMULATE_BASELINE_ONLY = baseline_only
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -27,6 +31,7 @@ if !ARGV[1].nil?
   bldg_sync_file_dir = File.expand_path(ARGV[1])
 end
 
+<<<<<<< HEAD
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
   simulation_file_path = File.join(File.expand_path(NAME_OF_OUTPUT_DIR), 'SimulationFiles')
   if !File.exist?(simulation_file_path)
@@ -35,6 +40,14 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
   
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
+=======
+start = Time.now
+puts "Simulation script started at #{start}"
+
+def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
+  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
+  out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
+>>>>>>> unit-conversion-checking-for-BDGP
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
   begin
@@ -54,7 +67,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     runner = OpenStudio::Extension::Runner.new(root_dir)
     runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
 
-    translator.gather_results(out_path)
+    translator.gather_results(out_path, baseline_only)
     translator.save_xml(out_xml)
   rescue StandardError => e
     puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
@@ -98,7 +111,7 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
   end
   puts "xml? #{xml_file}"
 
-  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
+  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
 
   #puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
   log.puts("#{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
