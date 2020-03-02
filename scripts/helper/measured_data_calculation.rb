@@ -54,7 +54,6 @@ class MeasuredDataCalculation
     measured_scenario_element.add_element(time_series_data)
 
     csv_month_class_collection.each do |single_csv_class|
-<<<<<<< HEAD
       unless single_csv_class.get_total_values[counter].nil?
         next unless single_csv_class.get_total_values[counter] > 0
         time_series = REXML::Element.new("#{ns}:TimeSeries")
@@ -85,57 +84,22 @@ class MeasuredDataCalculation
     end
 
     calculate_annual_value(file_consistent_value_collection, file_native_value_collection, measured_scenario_element, annual_max)
-=======
-      next unless single_csv_class.get_values[counter] > 0
-      time_series = REXML::Element.new("#{ns}:TimeSeries")
-      reading_type = REXML::Element.new("#{ns}:ReadingType")
-      reading_type.text = 'Total'
-      time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
-      time_series_reading_quantity.text = 'Energy'
-      start_time_stamp = REXML::Element.new("#{ns}:StartTimeStamp")
-      start_time_stamp.text = single_csv_class.start_time_stamp
-      end_time_stamp = REXML::Element.new("#{ns}:EndTimeStamp")
-      end_time_stamp.text = single_csv_class.end_time_stamp
-      interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
-      interval_frequency.text = 'Month'
-      interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-      interval_reading.text = single_csv_class.get_values[counter] 
-
-      time_series.add_element(reading_type)
-      time_series.add_element(time_series_reading_quantity)
-      time_series.add_element(start_time_stamp)
-      time_series.add_element(end_time_stamp)
-      time_series.add_element(interval_frequency)
-      time_series.add_element(interval_reading)
-      time_series_data.add_element(time_series)
-
-      file_value_collection.push(single_csv_class.get_values[counter])
-    end
-
-    calculate_annual_value(file_value_collection, measured_scenario_element)
->>>>>>> unit-conversion-checking-for-BDGP
 
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
   def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, scenario_element, annual_max)
     ns = 'auc'
-<<<<<<< HEAD
     annual_total_value_kbtu = file_consistent_value_collection.inject(0, :+)
     annual_total_value_kwh = file_native_value_collection.inject(0, :+)
     annual_max_value_kbtu = file_consistent_value_collection.max
     annual_max_value_kwh = annual_max
-=======
-    annual_total_value_kbtu = file_value_collection.inject(0, :+)
-    annual_max_value_kbtu = file_value_collection.max
->>>>>>> unit-conversion-checking-for-BDGP
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
     energy_resource = REXML::Element.new("#{ns}:EnergyResource")
     energy_resource.text = 'Electricity'
     resource_units = REXML::Element.new("#{ns}:ResourceUnits")
-<<<<<<< HEAD
     resource_units.text = 'MMBtu'
 
     # annual fuel use native units: Sum of all time series values for the past year, in the original units. (units/yr)
@@ -156,27 +120,6 @@ class MeasuredDataCalculation
     # annual peak consistent units: Largest 15-min peak (kW)
     annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
     annual_peak_consistent_units.text = annual_max_value_kwh
-=======
-	
-    resource_units.text = 'MMBtu'
-    # annual fuel use native units: Sum of all time series values for the past year, in the original units.
-    annual_fuel_use_native_units = REXML::Element.new("#{ns}:AnnualFuelUseNativeUnits")
-	#TODO: check if this conversion is doing correctly from kBtu to kWh
-    annual_fuel_use_native_units.text = annual_total_value_kbtu / 3.412
-    # annual fuel use consistent units: 
-    # Sum of all time series values for a particular or typical year, converted into million Btu of site energy. (MMBtu)
-    annual_fuel_use_consistent_units = REXML::Element.new("#{ns}:AnnualFuelUseConsistentUnits")
-    annual_fuel_use_consistent_units.text = annual_total_value_kbtu / 1000
-    peak_resource_units = REXML::Element.new("#{ns}:PeakResourceUnits")
-    # annual peak native units: Largest 15-min peak
-	
-    peak_resource_units.text = 'kW'
-    annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
-    annual_peak_native_units.text = annual_max_value_kbtu / 3.412
-    # annual peak consistent units: Largest 15-min peak (kW)
-    annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
-    annual_peak_consistent_units.text = annual_max_value_kbtu
->>>>>>> unit-conversion-checking-for-BDGP
 
     scenario_element.add_element(resource_uses)
     resource_uses.add_element(resource_use)
@@ -187,18 +130,6 @@ class MeasuredDataCalculation
     resource_use.add_element(peak_resource_units)
     resource_use.add_element(annual_peak_native_units)
     resource_use.add_element(annual_peak_consistent_units)
-<<<<<<< HEAD
-=======
-#    unit_converted_value
-  end
-
-  def unit_converted_value(value)
-    if value > 0
-      annual_value_kwh = value / 3.41214163513307
-      return  annual_value_kwh
-    end
-    0
->>>>>>> unit-conversion-checking-for-BDGP
   end
 
   def save_xml(filename, doc)
@@ -298,11 +229,6 @@ class MeasuredDataCalculation
         puts "File #{file_name} does not exist"
       end
     end
-<<<<<<< HEAD
     puts "Successfully processed #{completed_files} of #{header_name.drop(1).length} possible files"
-=======
-    # counter hack: counter always increased by 1 after the last processed file:
-    puts "successfully processed #{completed_files} of #{counter-1} possible files"
->>>>>>> unit-conversion-checking-for-BDGP
   end
 end

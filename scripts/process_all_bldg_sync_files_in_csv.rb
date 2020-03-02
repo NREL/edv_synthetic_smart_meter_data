@@ -7,12 +7,9 @@ require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 require_relative 'constants'
 
-<<<<<<< HEAD
 start = Time.now
 puts "Simulation script started at #{start}"
-=======
 baseline_only = true
->>>>>>> unit-conversion-checking-for-BDGP
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 1
@@ -31,7 +28,6 @@ if !ARGV[1].nil?
   bldg_sync_file_dir = File.expand_path(ARGV[1])
 end
 
-<<<<<<< HEAD
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
   simulation_file_path = File.join(File.expand_path(NAME_OF_OUTPUT_DIR), 'SimulationFiles')
   if !File.exist?(simulation_file_path)
@@ -40,14 +36,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
   
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
-=======
-start = Time.now
-puts "Simulation script started at #{start}"
 
-def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
-  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
-  out_xml = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
->>>>>>> unit-conversion-checking-for-BDGP
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
   begin

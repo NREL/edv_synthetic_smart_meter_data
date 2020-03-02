@@ -6,14 +6,8 @@ require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
 
-<<<<<<< HEAD:scripts/simulate_xml.rb
-BuildingSync::Extension::SIMULATE_BASELINE_ONLY = true
-
-=======
 baseline_only = true
-
 BuildingSync::Extension::SIMULATE_BASELINE_ONLY = baseline_only
->>>>>>> unit-conversion-checking-for-BDGP:scripts/simulate_bdgp_xml.rb
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby simulate_bdgp_xml.rb path/to/xml/file standard_to_be_used (optional) epw_file_path (optional) ddy_file_path (optional)'
@@ -67,10 +61,7 @@ end
 runner = OpenStudio::Extension::Runner.new(root_dir)
 runner.run_osws(osws)
 
-<<<<<<< HEAD:scripts/simulate_xml.rb
-=======
 #translator.gather_results(out_path)
->>>>>>> unit-conversion-checking-for-BDGP:scripts/simulate_bdgp_xml.rb
 translator.gather_results(out_path, baseline_only)
 translator.save_xml(File.join(out_path, 'results.xml'))
 

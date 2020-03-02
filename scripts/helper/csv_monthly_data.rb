@@ -74,19 +74,12 @@ class MonthlyData
 
   def update_total_values(value, counter)
     csv_value = value.to_f
-<<<<<<< HEAD
     if @total_value[counter].nil? || @total_native_value[counter].nil?
       @total_native_value[counter] = csv_value
       @total_value[counter] = csv_value * 3.41214
     else
       @total_native_value[counter] += csv_value
       @total_value[counter] += csv_value * 3.41214
-=======
-    if @total_value[counter].nil?
-      @total_value[counter] = csv_value * 3.412
-    else
-      @total_value[counter] += csv_value * 3.412
->>>>>>> unit-conversion-checking-for-BDGP
     end
   end
 
