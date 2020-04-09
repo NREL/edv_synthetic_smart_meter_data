@@ -67,3 +67,5 @@ translator.save_xml(File.join(out_path, 'results.xml'))
 
 puts 'bye'
 
+
+
