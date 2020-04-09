@@ -19,7 +19,7 @@ xml_file_path = ARGV[1]
 if !csv_file_path.nil? && !csv_file_path.empty?
 
   measure_data_calculation = MeasuredDataCalculation.new
-  measure_data_calculation.intiate_measure_data_calculation(csv_file_path, xml_file_path)
+  measure_data_calculation.initiate_measure_data_calculation(csv_file_path, xml_file_path)
 end
 
 
