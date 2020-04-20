@@ -22,13 +22,13 @@ if ARGV[0].nil?
   exit(1)
 end
 
-bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/BldgSync"
+bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/Bldgsync_Files"
 if !ARGV[1].nil?
   #bldg_sync_file_dir = File.join("../", ARGV[1])
   bldg_sync_file_dir = File.expand_path(ARGV[1])
 end
 
-def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path)
+def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
   simulation_file_path = File.join(File.expand_path(NAME_OF_OUTPUT_DIR), 'SimulationFiles')
   if !File.exist?(simulation_file_path)
     FileUtils.mkdir_p(simulation_file_path)
