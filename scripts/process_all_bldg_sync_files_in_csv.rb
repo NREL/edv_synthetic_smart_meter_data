@@ -13,7 +13,7 @@ baseline_only = true
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 1
-BUILDINGS_PARALLEL = 6
+BUILDINGS_PARALLEL = 5
 BuildingSync::Extension::SIMULATE_BASELINE_ONLY = baseline_only
 
 if ARGV[0].nil?
