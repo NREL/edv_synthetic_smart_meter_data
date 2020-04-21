@@ -13,20 +13,18 @@ class MeasuredDataCalculation
     # This is a stub, used for indexing
   end
 
-  def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, annual_max)
+  def add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
-    file_consistent_value_collection = []
-    file_native_value_collection = []
-    file_peak_value_collection = []
+    file_value_collection = []
     measured_scenario_element = nil
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
       begin
         measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == 'Measured'
       rescue
-#        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
-#        puts "scenario_elements: #{scenario_elements}"
+        puts "scenario issue found in #{xml_file} in scenario: #{scenario_element}"
+        puts "scenario_elements: #{scenario_elements}"
       end
     end
     if measured_scenario_element.nil?
@@ -54,72 +52,59 @@ class MeasuredDataCalculation
     measured_scenario_element.add_element(time_series_data)
 
     csv_month_class_collection.each do |single_csv_class|
-      unless single_csv_class.get_total_values[counter].nil?
-        next unless single_csv_class.get_total_values[counter] > 0
-        time_series = REXML::Element.new("#{ns}:TimeSeries")
-        reading_type = REXML::Element.new("#{ns}:ReadingType")
-        reading_type.text = 'Total'
-        time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
-        time_series_reading_quantity.text = 'Energy'
-        start_time_stamp = REXML::Element.new("#{ns}:StartTimeStamp")
-        start_time_stamp.text = single_csv_class.start_time_stamp
-        end_time_stamp = REXML::Element.new("#{ns}:EndTimeStamp")
-        end_time_stamp.text = single_csv_class.end_time_stamp
-        interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
-        interval_frequency.text = 'Month'
-        interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-        interval_reading.text = single_csv_class.get_total_values[counter]
+      next unless single_csv_class.get_total_values[counter] > 0
+      time_series = REXML::Element.new("#{ns}:TimeSeries")
+      reading_type = REXML::Element.new("#{ns}:ReadingType")
+      reading_type.text = 'Total'
+      time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
+      time_series_reading_quantity.text = 'Energy'
+      start_time_stamp = REXML::Element.new("#{ns}:StartTimeStamp")
+      start_time_stamp.text = single_csv_class.start_time_stamp
+      end_time_stamp = REXML::Element.new("#{ns}:EndTimeStamp")
+      end_time_stamp.text = single_csv_class.end_time_stamp
+      interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
+      interval_frequency.text = 'Month'
+      interval_reading = REXML::Element.new("#{ns}:IntervalReading")
+      interval_reading.text = single_csv_class.get_total_values[counter]
 
-        time_series.add_element(reading_type)
-        time_series.add_element(time_series_reading_quantity)
-        time_series.add_element(start_time_stamp)
-        time_series.add_element(end_time_stamp)
-        time_series.add_element(interval_frequency)
-        time_series.add_element(interval_reading)
-        time_series_data.add_element(time_series)
+      time_series.add_element(reading_type)
+      time_series.add_element(time_series_reading_quantity)
+      time_series.add_element(start_time_stamp)
+      time_series.add_element(end_time_stamp)
+      time_series.add_element(interval_frequency)
+      time_series.add_element(interval_reading)
+      time_series_data.add_element(time_series)
 
-        file_consistent_value_collection.push(single_csv_class.get_total_values[counter])
-        file_native_value_collection.push(single_csv_class.get_native_values[counter])
-      end
+      file_value_collection.push(single_csv_class.get_total_values[counter])
     end
 
-    calculate_annual_value(file_consistent_value_collection, file_native_value_collection, measured_scenario_element, annual_max)
+    unit_converted_value = calculate_annual_value(file_value_collection, measured_scenario_element)
 
     save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
   end
 
-  def calculate_annual_value(file_consistent_value_collection, file_native_value_collection, scenario_element, annual_max)
+  def calculate_annual_value(file_value_collection, scenario_element)
     ns = 'auc'
-    annual_total_value_kbtu = file_consistent_value_collection.inject(0, :+)
-    annual_total_value_kwh = file_native_value_collection.inject(0, :+)
-    annual_max_value_kbtu = file_consistent_value_collection.max
-    annual_max_value_kwh = annual_max
+    annual_total_value = file_value_collection.inject(0, :+)
+    unit_converted_value = unit_converted_value(annual_total_value)
+    annual_max_value = file_value_collection.max
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
     energy_resource = REXML::Element.new("#{ns}:EnergyResource")
     energy_resource.text = 'Electricity'
     resource_units = REXML::Element.new("#{ns}:ResourceUnits")
-    resource_units.text = 'MMBtu'
-
-    # annual fuel use native units: Sum of all time series values for the past year, in the original units. (units/yr)
+    resource_units.text = 'kBtu'
     annual_fuel_use_native_units = REXML::Element.new("#{ns}:AnnualFuelUseNativeUnits")
-    annual_fuel_use_native_units.text = annual_total_value_kwh
-
-    # annual fuel use consistent units: 
-    # Sum of all time series values for a particular or typical year, converted into million Btu of site energy. (MMBtu/yr)
+    annual_fuel_use_native_units.text = annual_total_value
     annual_fuel_use_consistent_units = REXML::Element.new("#{ns}:AnnualFuelUseConsistentUnits")
-    annual_fuel_use_consistent_units.text = annual_total_value_kbtu / 1000
+    annual_fuel_use_consistent_units.text = unit_converted_value
     peak_resource_units = REXML::Element.new("#{ns}:PeakResourceUnits")
-
-    # annual peak native units: Largest 15-min peak
     peak_resource_units.text = 'kW'
     annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
-    annual_peak_native_units.text = annual_max_value_kwh
-
-    # annual peak consistent units: Largest 15-min peak (kW)
+    annual_peak_native_units.text = annual_max_value
     annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
-    annual_peak_consistent_units.text = annual_max_value_kwh
+    annual_peak_consistent_units.text = annual_max_value
 
     scenario_element.add_element(resource_uses)
     resource_uses.add_element(resource_use)
@@ -130,6 +115,15 @@ class MeasuredDataCalculation
     resource_use.add_element(peak_resource_units)
     resource_use.add_element(annual_peak_native_units)
     resource_use.add_element(annual_peak_consistent_units)
+    unit_converted_value
+  end
+
+  def unit_converted_value(annual_total_value)
+    if annual_total_value > 0
+      annual_value_kwh = annual_total_value / 720
+      return  annual_value_kwh * 3.41214163513307
+    end
+    0
   end
 
   def save_xml(filename, doc)
@@ -150,20 +144,13 @@ class MeasuredDataCalculation
     doc
   end
 
-  def create_monthly_csv_data(csv_row_collection, header, max)
+  def create_monthly_csv_data(csv_row_collection)
     monthly_csv_obj = MonthlyData.new
     datetime = Date.parse csv_row_collection[0][0]
     monthly_csv_obj.update_start_time(datetime)
     monthly_csv_obj.update_year(datetime.year)
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_end_time(csv_row_collection.last[0])
-
-    (1...header.length).each do |headers|
-      (0...csv_row_collection.length).each do |hourly|
-        monthly_csv_obj.update_monthly_values(csv_row_collection, hourly, headers)
-      end
-      max.push monthly_csv_obj.get_monthly_peak_values
-    end
 
     csv_row_collection.each do |single_row|
       counter = 0
@@ -181,54 +168,41 @@ class MeasuredDataCalculation
 
     csv_table = CSV.read(csv_file_path)
     header_name = csv_table[0]
+    counter = 0
     csv_month_value = 0
-    csv_table.shift
-    months = []
 
     csv_table.each do |csv_row|
+      if counter > 0
         datetime = Date.parse csv_row[0]
+
         if csv_month_value != datetime.month
           csv_month_value = datetime.month
-          months.push(csv_month_value)
+          if csv_row_collection.count > 0
+            csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection))
+            csv_row_collection.clear
+          end
         end
-    end
 
-    # Monthly peak values for individual buildings
-    monthly_max = []
-    months.each do |month|
-      csv_table.each do |row|
-        if Date.parse(row[0]).month == month
-          csv_row_collection.push(row)
-        end
+        csv_row_collection.push(csv_row)
+
       end
-        csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, header_name, monthly_max))
-        csv_row_collection.clear
+      counter += 1
     end
 
-    # Annual peak values for individual buildings
-    annual_max = []
-    one = []
-    (0...header_name.drop(1).length).each do |header|
-      one[header] = []
-      (header...monthly_max.length).step(header_name.drop(1).length).each do |maxes|
-        one[header].push monthly_max[maxes]
-      end
-      annual_max.push one[header].max
-    end
-
-    # Create BuildingSync xml files with measured data
+    counter = 0
     completed_files = 0
-    header_name.drop(1).each do |file_name|
-      xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
-      if File.exist?(xml_file)
-        (0...csv_month_class_collection.length).each do |counter|
-          add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter, annual_max[completed_files])
+    header_name.each do |file_name|
+      if counter > 0
+        xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
+        if File.exist?(xml_file)
+          add_measured_data_to_xml_file(xml_file, csv_month_class_collection, counter)
+          completed_files += 1
+        else
+          puts "file #{file_name} does not exist"
         end
-        completed_files += 1
-      else
-        puts "File #{file_name} does not exist"
       end
+      counter += 1
     end
-    puts "Successfully processed #{completed_files} of #{header_name.drop(1).length} possible files"
+    puts "successfully processed #{completed_files} of #{counter} possible files"
   end
 end

@@ -36,8 +36,8 @@ class MetricsCalc
     squared_error = 0
     sum_error = 0
     match_counter = 0
-    measured_values = measured_data_series.get_values
-    simulated_values = simulated_data_series.get_values
+    measured_values = measured_data_series.get_total_values
+    simulated_values = simulated_data_series.get_total_values
     measured_values.each do |index, measured_value|
       next unless measured_value > 0
       simulated_value = simulated_values[index]
@@ -60,8 +60,8 @@ class MetricsCalc
     squared_error = 0
     sum_error = 0
     match_counter = 0
-    measured_values = measured_data_series.get_values
-    simulated_values = simulated_data_series.get_values
+    measured_values = measured_data_series.get_total_values
+    simulated_values = simulated_data_series.get_total_values
     measured_values.each do |index, measured_value|
       next unless measured_value > 0
       simulated_value = simulated_values[index]
