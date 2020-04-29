@@ -20,3 +20,6 @@ analysis/tests
 cory_test.rb
 inputs/building_type_scenarios.json
 SRvt/
+.vscode
+__pycache__
+runner.conf
