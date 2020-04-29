@@ -1,8 +1,9 @@
-# EDV Experiment 1
+# EDV Experiments
 
-Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
+- Phase1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
+- Phase2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
 
-## Overall workflow
+## Overall workflow of Synthetic Smart-Meter Data Creation
 
 ![alt text](overallworkflow.PNG)
 
@@ -13,6 +14,7 @@ Install Ruby and OpenStudio as [described here](https://github.com/NREL/openstud
 Clone this repo and run
 
 ``` bundle install ```
+``` bundle update ```
 
 ## Output path
 
@@ -26,25 +28,25 @@ The following figure contains an overview of the scripts and input as well as ou
 
 ![alt text](ScriptOverview.PNG)
 
-## Step 1: Generate BuildingSync XML from csv data
+## Step 1: Generate BuildingSync XMLs from building metadata
 
 Run the following command to generate BuildingSync XMLs from CSV data:
 
-``` bundle exec rake generate_bdgp_xmls path/to/csv/file ```
+``` bundle exec rake generate_xmls path/to/csv/file ```
 
-The generated XML files will be put in the NAME_OF_OUTPUT_DIR/Bldg_Sync_Files directory.
+The generated XML files will be put in the NAME_OF_OUTPUT_DIR/BldgSync directory.
 
 This script is designed to work with the metadata `meta_open.csv` from the [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw).
 
 *Note*: Do not commit generated BuildingSync XMLs to this repo.  Do not commit the CSV data to the repo either.\
 
-## Step 2: Add measured data to BuildingSync 
+## Step 2: Add monthly measured data into BuildingSync xmls 
 
-Run the following command to add measured monthly electricity data to the BuildingSync XMLs generated in step 1:
+Run the following command to add measured monthly energy consumptions to the BuildingSync XMLs generated in step 1:
 
 ``` bundle exec rake add_measured_data path/to/csv/file/with/measured/data path/to/dir/for/resulting/xml/files```
 
-## Step 3: Generate the control csv file
+## Step 3: Generate the simulation control file
 
 The following script will generate a csv file with all BuildingSync files found in the NAME_OF_OUTPUT_DIR/Bldg_Sync_Files directory. 
 
@@ -54,30 +56,24 @@ The first argument is required and should be the path to the BuildingSync files
 The other three arguments are optional. The 2nd one can set the standard (ASHRAE 90.1 or T24), 
 the 3rd and forth can also use actual weather files based on the related csv file and a path to the weather files
 
-
-## Step 4.1: Simulate BuildingSync XML file (one)
-Run the following command to translate one BuildingSync XML to OSM and simulate:
-
-``` bundle exec rake simulate_bdgp_xml path/to/xml/file ```
-
-## Step 4.2: Simulate BuildingSync XML file (batch of files)
+## Step 4: Run building simulations for all buildings
 
 Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
 
-``` bundle exec rake simulate_batch_bdgp_xml path/to/csv/file ```
+``` bundle exec rake simulate_batch_xml path/to/csv/file ```
 
 In this case the CSV file contains the name of the BuildingSync file, the Standard to use and the weather file in comma separated format.
 
-The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
+The generated simulation files will be put in the NAME_OF_OUTPUT_DIR/SimulationFiles directory.
 
-## Step 5: Calculate metrics
+## Step 5: Calculate metrics based on information from both real and synthetic data
 
 Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated monthly electricity data to the BuildingSync XMLs
 
 ``` bundle exec rake calculate_metrics path/to/dir/with/simulation/results```
 
 
-## Step 6: Export data using the synthetic exporter
+## Step 6: Generate stitched timeseries synthetic data
 
 The following script will export data according to the instructions in the csv file. 
 
@@ -96,7 +92,7 @@ The csv file contains: the following rows:
 - active_after_2
 - ...
 
-## Shortcut Workflow: Step 1-3
+## Shortcut Workflow for Step 1-3
 Steps 1 - 3 of the workflow have been aggregated into a single Rake task.
 ```
 bundle exec rake workflow_part_1
@@ -110,10 +106,6 @@ The Rake task makes the following assumptions:
 2. The `edv-experiment-1-files/bdgp_with_climatezones_epw_ddy.csv` is used for Step 1.
 
 By the end of the run, all outputs from Steps 1 - 3 should be available.
-
-## Missing
-
-TODO: usage of geocode and loopup_climate scripts
 
 
 

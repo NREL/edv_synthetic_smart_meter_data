@@ -11,10 +11,11 @@ gem 'multipart-post', '2.1.1'
 gem 'geocoder'
 
 if allow_local && File.exist?('../OpenStudio-extension-gem')
-  # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
   gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
 else
-  gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
+  # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
+  # Last edv compatible OS-ext-gem version:
+  gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', :tag => 'v0.1.6'
 end
 
 if allow_local && File.exist?('../openstudio-model-articulation-gem')
@@ -42,7 +43,7 @@ if allow_local && File.exists?('../BuildingSync-gem')
   # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
-  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
+  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA_EDV_testing'
 end
 
 if allow_local && File.exists?('../openstudio-occupant-variability-gem')

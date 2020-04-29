@@ -43,6 +43,10 @@ class MonthlyData
     @start_time_stamp = nil
     @end_time_stamp = nil
     @total_value = {}
+    @total_native_value = {}
+    @annual_peak_value = []
+    @monthly_values = []
+    @local_header = ''
   end
 
   def update_month(month_value)
@@ -68,19 +72,35 @@ class MonthlyData
     @end_time_stamp = end_time
   end
 
-  def update_values(value, counter)
+  def update_total_values(value, counter)
     csv_value = value.to_f
-    if @total_value[counter].nil?
-      # converting from kWh to kBtu (multiply by 3.142)
-      @total_value[counter] = csv_value * 3.142
+    if @total_value[counter].nil? || @total_native_value[counter].nil?
+      @total_native_value[counter] = csv_value
+      @total_value[counter] = csv_value * 3.41214
     else
-      # converting from kWh to kBtu (multiply by 3.142)
-      @total_value[counter] += csv_value * 3.142
+      @total_native_value[counter] += csv_value
+      @total_value[counter] += csv_value * 3.41214
     end
   end
 
-  def get_values
+  def update_monthly_values(monthly_collection, hour, header)
+    if header != @local_header
+      @local_header = header
+      @monthly_values.clear
+    end
+    @monthly_values.push monthly_collection[hour][header].to_f
+  end
+
+  def get_total_values
     return @total_value
+  end
+
+  def get_native_values
+    return @total_native_value
+  end
+
+  def get_monthly_peak_values
+    return @monthly_values.max
   end
 
   def get_sum

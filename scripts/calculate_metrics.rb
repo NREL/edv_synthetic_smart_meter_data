@@ -10,8 +10,8 @@ end
 
 indir = ARGV[0]
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Metrics"
-FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
+# outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync_Files"
+# FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 ns = 'auc'
 puts "looking at directory: #{indir}"
@@ -56,7 +56,7 @@ def read_time_series_data(scenario_element, ns, resource_use_id = nil)
       #monthly_measured_data.update_year(datetime.year)
       #monthly_measured_data.update_month(datetime.month)
       #monthly_measured_data.update_end_time(time_series.elements["#{ns}:EndTimeStamp"].text)
-      monthly_data.update_values(time_series.elements["#{ns}:IntervalReading"].text, counter)
+      monthly_data.update_total_values(time_series.elements["#{ns}:IntervalReading"].text, counter)
       counter += 1
     end
   end

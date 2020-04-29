@@ -52,7 +52,7 @@ class MeasuredDataCalculation
     measured_scenario_element.add_element(time_series_data)
 
     csv_month_class_collection.each do |single_csv_class|
-      next unless single_csv_class.get_values[counter] > 0
+      next unless single_csv_class.get_total_values[counter] > 0
       time_series = REXML::Element.new("#{ns}:TimeSeries")
       reading_type = REXML::Element.new("#{ns}:ReadingType")
       reading_type.text = 'Total'
@@ -65,7 +65,7 @@ class MeasuredDataCalculation
       interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
       interval_frequency.text = 'Month'
       interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-      interval_reading.text = single_csv_class.get_values[counter]
+      interval_reading.text = single_csv_class.get_total_values[counter]
 
       time_series.add_element(reading_type)
       time_series.add_element(time_series_reading_quantity)
@@ -75,7 +75,7 @@ class MeasuredDataCalculation
       time_series.add_element(interval_reading)
       time_series_data.add_element(time_series)
 
-      file_value_collection.push(single_csv_class.get_values[counter])
+      file_value_collection.push(single_csv_class.get_total_values[counter])
     end
 
     unit_converted_value = calculate_annual_value(file_value_collection, measured_scenario_element)
@@ -155,14 +155,14 @@ class MeasuredDataCalculation
     csv_row_collection.each do |single_row|
       counter = 0
       single_row.each do |single_value|
-        monthly_csv_obj.update_values(single_value, counter) if counter > 0
+        monthly_csv_obj.update_total_values(single_value, counter) if counter > 0
         counter += 1
       end
     end
     monthly_csv_obj
   end
 
-  def intiate_measure_data_calculation(csv_file_path, xml_file_path)
+  def initiate_measure_data_calculation(csv_file_path, xml_file_path)
     csv_row_collection = []
     csv_month_class_collection = []
 

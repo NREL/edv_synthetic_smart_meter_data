@@ -2,18 +2,18 @@ require 'rspec/core/rake_task'
 require_relative 'scripts/constants'
 RSpec::Core::RakeTask.new(:spec)
 
-desc 'generate BDGP BuildingSync XMLs'
-task :generate_bdgp_xmls do
+desc 'generate BuildingSync XMLs'
+task :generate_xmls do
 
   if ARGV[1]
 
     # ARGV[1] should be a path to a CSV file
-    ruby "scripts/bdgp_to_buildingsync.rb #{ARGV[1]}"
+    ruby "scripts/meta_to_buildingsync.rb #{ARGV[1]}"
 
   else
     # need path to csv file
     puts 'Error - No CSV file specified'
-    puts 'Usage: bundle exec rake generate_bdgp_xmls path/to/csv/file'
+    puts 'Usage: bundle exec rake generate_xmls path/to/csv/file'
 
   end
 
@@ -42,36 +42,36 @@ task :generate_control_csv_1 do
   end
 end
 
-desc 'simulate a BDGP BuildingSync XML'
-task :simulate_bdgp_xml do
+desc 'simulate a BuildingSync XML'
+task :simulate_xml do
 
   if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
     # ARGV[4] should be a path to DDY file
-    ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
+    ruby "scripts/simulate_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
   elsif ARGV[1] && ARGV[2] && ARGV[3]
     # ARGV[3] should be a path to EPW file
-    ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
+    ruby "scripts/simulate_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
   elsif ARGV[1] && ARGV[2]
     # ARGV[2] should be the standard_to_be_used
-    ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]} #{ARGV[2]}"
+    ruby "scripts/simulate_xml.rb #{ARGV[1]} #{ARGV[2]}"
   elsif ARGV[1]
-    # ARGV[1] should be a path to a BDGP BuildingSync XML file
-    ruby "scripts/simulate_bdgp_xml.rb #{ARGV[1]}"
+    # ARGV[1] should be a path to a BuildingSync XML file
+    ruby "scripts/simulate_xml.rb #{ARGV[1]}"
   else
     # need path to csv file
-    puts 'Error - No BDGP BuildingSync XML file specified'
-    puts 'Usage: bundle exec rake simulate_bdgp_xml path/to/xml/file'
+    puts 'Error - No BuildingSync XML file specified'
+    puts 'Usage: bundle exec rake simulate_xml path/to/xml/file'
   end
 end
 
-desc 'simulate a batch of BDGP BuildingSync XML files'
-task :simulate_batch_bdgp_xml do
+desc 'simulate a batch of BuildingSync XML files'
+task :simulate_batch_xml do
 
   if ARGV[1] && ARGV[2]
     # ARGV[2] would be the folder with building sync files
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]} #{ARGV[2]}"
   elsif ARGV[1]
-    # ARGV[1] should be a path to a BDGP BuildingSync XML file
+    # ARGV[1] should be a path to a BuildingSync XML file
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]}"
 
   else
@@ -87,7 +87,7 @@ task :export_synthetic_data do
 
   if ARGV[1]
 
-    # ARGV[1] should be a path to a BDGP BuildingSync XML file
+    # ARGV[1] should be a path to a BuildingSync XML file
     ruby "scripts/export_synthetic_data.rb #{ARGV[1]}"
 
   else
@@ -193,7 +193,7 @@ task :workflow_part_1 do
 
   output_dir = NAME_OF_OUTPUT_DIR
   bldg_sync_files = output_dir + "/Bldg_Sync_Files"
-  bdgp_summary_file = bldg_sync_files + "/bdgp_summary.csv"
+  summary_file = bldg_sync_files + "/summary.csv"
   bldg_sync_files_w_measured_data = output_dir + "/Bldg_Sync_Files_w_Measured_Data"
   control_files_dir = output_dir + "/Control_Files"
   all_csv_file = control_files_dir + "/all.csv"
@@ -202,17 +202,17 @@ task :workflow_part_1 do
   # Generate buildingsync xml files from epw_csv_file
   puts("")
   if ARGV[1]
-    ruby "scripts/bdgp_to_buildingsync.rb " + epw_csv_file_location + " #{ARGV[1]}"
+    ruby "scripts/meta_to_buildingsync.rb " + epw_csv_file_location + " #{ARGV[1]}"
   else
-    ruby "scripts/bdgp_to_buildingsync.rb " + epw_csv_file_location
+    ruby "scripts/meta_to_buildingsync.rb " + epw_csv_file_location
   end
   if File.exists?(bldg_sync_files)
     puts("")
     puts "Rake: " + bldg_sync_files + " directory exists."
-    if File.exists?(bdgp_summary_file)
-      puts "Rake: Last modified time for bdgp_summary.csv: " + File.mtime(bdgp_summary_file).to_s
+    if File.exists?(summary_file)
+      puts "Rake: Last modified time for summary.csv: " + File.mtime(summary_file).to_s
     else
-      "Rake: " + bdgp_summary_file.to_s + " does not exist.  Exiting program"
+      "Rake: " + summary_file.to_s + " does not exist.  Exiting program"
       exit(1)
     end
   else
@@ -220,7 +220,7 @@ task :workflow_part_1 do
     exit(1)
   end
 
-  # Add measured data from BDGP to bldg_sync_files and save in second directory
+  # Add measured data to bldg_sync_files and save in second directory
   puts("")
   ruby "scripts/add_measured_data.rb " + temp_open_utc_file + " " + bldg_sync_files
   if File.exists?(bldg_sync_files_w_measured_data)
