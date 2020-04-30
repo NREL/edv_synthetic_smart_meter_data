@@ -172,7 +172,7 @@ task :workflow_part_1 do
     exit(1)
   end
 
-  epw_csv_file_location = edv_exp_1_files_dir + "/bdgp_with_climatezones_epw_ddy.csv"
+  epw_csv_file_location = edv_exp_1_files_dir + "/#{DATASOURCE}/bdgp_with_climatezones_epw_ddy.csv"
   weather_files_location = edv_exp_1_files_dir + "/weather"
 
   if !File.file?(epw_csv_file_location)
@@ -185,18 +185,18 @@ task :workflow_part_1 do
     exit(1)
   end
 
-  temp_open_utc_file = "data/raw/temp_open_utc.csv"
+  temp_open_utc_file = "#{RAW_DATA_DIR}/#{TIMESERIES_DATA_FILE}"
   if !File.file?(temp_open_utc_file)
     puts "Rake: " + temp_open_utc_file.to_s + " does not exist"
     exit(1)
   end
 
   output_dir = NAME_OF_OUTPUT_DIR
-  bldg_sync_files = output_dir + "/Bldg_Sync_Files"
-  summary_file = bldg_sync_files + "/summary.csv"
-  bldg_sync_files_w_measured_data = output_dir + "/Bldg_Sync_Files_w_Measured_Data"
-  control_files_dir = output_dir + "/Control_Files"
-  all_csv_file = control_files_dir + "/all.csv"
+  bldg_sync_files = output_dir + "/#{GENERATE_DIR}"
+  summary_file = bldg_sync_files + "/#{GENERATE_SUMMARY_FILE_NAME}"
+  bldg_sync_files_w_measured_data = output_dir + "/#{ADD_MEASURED_DIR}"
+  control_files_dir = output_dir + "/#{CONTROL_FILES_DIR}"
+  all_csv_file = control_files_dir + "/#{CONTROL_SUMMARY_FILE_NAME}"
 
 
   # Generate buildingsync xml files from epw_csv_file
