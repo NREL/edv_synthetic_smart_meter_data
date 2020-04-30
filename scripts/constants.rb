@@ -11,6 +11,7 @@ RAW_DATA_DIR = "data/raw"
 TIMESERIES_DATA_FILE = "temp_open_utc.csv"
 GENERATE_SUMMARY_FILE_NAME = "meta_summary.csv"
 CONTROL_SUMMARY_FILE_NAME = "all.csv"
+RESULTS_FILE_NAME = 'results.csv'
 
 # Options include: ['BDGP', 'SFDE']
 DATASOURCE = "BDGP"

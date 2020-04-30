@@ -255,14 +255,21 @@ task :workflow_part_1 do
   puts("Rake: Finishing workflow_part_1")
 end
 
+desc 'Test single file simulation'
+task :single_file_run do
+  output_dir = NAME_OF_OUTPUT_DIR
+  all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
+  ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
+end
+
 desc 'Simulate batch and calculate metrics'
 task :workflow_part_2 do
   output_dir = NAME_OF_OUTPUT_DIR
-  all_csv_file = output_dir + "/Control_Files/all.csv"
-  sim_results_dir = output_dir + "/Simulation_Files"
-  bldg_sync_files_w_metrics = output_dir + "/Bldg_Sync_Files_w_Metrics"
-  results_dir = output_dir + '/results'
-  results_file = results_dir + '/results.csv'
+  all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
+  sim_results_dir = output_dir + "/#{SIM_FILES_DIR}"
+  bldg_sync_files_w_metrics = output_dir + "/#{CALC_METRICS_DIR}"
+  results_dir = output_dir + "/#{RESULTS_DIR}"
+  results_file = results_dir + "/#{RESULTS_FILE_NAME}"
 
   if !File.exists?(all_csv_file)
     puts "Rake: " + all_csv_file.to_s + " file does not exist.  Exiting program"
