@@ -5,10 +5,6 @@
   - Phase1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
   - Phase2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
 
-## Overall workflow of Synthetic Smart-Meter Data Creation
-
-![alt text](overallworkflow.PNG)
-
 ## Installation
 
 Install Ruby and OpenStudio as [described here](https://github.com/NREL/openstudio-extension-gem/blob/develop/README.md#installation).
@@ -29,6 +25,10 @@ The following figure contains an overview of the scripts and input as well as ou
 
 
 ![alt text](ScriptOverview.PNG)
+
+## Overall workflow of Synthetic Smart-Meter Data Creation
+
+![alt text](overallworkflow.PNG)
 
 ## Step 1: Generate BuildingSync XMLs from building metadata
 
