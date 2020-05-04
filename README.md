@@ -1,7 +1,8 @@
 # EDV Experiments
 
-- Phase1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
-- Phase2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
+- Developing/Modifying/Fixing the workflow to answer questions below.
+  - Phase1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
+  - Phase2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
 
 ## Overall workflow of Synthetic Smart-Meter Data Creation
 
