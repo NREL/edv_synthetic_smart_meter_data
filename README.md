@@ -9,14 +9,13 @@
 
 - Install Ruby and OpenStudio
 
+  - [Instruction](https://github.com/NREL/openstudio-extension-gem/blob/0.1.X-LTS/README.md)
   - Current working versions,
     - [Ruby 2.2.4](https://rubyinstaller.org/downloads/archives/)
-    - Bundler 1.17.1 (use: gem install bundler -v 1.17)
+    - Bundler 1.17.1 (use ```gem install bundler -v 1.17```)
     - [OpenStudio 2.9.0](https://github.com/NREL/OpenStudio/releases/tag/v2.9.0) 
 
-Install Ruby and OpenStudio as [described here](https://github.com/NREL/openstudio-extension-gem/blob/develop/README.md#installation).
-
-Clone this repo and run
+- Clone this repo and run
 
 ``` bundle install ```
 ``` bundle update ```
