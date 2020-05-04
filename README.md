@@ -133,9 +133,7 @@ bundle exec rake generate_control_csv_1 path/to/resultant/xml/files/from/previou
 bundle exec rake simulate_batch_xml path/and/name/of/control/file/created/from/previous/step
 ```
 
-- The generated simulation files will be saved in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
-
-- The updated BuildingSync XML files that includes simulated results (synthetic data) will be saved in the NAME_OF_OUTPUT_DIR/Bldgsync_Files directory.
+- The generated simulation files as well as updated BuildingSync XMLs will be saved in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
 
 - Detail processes/capabilities of this step is also shown in the "Overall Workflow of Synthetic Smart-Meter Data Creation" above.
 
@@ -143,7 +141,7 @@ bundle exec rake simulate_batch_xml path/and/name/of/control/file/created/from/p
 
 - Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
 ```
-bundle exec rake calculate_metrics path/to/dir/with/simulation/results
+bundle exec rake calculate_metrics path/to/simulation/results/created/from/previous/step
 ```
 
 - Currently, metric calculations based on monthly data are only possible.
