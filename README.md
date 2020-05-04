@@ -41,12 +41,17 @@ The following figure contains an overview of the scripts and input as well as ou
 ![alt text](overallworkflow.PNG)
 
 
-## Configurations Before Running
+## Configurations Before Running the Entire Workflow
 
 - **Output path**: All output will go into a path this is defined with the constant NAME_OF_OUTPUT_DIR in the constants.rb file, 
 below the edv-experiment-1 main folder.
 
-- TODO: add rake task argument updates Cory is working on later on.
+- TODO,
+  - add rake task argument updates Cory is working on later on.
+  - add formats of inputs,
+    - buildings metadata
+    - buildings timeseries data
+    - weather file configuration against buildings
 
 
 ## Executing the Workflow: Group Executions
