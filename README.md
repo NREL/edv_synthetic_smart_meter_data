@@ -25,6 +25,9 @@ bundle install
 bundle update
 ``` 
 
+- TODO,
+  - update installation instructions when transitioning to OpenStudio 3.0 and Ruby 2.5.x
+
 ## Script Overview
 
 The following figure contains an overview of the scripts and input as well as output files/paths:
