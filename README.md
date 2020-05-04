@@ -1,4 +1,4 @@
-# EDV Experiments
+# Energy Data Vault (EDV) workflow development
 
 - Developing/Modifying/Fixing the workflow to answer questions below.
 
@@ -6,6 +6,13 @@
   - Phase2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
 
 ## Installation
+
+- Install Ruby and OpenStudio
+
+  - Current working versions,
+    - [Ruby 2.2.4](https://rubyinstaller.org/downloads/archives/)
+    - Bundler 1.17.1 (use: gem install bundler -v 1.17)
+    - [OpenStudio 2.9.0](https://github.com/NREL/OpenStudio/releases/tag/v2.9.0) 
 
 Install Ruby and OpenStudio as [described here](https://github.com/NREL/openstudio-extension-gem/blob/develop/README.md#installation).
 
