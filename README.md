@@ -18,11 +18,12 @@
   - [Instruction](https://github.com/NREL/openstudio-extension-gem/blob/0.1.X-LTS/README.md) for current working versions.
 
 - Clone this repo and run
-
-``` bundle install```
-
-``` bundle update``` 
-
+```
+bundle install
+```
+```
+bundle update
+``` 
 
 ## Script Overview
 
