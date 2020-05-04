@@ -48,7 +48,7 @@ below the edv-experiment-1 main folder.
 
 ## Executing the Workflow: Group Executions
 
-# Group1: Step 1-3
+### Group1: Step 1-3
 
 - Steps 1 - 3 of the workflow (described in "Executing the Workflow: Step-by-step for Every Task") are aggregated into a single Rake task.
 ```
@@ -67,7 +67,7 @@ bundle exec rake workflow_part_1
 
 ## Executing the Workflow: Step-by-step for Every Task
 
-# Step 1: Generate BuildingSync XMLs from building metadata
+### Step 1: Generate BuildingSync XMLs from building metadata
 
 - Run the following command to generate BuildingSync XMLs from CSV data:
 ```
@@ -86,7 +86,7 @@ bundle exec rake generate_xmls path/and/name/of/metadata/csv/file
 - Note,
   - make sure not to commit data including private information to this repo.
 
-# Step 2: Add measured data into BuildingSync xmls 
+### Step 2: Add measured data into BuildingSync xmls 
 
 - Run the following command to add measured energy consumptions to the BuildingSync XMLs generated in step 1:
 ```
@@ -100,7 +100,7 @@ bundle exec rake add_measured_data path/and/name/of/timeseries/csv/file/includin
 - TODO,
   - add capability for adding granular (e.g., daily, hourly) timeseries data to xmls. 
 
-# Step 3: Generate the simulation control file
+### Step 3: Generate the simulation control file
 
 - The following script will generate a csv file that includes combinations of BuildingSync XML files and weather files to create scenarios of EnergyPlus/OpenStudio simulations. 
 ```
@@ -118,7 +118,7 @@ bundle exec rake generate_control_csv_1 path/to/resultant/xml/files/from/previou
 - TODO,
   - standardize the format of the csv file (3rd argument) that includes connection between buildings and weather files.
 
-# Step 4: Run building simulations (generate synthetic data) for all buildings
+### Step 4: Run building simulations (generate synthetic data) for all buildings
 
 - Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
 ```
@@ -131,7 +131,7 @@ bundle exec rake simulate_batch_xml path/and/name/of/control/file/created/from/p
 
 - Detail processes/capabilities of this step is also shown in the "Overall Workflow of Synthetic Smart-Meter Data Creation" above.
 
-# Step 5: Calculate metrics based on information from both real and synthetic data
+### Step 5: Calculate metrics based on information from both real and synthetic data
 
 - Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
 ```
@@ -143,8 +143,7 @@ bundle exec rake calculate_metrics path/to/dir/with/simulation/results
 - TODO,
   - include capability for granular (e.g., daily, hourly) timeseries data.
 
-
-# Step 6: Generate stitched timeseries synthetic data
+### Step 6: Generate stitched timeseries synthetic data
 
 - The following script will create a single timeseries data that includes both pre- and post- interventions (e.g., energy efficiency measure, non-routine event) by stitching them together based on the definitions of when interventions happened. The scenarios for defining interventions are configured in another csv file. 
 ```
