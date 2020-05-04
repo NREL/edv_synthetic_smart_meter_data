@@ -2,8 +2,9 @@
 
 - Developing/Modifying/Fixing the workflow to answer questions below.
 
-  - Phase1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
-  - Phase2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
+  - Phase 1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
+  - Phase 2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
+  - Phase 3: Is the workflow automated properly, and is the ReadMe describing all relevant information ? 
 
 
 ## Installation
