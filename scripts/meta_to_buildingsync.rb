@@ -1241,7 +1241,7 @@ def convert_building(feature, scenario_hash = nil, datasource)
 end
 
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/Bldgsync_Files"
+outdir = "#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file

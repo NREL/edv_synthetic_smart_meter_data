@@ -51,7 +51,7 @@ if allow_local && File.exists?('../openstudio-occupant-variability-gem')
   gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
 else
   #gem 'openstudio-occupant-variability', github: 'tsbyq/openstudio-occupant-variability-gem', branch: 'master'
-  gem 'openstudio-occupant-variability', github: 'tsbyq/openstudio-occupant-variability-gem', branch: 'master'
+  gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'master'
 end
 
 # simplecov has an unneccesary dependency on native json gem, use fork that does not require this

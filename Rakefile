@@ -166,6 +166,7 @@ end
 desc 'Run steps through generating all.csv'
 task :workflow_part_1 do
 
+  puts '---> Preparing...'
   edv_exp_1_files_dir = "../edv-experiment-1-files"
   if !File.exists?(edv_exp_1_files_dir)
     puts "Rake: " + edv_exp_1_files_dir.to_s + " does not exist.  Make sure the edv-experiment-1-files directory is in the same parent directory as the edv-experiment-files directory"
@@ -193,12 +194,12 @@ task :workflow_part_1 do
 
   output_dir = NAME_OF_OUTPUT_DIR
   bldg_sync_files = output_dir + "/Bldg_Sync_Files"
-  summary_file = bldg_sync_files + "/summary.csv"
+  summary_file = bldg_sync_files + "/meta_summary.csv"
   bldg_sync_files_w_measured_data = output_dir + "/Bldg_Sync_Files_w_Measured_Data"
   control_files_dir = output_dir + "/Control_Files"
   all_csv_file = control_files_dir + "/all.csv"
 
-
+  puts "---> Generating buildingsync xml files from epw_csv_file..."
   # Generate buildingsync xml files from epw_csv_file
   puts("")
   if ARGV[1]
@@ -222,6 +223,7 @@ task :workflow_part_1 do
 
   # Add measured data to bldg_sync_files and save in second directory
   puts("")
+  puts "---> Add measured data to bldg_sync_files and save in second directory"
   ruby "scripts/add_measured_data.rb " + temp_open_utc_file + " " + bldg_sync_files
   if File.exists?(bldg_sync_files_w_measured_data)
     puts("")
@@ -241,6 +243,7 @@ task :workflow_part_1 do
 
   # Generate all.csv - used for running batch simulation of openstudio models down the line.
   puts("")
+  puts "---> Generate all.csv - used for running batch simulation of openstudio models down the line."
   ruby "scripts/generate_csv_containing_all_bldgs.rb " + bldg_sync_files_w_measured_data + " nil " + epw_csv_file_location + " " + weather_files_location
   if File.exists?(control_files_dir)
     puts("")
