@@ -1,4 +1,4 @@
-# Energy Data Vault (EDV) Workflow Development
+# Energy Data Vault (EDV) Synthetic Data Creation Workflow Development
 
 - Developing/Modifying/Fixing the workflow to answer questions below.
 
