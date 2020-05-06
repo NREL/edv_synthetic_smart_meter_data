@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 ruby '~>2.2'
 
 allow_local = false
+allow_local_bsync = true
 
 gem 'rake', '12.3.1'
 gem 'rexml', '3.2.2'
@@ -39,7 +40,7 @@ else
   gem 'openstudio-standards', '>=0.2.9'
 end
 
-if allow_local && File.exists?('../BuildingSync-gem')
+if allow_local_bsync && File.exists?('../BuildingSync-gem')
   # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
   gem 'buildingsync', path: '../BuildingSync-gem'
 else

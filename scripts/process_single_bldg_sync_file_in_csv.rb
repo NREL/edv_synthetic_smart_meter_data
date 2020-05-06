@@ -2,7 +2,7 @@ require 'csv'
 require_relative 'constants'
 require_relative 'helper/simulate_bdgp_xml_path'
 
-baseline_only = true
+baseline_only = BASELINE_ONLY
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_single_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -13,7 +13,7 @@ end
 start = Time.now
 puts "Simulation script started at #{start}"
 
-bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
+bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 if !ARGV[1].nil?
   bldg_sync_file_dir = File.expand_path(ARGV[1])
 end
@@ -32,9 +32,23 @@ ddy_file = single_building[3]
 xml_file_path = File.expand_path("#{bldg_sync_file_dir}/#{xml_file}/", File.dirname(__FILE__))
 out_path = File.expand_path("#{bldg_sync_file_dir}/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
 
+epw_file_path = ''
+if File.exist?(epw_file)
+  epw_file_path = epw_file
+else
+  epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
+end
+
+ddy_file_path = ''
+if !ddy_file.nil?
+  ddy_file_path = ddy_file
+else
+  ddy_file = 'temporary.ddy'
+  ddy_file_path = File.expand_path("../scripts/#{ddy_file}/", File.dirname(__FILE__))
+end
 
 # Run
-result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file, ddy_file, baseline_only)
+result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
 
 output_dirs = []
 Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }

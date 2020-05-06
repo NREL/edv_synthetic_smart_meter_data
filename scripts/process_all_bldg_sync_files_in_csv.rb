@@ -10,12 +10,12 @@ require_relative 'helper/simulate_bdgp_xml_path'
 
 start = Time.now
 puts "Simulation script started at #{start}"
-baseline_only = true
+baseline_only = BASELINE_ONLY
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 1
 BUILDINGS_PARALLEL = 5
-BuildingSync::Extension::SIMULATE_BASELINE_ONLY = baseline_only
+BuildingSync::Extension::SIMULATE_BASELINE_ONLY = BASELINE_ONLY
 
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_all_bldg_sync_files_in_csv.rb path/to/csv/file'
@@ -23,7 +23,7 @@ if ARGV[0].nil?
   exit(1)
 end
 
-bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
+bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 if !ARGV[1].nil?
   bldg_sync_file_dir = File.expand_path(ARGV[1])
 end
