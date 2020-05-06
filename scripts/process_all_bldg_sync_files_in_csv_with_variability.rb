@@ -4,7 +4,9 @@ require 'openstudio/extension'
 require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
 require 'buildingsync/translator'
+require 'openstudio-occupant-variability'
 require 'openstudio/occupant_variability'
+require 'openstudio/occupant_variability/apply_occupancy_variability'
 require_relative 'constants'
 
 start = Time.now
@@ -34,40 +36,71 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     FileUtils.mkdir_p(simulation_file_path)
   end
 
+  puts ' {~_~}' * 30
+  # OpenStudio::OccupantVariability::OccupantVariability.new('osws', 121)
+  OpenStudio::OccupantVariability::OccupancyVariabilityApplier.new('osws', 121)
+
+
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
 
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
-  begin
-    translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
-    translator.add_measure_path("#{root_dir}/lib/measures")
-    translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
-    translator.write_osm(ddy_file_path)
-    translator.write_osws
+  translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
+  translator.add_measure_path("#{root_dir}/lib/measures")
+  translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
+  translator.write_osm(ddy_file_path)
+  translator.write_osws
 
 
-    osws = Dir.glob("#{out_path}/**/in.osw")
-    if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
-      osws = Dir.glob("#{out_path}/Baseline/in.osw")
-    end
-
-    puts ' {@_@}' * 30
-    puts "osws: #{osws}"
-    puts ' {@_@}' * 30
-
-
-    puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
-    # runner = OpenStudio::Extension::Runner.new(root_dir)
-    # runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
-    #
-    # translator.gather_results(out_path, baseline_only)
-    # translator.save_xml(out_xml)
-  rescue StandardError => e
-    puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
+  osws = Dir.glob("#{out_path}/**/in.osw")
+  if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
+    osws = Dir.glob("#{out_path}/Baseline/in.osw")
   end
+
+  puts ' {@_@}' * 30
+  puts "osws: #{osws}"
+
+
+
+
+
+  # begin
+  #   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
+  #   translator.add_measure_path("#{root_dir}/lib/measures")
+  #   translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
+  #   translator.write_osm(ddy_file_path)
+  #   translator.write_osws
+  #
+  #
+  #   osws = Dir.glob("#{out_path}/**/in.osw")
+  #   if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
+  #     osws = Dir.glob("#{out_path}/Baseline/in.osw")
+  #   end
+  #
+  #   puts ' {@_@}' * 30
+  #   puts "osws: #{osws}"
+  #   puts ' {@_@}' * 30
+  #   OpenStudio::OccupantVariability.OccupancyVariabilityApplier.new(osws, 121)
+  #
+  #   puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
+  #   # runner = OpenStudio::Extension::Runner.new(root_dir)
+  #   # runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
+  #   #
+  #   # translator.gather_results(out_path, baseline_only)
+  #   # translator.save_xml(out_xml)
+  # rescue StandardError => e
+  #   puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
+  # end
+
+
 end
 
+
+
+########################################################################################################################
+# Main process
+########################################################################################################################
 csv_file_path = ARGV[0]
 
 root_dir = File.join(File.dirname(__FILE__), '..')
@@ -109,23 +142,27 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
 
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
 
-  #puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
-  log.puts("#{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
+  # #puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
+  # log.puts("#{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
+  #
+  # output_dirs = []
+  # Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
+  # output_dirs.each do |output_dir|
+  #   if !output_dir.include? "/SR"
+  #     if output_dir != out_path
+  #       idf_file = File.join(output_dir, "/in.idf")
+  #       sql_file = File.join(output_dir, "/results.json")
+  #       if File.exist?(idf_file) && !File.exist?(sql_file)
+  #         log.puts("...ERROR: #{sql_file} does not exist, simulation was unsuccessful}")
+  #         log.flush
+  #       end
+  #     end
+  #   end
+  # end
 
-  output_dirs = []
-  Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
-  output_dirs.each do |output_dir|
-    if !output_dir.include? "/SR"
-      if output_dir != out_path
-        idf_file = File.join(output_dir, "/in.idf")
-        sql_file = File.join(output_dir, "/results.json")
-        if File.exist?(idf_file) && !File.exist?(sql_file)
-          log.puts("...ERROR: #{sql_file} does not exist, simulation was unsuccessful}")
-          log.flush
-        end
-      end
-    end
-  end
+
+
+
 end
 log.close
 
