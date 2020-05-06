@@ -70,9 +70,28 @@ task :simulate_batch_xml do
   if ARGV[1] && ARGV[2]
     # ARGV[2] would be the folder with building sync files
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]} #{ARGV[2]}"
+    # ruby "scripts/process_all_bldg_sync_files_in_csv_with_variability.rb #{ARGV[1]} #{ARGV[2]}" # Testing variability measures
   elsif ARGV[1]
     # ARGV[1] should be a path to a BuildingSync XML file
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]}"
+
+  else
+    # need path to csv file
+    puts 'Error - No CSV file specified that would contain the BldgSync files to be process in this batch'
+    puts 'Usage: bundle exec rake process_all_bldg_sync_files_in_csv path/to/csv/file (optional) path/to/dir/with/bldgsyncfiles'
+
+  end
+end
+
+desc 'simulate a batch of BuildingSync XML files with variability'
+task :simulate_batch_xml_w_variability do
+
+  if ARGV[1] && ARGV[2]
+    # ARGV[2] would be the folder with building sync files
+    ruby "scripts/process_all_bldg_sync_files_in_csv_with_variability.rb #{ARGV[1]} #{ARGV[2]}"
+  elsif ARGV[1]
+    # ARGV[1] should be a path to a BuildingSync XML file
+    ruby "scripts/process_all_bldg_sync_files_in_csv_with_variability.rb #{ARGV[1]}"
 
   else
     # need path to csv file
@@ -226,7 +245,6 @@ task :workflow_part_1 do
   puts "---> Add measured data to bldg_sync_files and save in second directory"
   ruby "scripts/add_measured_data.rb " + temp_open_utc_file + " " + bldg_sync_files
   if File.exists?(bldg_sync_files_w_measured_data)
-    puts("")
     puts "Rake: " + bldg_sync_files_w_measured_data.to_s + " directory exists."
     if Dir.glob(bldg_sync_files_w_measured_data + "/*.xml").length >= 1
       rec_file = Dir.glob(bldg_sync_files_w_measured_data + "/*.xml").max_by { |f| File.mtime(f) }
@@ -242,7 +260,6 @@ task :workflow_part_1 do
   end
 
   # Generate all.csv - used for running batch simulation of openstudio models down the line.
-  puts("")
   puts "---> Generate all.csv - used for running batch simulation of openstudio models down the line."
   ruby "scripts/generate_csv_containing_all_bldgs.rb " + bldg_sync_files_w_measured_data + " nil " + epw_csv_file_location + " " + weather_files_location
   if File.exists?(control_files_dir)
@@ -253,7 +270,6 @@ task :workflow_part_1 do
     puts "Rake: " + control_files_dir.to_s + " directory does not exist.  Exiting program."
     exit(1)
   end
-  puts("")
 
   puts("Rake: Finishing workflow_part_1")
 end
