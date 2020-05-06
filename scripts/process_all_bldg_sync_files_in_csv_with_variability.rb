@@ -5,8 +5,9 @@ require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio-occupant-variability'
-require 'openstudio/occupant_variability'
-require 'openstudio/occupant_variability/apply_occupancy_variability'
+require 'openstudio-variability'
+
+
 require_relative 'constants'
 
 start = Time.now
@@ -38,8 +39,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
 
   puts ' {~_~}' * 30
   # OpenStudio::OccupantVariability::OccupantVariability.new('osws', 121)
-  OpenStudio::OccupantVariability::OccupancyVariabilityApplier.new('osws', 121)
-
+  # OpenStudio::OccupantVariability::OccupancyVariabilityApplier.new('osws', 121)
 
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
@@ -47,11 +47,36 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
   root_dir = File.expand_path('..', File.dirname(__FILE__))
 
   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
+
+  # Add occupant variability measures (stochastic occupancy -> lighting -> MELs -> HVAC thermostat setpoint)
+  occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
+  translator.add_measure_path(occupant_variability_instance.measures_dir)
+  # translator.insert_model_measure('Occupancy_Simulator_os', 0)
+  # translator.insert_model_measure('create_lighting_schedule_from_occupant_count', 0)
+  # translator.insert_model_measure('create_mels_schedule_from_occupant_count', 0)
+  translator.insert_model_measure('update_hvac_setpoint_schedule', 0)
+
+  # Add non-routine event variability measures (DR, Retrofit, Faulty Operation)
+  variability_instance = OpenStudio::Variability::Extension.new
+  translator.add_measure_path(variability_instance.measures_dir)
+  ## Demand response measures
+  # translator.insert_model_measure('DR_add_ice_storage_lgoffice_os', 0)
+  # translator.insert_model_measure('DR_GTA_os', 0)
+  # translator.insert_model_measure('DR_Lighting_os', 0)
+  translator.insert_model_measure('DR_MELs_os', 0)
+  # translator.insert_model_measure('DR_Precool_Preheat_os', 0)
+
+  ## Retrofit measures
+  # translator.insert_model_measure('Retrofit_equipment_os', 0)
+  # translator.insert_model_measure('Retrofit_lighting_os', 0)
+  translator.insert_energyplus_measure('Retrofit_exterior_wall_ep', 0)
+  translator.insert_energyplus_measure('Retrofit_roof_ep', 0)
+
+  # Add other measures
   translator.add_measure_path("#{root_dir}/lib/measures")
   translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
   translator.write_osm(ddy_file_path)
   translator.write_osws
-
 
   osws = Dir.glob("#{out_path}/**/in.osw")
   if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
@@ -60,10 +85,15 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
 
   puts ' {@_@}' * 30
   puts "osws: #{osws}"
+  puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
+  runner = OpenStudio::Extension::Runner.new(root_dir)
+  runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
 
-
-
-
+  translator.gather_results(out_path, baseline_only)
+  translator.save_xml(out_xml)
+  puts '+_+ ' * 30
+  puts out_xml
+  puts '+_+ ' * 30
 
   # begin
   #   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
