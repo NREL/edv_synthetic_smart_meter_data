@@ -20,13 +20,9 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'College Laboratory, Dormitory.  Valid values for OpenStudio occupancy classifications'
   puts 'are maintained in the BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb'
   exit(1)
-  
-elsif ARGV[0].include?('bdgp_with_climatezones_epw_ddy')
-  datasource = 'BDGP'
-elsif ARGV[0].include?('SFDE') #TODO: make sure the file name includes unique identifier
-  datasource = 'SFDE'
+
 else
-  datasource = 'BDGP' #checking for error. might have to decide what we want as default
+  datasource = DATASOURCE
 end
 
 puts '##############################################'
@@ -219,11 +215,28 @@ def create_site(feature, scenario_hash = nil, datasource, state_hash)
       address.add_element(city)
     end
 
+    country = nil
     if feature.key?(:state) && !feature[:state].nil?
-      state_abbrev = state_hash.key(feature[:state])
-      state = REXML::Element.new('auc:State')
-      state.text = state_abbrev
-      address.add_element(state)
+      st = feature[:state]
+      not_states = {
+          "Wales" => "Wales",
+          "England" => "England",
+          "Zurich" => "Switzerland"
+      }
+      v = not_states[st]
+      country = REXML::Element.new('auc:Country')
+      if !v.nil?
+        country.text = v
+      else
+        state_abbrev = state_hash.key(feature[:state])
+        if state_abbrev.nil? || state_abbrev == ''
+        else
+          state = REXML::Element.new('auc:State')
+          state.text = state_abbrev
+          address.add_element(state)
+          country.text = "USA"
+        end
+      end
     end
 
     # zipcode (if present)
@@ -233,6 +246,9 @@ def create_site(feature, scenario_hash = nil, datasource, state_hash)
       address.add_element(postal_code)
     end
 
+    if !country.nil?
+      address.add_element(country)
+    end
     site.add_element(address)
 
   end
@@ -339,7 +355,11 @@ def create_site(feature, scenario_hash = nil, datasource, state_hash)
   # year of construction and modified
   year_of_construction = REXML::Element.new('auc:YearOfConstruction')
   year_of_construction.text = get_year_built(feature)
-  building.add_element(year_of_construction)
+  if year_of_construction.text.nil? || year_of_construction.text == ''
+  else
+    building.add_element(year_of_construction)
+  end
+
 
   subsections = REXML::Element.new('auc:Sections')
   # create single subsection
@@ -431,9 +451,9 @@ def create_system(feature)
     when 'electric'
       new_fuel = 'Electricity'
     when 'gas'
-      new_fuel = 'Natural Gas'
+      new_fuel = 'Natural gas'
     when 'oil'
-      new_fuel = 'Fuel Oil'
+      new_fuel = 'Fuel oil'
     when 'steam'
       new_fuel = 'Dry steam' # or Flash steam
     when 'biomass'
