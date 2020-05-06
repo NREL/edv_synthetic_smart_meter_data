@@ -8,6 +8,9 @@ RUN_TYPE = "default"
 # Options include: ['BDGP', 'SFDE'] - used by meta_to_buildingsync.rb
 DATASOURCE = "BDGP"
 
+# Options: true, false
+BASELINE_ONLY = false
+
 
 # DO NOT EDIT
 # Directory within edv-experiment-1 where raw data exists

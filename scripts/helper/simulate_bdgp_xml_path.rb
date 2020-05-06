@@ -13,7 +13,6 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
 
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
-
   root_dir = File.expand_path('../..', File.dirname(__FILE__))
 
   begin
@@ -24,9 +23,8 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     translator.write_osws
 
     translator.run_osws(baseline_only)
-    translator.gather_results_and_save_xml(out_path, baseline_only)
-    # translator.gather_results_and_save_xml(out_path, )
-    translator.write_parameters_to_xml(out_xml)
+    translator.gather_results(out_path, baseline_only)
+    translator.save_xml(out_xml)
   rescue StandardError => e
     puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
   end

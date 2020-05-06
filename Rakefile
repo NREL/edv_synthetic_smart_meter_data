@@ -75,37 +75,25 @@ task :generate_control_csv_1 do
   end
 end
 
-desc 'simulate a BuildingSync XML'
-task :simulate_xml do
-
-  if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
-    # ARGV[4] should be a path to DDY file
-    ruby "scripts/simulate_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
-  elsif ARGV[1] && ARGV[2] && ARGV[3]
-    # ARGV[3] should be a path to EPW file
-    ruby "scripts/simulate_xml.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
-  elsif ARGV[1] && ARGV[2]
-    # ARGV[2] should be the standard_to_be_used
-    ruby "scripts/simulate_xml.rb #{ARGV[1]} #{ARGV[2]}"
-  elsif ARGV[1]
-    # ARGV[1] should be a path to a BuildingSync XML file
-    ruby "scripts/simulate_xml.rb #{ARGV[1]}"
-  else
-    # need path to csv file
-    puts 'Error - No BuildingSync XML file specified'
-    puts 'Usage: bundle exec rake simulate_xml path/to/xml/file'
-  end
+desc 'Test single file simulation'
+task :single_file_run do
+  output_dir = NAME_OF_OUTPUT_DIR
+  all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
+  ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
 end
 
 desc 'simulate a batch of BuildingSync XML files'
 task :simulate_batch_xml do
 
+  all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   if ARGV[1] && ARGV[2]
     # ARGV[2] would be the folder with building sync files
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]} #{ARGV[2]}"
   elsif ARGV[1]
     # ARGV[1] should be a path to a BuildingSync XML file
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]}"
+  elsif File.exist?(all_csv_file)
+    ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{all_csv_file}"
 
   else
     # need path to csv file
@@ -185,13 +173,6 @@ task :workflow_part_1 do
   Rake::Task["generate_xmls"].execute
   Rake::Task["add_measured_data"].execute
   Rake::Task["generate_control_csv_1"].execute
-end
-
-desc 'Test single file simulation'
-task :single_file_run do
-  output_dir = NAME_OF_OUTPUT_DIR
-  all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
-  ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
 end
 
 desc 'Simulate batch and calculate metrics'
