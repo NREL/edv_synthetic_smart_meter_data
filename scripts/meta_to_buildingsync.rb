@@ -356,9 +356,11 @@ def create_site(feature, scenario_hash = nil, datasource, state_hash)
   year_of_construction = REXML::Element.new('auc:YearOfConstruction')
   year_of_construction.text = get_year_built(feature)
   if year_of_construction.text.nil? || year_of_construction.text == ''
-  else
-    building.add_element(year_of_construction)
+    def_year = 1980
+    puts "No built year provided, setting to default year: #{def_year}"
+    year_of_construction.text = def_year
   end
+  building.add_element(year_of_construction)
 
 
   subsections = REXML::Element.new('auc:Sections')
