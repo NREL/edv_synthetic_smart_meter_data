@@ -170,25 +170,23 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
 
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only)
 
-  # #puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
-  # log.puts("#{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
-  #
-  # output_dirs = []
-  # Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
-  # output_dirs.each do |output_dir|
-  #   if !output_dir.include? "/SR"
-  #     if output_dir != out_path
-  #       idf_file = File.join(output_dir, "/in.idf")
-  #       sql_file = File.join(output_dir, "/results.json")
-  #       if File.exist?(idf_file) && !File.exist?(sql_file)
-  #         log.puts("...ERROR: #{sql_file} does not exist, simulation was unsuccessful}")
-  #         log.flush
-  #       end
-  #     end
-  #   end
-  # end
+  #puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
+  log.puts("#{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
 
-
+  output_dirs = []
+  Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
+  output_dirs.each do |output_dir|
+    if !output_dir.include? "/SR"
+      if output_dir != out_path
+        idf_file = File.join(output_dir, "/in.idf")
+        sql_file = File.join(output_dir, "/results.json")
+        if File.exist?(idf_file) && !File.exist?(sql_file)
+          log.puts("...ERROR: #{sql_file} does not exist, simulation was unsuccessful}")
+          log.flush
+        end
+      end
+    end
+  end
 
 
 end
