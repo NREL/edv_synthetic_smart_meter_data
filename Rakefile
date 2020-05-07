@@ -85,6 +85,7 @@ end
 desc 'simulate a batch of BuildingSync XML files'
 task :simulate_batch_xml do
 
+  output_dir = NAME_OF_OUTPUT_DIR
   all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   if ARGV[1] && ARGV[2]
     # ARGV[2] would be the folder with building sync files
