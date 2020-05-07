@@ -130,7 +130,7 @@ bundle exec rake generate_control_csv_1
 
 - Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
 ```
-bundle exec rake simulate_batch_xml path/and/name/of/control/file/created/from/previous/step
+bundle exec rake simulate_batch_xml
 ```
 
 - The generated simulation files as well as updated BuildingSync XMLs will be saved in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
