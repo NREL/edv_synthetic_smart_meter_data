@@ -37,91 +37,89 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     FileUtils.mkdir_p(simulation_file_path)
   end
 
-  puts ' {~_~}' * 30
-  # OpenStudio::OccupantVariability::OccupantVariability.new('osws', 121)
-  # OpenStudio::OccupantVariability::OccupancyVariabilityApplier.new('osws', 121)
+  begin
+    out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
+    out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
 
-  out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
-  out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
+    root_dir = File.expand_path('..', File.dirname(__FILE__))
 
-  root_dir = File.expand_path('..', File.dirname(__FILE__))
+    translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
 
-  translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
+    # Add occupant variability measures (stochastic occupancy -> lighting -> MELs -> HVAC thermostat setpoint)
+    occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
+    translator.add_measure_path(occupant_variability_instance.measures_dir)
+    # TODO: Update occupancy simulator to generate correct date for leap year
+    # translator.insert_model_measure('Occupancy_Simulator_os', 0)
+    # translator.insert_model_measure('create_lighting_schedule_from_occupant_count', 0)
+    # translator.insert_model_measure('create_mels_schedule_from_occupant_count', 0)
+    translator.insert_model_measure('update_hvac_setpoint_schedule', 0)  #Independent from occupancy schedule
 
-  # Add occupant variability measures (stochastic occupancy -> lighting -> MELs -> HVAC thermostat setpoint)
-  occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
-  translator.add_measure_path(occupant_variability_instance.measures_dir)
-  # translator.insert_model_measure('Occupancy_Simulator_os', 0)
-  # translator.insert_model_measure('create_lighting_schedule_from_occupant_count', 0)
-  # translator.insert_model_measure('create_mels_schedule_from_occupant_count', 0)
-  translator.insert_model_measure('update_hvac_setpoint_schedule', 0)
+    # Add non-routine event variability measures (DR, Retrofit, Faulty Operation)
+    variability_instance = OpenStudio::Variability::Extension.new
+    translator.add_measure_path(variability_instance.measures_dir)
+    ## 1. Demand response measures
+    # translator.insert_model_measure('DR_add_ice_storage_lgoffice_os', 0)
+    # translator.insert_model_measure('DR_GTA_os', 0)
+    # translator.insert_model_measure('DR_Lighting_os', 0)
+    # translator.insert_model_measure('DR_MELs_os', 0)
+    # translator.insert_model_measure('DR_Precool_Preheat_os', 0)
 
-  # Add non-routine event variability measures (DR, Retrofit, Faulty Operation)
-  variability_instance = OpenStudio::Variability::Extension.new
-  translator.add_measure_path(variability_instance.measures_dir)
-  ## Demand response measures
-  # translator.insert_model_measure('DR_add_ice_storage_lgoffice_os', 0)
-  # translator.insert_model_measure('DR_GTA_os', 0)
-  # translator.insert_model_measure('DR_Lighting_os', 0)
-  translator.insert_model_measure('DR_MELs_os', 0)
-  # translator.insert_model_measure('DR_Precool_Preheat_os', 0)
+    ## 2. Faulty operation measures
+    # translator.insert_energyplus_measure('Fault_AirHandlingUnitFanMotorDegradation_ep')
+    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorMixedT_ep')
+    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorOutdoorRH_ep')
+    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorOutdoorT_ep')
+    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorReturnRH_ep')
+    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorReturnT_ep')
+    # translator.insert_energyplus_measure('Fault_CondenserFanDegradation_ep')
+    # translator.insert_energyplus_measure('Fault_CondenserFouling_ep')
+    # translator.insert_model_measure('Fault_DuctFouling_os')
+    # translator.insert_model_measure('Fault_EconomizerOpeningStuck_os')
+    # translator.insert_energyplus_measure('Fault_EvaporatorFouling_ep')
+    # translator.insert_model_measure('Fault_ExcessiveInfiltration_os')
+    # translator.insert_model_measure('Fault_HVACSetbackErrorDelayedOnset_os')
+    # translator.insert_model_measure('Fault_HVACSetbackErrorEarlyTermination_os')
+    # translator.insert_model_measure('Fault_HVACSetbackErrorNoOvernightSetback_os')
+    # translator.insert_model_measure('Fault_ImproperTimeDelaySettingInOccupancySensors_os')
+    # translator.insert_model_measure('Fault_LightingSetbackErrorDelayedOnset_os')
+    # translator.insert_model_measure('Fault_LightingSetbackErrorEarlyTermination_os')
+    # translator.insert_model_measure('Fault_LightingSetbackErrorNoOvernightSetback_os')
+    # translator.insert_energyplus_measure('Fault_LiquidLineRestriction_ep')
+    # translator.insert_model_measure('Fault_NonStandardCharging_os')
+    # translator.insert_model_measure('Fault_OversizedEquipmentAtDesign_os')
+    # translator.insert_energyplus_measure('Fault_PresenceOfNonCondensable_ep')
+    # translator.insert_energyplus_measure('Fault_ReturnAirDuctLeakages_ep')
+    # translator.insert_energyplus_measure('Fault_SupplyAirDuctLeakages_ep')
+    # translator.insert_model_measure('Fault_ThermostatBias_os')
+    # translator.insert_energyplus_measure('Fault_thermostat_offset_ep')
 
-  ## Retrofit measures
-  # translator.insert_model_measure('Retrofit_equipment_os', 0)
-  # translator.insert_model_measure('Retrofit_lighting_os', 0)
-  translator.insert_energyplus_measure('Retrofit_exterior_wall_ep', 0)
-  translator.insert_energyplus_measure('Retrofit_roof_ep', 0)
+    ## 3. Retrofit measures
+    translator.insert_model_measure('Retrofit_equipment_os', 0)
+    translator.insert_model_measure('Retrofit_lighting_os', 0)
+    translator.insert_energyplus_measure('Retrofit_exterior_wall_ep', 0)
+    translator.insert_energyplus_measure('Retrofit_roof_ep', 0)
 
-  # Add other measures
-  translator.add_measure_path("#{root_dir}/lib/measures")
-  translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
-  translator.write_osm(ddy_file_path)
-  translator.write_osws
+    # Add other measures
+    translator.add_measure_path("#{root_dir}/lib/measures")
+    translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
+    translator.write_osm(ddy_file_path)
+    translator.write_osws
 
-  osws = Dir.glob("#{out_path}/**/in.osw")
-  if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
-    osws = Dir.glob("#{out_path}/Baseline/in.osw")
+    osws = Dir.glob("#{out_path}/**/in.osw")
+    if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
+      osws = Dir.glob("#{out_path}/Baseline/in.osw")
+    end
+
+    puts "osws: #{osws}"
+    puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
+    runner = OpenStudio::Extension::Runner.new(root_dir)
+    runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
+
+    translator.gather_results(out_path, baseline_only)
+    translator.save_xml(out_xml)
+  rescue StandardError => e
+    puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
   end
-
-  puts ' {@_@}' * 30
-  puts "osws: #{osws}"
-  puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
-  runner = OpenStudio::Extension::Runner.new(root_dir)
-  runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
-
-  translator.gather_results(out_path, baseline_only)
-  translator.save_xml(out_xml)
-  puts '+_+ ' * 30
-  puts out_xml
-  puts '+_+ ' * 30
-
-  # begin
-  #   translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
-  #   translator.add_measure_path("#{root_dir}/lib/measures")
-  #   translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
-  #   translator.write_osm(ddy_file_path)
-  #   translator.write_osws
-  #
-  #
-  #   osws = Dir.glob("#{out_path}/**/in.osw")
-  #   if BuildingSync::Extension::SIMULATE_BASELINE_ONLY
-  #     osws = Dir.glob("#{out_path}/Baseline/in.osw")
-  #   end
-  #
-  #   puts ' {@_@}' * 30
-  #   puts "osws: #{osws}"
-  #   puts ' {@_@}' * 30
-  #   OpenStudio::OccupantVariability.OccupancyVariabilityApplier.new(osws, 121)
-  #
-  #   puts "SIMULATE_BASELINE_ONLY: #{BuildingSync::Extension::SIMULATE_BASELINE_ONLY}"
-  #   # runner = OpenStudio::Extension::Runner.new(root_dir)
-  #   # runner.run_osws(osws, num_parallel=OpenStudio::Extension::Extension::NUM_PARALLEL)
-  #   #
-  #   # translator.gather_results(out_path, baseline_only)
-  #   # translator.save_xml(out_xml)
-  # rescue StandardError => e
-  #   puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
-  # end
 
 
 end
