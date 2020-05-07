@@ -3,7 +3,7 @@ NAME_OF_INPUT_DIR = "inputs"
 
 # EDITABLE
 # Options include: ['default', 'bdgp-cz']
-RUN_TYPE = "default"
+RUN_TYPE = "bdgp-cz"
 
 # Options include: ['BDGP', 'SFDE'] - used by meta_to_buildingsync.rb
 DATASOURCE = "BDGP"
