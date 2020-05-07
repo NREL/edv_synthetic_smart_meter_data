@@ -26,10 +26,10 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     ###################################################################################
     occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
     translator.add_measure_path(occupant_variability_instance.measures_dir)
-    translator.insert_energyplus_measure('Occupancy_Simulator', 0)
-    translator.insert_energyplus_measure('create_lighting_schedule_from_occupant_count', 0)
-    translator.insert_energyplus_measure('create_mels_schedule_from_occupant_count', 0)
-    translator.insert_energyplus_measure('update_hvac_setpoint_schedule', 0)
+    translator.insert_model_measure('Occupancy_Simulator_os', 0)
+    translator.insert_model_measure('create_lighting_schedule_from_occupant_count', 0)
+    translator.insert_model_measure('create_mels_schedule_from_occupant_count', 0)
+    translator.insert_model_measure('update_hvac_setpoint_schedule', 0)
     ###################################################################################
     
     translator.write_osws
