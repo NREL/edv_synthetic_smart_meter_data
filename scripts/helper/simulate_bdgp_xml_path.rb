@@ -1,3 +1,4 @@
+require 'openstudio'
 require 'openstudio/extension'
 require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
@@ -21,6 +22,15 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     translator.add_measure_path("#{root_dir}/lib/measures")
     translator.insert_reporting_measure('hourly_consumption_by_fuel_to_csv', 0)
     translator.write_osm(ddy_file_path)
+    puts out_path
+    m = OpenStudio::Model::Model.load(File.join(out_path, 'in.osm'))
+    m = m.get
+    yr = 2019
+    m.setCalendarYear(yr)
+    m.save(File.join(out_path, 'in.osm'), true)
+    m2 = OpenStudio::Model::Model.load(File.join(out_path, 'in.osm'))
+    m2 = m2.get
+    puts "Calendar year set to: #{m2.assumedYear}"
     if occ_var
       occupant_variability_instance = OpenStudio::OccupantVariability::Extension.new
       translator.add_measure_path(occupant_variability_instance.measures_dir)
