@@ -82,6 +82,13 @@ task :single_file_run do
   ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
 end
 
+desc 'Test single file simulation with occupancy variability'
+task :single_file_run_occ_var do
+  output_dir = NAME_OF_OUTPUT_DIR
+  all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
+  ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
+end
+
 desc 'simulate a batch of BuildingSync XML files'
 task :simulate_batch_xml do
 
