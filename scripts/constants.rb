@@ -9,8 +9,8 @@ RUN_TYPE = "bdgp-cz"
 DATASOURCE = "BDGP"
 
 # Options: true, false
-BASELINE_ONLY = false
-
+BASELINE_ONLY = true
+OCC_VAR = true
 
 # DO NOT EDIT
 # Directory within edv-experiment-1 where raw data exists
