@@ -44,10 +44,10 @@ The following figure contains an overview of the scripts and input as well as ou
 ## Configurations Before Running the Entire Workflow
 
 - ```constants.rb``` file under ```scripts``` folder includes configurations of the EDV workflow to specify, 
-  - where the data is read from,
-  - the name of the data source for data source specific formatting
-  - simulation types between baseline only versus considering all scenarios
-  - directories of input and output files 
+  - selection of the **data source** and where is the data read from
+  - simulation types between **baseline only** versus **considering all scenarios**
+  - **directories** of input and output files 
+  - application of **variability** in buildings ([occupant related variability](https://github.com/LBNL-ETA/OpenStudio-Occupant-Variability-Gem) & [other variability](https://github.com/LBNL-ETA/OpenStudio-Variability-Gem))
 
 - TODO,
   - add/standardize formats of inputs,
