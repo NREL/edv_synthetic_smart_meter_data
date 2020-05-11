@@ -65,39 +65,39 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     # translator.insert_model_measure('DR_Precool_Preheat_os', 0)
 
     ## 2. Faulty operation measures
-    # translator.insert_energyplus_measure('Fault_AirHandlingUnitFanMotorDegradation_ep')
-    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorMixedT_ep')
-    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorOutdoorRH_ep')
-    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorOutdoorT_ep')
-    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorReturnRH_ep')
-    # translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorReturnT_ep')
-    # translator.insert_energyplus_measure('Fault_CondenserFanDegradation_ep')
-    # translator.insert_energyplus_measure('Fault_CondenserFouling_ep')
-    # translator.insert_model_measure('Fault_DuctFouling_os')
-    # translator.insert_model_measure('Fault_EconomizerOpeningStuck_os')
-    # translator.insert_energyplus_measure('Fault_EvaporatorFouling_ep')
-    # translator.insert_model_measure('Fault_ExcessiveInfiltration_os')
-    # translator.insert_model_measure('Fault_HVACSetbackErrorDelayedOnset_os')
-    # translator.insert_model_measure('Fault_HVACSetbackErrorEarlyTermination_os')
-    # translator.insert_model_measure('Fault_HVACSetbackErrorNoOvernightSetback_os')
-    # translator.insert_model_measure('Fault_ImproperTimeDelaySettingInOccupancySensors_os')
-    # translator.insert_model_measure('Fault_LightingSetbackErrorDelayedOnset_os')
-    # translator.insert_model_measure('Fault_LightingSetbackErrorEarlyTermination_os')
-    # translator.insert_model_measure('Fault_LightingSetbackErrorNoOvernightSetback_os')
-    # translator.insert_energyplus_measure('Fault_LiquidLineRestriction_ep')
-    # translator.insert_model_measure('Fault_NonStandardCharging_os')
-    # translator.insert_model_measure('Fault_OversizedEquipmentAtDesign_os')
-    # translator.insert_energyplus_measure('Fault_PresenceOfNonCondensable_ep')
-    # translator.insert_energyplus_measure('Fault_ReturnAirDuctLeakages_ep')
-    # translator.insert_energyplus_measure('Fault_SupplyAirDuctLeakages_ep')
-    # translator.insert_model_measure('Fault_ThermostatBias_os')
-    # translator.insert_energyplus_measure('Fault_thermostat_offset_ep')
+    translator.insert_energyplus_measure('Fault_AirHandlingUnitFanMotorDegradation_ep')
+    translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorMixedT_ep')
+    translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorOutdoorRH_ep')
+    translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorOutdoorT_ep')
+    translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorReturnRH_ep')
+    translator.insert_energyplus_measure('Fault_BiasedEconomizerSensorReturnT_ep')
+    # translator.insert_energyplus_measure('Fault_CondenserFanDegradation_ep') # Fail
+    # translator.insert_energyplus_measure('Fault_CondenserFouling_ep') # Fail
+    translator.insert_model_measure('Fault_DuctFouling_os')
+    translator.insert_model_measure('Fault_EconomizerOpeningStuck_os')
+    # translator.insert_energyplus_measure('Fault_EvaporatorFouling_ep') # Fail
+    translator.insert_model_measure('Fault_ExcessiveInfiltration_os')
+    translator.insert_model_measure('Fault_HVACSetbackErrorDelayedOnset_os')
+    translator.insert_model_measure('Fault_HVACSetbackErrorEarlyTermination_os')
+    translator.insert_model_measure('Fault_HVACSetbackErrorNoOvernightSetback_os')
+    # translator.insert_model_measure('Fault_ImproperTimeDelaySettingInOccupancySensors_os') # long run time
+    # translator.insert_model_measure('Fault_LightingSetbackErrorDelayedOnset_os') # long run time
+    translator.insert_model_measure('Fault_LightingSetbackErrorEarlyTermination_os')
+    translator.insert_model_measure('Fault_LightingSetbackErrorNoOvernightSetback_os')
+    # translator.insert_energyplus_measure('Fault_LiquidLineRestriction_ep') # long run time
+    # translator.insert_model_measure('Fault_NonStandardCharging_os') # Fail
+    # translator.insert_model_measure('Fault_OversizedEquipmentAtDesign_os') # Stuck
+    # translator.insert_energyplus_measure('Fault_PresenceOfNonCondensable_ep') # Stuck
+    # translator.insert_energyplus_measure('Fault_ReturnAirDuctLeakages_ep') # Stuck
+    # translator.insert_energyplus_measure('Fault_SupplyAirDuctLeakages_ep') # Fail
+    # translator.insert_model_measure('Fault_ThermostatBias_os') # Fail
+    translator.insert_energyplus_measure('Fault_thermostat_offset_ep')
 
     ## 3. Retrofit measures
-    translator.insert_model_measure('Retrofit_equipment_os', 0)
-    translator.insert_model_measure('Retrofit_lighting_os', 0)
-    translator.insert_energyplus_measure('Retrofit_exterior_wall_ep', 0)
-    translator.insert_energyplus_measure('Retrofit_roof_ep', 0)
+    # translator.insert_model_measure('Retrofit_equipment_os', 0)
+    # translator.insert_model_measure('Retrofit_lighting_os', 0)
+    # translator.insert_energyplus_measure('Retrofit_exterior_wall_ep', 0)
+    # translator.insert_energyplus_measure('Retrofit_roof_ep', 0)
 
     # Add other measures
     translator.add_measure_path("#{root_dir}/lib/measures")
