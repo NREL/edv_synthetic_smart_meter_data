@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby '~>2.2'
 
 allow_local = false
-allow_local_bsync = true
+allow_local_bsync = false
 
 gem 'rake', '12.3.1'
 gem 'rexml', '3.2.2'
