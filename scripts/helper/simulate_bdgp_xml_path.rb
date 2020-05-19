@@ -7,7 +7,7 @@ require_relative '../constants'
 require 'openstudio-occupant-variability'
 
 
-def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only, occ_var = false)
+def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only, occ_var)
   simulation_file_path = File.join(File.expand_path(NAME_OF_OUTPUT_DIR), SIM_FILES_DIR)
   if !File.exist?(simulation_file_path)
     FileUtils.mkdir_p(simulation_file_path)
@@ -54,3 +54,4 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     puts "Error occurred while processing #{xml_file_path} with message: #{e.message}"
   end
 end
+

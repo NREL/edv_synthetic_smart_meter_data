@@ -2,9 +2,6 @@ require 'csv'
 require_relative 'constants'
 require_relative 'helper/simulate_bdgp_xml_path'
 
-baseline_only = BASELINE_ONLY
-occ_var = OCC_VAR
-
 if ARGV[0].nil?
   puts 'usage: bundle exec ruby process_single_bldg_sync_files_in_csv.rb path/to/csv/file'
   puts "must provide a .csv file"
@@ -49,7 +46,7 @@ else
 end
 
 # Run
-result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only, occ_var = occ_var)
+result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, BASELINE_ONLY, OCC_VAR)
 
 output_dirs = []
 Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
