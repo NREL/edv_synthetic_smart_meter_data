@@ -2,6 +2,26 @@ require 'rspec/core/rake_task'
 require_relative 'scripts/constants'
 RSpec::Core::RakeTask.new(:spec)
 
+#############################################################################################
+desc 'convert raw data to standardized data format'
+task :standardize_metadata_and_timeseriesdata do
+
+  default_metadata_file = "../edv-experiment-1-files/BDGP/#{BDGP_CZ_METADATA_FILE}"
+  
+  if ARGV[1]
+
+    # ARGV[1] should be a path to a CSV file
+    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{ARGV[1]}"
+
+  elsif RUN_TYPE == 'bdgp-cz' && File.exist?(default_metadata_file)
+    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{default_metadata_file}"
+  else
+    # need path to csv file
+    puts "Error - No CSV file specified and default not found at: #{default_metadata_file}"
+    puts 'Usage: bundle exec rake generate_xmls path/to/csv/file'
+  end
+end
+#############################################################################################
 desc 'generate BuildingSync XMLs'
 task :generate_xmls do
 
