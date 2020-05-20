@@ -23,3 +23,6 @@ SRvt/
 .vscode
 __pycache__
 runner.conf
+BldgSync
+data/raw/metadata_template.csv
+data/raw/timeseriesdata_template.csv

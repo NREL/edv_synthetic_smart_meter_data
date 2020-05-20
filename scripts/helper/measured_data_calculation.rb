@@ -44,13 +44,10 @@ class MeasuredDataCalculation
       package_of_measures.add_element(calculation_method)
       measured = REXML::Element.new("#{ns}:Measured")
       calculation_method.add_element(measured)
-      other = REXML::Element.new("#{ns}:Other")
-      measured.add_element(other)
+
       scenario_elements.add_element(measured_scenario_element)
     end
-    time_series_data = REXML::Element.new("#{ns}:TimeSeriesData")
-    measured_scenario_element.add_element(time_series_data)
-
+    ts_elements = []
     csv_month_class_collection.each do |single_csv_class|
       next unless single_csv_class.get_total_values[counter] > 0
       time_series = REXML::Element.new("#{ns}:TimeSeries")
@@ -58,9 +55,9 @@ class MeasuredDataCalculation
       reading_type.text = 'Total'
       time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
       time_series_reading_quantity.text = 'Energy'
-      start_time_stamp = REXML::Element.new("#{ns}:StartTimeStamp")
+      start_time_stamp = REXML::Element.new("#{ns}:StartTimestamp")
       start_time_stamp.text = single_csv_class.start_time_stamp
-      end_time_stamp = REXML::Element.new("#{ns}:EndTimeStamp")
+      end_time_stamp = REXML::Element.new("#{ns}:EndTimestamp")
       end_time_stamp.text = single_csv_class.end_time_stamp
       interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
       interval_frequency.text = 'Month'
@@ -73,14 +70,21 @@ class MeasuredDataCalculation
       time_series.add_element(end_time_stamp)
       time_series.add_element(interval_frequency)
       time_series.add_element(interval_reading)
-      time_series_data.add_element(time_series)
+      ts_elements.push(time_series)
 
       file_value_collection.push(single_csv_class.get_total_values[counter])
     end
 
-    unit_converted_value = calculate_annual_value(file_value_collection, measured_scenario_element)
+    calculate_annual_value(file_value_collection, measured_scenario_element)
 
-    save_xml(xml_file.gsub('Bldg_Sync_Files', 'Bldg_Sync_Files_w_Measured_Data'), doc)
+    time_series_data = REXML::Element.new("#{ns}:TimeSeriesData")
+    measured_scenario_element.add_element(time_series_data)
+    ts_elements.each do |ts|
+      time_series_data.add_element(ts)
+    end
+
+
+    save_xml(xml_file.gsub("#{GENERATE_DIR}", "#{ADD_MEASURED_DIR}"), doc)
   end
 
   def calculate_annual_value(file_value_collection, scenario_element)
