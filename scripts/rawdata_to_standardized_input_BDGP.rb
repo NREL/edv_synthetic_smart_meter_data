@@ -5,23 +5,13 @@ require 'fileutils'
 require_relative 'constants'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
-  puts 'Error - No CSV file specified'
-  puts ''
-  puts ''
-  puts ''
-  puts ''
-  puts ''
+  puts 'Error - No metadata CSV file specified'
   exit(1)
 
 end
 
 if ARGV[1].nil? || !File.exist?(ARGV[1])
-  puts 'Error - No CSV file specified'
-  puts ''
-  puts ''
-  puts ''
-  puts ''
-  puts ''
+  puts 'Error - No timeseries CSV file specified'
   exit(1)
 
 end
@@ -71,9 +61,9 @@ end
 
 data_original = CSV.read(ARGV[1])
 header = CSV.open(ARGV[1], &:readline)
-header[header.index("timestamp")] = "TIMESTAMP"
+#header[header.index("timestamp")] = "timestamp"
 
-CSV.open(outdir + '/timeseries.csv', "w", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
   csv << header
   data_original.each_with_index {|row,i| next if i == 0; csv << row } #HOW TO SKIP FIRST ROW
 end

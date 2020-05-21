@@ -13,6 +13,7 @@ end
 puts "standard_to_be_used:#{standard_to_be_used}"
 
 epw_file = 'temporary.epw'
+ddy_file = 'temporary.ddy'
 epw_arr = []
 if !ARGV[2].nil? && File.exist?(ARGV[2])
   csv_file_with_EPWs = ARGV[2]
@@ -42,9 +43,6 @@ csv = File.open(csv_file_path, 'w')
 puts "Looking for #{"#{root_dir}/*.xml"} "
 puts "found #{Dir.glob("#{root_dir}/*.xml").count} xml files in this directory. "
 Dir.glob("#{root_dir}/*.xml").each do |xml_file|
-  # puts "xml_file: #{xml_file} "
-  # puts "xml_file: #{File.basename(xml_file, ".xml")}"
-  # puts "standard: #{standard_to_be_used}"
   matches = epw_arr.select {|row| row[:building_id] === File.basename(xml_file, ".xml") }
   if matches.size > 0
     epw_file = File.expand_path(matches[0][:weather_file_name_epw], weather_file_source_dir)
@@ -56,6 +54,4 @@ Dir.glob("#{root_dir}/*.xml").each do |xml_file|
 end
 csv.close
 
-# puts "ARGV[0]:#{ARGV[0]} ARGV[1]:#{ARGV[1]} ARGV[2]:#{ARGV[2]} ARGV[3]:#{ARGV[3]}"
 
-# puts 'bye'
