@@ -15,16 +15,27 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
 
 end
 
+if ARGV[1].nil? || !File.exist?(ARGV[1])
+  puts 'Error - No CSV file specified'
+  puts ''
+  puts ''
+  puts ''
+  puts ''
+  puts ''
+  exit(1)
+
+end
+
 # output directory
 outdir = "./data/processed"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
-# standardized metadata and timeseries files
-metadata_file = File.open(outdir + '/metadata.csv', 'w')
-metadata_file.puts 'BUILDING_ID,XML_FILENAME,PRIMARY_BUILDING_TYPE,FLOOR_AREA_SQFT,VINTAGE,CLIMATE_ZONE,ZIPCODE,CITY,US_STATE,LONGITUDE,LATITUDE,NUMBER_OF_STORIES,NUMBER_OF_OCCUPANTS,FUEL_TYPE_HEATING,ENERGYSTAR_SCORE,MEASUREMENT_START_DATE,MEASUREMENT_END_DATE,WEATHER_FILE_NAME_EPW,WEATHER_FILE_NAME_DDY'
+#######################################################################
+# metadata data conversion from raw labels to standardized labels
+#######################################################################
 
-#timeseries_file = File.open(outdir + '/timeseries.csv', 'w')
-#timeseries_file.puts 'building_id,xml_filename,OccupancyClassification,BuildingName,FloorArea(ft2),YearBuilt,ClimateZone'
+metadata_file = File.open(outdir + '/metadata.csv', 'w')
+metadata_file.puts 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type_heating,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
 
 options = {headers: true,
            header_converters: :symbol}
@@ -54,4 +65,15 @@ CSV.foreach(ARGV[0], options) do |feature|
 
 end
 
-#TODO_JK: create script for standardizing timeseries data
+#######################################################################
+# timeseries data conversion from raw labels to standardized labels
+#######################################################################
+
+data_original = CSV.read(ARGV[1])
+header = CSV.open(ARGV[1], &:readline)
+header[header.index("timestamp")] = "TIMESTAMP"
+
+CSV.open(outdir + '/timeseries.csv', "w", :headers => true) do |csv|
+  csv << header
+  data_original.each_with_index {|row,i| next if i == 0; csv << row } #HOW TO SKIP FIRST ROW
+end
