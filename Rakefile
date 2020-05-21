@@ -7,17 +7,19 @@ desc 'convert raw data to standardized data format'
 task :standardize_metadata_and_timeseriesdata do
 
   default_metadata_file = "../edv-experiment-1-files/BDGP/#{BDGP_CZ_METADATA_FILE}"
+  default_timeseries_file = "../edv-experiment-1-files/BDGP/#{TIMESERIES_DATA_FILE}"
   
-  if ARGV[1]
+  if ARGV[1] && ARGV[2]
 
     # ARGV[1] should be a path to a CSV file
-    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{ARGV[1]}"
+    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{ARGV[1]} #{ARGV[2]}"
 
-  elsif RUN_TYPE == 'bdgp-cz' && File.exist?(default_metadata_file)
-    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{default_metadata_file}"
+  elsif RUN_TYPE == 'bdgp-cz' && File.exist?(default_metadata_file) && File.exist?(default_timeseries_file)
+    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{default_metadata_file} #{default_timeseries_file}"
   else
     # need path to csv file
     puts "Error - No CSV file specified and default not found at: #{default_metadata_file}"
+    puts "Error - No CSV file specified and default not found at: #{default_timeseries_file}"
     puts 'Usage: bundle exec rake generate_xmls path/to/csv/file'
   end
 end
@@ -25,8 +27,8 @@ end
 desc 'generate BuildingSync XMLs'
 task :generate_xmls do
 
-  default_metadata_file = "#{RAW_DATA_DIR}/#{DEFAULT_METADATA_FILE}"
-  bdgp_cz_metadata_file = "../edv-experiment-1-files/BDGP/#{BDGP_CZ_METADATA_FILE}"
+  default_metadata_file = "data/processed/metadata.csv"
+  bdgp_cz_metadata_file = "data/processed/metadata.csv"
   if ARGV[1]
 
     # ARGV[1] should be a path to a CSV file
@@ -38,11 +40,11 @@ task :generate_xmls do
     ruby "scripts/meta_to_buildingsync.rb #{bdgp_cz_metadata_file}"
   else
     # need path to csv file
-    puts "Error - No CSV file specified and default not found at: #{default_metadata_file}"
+    puts "Error - No CSV file specified and default not found at: #{bdgp_cz_metadata_file}"
     puts 'Usage: bundle exec rake generate_xmls path/to/csv/file'
   end
 end
-
+#############################################################################################
 desc 'Read the CSV file and update the BuildingSync files'
 task :add_measured_data do
 
@@ -63,7 +65,7 @@ task :add_measured_data do
 
   end
 end
-
+#############################################################################################
 desc 'generate csv control file 1'
 task :generate_control_csv_1 do
 
@@ -94,21 +96,21 @@ task :generate_control_csv_1 do
 
   end
 end
-
+#############################################################################################
 desc 'Test single file simulation'
 task :single_file_run do
   output_dir = NAME_OF_OUTPUT_DIR
   all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
 end
-
+#############################################################################################
 desc 'Test single file simulation with occupancy variability'
 task :single_file_run_occ_var do
   output_dir = NAME_OF_OUTPUT_DIR
   all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
 end
-
+#############################################################################################
 desc 'simulate a batch of BuildingSync XML files'
 task :simulate_batch_xml do
 
@@ -130,7 +132,7 @@ task :simulate_batch_xml do
 
   end
 end
-
+#############################################################################################
 desc 'export the synthetic data'
 task :export_synthetic_data do
 
@@ -146,8 +148,7 @@ task :export_synthetic_data do
 
   end
 end
-
-
+#############################################################################################
 desc 'append lat/lng/zipcode information to CSV'
 task :geocode_meta_csv do
 
@@ -163,7 +164,7 @@ task :geocode_meta_csv do
 
   end
 end
-
+#############################################################################################
 desc 'lookup and append climate_zone information to CSV'
 task :lookup_climate_zone_csv do
 
@@ -179,7 +180,7 @@ task :lookup_climate_zone_csv do
 
   end
 end
-
+#############################################################################################
 desc 'Read the directory, iterate over BldgSync files and calcuate the metrics'
 task :calculate_metrics do
 
@@ -195,14 +196,14 @@ task :calculate_metrics do
 
   end
 end
-
+#############################################################################################
 desc 'Run steps through generating all.csv'
 task :workflow_part_1 do
   Rake::Task["generate_xmls"].execute
   Rake::Task["add_measured_data"].execute
   Rake::Task["generate_control_csv_1"].execute
 end
-
+#############################################################################################
 desc 'Simulate batch and calculate metrics'
 task :workflow_part_2 do
   output_dir = NAME_OF_OUTPUT_DIR
