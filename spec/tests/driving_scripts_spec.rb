@@ -75,7 +75,7 @@ RSpec.describe 'EDV Experiment 1' do
     puts "and the result is: #{result}"
     expect(result).to be true
 
-    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/Bldg_Sync_Files_w_Measured_Data")
+    outdir = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}")
 
     iNewFileCount = Dir.glob("#{outdir}/*.xml").count
     puts "Found #{iNewFileCount} files in #{outdir} (should be #{NUM_OF_FILES}!)"

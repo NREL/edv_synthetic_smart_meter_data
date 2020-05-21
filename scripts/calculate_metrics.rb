@@ -51,11 +51,11 @@ def read_time_series_data(scenario_element, ns, resource_use_id = nil)
   time_series_data = scenario_element.elements["#{ns}:TimeSeriesData"]
   time_series_data.each do |time_series|
     if resource_use_id.nil? || time_series.elements["#{ns}:ResourceUseID"].attributes['IDref'] == resource_use_id
-      datetime = time_series.elements["#{ns}:StartTimeStamp"].text
+      datetime = time_series.elements["#{ns}:StartTimestamp"].text
       monthly_data.add_start_date_string(datetime)
       #monthly_measured_data.update_year(datetime.year)
       #monthly_measured_data.update_month(datetime.month)
-      #monthly_measured_data.update_end_time(time_series.elements["#{ns}:EndTimeStamp"].text)
+      #monthly_measured_data.update_end_time(time_series.elements["#{ns}:EndTimestamp"].text)
       monthly_data.update_total_values(time_series.elements["#{ns}:IntervalReading"].text, counter)
       counter += 1
     end
@@ -108,7 +108,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
       end
     end
 
-    new_xml_file_path = File.absolute_path(xml_file_path).gsub('Simulation_Files', 'Bldg_Sync_Files_w_Metrics')
+    new_xml_file_path = File.absolute_path(xml_file_path).gsub("#{SIM_FILES_DIR}", "#{CALC_METRICS_DIR}")
     # save the file as
     unless Dir.exist?(File.dirname(new_xml_file_path))
       FileUtils.mkdir_p(File.dirname(new_xml_file_path))
