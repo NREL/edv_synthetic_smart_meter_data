@@ -10,7 +10,7 @@ DATASOURCE = "BDGP"
 
 # Options: true, false
 BASELINE_ONLY = true
-OCC_VAR = false
+OCC_VAR = true
 
 # DO NOT EDIT
 # Directory within edv-experiment-1 where raw data exists

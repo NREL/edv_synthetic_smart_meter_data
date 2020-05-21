@@ -1,508 +1,508 @@
-uid,dataend,datastart,energystarscore,heatingtype,industry,mainheatingtype,numberoffloors,occupants,primaryspaceusage,rating,sqft,sqm,subindustry,timezone,yearbuilt,nickname,primaryspaceuse_abbrev,newweatherfilename,lat,lng,city,state,zipcode,climate_zone,epw,ddy
-BUILDING ID 1,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,9309,864.834027,College/University,America/Phoenix,1970,Abby,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 2,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,95717,8892.396451,College/University,America/Phoenix,2969,Abraham,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 3,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,72102,6698.492106,College/University,America/Phoenix,1970,Adrienne,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 4,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,90900,8444.8827,College/University,America/Phoenix,,Aidan,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 5,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,4314,400.783542,College/University,America/Phoenix,1907,Alec,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 6,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,140092,13014.96708,College/University,America/Phoenix,,Alejandra,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 7,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,78268,7271.332004,College/University,America/Phoenix,1964,Alexander,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 8,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,282946,26286.53224,College/University,America/Phoenix,2003,Alexandra,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 9,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,88486,8220.614858,College/University,America/Phoenix,,Alexandria,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 10,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,98829,9181.510587,College/University,America/Phoenix,1968,Alexus,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 11,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,90903,8445.161409,College/University,America/Phoenix,,Alfredo,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 12,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,84300,7831.7229,College/University,America/Phoenix,,Alicia,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 13,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,62238,5782.096914,College/University,America/Phoenix,1970,Allen,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 14,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,95944,8913.485432,College/University,America/Phoenix,1961,Alvin,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 15,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,179167,16645.1518,College/University,America/Phoenix,1971,Amari,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 16,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,30596,2842.460188,College/University,America/Phoenix,1999,Amya,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 17,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,49078,4559.493434,College/University,America/Phoenix,1914,Anamaria,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 18,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,12773,1186.650019,College/University,America/Phoenix,,Andy,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 19,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,126985,11797.28746,College/University,America/Phoenix,1979,Anika,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 20,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,111635,10371.22641,College/University,America/Phoenix,1989,Annabella,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 21,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,41179,3825.652637,College/University,America/Phoenix,,Anne,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 22,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,137065,12733.7497,College/University,America/Phoenix,1964,Annmarie,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 23,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,34171,3174.588413,College/University,America/Phoenix,,Antoinette,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 24,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,7481,695.007343,College/University,America/Phoenix,1969,Anya,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 25,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,244964,22757.89049,College/University,America/Phoenix,2008,Aoibhe,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 26,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,75650,7028.11195,College/University,America/Phoenix,,Archie,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 27,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,44203,4106.591309,College/University,America/Phoenix,1950,Ariana,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 28,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,25139,2335.488517,College/University,America/Phoenix,1970,Armando,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 29,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,24586,2284.113158,College/University,America/Phoenix,,Axel,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 30,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,71224,6616.923272,College/University,America/Phoenix,,Ayanna,UnivClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 31,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Classroom,,56602,5258.495606,College/University,America/Los_Angeles,1923,Beatrice,UnivClass,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 32,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Classroom,,128540,11941.75162,College/University,America/Los_Angeles,1968,Bob,UnivClass,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 33,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Classroom,,57600,5351.2128,College/University,America/Los_Angeles,1948,Boyd,UnivClass,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 34,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Classroom,,56886,5284.880058,College/University,America/Los_Angeles,1953,Brett,UnivClass,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 35,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,33695,3130.366585,College/University,America/New_York,1948,Caitlyn,UnivClass,weather2.csv,42.4490704,-76.4805815,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 36,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,9111,846.439233,College/University,America/New_York,1958,Calvin,UnivClass,weather2.csv,42.45287987,-76.48096966,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 37,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,31415,2918.547745,College/University,America/New_York,1912,Camden,UnivClass,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 38,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,124289,11546.82097,College/University,America/New_York,1904,Candy,UnivClass,weather2.csv,42.4462475,-76.4826759,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 39,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,40311,3745.012833,College/University,America/New_York,1913,Caoimhe,UnivClass,weather2.csv,42.44503125,-76.47874624,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 40,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,180625,16780.60438,College/University,America/New_York,1933,Carl,UnivClass,weather2.csv,42.4494115,-76.4786409,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 41,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,108971,10123.73281,College/University,America/New_York,1990,Carolyn,UnivClass,weather2.csv,42.4490704,-76.4805815,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 42,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,34875,3239.992125,College/University,America/New_York,1993,Cathleen,UnivClass,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 43,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,105434,9795.134902,College/University,America/New_York,2014,Celia,UnivClass,weather2.csv,42.4432116,-76.476447,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 44,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,47934,4453.212402,College/University,America/New_York,,Chandler,UnivClass,weather2.csv,42.44926,-76.4893789,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 45,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,91253,8477.677459,College/University,America/New_York,1888,Charlie,UnivClass,weather2.csv,42.4462475,-76.4826759,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 46,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,50567,4697.826001,College/University,America/New_York,1880,Christian,UnivClass,weather2.csv,42.44926,-76.4893789,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 47,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,140488,13051.75666,College/University,America/New_York,1961,Ciara,UnivClass,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 48,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,47398,4403.416394,College/University,America/New_York,1912,Clay,UnivClass,weather2.csv,42.4490704,-76.4805815,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 49,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,56969,5292.591007,College/University,America/New_York,1967,Clifford,UnivClass,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 50,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,40461,3758.948283,College/University,America/New_York,2002,Colette,UnivClass,weather2.csv,42.4494115,-76.4786409,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 51,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,99774,9269.303922,College/University,America/New_York,1955,Conner,UnivClass,weather2.csv,42.4432116,-76.476447,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 52,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,4298,399.297094,College/University,America/New_York,,Conor,UnivClass,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 53,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,23232,2158.322496,College/University,America/New_York,1871,Craig,UnivClass,weather2.csv,42.4482035,-76.4826493,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 54,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,,College Classroom,D,109070.5987,10133,College/University,Europe/London,1945-1966,Jadon,UnivClass,weather1.csv,51.47023505,-3.268661739,,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 55,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Classroom,,14185,1317.829055,College/University,America/Chicago,,Maddison,UnivClass,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 56,31/10/15 23:00,1/11/2014 0:00,,,Education,,,3090,College Classroom,,123096,11435.98769,College/University,America/Chicago,,Nash,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 57,31/10/15 23:00,1/11/2014 0:00,,,Education,,,3537,College Classroom,,166151,15435.92635,College/University,America/Chicago,,Nathaniel,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 58,31/10/15 23:00,1/11/2014 0:00,,,Education,,,2130,College Classroom,,80078,7439.486434,College/University,America/Chicago,,Nayeli,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 59,31/10/15 23:00,1/11/2014 0:00,,,Education,,,4144,College Classroom,,164166,15251.5139,College/University,America/Chicago,,Nelly,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 60,31/10/15 23:00,1/11/2014 0:00,,,Education,,,1344,College Classroom,,54461,5059.590283,College/University,America/Chicago,,Nicholas,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 61,31/10/15 23:00,1/11/2014 0:00,,,Education,,,2417,College Classroom,,100310,9319.09993,College/University,America/Chicago,,Nickolas,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 62,31/10/15 23:00,1/11/2014 0:00,,,Education,,,1370,College Classroom,,57964,5385.029492,College/University,America/Chicago,,Nishka,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 63,31/10/15 23:00,1/11/2014 0:00,,,Education,,,3741,College Classroom,,149679,13905.62814,College/University,America/Chicago,,Noreen,UnivClass,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 64,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,58307,5416.895221,College/University,America/New_York,,Pandora,UnivClass,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 65,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,80325,7462.433475,College/University,America/New_York,,Pete,UnivClass,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 66,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,77263,7177.964489,College/University,America/New_York,,Peter,UnivClass,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 67,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,30531,2836.421493,College/University,America/New_York,,Philip,UnivClass,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 68,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Classroom,,13512,1255.305336,College/University,America/New_York,,Phyllis,UnivClass,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 69,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,D,61709.4387,5733,College/University,Europe/London,1966,Sam,UnivClass,weather6.csv,50.934322,-1.399062,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 70,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,B,65024.7199,6041,College/University,Europe/London,1975,Seb,UnivClass,weather6.csv,50.936592,-1.398697,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 71,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,D,31118.4349,2891,College/University,Europe/London,1994,Serenity,UnivClass,weather6.csv,50.937801,-1.394014,Southampton,England,SO16 3HG,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 72,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,C,15715.294,1460,College/University,Europe/London,1948,Shawna,UnivClass,weather6.csv,50.9344936,-1.395317,Southampton,England,SO17 1BE,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 73,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,F,61246.591,5690,College/University,Europe/London,1960,Sheila,UnivClass,weather6.csv,50.935551,-1.393488,Southampton,England,SO17 3AQ,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 74,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,G,64917.0809,6031,College/University,Europe/London,2006,Stephanie,UnivClass,weather6.csv,50.9364157,-1.395905,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 75,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,B,32367.0473,3007,College/University,Europe/London,1938,Stephen,UnivClass,weather6.csv,50.93383,-1.394475,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 76,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,C,45305.2551,4209,College/University,Europe/London,1965,Stuart,UnivClass,weather6.csv,50.9362228,-1.3988756,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 77,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Classroom,D,49513.94,4600,College/University,Europe/London,2000,Sylvia,UnivClass,weather6.csv,50.9366885,-1.3966181,Southampton,England,SO17 1TR,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 78,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Classroom,,350333.7297,32547.1,College/University,Europe/Zurich,,Tammy,UnivClass,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 79,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Classroom,,5389.48473,500.7,College/University,Europe/Zurich,,Tamra,UnivClass,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 80,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Classroom,,137744.5519,12796.9,College/University,Europe/Zurich,,Teri,UnivClass,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 81,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Classroom,,5119.31084,475.6,College/University,Europe/Zurich,,Therese,UnivClass,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 82,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,88934,8262.235402,College/University,America/Phoenix,2009,Adrian,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 83,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,48411,4497.527133,College/University,America/Phoenix,,Aine,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 84,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,131710,12236.25413,College/University,America/Phoenix,1991,Alaina,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 85,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,91273,8479.535519,College/University,America/Phoenix,1951,Albert,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 86,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,122592,11389.16458,College/University,America/Phoenix,1971,Alberto,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 87,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,49384,4587.921752,College/University,America/Phoenix,1967,Alexis,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 88,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,64560,5997.81768,College/University,America/Phoenix,1965,Alfonso,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 89,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,65907,6122.958021,College/University,America/Phoenix,1964,Ali,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 90,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,49662,4613.748786,College/University,America/Phoenix,1964,Alina,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 91,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,193294,17957.59248,College/University,America/Phoenix,2006,Alisa,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 92,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,219608,20402.24202,College/University,America/Phoenix,1992,Allan,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 93,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,4689,435.622167,College/University,America/Phoenix,2005,Allison,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 94,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,183460,17043.98438,College/University,America/Phoenix,2005,Amaya,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 95,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,24643,2289.408629,College/University,America/Phoenix,1982,Amy,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 96,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,89770,8339.90231,College/University,America/Phoenix,,Ana,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 97,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,96124,8930.207972,College/University,America/Phoenix,1959,Andre,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 98,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,9788,909.334564,College/University,America/Phoenix,,Angie,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 99,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,151637,14087.53221,College/University,America/Phoenix,1983,Anita,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 100,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,71421,6635.225163,College/University,America/Phoenix,,Aniya,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 101,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,204349,18984.63515,College/University,America/Phoenix,1993,Annabelle,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 102,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,132518,12311.31975,College/University,America/Phoenix,1992,Annette,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 103,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,261188,24265.14876,College/University,America/Phoenix,,Aoife,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 104,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,137040,12731.42712,College/University,America/Phoenix,1957,Arianna,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 105,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,33739,3134.454317,College/University,America/Phoenix,1939,Ariel,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 106,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,71248,6619.152944,College/University,America/Phoenix,2004,Ashlee,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 107,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,327256,30403.06417,College/University,America/Phoenix,2012,Ashlynn,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 108,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,179559,16681.56978,College/University,America/Phoenix,2006,Ashton,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 109,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,4583,425.774449,College/University,America/Phoenix,,Audra,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 110,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,77469,7197.102507,College/University,America/Phoenix,,Aurora,UnivLab,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 111,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Laboratory,,52839,4908.901617,College/University,America/Los_Angeles,1942,Bert,UnivLab,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 112,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Laboratory,,172244,16001.98433,College/University,America/Los_Angeles,1963,Beth,UnivLab,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 113,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Laboratory,,203787,18932.42366,College/University,America/Los_Angeles,1999,Bethany,UnivLab,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 114,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Laboratory,,124950,11608.22985,College/University,America/Los_Angeles,1961,Brad,UnivLab,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 115,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,College Laboratory,,87216,8102.628048,College/University,America/Los_Angeles,1964,Brenna,UnivLab,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 116,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,204029,18954.90619,College/University,America/New_York,2010,Caesar,UnivLab,weather2.csv,42.4462475,-76.4826759,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 117,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,20889,1940.650767,College/University,America/New_York,1976,Caitlin,UnivLab,weather2.csv,42.447677,-76.4637359,East Ithaca,New York,NY 14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 118,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,279840,25997.97552,College/University,America/New_York,2008,Callie,UnivLab,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 119,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,33148,3079.548644,College/University,America/New_York,1967,Cam,UnivLab,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 120,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,111518,10360.35675,College/University,America/New_York,1968,Camryn,UnivLab,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 121,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,56497,5248.740791,College/University,America/New_York,1957,Carley,UnivLab,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 122,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,30143,2800.375129,College/University,America/New_York,1951,Carlos,UnivLab,weather2.csv,42.4434521,-76.4843094,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 123,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,322341,29946.44592,College/University,America/New_York,1995,Carlton,UnivLab,weather2.csv,42.4451407,-76.4837322,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 124,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,131271,12195.46971,College/University,America/New_York,2010,Carol,UnivLab,weather2.csv,42.447677,-76.4637359,East Ithaca,New York,NY 14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 125,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,149762,13913.33909,College/University,America/New_York,2004,Carole,UnivLab,weather2.csv,42.4451407,-76.4837322,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 126,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,74599,6930.470897,College/University,America/New_York,1984,Cayden,UnivLab,weather2.csv,42.4434521,-76.4843094,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 127,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,125507,11659.97682,College/University,America/New_York,1974,Cecil,UnivLab,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 128,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,105612,9811.671636,College/University,America/New_York,1967,Cedric,UnivLab,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 129,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,9552,887.409456,College/University,America/New_York,1961,Cesar,UnivLab,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 130,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,173983,16163.54265,College/University,America/New_York,1986,Cheyanne,UnivLab,weather2.csv,42.4451407,-76.4837322,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 131,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,171008,15887.15622,College/University,America/New_York,1930,Christine,UnivLab,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 132,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,28084,2609.087852,College/University,America/New_York,1913,Christy,UnivLab,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 133,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,233863,21726.57429,College/University,America/New_York,1921,Ciel,UnivLab,weather2.csv,42.4462475,-76.4826759,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 134,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,116854,10856.08716,College/University,America/New_York,1978,Cindy,UnivLab,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 135,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,18342,1704.026826,College/University,America/New_York,1960,Clint,UnivLab,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 136,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,28432,2641.418096,College/University,America/New_York,1933,Clodagh,UnivLab,weather2.csv,42.4494115,-76.4786409,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 137,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,98125,9116.106875,College/University,America/New_York,2011,Collin,UnivLab,weather2.csv,42.44987616,-76.47354939,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 138,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,160673,14927.00372,College/University,America/New_York,1968,Cory,UnivLab,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 139,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,214505,19928.15802,College/University,America/New_York,1990,Cristian,UnivLab,weather2.csv,42.4432116,-76.476447,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 140,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,124521,11568.37446,College/University,America/New_York,1967,Crystal,UnivLab,weather2.csv,42.4443461,-76.470454,East Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 141,31/12/10 23:00,1/1/2010 0:00,,,Education,,,,College Laboratory,,153700,14279.1911,College/University,America/Los_Angeles,1990,Dianna,UnivLab,weather13.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 142,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,6,,College Laboratory,E,61203.5354,5686,College/University,Europe/London,1989,Lauren,UnivLab,weather5.csv,51.527476,-0.090808,London,England,EC1V 9EZ,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 143,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,6,,College Laboratory,,16802.4479,1561,College/University,Europe/London,1995,Lea,UnivLab,weather5.csv,51.521855,-0.123155,London,England,WC1N 3BG,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 144,30/11/15 23:00,1/12/2014 0:00,,Oil,Education,Oil,5,,College Laboratory,,37264.6218,3462,College/University,Europe/London,1800,Lee,UnivLab,weather33.csv,51.171966,-0.420732,Guildford,England,RH5 6NS,4A,GBR_GRAVESEND-BROADNESS_037840S_14.epw,GBR_ENG_Charlwood.037690_TMYx.2003-2017.ddy
-BUILDING ID 145,30/11/15 23:00,1/12/2014 0:00,,Heat network and steam,Education,Heat Network And Steam,9,,College Laboratory,B,150317.8635,13965,College/University,Europe/London,1906,Lester,UnivLab,weather5.csv,51.5241,-0.1346,London,England,,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 146,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,6,,College Laboratory,F,83043.4885,7715,College/University,Europe/London,1991,Levi,UnivLab,weather5.csv,51.527229,-0.091107,London,England,EC1V 9EZ,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 147,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,6,,College Laboratory,D,38319.484,3560,College/University,Europe/London,1900,Lilly,UnivLab,weather5.csv,51.5259,-0.1228,London,England,WC1N 1PF,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 148,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,5,,College Laboratory,G,21538.5639,2001,College/University,Europe/London,2004,Louie,UnivLab,weather5.csv,51.529261,-0.119723,London,England,WC1X 8EE,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 149,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,8,,College Laboratory,,138316.115,12850,College/University,Europe/London,1960,Lyle,UnivLab,weather5.csv,51.525043,-0.122401,London,England,WC1N 1AZ,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 150,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,63915,5937.895245,College/University,America/Chicago,,Mack,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 151,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,184098,17103.25649,College/University,America/Chicago,,Madelyn,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 152,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,37107,3447.351621,College/University,America/Chicago,,Margret,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 153,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,192152,17851.49726,College/University,America/Chicago,,Mariana,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 154,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,156483,14537.74015,College/University,America/Chicago,,Marie,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 155,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,39988,3715.005164,College/University,America/Chicago,,Mario,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 156,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,32256,2996.679168,College/University,America/Chicago,,Marshall,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 157,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,College Laboratory,,142672,13254.65682,College/University,America/Chicago,,Miles,UnivLab,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 158,31/10/15 23:00,1/11/2014 0:00,,,Education,,,511,College Laboratory,,27145,2521.851935,College/University,America/Chicago,,Neil,UnivLab,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 159,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,120836,11226.02691,College/University,America/New_York,,Paris,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 160,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,46813,4349.068139,College/University,America/New_York,,Parker,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 161,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,75929,7054.031887,College/University,America/New_York,,Patrick,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 162,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,129344,12016.44563,College/University,America/New_York,,Patsy,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 163,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,477724,44381.99277,College/University,America/New_York,,Paul,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 164,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,53651,4984.338853,College/University,America/New_York,,Peggy,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 165,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,250000,23225.75,College/University,America/New_York,,Peyton,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 166,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,241324,22419.72357,College/University,America/New_York,,Phil,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 167,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,39558,3675.056874,College/University,America/New_York,,Preston,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 168,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,College Laboratory,,35990,3343.57897,College/University,America/New_York,,Priscilla,UnivLab,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 169,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Laboratory,G,107585.1805,9995,College/University,Europe/London,2010,Santiago,UnivLab,weather6.csv,50.936436,-1.395323,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 170,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Laboratory,D,16307.3085,1515,College/University,Europe/London,2007,Susan,UnivLab,weather6.csv,50.9355444,-1.392867,Southampton,England,SO17 3AQ,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 171,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,College Laboratory,E,84066.059,7810,College/University,Europe/London,1966,Suzette,UnivLab,weather6.csv,50.9348505,-1.3996014,Southampton,England,SO17 1BJ,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 172,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Laboratory,,73981.36109,6873.1,College/University,Europe/Zurich,,Tami,UnivLab,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 173,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Laboratory,,64940.76148,6033.2,College/University,Europe/Zurich,,Taylor,UnivLab,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 174,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Laboratory,,86436.26978,8030.2,College/University,Europe/Zurich,,Terrie,UnivLab,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 175,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Laboratory,,648094.419,60210,College/University,Europe/Zurich,,Tracie,UnivLab,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 176,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,College Laboratory,,64246.48993,5968.7,College/University,Europe/Zurich,,Tracy,UnivLab,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 177,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,216526,20115.91498,College/University,America/Phoenix,1967,Adan,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 178,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,63348,5885.219244,College/University,America/Phoenix,2007,Adriana,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 179,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,49108,4562.280524,College/University,America/Phoenix,1951,Ahmad,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 180,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,106440,9888.59532,College/University,America/Phoenix,1963,Alex,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 181,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,212128,19707.32758,College/University,America/Phoenix,,Alka,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 182,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,36406,3382.226618,College/University,America/Phoenix,1940,Alonzo,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 183,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,60086,5582.169658,College/University,America/Phoenix,2001,Alphonso,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 184,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,74682,6938.181846,College/University,America/Phoenix,2006,Alyshialynn,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 185,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,111304,10340.47551,College/University,America/Phoenix,1964,Alyssa,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 186,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,30949,2875.254947,College/University,America/Phoenix,1951,Antonio,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 187,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,553210,51394.86863,College/University,America/Phoenix,2009,April,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 188,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,32841,3051.027423,College/University,America/Phoenix,1935,Ashleigh,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 189,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,86323,8019.665669,College/University,America/Phoenix,1956,Avery,UnivDorm,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 190,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,129664,12046.17459,College/University,America/New_York,1941,Camila,UnivDorm,weather2.csv,42.4470569,-76.4850388,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 191,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,18277,1697.988131,College/University,America/New_York,1965,Candace,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 192,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,169290,15727.54887,College/University,America/New_York,2006,Cara,UnivDorm,weather2.csv,42.4525791,-76.4896621,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 193,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,40451,3758.019253,College/University,America/New_York,1975,Carey,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 194,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,40629,3774.555987,College/University,America/New_York,1975,Carla,UnivDorm,weather2.csv,42.45529293,-76.47756566,Cayuga Heights,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 195,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,65663,6100.289689,College/University,America/New_York,1975,Carter,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 196,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,24103,2239.241009,College/University,America/New_York,1964,Casey,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 197,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,78438,7287.125514,College/University,America/New_York,2004,Cathal,UnivDorm,weather2.csv,42.449184,-76.489688,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 198,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,142901,13275.9316,College/University,America/New_York,2007,Cathalina,UnivDorm,weather2.csv,42.44719095,-76.48773123,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 199,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,29775,2766.186825,College/University,America/New_York,2001,Cecilia,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 200,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,166814,15497.52104,College/University,America/New_York,1929,Celeste,UnivDorm,weather2.csv,42.452573,-76.480985,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 201,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,40492,3761.828276,College/University,America/New_York,1975,Chelsey,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 202,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,168791,15681.19027,College/University,America/New_York,1946,Cheri,UnivDorm,weather2.csv,42.45519714,-76.479301,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 203,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,65999,6131.505097,College/University,America/New_York,1975,Chester,UnivDorm,weather2.csv,42.45530952,-76.47766265,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 204,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,61439,5707.867417,College/University,America/New_York,1903,Cheyenne,UnivDorm,weather2.csv,42.4462475,-76.4826759,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 205,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,41236,3830.948108,College/University,America/New_York,1975,Christi,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 206,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,41302,3837.079706,College/University,America/New_York,1975,Christopher,UnivDorm,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 207,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,20291,1885.094773,College/University,America/New_York,1925,Cian,UnivDorm,weather2.csv,42.45377218,-76.48252185,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 208,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,136522,12683.30337,College/University,America/New_York,2005,Ciaran,UnivDorm,weather2.csv,42.446152,-76.4884249,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 209,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,96336,8949.903408,College/University,America/New_York,1913,Claudia,UnivDorm,weather2.csv,42.45333468,-76.48146121,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 210,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,98624,9162.465472,College/University,America/New_York,1866,Clayton,UnivDorm,weather2.csv,42.44250821,-76.487334,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 211,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,19876,1846.540028,College/University,America/New_York,1932,Colton,UnivDorm,weather2.csv,42.446152,-76.4884249,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 212,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,21168,1966.570704,College/University,America/New_York,1928,Constance,UnivDorm,weather2.csv,42.44770945,-76.48774573,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 213,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,133594,12411.28338,College/University,America/New_York,1961,Cooper,UnivDorm,weather2.csv,42.45530135,-76.47760998,Cayuga Heights,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 214,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,48881,4541.191543,College/University,America/New_York,1902,Corey,UnivDorm,weather2.csv,42.44215186,-76.48538629,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 215,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,83141,7724.048323,College/University,America/New_York,2006,Cornelius,UnivDorm,weather2.csv,42.4478722,-76.4883214,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 216,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,39538,3673.198814,College/University,America/New_York,1953,Curtis,UnivDorm,weather2.csv,42.45832022,-76.48560156,Cayuga Heights,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 217,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,3,34,Dormitory,D,7588.5495,705,Social Services,Europe/London,Post 1976,Jeannette,UnivDorm,weather1.csv,51.48658818,-3.234433973,Cardiff,Wales,CF5 3AX,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 218,30/11/15 23:00,1/12/2014 0:00,,Electric,Education,Electric,7,,Dormitory,E,66660.8327,6193,College/University,Europe/London,1930,Laura,UnivDorm,weather5.csv,51.525834,-0.115517,London,England,WC1X 0HB,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 219,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,8,,Dormitory,C,64723.3307,6013,College/University,Europe/London,1960,Lawrence,UnivDorm,weather5.csv,51.528578,-0.126168,London,England,WC1H 9BB,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 220,30/11/15 23:00,1/12/2014 0:00,,Electric,Education,Electric,8,,Dormitory,E,49589.2873,4607,College/University,Europe/London,1998,Leann,UnivDorm,weather5.csv,51.530644,-0.11463,London,England,WC1X 9EN,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 221,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,8,,Dormitory,D,83108.0719,7721,College/University,Europe/London,1995,Leonard,UnivDorm,weather5.csv,51.526285,-0.140214,London,England,NW1 2PL,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 222,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,10,,Dormitory,D,66531.6659,6181,College/University,Europe/London,1967,Leslie,UnivDorm,weather5.csv,51.52072,-0.137678,London,England,W1T 4JS,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 223,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,7,,Dormitory,E,102773.7172,9548,College/University,Europe/London,1956,Leticia,UnivDorm,weather5.csv,51.52244,-0.13857,London,England,W1T 5HB,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 224,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,16,,Dormitory,F,62893.4677,5843,College/University,Europe/London,1960,Lorraine,UnivDorm,weather5.csv,51.54887,-0.1494,London,England,NW5 4HH,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 225,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,7,,Dormitory,G,102956.7035,9565,College/University,Europe/London,1968,Lysander,UnivDorm,weather5.csv,51.54479,-0.13549,London,England,NW1 9HJ,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 226,30/04/15 23:00,1/5/2014 0:00,85,,Education,,,,Dormitory,,117054,10874.66776,College/University,America/Chicago,,Malachi,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 227,30/04/15 23:00,1/5/2014 0:00,45,,Education,,,,Dormitory,,174924,16250.96437,College/University,America/Chicago,,Malcolm,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 228,30/04/15 23:00,1/5/2014 0:00,46,,Education,,,,Dormitory,,230747,21437.08854,College/University,America/Chicago,,Marlene,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 229,30/04/15 23:00,1/5/2014 0:00,56,,Education,,,,Dormitory,,233341,21678.07892,College/University,America/Chicago,,Marquis,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 230,30/04/15 23:00,1/5/2014 0:00,49,,Education,,,,Dormitory,,177550,16494.92765,College/University,America/Chicago,,Mathew,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 231,30/04/15 23:00,1/5/2014 0:00,58,,Education,,,,Dormitory,,153299,14241.937,College/University,America/Chicago,,Mauricio,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 232,30/04/15 23:00,1/5/2014 0:00,49,,Education,,,,Dormitory,,157070,14592.27421,College/University,America/Chicago,,Mckenzie,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 233,30/04/15 23:00,1/5/2014 0:00,83,,Education,,,,Dormitory,,74584,6929.077352,College/University,America/Chicago,,Mitch,UnivDorm,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 234,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,278795,25900.89189,College/University,America/New_York,,Paola,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 235,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,44352,4120.433856,College/University,America/New_York,,Patrice,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 236,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,48519,4507.560657,College/University,America/New_York,,Patti,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 237,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,93500,8686.4305,College/University,America/New_York,,Patty,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 238,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,93313,8669.057639,College/University,America/New_York,,Payton,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 239,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,105791,9828.301273,College/University,America/New_York,,Pedro,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 240,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,35936,3338.562208,College/University,America/New_York,,Petar,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 241,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,47007,4367.091321,College/University,America/New_York,,Phillip,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 242,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,128044,11895.67173,College/University,America/New_York,,Phoebe,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 243,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,82911,7702.680633,College/University,America/New_York,,Piper,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 244,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,113000,10498.039,College/University,America/New_York,,Poppy,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 245,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Dormitory,,87661,8143.969883,College/University,America/New_York,,Prince,UnivDorm,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 246,31/01/13 23:00,2/2/2012 0:00,,,Education,,,,Dormitory,,129166.8,12000,Primary/Secondary School,Asia/Singapore,,Una,UnivDorm,weather10.csv,1.3,103.8,Singapore,,148812,1A,SGP_SINGAPORE-CHANGI-AP_486980_13.epw,SGP_Singapore.486980_IWEC.ddy
-BUILDING ID 247,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,74180,6891.54454,College/University,America/Phoenix,1930,Abbey,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 248,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,9703,901.437809,College/University,America/Phoenix,1940,Abigail,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 249,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,118966,11052.2983,College/University,America/Phoenix,1988,Al,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 250,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,10135,941.571905,College/University,America/Phoenix,,Alannah,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 251,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,202435,18806.81881,College/University,America/Phoenix,1967,Aliyah,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 252,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,28750,2670.96125,College/University,America/Phoenix,,Allyson,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 253,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,155682,14463.32485,College/University,America/Phoenix,,Alyson,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 254,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,6203,576.277309,College/University,America/Phoenix,1999,Amelia,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 255,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,42214,3921.807242,College/University,America/Phoenix,1985,Amelie,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 256,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,148101,13759.0272,College/University,America/Phoenix,,Anastasia,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 257,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,33713,3132.038839,College/University,America/Phoenix,1956,Andrea,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 258,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,83660,7772.26498,College/University,America/Phoenix,1973,Angelica,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 259,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,140345,13038.47154,College/University,America/Phoenix,,Angelina,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 260,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,51732,4806.057996,College/University,America/Phoenix,1966,Angelo,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 261,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,23392,2173.186976,College/University,America/Phoenix,,Annika,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 262,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,70837,6580.969811,College/University,America/Phoenix,2014,Ashanti,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 263,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,121440,11282.14032,College/University,America/Phoenix,1983,Asher,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 264,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,23549,2187.772747,College/University,America/Phoenix,1941,Aubrey,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 265,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,163959,15232.28298,College/University,America/Phoenix,2004,Autumn,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 266,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,29778,2766.465534,College/University,America/Phoenix,,Ava,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 267,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,70832,6580.505296,College/University,America/Phoenix,2014,Ayden,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 268,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,131797,12244.33669,College/University,America/Phoenix,1968,Ayesha,Office,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 269,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Office,,75488,7013.061664,College/University,America/Los_Angeles,1948,Benjamin,Office,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 270,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Office,,236242,21947.59053,College/University,America/Los_Angeles,1962,Benthe,Office,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 271,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Office,,57343,5327.336729,College/University,America/Los_Angeles,1905,Bianca,Office,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 272,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Office,,137297,12755.30319,College/University,America/Los_Angeles,1917,Bobbi,Office,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 273,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Office,,77055,7158.640665,College/University,America/Los_Angeles,1917,Brian,Office,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 274,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Office,,97618,9069.005054,College/University,America/Los_Angeles,1964,Bryon,Office,weather7.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 275,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,87977,8173.327231,College/University,America/New_York,1947,Caleb,Office,weather2.csv,42.4462475,-76.4826759,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 276,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,53303,4952.008609,College/University,America/New_York,1981,Cameron,Office,weather2.csv,42.447577,-76.4760889,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 277,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,49553,4603.622359,College/University,America/New_York,1963,Carissa,Office,weather2.csv,42.4434521,-76.4843094,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 278,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,31053,2884.916859,College/University,America/New_York,1915,Carolina,Office,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 279,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,115288,10710.60106,College/University,America/New_York,1957,Catherine,Office,weather2.csv,42.4442237,-76.4851125,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 280,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,11524,1070.614172,College/University,America/New_York,1994,Cecelia,Office,weather2.csv,42.5,-76.5,Lansing,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 281,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,187041,17376.67002,College/University,America/New_York,1973,Charles,Office,weather2.csv,42.44766934,-76.47940238,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 282,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,14744,1369.761832,College/University,America/New_York,1910,Clarissa,Office,weather2.csv,42.448752,-76.4676899,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 283,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,31316,2909.350348,College/University,America/New_York,1913,Clifton,Office,weather2.csv,42.4494115,-76.4786409,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 284,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,46981,4364.675843,College/University,America/New_York,1962,Clinton,Office,weather2.csv,42.44766834,-76.47911646,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 285,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,84615,7860.987345,College/University,America/New_York,1963,Cody,Office,weather2.csv,42.4490704,-76.4805815,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 286,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,110380,10254.63314,College/University,America/New_York,1985,Colby,Office,weather2.csv,42.4490704,-76.4805815,,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 287,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,21618,2008.377054,College/University,America/New_York,1887,Conrad,Office,weather2.csv,42.4470569,-76.4850388,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 288,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,42755,3972.067765,College/University,America/New_York,1866,Cora,Office,weather2.csv,42.44874646,-76.48552051,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 289,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,40611,3772.883733,College/University,America/New_York,1866,Corbin,Office,weather2.csv,42.44988808,-76.48567034,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 290,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,92271,8572.252713,College/University,America/New_York,2001,Cristina,Office,weather2.csv,42.44192718,-76.47687492,Ithaca,New York,14850,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 291,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,157933,14672.4495,College/University,America/New_York,1932,Curt,Office,weather2.csv,42.4442237,-76.4851125,Ithaca,New York,14853,6A,NY_ITHACA-TOMPKINS-CO_725155S_15.epw,USA_NY_Ithaca.Tompkins.Rgnl.AP.725155_TMYx.2004-2018.ddy
-BUILDING ID 292,31/12/10 23:00,1/1/2010 0:00,,,Education,,,,Office,,83321,7740.770863,College/University,America/Los_Angeles,1960,Dawn,Office,weather13.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 293,31/12/10 23:00,1/1/2010 0:00,,,Education,,,,Office,,111077,10319.38653,College/University,America/Los_Angeles,1994,Dorian,Office,weather13.csv,37.86521937,-122.2381814,Oakland,California,94720-1076,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 294,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,179665,16691.4175,Business Services,America/New_York,,Eddie,Office,weather30.csv,39.69454093,-74.89916595,Winslow Township,New Jersey,8081,4A,NJ_ANCORA-HOSP_BLAN4S_12.epw,NJ_ANCORA-HOSP_BLAN4S_12.ddy
-BUILDING ID 295,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,318130,29555.23139,Bank/Financial Services,America/Los_Angeles,,Eileen,Office,weather27.csv,38.16780583,-122.7019178,,California,94945,3C,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,USA_CA_Oakland.998496_TMYx.2004-2018.ddy
-BUILDING ID 296,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,169420,15739.62626,Corporate Office,America/New_York,,Elena,Office,weather37.csv,40.94675135,-74.74208726,Cranberry Lake,New Jersey,7821,5A,NJ_SUSSEX_740001S_12.epw,USA_NJ_Sussex.AP.740001_TMYx.2004-2018.ddy
-BUILDING ID 297,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,294651,27373.96185,Commercial Real Estate,America/Los_Angeles,,Elizabeth,Office,weather22.csv,33.18898647,-117.2366393,Vista,California,92083,3B,CA_CARLSBAD-MCCLELLAN_722927S_12.epw,CA_CARLSBAD-MCCLELLAN_722927S_12.ddy
-BUILDING ID 298,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,496517,46127.91885,Bank/Financial Services,America/Los_Angeles,,Ellie,Office,weather28.csv,47.29794461,-122.5435293,Tacoma,Washington,98407,4C,WA_TACOMA-NARROWS_727938S_12.epw,WA_TACOMA-NARROWS_727938S_12.ddy
-BUILDING ID 299,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,185847,17265.74384,Commercial Real Estate,America/New_York,,Elliot,Office,weather31.csv,38.78465068,-77.47833675,Loch Lomond,Virginia,20111,4A,VA_MANASSAS-MUNI(AWOS)_724036S_12.epw,VA_MANASSAS-MUNI(AWOS)_724036S_12.ddy
-BUILDING ID 300,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,428277,39788.21813,Commercial Real Estate,America/New_York,,Ellis,Office,weather25.csv,39.20897557,-76.69972177,Ehrmansville,Maryland,21075:21090,4A,MD_BALTIMORE-BLT-WASHNGTN-IAP_724060S_12.epw,MD_BALTIMORE-BLT-WASHNGTN-IAP_724060S_12.ddy
-BUILDING ID 301,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,191554,17795.94126,Corporate Office,America/New_York,,Emer,Office,weather36.csv,41.03863897,-74.86575381,Stillwater,New Jersey,7855,5A,NJ_SUSSEX_740001S_12.epw,USA_NJ_Sussex.AP.740001_TMYx.2004-2018.ddy
-BUILDING ID 302,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,476246,44244.68214,Commercial Real Estate,America/New_York,,Emerald,Office,weather16.csv,39.25982033,-76.95122033,Benson,Maryland,21042,4A,MD_BALTIMORE-BLT-WASHNGTN-IAP_724060S_12.epw,MD_BALTIMORE-BLT-WASHNGTN-IAP_724060S_12.ddy
-BUILDING ID 303,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,126205,11724.82312,Business Services,America/New_York,,Erik,Office,weather14.csv,40.29934951,-75.47752837,Lower Frederick,Pennsylvania,18074,4A,PA_POTTSTOWN-LIMERICK_725109S_12.epw,PA_POTTSTOWN-LIMERICK_725109S_12.ddy
-BUILDING ID 304,31/12/12 23:00,1/1/2012 0:00,,,Commercial Property,,,,Office,,1675720,155679.4152,Business Services,America/Los_Angeles,,Evelyn,Office,weather20.csv,47.82001743,-122.101407,,Washington,98296,4C,WA_TACOMA-NARROWS_727938S_12.epw,WA_TACOMA-NARROWS_727938S_12.ddy
-BUILDING ID 305,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,7,264,Office,E,36704.899,3410,Other Government Buildings,Europe/London,1898-1902,Gabriela,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 306,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,10,818,Office,E,150640.7805,13995,Other Government Buildings,Europe/London,1913-1915,Garman,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 307,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,5,46,Office,E,11388.2062,1058,Other Government Buildings,Europe/London,1754-1756,Garrett,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 308,30/11/15 23:00,1/12/2014 0:00,,District heating,Government,,7,1815,Office,E,820241.4717,76203,Other Government Buildings,Europe/London,1862-1875,Gemma,Office,weather5.csv,51.397003,0.541083,Gillingham,England,ME4 4TB,4A,GBR_GRAVESEND-BROADNESS_037840S_15.epw,GBR_GRAVESEND-BROADNESS_037840S_15.ddy
-BUILDING ID 309,30/11/15 23:00,1/12/2014 0:00,,District Heating,Government,,7,188,Office,C,33960.1045,3155,Other Government Buildings,Europe/London,1900,Georgia,Office,weather5.csv,51.505878,-0.126676,London,England,SW1,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 310,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,9,1580,Office,E,1315596.15,122223,Other Government Buildings,Europe/London,11th Century onwards,Gisselle,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 311,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,10,721,Office,E,194805.0622,18098,Other Government Buildings,Europe/London,2000,Gladys,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 312,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,10,283,Office,E,60600.757,5630,Other Government Buildings,Europe/London,1906,Glenda,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 313,30/11/15 23:00,1/12/2014 0:00,,Electricity,Government,Electricity,7,97,Office,F,18503.1441,1719,Other Government Buildings,Europe/London,1937,Glenn,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 314,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,10,525,Office,E,117380.3295,10905,Other Government Buildings,Europe/London,1888-1890,Gloria,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 315,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,9,393,Office,F,109824.0717,10203,Other Government Buildings,Europe/London,1903-1906,Guillermo,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 316,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,11,410,Office,G,242930.4591,22569,Other Government Buildings,Europe/London,,Gustavo,Office,weather5.csv,51.49984,-0.124663,London,England,SW1A 0AA,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 317,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,,Office,,12206.2626,1134,"City, County, State",Europe/London,post 1976,Jackie,Office,weather1.csv,51.48727511,-3.233242686,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 318,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,1,,Office,D,11442.0257,1063,"City, County, State",Europe/London,Post 1976,Jackson,Office,weather1.csv,51.48184243,-3.235097863,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 319,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,4,340,Office,E,36220.5235,3365,"City, County, State",Europe/London,Post 1976,Jan,Office,weather1.csv,51.45193624,-3.188898899,Cardiff,Wales,CF11 0SN,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 320,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,,Office,C,7416.3271,689,"City, County, State",Europe/London,Post 1976,Javon,Office,weather1.csv,51.48053669,-3.235278593,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 321,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,1,12,Office,G,11872.5817,1103,"City, County, State",Europe/London,1945-1966,Jayden,Office,weather1.csv,51.47656147,-3.178581207,Cardiff,Wales,CF10 1FS,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 322,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,33,Office,,4650.0048,432,"City, County, State",Europe/London,post 1976,Jeanne,Office,weather1.csv,51.48149284,-3.195082309,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 323,30/11/15 23:00,1/12/2014 0:00,,Oil,Government,Oil,2,0,Office,C,16597.9338,1542,"City, County, State",Europe/London,Post 1976,Jerry,Office,weather1.csv,51.4663481,-3.2032234,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 324,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,1,40,Office,C,42646.5718,3962,"City, County, State",Europe/London,Post 1976,Jesus,Office,weather1.csv,51.46624271,-3.202097811,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 325,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,,Office,,7879.1748,732,"City, County, State",Europe/London,pre 1919,Jett,Office,weather1.csv,51.49978299,-3.1790362,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 326,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,133,Office,E,19428.8395,1805,"City, County, State",Europe/London,1919-1945,Joan,Office,weather1.csv,51.50429976,-3.207911591,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 327,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,3,293,Office,E,152470.6435,14165,"City, County, State",Europe/London,Pre 1919,John,Office,weather1.csv,51.48514811,-3.178644205,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 328,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,3,556,Office,F,57436.1704,5336,"City, County, State",Europe/London,Post 1976,Joni,Office,weather1.csv,51.4528348,-3.1871952,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 329,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,5,1122,Office,F,270033.9593,25087,"City, County, State",Europe/London,Post 1976,Jude,Office,weather1.csv,51.46989673,-3.163450581,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 330,30/11/15 23:00,1/12/2014 0:00,,Heat network,Education,Heat Network,8,,Office,,34455.2439,3201,College/University,Europe/London,1907,Lane,Office,weather5.csv,51.523494,-0.134996,London,England,WC1E 6HX,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 331,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,8,,Office,D,30495.20509,2833.1,College/University,Europe/London,1997,Leland,Office,weather5.csv,51.523135,-0.119861,London,England,WC1N 1EH,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 332,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,8,,Office,D,31613.5743,2937,College/University,Europe/London,1956,Lena,Office,weather5.csv,51.526481,-0.131102,London,England,WC1H 0EG,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 333,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,6,,Office,,47727.1326,4434,College/University,Europe/London,1928,Lesa,Office,weather5.csv,51.526298,-0.117642,London,England,WC1X 8LD,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 334,30/11/15 23:00,1/12/2014 0:00,,Heat network,Education,Heat Network,12,,Office,F,174601.2219,16221,College/University,Europe/London,1960,Lillian,Office,weather5.csv,51.521842,-0.134578,London,England,WC1E 7HE,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 335,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,8,,Office,F,20909.95214,1942.6,College/University,Europe/London,1987,Louise,Office,weather5.csv,51.522147,-0.123422,London,England,WC1N 3AR,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 336,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,8,,Office,E,65656.56083,6099.7,College/University,Europe/London,1955,Luann,Office,weather5.csv,51.523209,-0.120221,London,England,WC1N 1EH,4A,GBR_LONDON-CITY_037683S_15.epw,GBR_ENG_London.City.AP.037683_TMYx.2003-2017.ddy
-BUILDING ID 337,30/04/15 23:00,1/5/2014 0:00,56,,Education,,,,Office,,70852,6582.363356,College/University,America/Chicago,,Mada,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 338,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,57394,5332.074782,College/University,America/Chicago,,Madeleine,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 339,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,25463,2365.589089,College/University,America/Chicago,,Madisyn,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 340,30/04/15 23:00,1/5/2014 0:00,94,,Education,,,,Office,,67839,6302.446617,College/University,America/Chicago,,Malik,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 341,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,47578,4420.138934,College/University,America/Chicago,,Marc,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 342,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,62837,5837.745811,College/University,America/Chicago,,Marcia,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 343,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,72709,6754.884227,College/University,America/Chicago,,Marcus,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 344,30/04/15 23:00,1/5/2014 0:00,29,,Education,,,,Office,,99946,9285.283238,College/University,America/Chicago,,Marianne,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 345,30/04/15 23:00,1/5/2014 0:00,91,,Education,,,,Office,,52748,4900.447444,College/University,America/Chicago,,Marilyn,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 346,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,87131,8094.731293,College/University,America/Chicago,,Marion,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 347,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,96612,8975.544636,College/University,America/Chicago,,Mark,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 348,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,33401,3103.053103,College/University,America/Chicago,,Marla,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 349,30/04/15 23:00,1/5/2014 0:00,47,,Education,,,,Office,,28991,2693.350873,College/University,America/Chicago,,Marlon,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 350,30/04/15 23:00,1/5/2014 0:00,86,,Education,,,,Office,,94988,8824.670164,College/University,America/Chicago,,Martha,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 351,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,25977,2413.341231,College/University,America/Chicago,,Martin,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 352,30/04/15 23:00,1/5/2014 0:00,69,,Education,,,,Office,,10385,964.797655,College/University,America/Chicago,,Marvin,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 353,30/04/15 23:00,1/5/2014 0:00,85,,Education,,,,Office,,56569,5255.429807,College/University,America/Chicago,,Mary,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 354,30/04/15 23:00,1/5/2014 0:00,100,,Education,,,,Office,,20864,1938.328192,College/University,America/Chicago,,Maryann,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 355,30/04/15 23:00,1/5/2014 0:00,3,,Education,,,,Office,,38382,3565.802946,College/University,America/Chicago,,Mason,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 356,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,53077,4931.012531,College/University,America/Chicago,,Mat,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 357,30/04/15 23:00,1/5/2014 0:00,75,,Education,,,,Office,,157545,14636.40314,College/University,America/Chicago,,Matthew,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 358,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,71936,6683.070208,College/University,America/Chicago,,Max,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 359,30/04/15 23:00,1/5/2014 0:00,94,,Education,,,,Office,,131745,12239.50574,College/University,America/Chicago,,Maximus,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 360,30/04/15 23:00,1/5/2014 0:00,91,,Education,,,,Office,,92099,8556.273397,College/University,America/Chicago,,Maya,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 361,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,58703,5453.684809,College/University,America/Chicago,,Megan,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 362,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,35829,3328.621587,College/University,America/Chicago,,Melinda,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 363,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,59476,5525.498828,College/University,America/Chicago,,Mercedes,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 364,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,119509,11102.74463,College/University,America/Chicago,,Michael,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 365,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,121714,11307.59574,College/University,America/Chicago,,Micheal,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 366,30/04/15 23:00,1/5/2014 0:00,88,,Education,,,,Office,,84365,7837.761595,College/University,America/Chicago,,Mick,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 367,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,102191,9493.850473,College/University,America/Chicago,,Mikayla,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 368,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,105167,9770.329801,College/University,America/Chicago,,Milton,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 369,30/04/15 23:00,1/5/2014 0:00,9,,Education,,,,Office,,98212,9124.189436,College/University,America/Chicago,,Mohammed,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 370,30/04/15 23:00,1/5/2014 0:00,83,,Education,,,,Office,,37096,3446.329688,College/University,America/Chicago,,Moises,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 371,30/04/15 23:00,1/5/2014 0:00,91,,Education,,,,Office,,80205,7451.285115,College/University,America/Chicago,,Monty,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 372,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,20444,1899.308932,College/University,America/Chicago,,Morgan,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 373,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,87187,8099.933861,College/University,America/Chicago,,Moses,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 374,30/04/15 23:00,1/5/2014 0:00,,,Education,,,,Office,,92500,8593.5275,College/University,America/Chicago,,Muhammad,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 375,30/04/15 23:00,1/5/2014 0:00,87,,Education,,,,Office,,92994,8639.421582,College/University,America/Chicago,,Myron,Office,weather3.csv,44.97341988,-93.23321326,Minneapolis,Minnesota,55455,6A,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.epw,MN_MINNEAPOLIS-ST-PAUL-IAP_726580S_15.ddy
-BUILDING ID 376,31/10/15 23:00,1/11/2014 0:00,,,Education,,,2740,Office,,112178,10421.67273,College/University,America/Chicago,,Natasha,Office,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 377,31/10/15 23:00,1/11/2014 0:00,,,Education,,,1947,Office,,92121,8558.317263,College/University,America/Chicago,,Nelson,Office,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 378,31/10/15 23:00,1/11/2014 0:00,,,Education,,,3188,Office,,136624,12692.77947,College/University,America/Chicago,,Noel,Office,weather9.csv,41.2389389,-96.00216521,Omaha,Nebraska,68106,5A,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.epw,NE_OMAHA-EPPLEY-AIRFLD_725500S_15.ddy
-BUILDING ID 379,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,59665,5543.057495,College/University,America/New_York,,Paige,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 380,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,104667,9723.878301,College/University,America/New_York,,Pam,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 381,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,42129,3913.910487,College/University,America/New_York,,Pamela,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 382,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,17879,1661.012737,College/University,America/New_York,,Pasquale,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 383,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,32766,3044.059698,College/University,America/New_York,,Pat,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 384,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,49990,4644.22097,College/University,America/New_York,,Patricia,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 385,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,44332,4118.575796,College/University,America/New_York,,Paula,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 386,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,23458,2179.318574,College/University,America/New_York,,Paulette,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 387,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,104355,9694.892565,College/University,America/New_York,,Paulina,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 388,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,41337,3840.331311,College/University,America/New_York,,Pauline,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 389,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,37485,3482.468955,College/University,America/New_York,,Penny,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 390,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,54597,5072.225091,College/University,America/New_York,,Perla,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 391,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,64818,6021.786654,College/University,America/New_York,,Phebian,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 392,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Office,,70042,6507.111926,College/University,America/New_York,,Precious,Office,weather4.csv,40.35,-74.7,Princeton,New Jersey,8540,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 393,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,Office,B,24681.6227,2293,College/University,Europe/London,1970,Scottie,Office,weather6.csv,50.934147,-1.395696,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 394,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,Office,D,11108.3448,1032,College/University,Europe/London,1965,Shari,Office,weather6.csv,50.9376734,-1.3960704,Southampton,England,SO16 3HG,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 395,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,Office,C,64152.844,5960,College/University,Europe/London,1968,Shawnette,Office,weather6.csv,50.9362789,-1.3981275,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 396,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,Office,C,15812.1691,1469,College/University,Europe/London,,Shelly,Office,weather6.csv,50.9362789,-1.3981275,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 397,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,Office,D,11517.373,1070,College/University,Europe/London,1989,Sinead,Office,weather6.csv,50.9376285,-1.3956608,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 398,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,Office,C,16985.4342,1578,College/University,Europe/London,1978,Skyler,Office,weather6.csv,50.9358355,-1.3933722,Southampton,England,SO17 1TL,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 399,30/11/15 23:00,1/12/2014 0:00,,,Education,,,,Office,C,42495.8772,3948,College/University,Europe/London,1997,Stella,Office,weather6.csv,50.9374063,-1.3977863,Southampton,England,SO17 1TW,4A,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.epw,GBR_SOUTHAMPTON-WX-CNTR_038650S_15.ddy
-BUILDING ID 400,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,Office,,17765.81695,1650.5,College/University,Europe/Zurich,,Terrell,Office,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 401,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,Office,,18103.80341,1681.9,College/University,Europe/Zurich,,Tod,Office,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 402,31/12/13 23:00,1/1/2013 0:00,,,Education,,,,Office,,99501.4916,9244,College/University,Europe/Zurich,,Travis,Office,weather8.csv,47.406831,8.511357,Zurich,Zurich,8093,4A,CHE_ZURICH-KLOTEN_066700S_13.epw,CHE_ZURICH-KLOTEN_066700S_13.ddy
-BUILDING ID 403,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Primary/Secondary Classroom,,10334,960.059602,College/University,America/Phoenix,,Angel,PrimClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 404,31/12/15 23:00,1/1/2015 0:00,,,Education,,,,Primary/Secondary Classroom,,16744,1555.567832,College/University,America/Phoenix,,Angela,PrimClass,weather0.csv,33.4172,-111.9365,Tempe,Arizona,85287,2B,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 405,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,175537,16307.91391,Primary/Secondary School,America/Chicago,,Ebony,PrimClass,weather11.csv,35.66742272,-87.517393,Aetna,Tennessee,TN,4A,TN_NASHVILLE-IAP_723270S_12.epw,TN_NASHVILLE-IAP_723270S_12.ddy
-BUILDING ID 406,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,86867,8070.204901,Primary/Secondary School,America/New_York,,Edmund,PrimClass,weather15.csv,38.14657096,-75.84018987,,Maryland,,4A,VA_WALLOPS-ISLAND-UAU_724020S_12.epw,VA_WALLOPS-ISLAND-UAU_724020S_12.ddy
-BUILDING ID 407,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,77247,7176.478041,Primary/Secondary School,America/Denver,,Edwin,PrimClass,weather35.csv,35.58568398,-106.3737145,,New Mexico,87072,5B,NM_TORREON_723657S_12.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 408,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,81681,7588.409943,Primary/Secondary School,America/New_York,,Eleanor,PrimClass,weather24.csv,38.63511632,-75.93401425,West Haven,Maryland,21664,4A,MD_EASTON-NEWMAN-FLD_724043S_12.epw,USA_MD_Easton-Newman.Field.AP.724043_TMYx.2004-2018.ddy
-BUILDING ID 409,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,108405,10071.14972,Primary/Secondary School,America/New_York,,Eli,PrimClass,weather12.csv,40.26934257,-74.74514292,Lawrence Township,New Jersey,8648,5A,NJ_TRENTON-MERCER-CO-AP_724095S_12.epw,NJ_TRENTON-MERCER-CO-AP_724095S_12.ddy
-BUILDING ID 410,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,94150,8746.81745,Primary/Secondary School,America/New_York,,Elijah,PrimClass,weather14.csv,40.31513263,-75.47204123,Upper Salford Township,Pennsylvania,18084,4A,PA_POTTSTOWN-LIMERICK_725109S_12.epw,PA_POTTSTOWN-LIMERICK_725109S_12.ddy
-BUILDING ID 411,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,233062,21652.15899,Primary/Secondary School,America/New_York,,Elisabeth,PrimClass,weather23.csv,38.63471614,-75.35821879,Piney Grove Manor,Delaware,19947,4A,DE_GEORGETOWN-SUSSEX_724093S_12.epw,DE_GEORGETOWN-SUSSEX_724093S_12.ddy
-BUILDING ID 412,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,79503,7386.067209,Primary/Secondary School,America/Chicago,,Ellen,PrimClass,weather19.csv,36.57549581,-86.22741261,Westmoreland,Tennessee,37186,4A,KY_BOWLING-GREEN-WARREN-CO-AP_746716S_12.epw,KY_BOWLING-GREEN-WARREN-CO-AP_746716S_12.ddy
-BUILDING ID 413,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,217241,20182.34062,Primary/Secondary School,America/New_York,,Elliott,PrimClass,weather15.csv,38.00903622,-75.37697374,Franklin City,Virginia,23356,4A,VA_WALLOPS-ISLAND-UAU_724020S_12.epw,VA_WALLOPS-ISLAND-UAU_724020S_12.ddy
-BUILDING ID 414,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,97901,9095.296603,Primary/Secondary School,America/Chicago,,Elmer,PrimClass,weather11.csv,36.28638818,-87.11008289,Greenbrier,Tennessee,37015,4A,TN_NASHVILLE-IAP_723270S_12.epw,TN_NASHVILLE-IAP_723270S_12.ddy
-BUILDING ID 415,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,95132,8838.048196,Primary/Secondary School,America/Chicago,,Emanuela,PrimClass,weather26.csv,33.09246724,-96.6997555,Allen,Texas,75013,3A,TX_MCKINNEY-MUNI-AP_722541S_12.epw,TX_MCKINNEY-MUNI-AP_722541S_12.ddy
-BUILDING ID 416,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,105215,9774.789145,Primary/Secondary School,America/New_York,,Emilio,PrimClass,weather12.csv,40.26375183,-74.97108041,Wrightstown Township,Pennsylvania,18940,4A,NJ_TRENTON-MERCER-CO-AP_724095S_15.epw,NJ_TRENTON-MERCER-CO-AP_724095S_15.ddy
-BUILDING ID 417,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,274418,25494.25545,Primary/Secondary School,America/Chicago,,Emily,PrimClass,weather32.csv,35.59674915,-83.83065746,Cades Cove,Tennessee,,4A,TN_KNOXVILLE-MCGHEE-TYSON-AP_723260S_12.epw,TN_KNOXVILLE-MCGHEE-TYSON-AP_723260S_12.ddy
-BUILDING ID 418,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,315404,29301.97781,Primary/Secondary School,America/New_York,,Eoghan,PrimClass,weather14.csv,40.3065895,-75.48928221,Upper Frederick Township,Pennsylvania,18074,4A,PA_POTTSTOWN-LIMERICK_725109S_12.epw,PA_POTTSTOWN-LIMERICK_725109S_12.ddy
-BUILDING ID 419,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,129663,12046.08169,Primary/Secondary School,America/Chicago,,Ernest,PrimClass,weather21.csv,36.18381825,-87.27503507,White Oak Flat,Tennessee,37036,4A,TN_CLARKSVILLE-OUTLAWS_723280S_12.epw,USA_TN_Clarksville.Rgnl.AP-Outlaw.Field.723280_TMYx.2004-2018.ddy
-BUILDING ID 420,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,72333,6719.952699,Primary/Secondary School,America/Denver,,Ernesto,PrimClass,weather18.csv,35.47966886,-107.095281,Casa Salazar,New Mexico,,4B,NM_TORREON_723657S_12.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 421,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,117074,10876.52582,Primary/Secondary School,America/New_York,,Ervin,PrimClass,weather16.csv,39.22671205,-76.86400257,,Maryland,21044,4A,MD_BALTIMORE-BLT-WASHNGTN-IAP_724060S_12.epw,MD_BALTIMORE-BLT-WASHNGTN-IAP_724060S_12.ddy
-BUILDING ID 422,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,276443,25682.38403,Primary/Secondary School,America/New_York,,Esmeralda,PrimClass,weather17.csv,39.70345378,-75.36276254,Seven Stars,New Jersey,8098,4A,NJ_SWEDESBORO_AU245S_12.epw,USA_DE_Wilmington.AP.724089_TMY3.ddy
-BUILDING ID 423,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,80224,7453.050272,Primary/Secondary School,America/New_York,,Ethan,PrimClass,weather38.csv,40.86149476,-72.88557216,Upton,New York,11973,4A,NY_SHIRLEY-BROOKHAVEN_725016S_12.epw,NY_SHIRLEY-BROOKHAVEN_725016S_12.ddy
-BUILDING ID 424,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,92032,8550.048896,Primary/Secondary School,America/Denver,,Ethel,PrimClass,weather18.csv,34.90931424,-107.0155435,,New Mexico,,4B,NM_TORREON_723657S_12.epw,AZ_PHOENIX-SKY-HARBOR-IAP_722780S_15.ddy
-BUILDING ID 425,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,132737,12331.66551,Primary/Secondary School,America/New_York,,Eva,PrimClass,weather15.csv,38.14344984,-75.91579796,,Maryland,21821,4A,VA_WALLOPS-ISLAND-UAU_724020S_12.epw,VA_WALLOPS-ISLAND-UAU_724020S_12.ddy
-BUILDING ID 426,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,105530,9804.05359,Primary/Secondary School,America/New_York,,Everett,PrimClass,weather12.csv,40.24392238,-74.91771912,Newtown Township,Pennsylvania,18940,4A,NJ_TRENTON-MERCER-CO-AP_724095S_15.epw,NJ_TRENTON-MERCER-CO-AP_724095S_15.ddy
-BUILDING ID 427,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,197266,18326.6032,Primary/Secondary School,America/Chicago,,Evie,PrimClass,weather11.csv,35.58555457,-86.53450821,Fall Creek,Tennessee,37160,4A,TN_SMYRNA_723273S_12.epw,USA_TN_Smyrna-Rutherford.County.AP.723273_TMYx.2004-2018.ddy
-BUILDING ID 428,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,153699,14279.0982,Primary/Secondary School,America/New_York,,Ezekiel,PrimClass,weather29.csv,40.8828578,-73.56775637,,New York,11560,4A,NY_SHIRLEY-BROOKHAVEN_725016S_12.epw,NY_SHIRLEY-BROOKHAVEN_725016S_12.ddy
-BUILDING ID 429,31/12/12 23:00,1/1/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,92179,8563.705637,Primary/Secondary School,America/New_York,,Ezra,PrimClass,weather17.csv,39.81213322,-75.25236525,Mickleton,New Jersey,8056,4A,PA_PHILADELPHIA-IAP_724080S_12.epw,PA_PHILADELPHIA-IAP_724080S_12.ddy
-BUILDING ID 430,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,270,Primary/Secondary Classroom,D,66187.2211,6149,Primary/Secondary School,Europe/London,post 1976,Jacob,PrimClass,weather1.csv,51.48053669,-3.235278593,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 431,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,489,Primary/Secondary Classroom,C,29891.3503,2777,Primary/Secondary School,Europe/London,1945-1966,Jacqueline,PrimClass,weather1.csv,51.52762845,-3.183734217,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 432,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,219,Primary/Secondary Classroom,E,17189.9483,1597,Primary/Secondary School,Europe/London,pre 1919,Jacquelyn,PrimClass,weather1.csv,51.49006044,-3.154875188,Cardiff,Wales,CF24 1DW,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 433,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,414,Primary/Secondary Classroom,D,27684.7508,2572,Primary/Secondary School,Europe/London,pre 1919,Jaden,PrimClass,weather1.csv,51.4800357,-3.1455927,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 434,30/11/15 23:00,1/12/2014 0:00,,Electricity,Education,Electricity,1,192,Primary/Secondary Classroom,F,8729.5229,811,Primary/Secondary School,Europe/London,1967-1976,Jaiden,PrimClass,weather1.csv,51.4643353,-3.1854351,Cardiff,Wales,CF11 7EU,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 435,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,214,Primary/Secondary Classroom,D,15413.9048,1432,Primary/Secondary School,Europe/London,post 1976,Jake,PrimClass,weather1.csv,51.5220491,-3.1461569,Cardiff,Wales,CF23 7ED,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 436,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,441,Primary/Secondary Classroom,C,25133.7065,2335,Primary/Secondary School,Europe/London,1945-1966,Jamal,PrimClass,weather1.csv,51.5105996,-3.1353645,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 437,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,4,1598,Primary/Secondary Classroom,D,160037.6652,14868,Primary/Secondary School,Europe/London,1945-1966,Jamie,PrimClass,weather1.csv,51.4771629,-3.2130695,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 438,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,1395,Primary/Secondary Classroom,C,121061.5833,11247,Primary/Secondary School,Europe/London,1967-1976,Jane,PrimClass,weather1.csv,51.50904112,-3.247173885,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 439,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,230,Primary/Secondary Classroom,E,12927.4439,1201,Primary/Secondary School,Europe/London,1967-1976,Janelle,PrimClass,weather1.csv,51.52620656,-3.143983755,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 440,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,956,Primary/Secondary Classroom,C,93764.3329,8711,Primary/Secondary School,Europe/London,1919-1945,Janet,PrimClass,weather1.csv,51.4986998,-3.191902,Cardiff,Wales,CF14 3XG,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 441,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,,Primary/Secondary Classroom,,23163.9128,2152,Primary/Secondary School,Europe/London,1967-1976,Janice,PrimClass,weather1.csv,51.50051002,-3.215274215,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 442,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,333,Primary/Secondary Classroom,D,18201.7549,1691,Primary/Secondary School,Europe/London,pre 1919,Janie,PrimClass,weather1.csv,51.5185004,-3.257305,Cardiff,Wales,CF15 8DF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 443,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,101,Primary/Secondary Classroom,,7922.2304,736,Primary/Secondary School,Europe/London,1945-1966,Janis,PrimClass,weather1.csv,51.52307021,-3.117685957,Cardiff,Wales,CF3 5TP,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 444,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,293,Primary/Secondary Classroom,C,31613.5743,2937,Primary/Secondary School,Europe/London,1967-1976,Janiya,PrimClass,weather1.csv,51.51640812,-3.157458403,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 445,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,392,Primary/Secondary Classroom,D,23605.2327,2193,Primary/Secondary School,Europe/London,1967-1976,Jaqueline,PrimClass,weather1.csv,51.5245721,-3.1538744,Cardiff,Wales,CF23 7DW,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 446,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,359,Primary/Secondary Classroom,D,29148.6412,2708,Primary/Secondary School,Europe/London,pre 1919,Jarrett,PrimClass,weather1.csv,51.465988,-3.1829442,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 447,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,315,Primary/Secondary Classroom,E,27501.7645,2555,Primary/Secondary School,Europe/London,post 1976,Jasmine,PrimClass,weather1.csv,51.4762613,-3.236531012,Cardiff,Wales,CF5 5DY,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 448,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,396,Primary/Secondary Classroom,C,20203.8403,1877,Primary/Secondary School,Europe/London,post 1976,Javier,PrimClass,weather1.csv,51.54312388,-3.193250094,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 449,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,4,1500,Primary/Secondary Classroom,C,128682.4245,11955,Primary/Secondary School,Europe/London,1945-1966,Jaxson,PrimClass,weather1.csv,51.51789215,-3.174603632,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 450,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,464,Primary/Secondary Classroom,D,23842.0385,2215,Primary/Secondary School,Europe/London,1919-1945,Jayda,PrimClass,weather1.csv,51.4852512,-3.142799869,Cardiff,Wales,CF24 2SJ,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 451,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,269,Primary/Secondary Classroom,D,22948.6348,2132,Primary/Secondary School,Europe/London,1967-1976,Jayla,PrimClass,weather1.csv,51.51719341,-3.127616191,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 452,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,219,Primary/Secondary Classroom,C,47070.5347,4373,Primary/Secondary School,Europe/London,1919-1945,Jaylin,PrimClass,weather1.csv,51.47860524,-3.252060199,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 453,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,517,Primary/Secondary Classroom,C,31635.1021,2939,Primary/Secondary School,Europe/London,1945-1966,Jaylinn,PrimClass,weather1.csv,51.5132043,-3.167709855,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 454,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,1695,Primary/Secondary Classroom,C,139112.6436,12924,Primary/Secondary School,Europe/London,1967-1976,Jayson,PrimClass,weather1.csv,51.53240242,-3.187361423,Cardiff,Wales,CF14 5YL,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 455,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,71,Primary/Secondary Classroom,C,11269.8033,1047,Primary/Secondary School,Europe/London,1967-1976,Jazmin,PrimClass,weather1.csv,51.4805367,-3.2352786,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 456,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,387,Primary/Secondary Classroom,D,22184.3979,2061,Primary/Secondary School,Europe/London,pre 1919,Jazmine,PrimClass,weather1.csv,51.4976608,-3.1691708,Cardiff,Wales,CF24 4BB,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 457,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,284,Primary/Secondary Classroom,C,28825.7242,2678,Primary/Secondary School,Europe/London,post 1976,Jean,PrimClass,weather1.csv,51.51896107,-3.097681344,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 458,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,,Primary/Secondary Classroom,C,23486.8298,2182,Primary/Secondary School,Europe/London,1945-1966,Jeanette,PrimClass,weather1.csv,51.53161253,-3.200474604,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 459,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,583,Primary/Secondary Classroom,D,32194.8249,2991,Primary/Secondary School,Europe/London,pre 1919,Jeanine,PrimClass,weather1.csv,51.52425138,-3.215877481,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 460,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,1104,Primary/Secondary Classroom,C,137045.9748,12732,Primary/Secondary School,Europe/London,1945-1966,Jeannine,PrimClass,weather1.csv,51.50210807,-3.226741924,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 461,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,909,Primary/Secondary Classroom,D,68695.2098,6382,Primary/Secondary School,Europe/London,1945-1966,Jediah,PrimClass,weather1.csv,51.5174456,-3.1153575,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 462,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,201,Primary/Secondary Classroom,D,11689.5954,1086,Primary/Secondary School,Europe/London,1967-1976,Jeff,PrimClass,weather1.csv,51.5331361,-3.184165458,Cardiff,Wales,CF14 5AS,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 463,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,875,Primary/Secondary Classroom,D,120566.4439,11201,Primary/Secondary School,Europe/London,1919-1945,Jeffery,PrimClass,weather1.csv,51.51341166,-3.223226673,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 464,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,193,Primary/Secondary Classroom,,13788.5559,1281,Primary/Secondary School,Europe/London,pre 1919,Jeffrey,PrimClass,weather1.csv,51.54685473,-3.276185977,Gwaelod-Y-Garth,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 465,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,2,235,Primary/Secondary Classroom,C,11603.4842,1078,Primary/Secondary School,Europe/London,1919-1945,Jenna,PrimClass,weather1.csv,51.50045625,-3.189830006,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 466,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,524,Primary/Secondary Classroom,D,28976.4188,2692,Primary/Secondary School,Europe/London,pre 1919,Jennie,PrimClass,weather1.csv,51.49411336,-3.158766137,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 467,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,402,Primary/Secondary Classroom,D,23293.0796,2164,Primary/Secondary School,Europe/London,post 1976,Jennifer,PrimClass,weather1.csv,51.50342297,-3.238519746,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 468,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,456,Primary/Secondary Classroom,D,35768.4397,3323,Primary/Secondary School,Europe/London,1945-1966,Jensen,PrimClass,weather1.csv,51.5191911,-3.189367,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 469,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,403,Primary/Secondary Classroom,C,23153.1489,2151,Primary/Secondary School,Europe/London,1967-1976,Jeremy,PrimClass,weather1.csv,51.49224791,-3.222055004,Cardiff,Wales,CF5 2HT,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 470,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,230,Primary/Secondary Classroom,C,23185.4406,2154,Primary/Secondary School,Europe/London,1945-1966,Jermaine,PrimClass,weather1.csv,51.52307021,-3.117685957,Cardiff,Wales,CF3 5TP,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 471,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,1071,Primary/Secondary Classroom,D,88855.9945,8255,Primary/Secondary School,Europe/London,post 1976,Jerome,PrimClass,weather1.csv,51.53396169,-3.160945792,Cardiff,Wales,CF23 6XL,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 472,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,287,Primary/Secondary Classroom,D,15801.4052,1468,Primary/Secondary School,Europe/London,1967-1976,Jesse,PrimClass,weather1.csv,51.4700558,-3.1888228,Cardiff,Wales,CF11 6NA,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 473,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,353,Primary/Secondary Classroom,C,33981.6323,3157,Primary/Secondary School,Europe/London,1967-1976,Jessie,PrimClass,weather1.csv,51.50834248,-3.15105789,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 474,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,313,Primary/Secondary Classroom,C,24089.6082,2238,Primary/Secondary School,Europe/London,post 1976,Jill,PrimClass,weather1.csv,51.52216827,-3.090277745,,Wales,CF3 0ST,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 475,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,197,Primary/Secondary Classroom,D,10914.5946,1014,Primary/Secondary School,Europe/London,1967-1976,Jim,PrimClass,weather1.csv,51.50921359,-3.157564221,Cardiff,Wales,CF23 9LF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 476,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,362,Primary/Secondary Classroom,D,37264.6218,3462,Primary/Secondary School,Europe/London,pre 1919,Jimmie,PrimClass,weather1.csv,51.48479017,-3.241212009,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 477,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,4,1598,Primary/Secondary Classroom,E,102429.2724,9516,Primary/Secondary School,Europe/London,1919-1945,Joanna,PrimClass,weather1.csv,51.52307021,-3.117685957,Cardiff,Wales,CF3 5TP,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 478,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,197,Primary/Secondary Classroom,E,14972.5849,1391,Primary/Secondary School,Europe/London,1967-1976,Jocelyn,PrimClass,weather1.csv,51.5145754,-3.1098543,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 479,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,348,Primary/Secondary Classroom,C,27663.223,2570,Primary/Secondary School,Europe/London,1945-1966,Jodie,PrimClass,weather1.csv,51.51719341,-3.127616191,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 480,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,241,Primary/Secondary Classroom,D,26027.1102,2418,Primary/Secondary School,Europe/London,pre 1919,Jody,PrimClass,weather1.csv,51.50209117,-3.185550343,Cardiff,Wales,CF14 3QE,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 481,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,149,Primary/Secondary Classroom,D,13939.2505,1295,Primary/Secondary School,Europe/London,1967-1976,Joel,PrimClass,weather1.csv,51.47358784,-3.172932328,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 482,30/11/15 23:00,1/12/2014 0:00,,Biomass,Education,Biomass,2,1400,Primary/Secondary Classroom,,155807.4525,14475,Primary/Secondary School,Europe/London,2013,Joey,PrimClass,weather1.csv,51.5151727,-3.1440819,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 483,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,515,Primary/Secondary Classroom,C,28190.6541,2619,Primary/Secondary School,Europe/London,pre 1919,Johanna,PrimClass,weather1.csv,51.52210169,-3.178949624,Cardiff,Wales,CF14 0NX,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 484,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,304,Primary/Secondary Classroom,D,30300.3785,2815,Primary/Secondary School,Europe/London,1945-1966,Johnathan,PrimClass,weather1.csv,51.49746258,-3.240951242,Cardiff,Wales,CF5 3NP,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 485,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,322,Primary/Secondary Classroom,C,24251.0667,2253,Primary/Secondary School,Europe/London,1945-1966,Johnathon,PrimClass,weather1.csv,51.50872103,-3.221198944,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 486,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,262,Primary/Secondary Classroom,C,19041.3391,1769,Primary/Secondary School,Europe/London,post 1976,Johnnie,PrimClass,weather1.csv,51.46363607,-3.168200138,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 487,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,212,Primary/Secondary Classroom,C,31505.9353,2927,Primary/Secondary School,Europe/London,pre 1919,Jolie,PrimClass,weather1.csv,51.4828573,-3.199712,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 488,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,124,Primary/Secondary Classroom,E,17103.8371,1589,Primary/Secondary School,Europe/London,1945-1966,Jon,PrimClass,weather1.csv,51.48053669,-3.235278593,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 489,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,1140,Primary/Secondary Classroom,D,121470.6115,11285,Primary/Secondary School,Europe/London,1945-1966,Jonathon,PrimClass,weather1.csv,51.51526026,-3.11821532,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 490,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,4,29,Primary/Secondary Classroom,E,12087.8597,1123,Primary/Secondary School,Europe/London,pre 1919,Jose,PrimClass,weather1.csv,51.53121729,-3.18362549,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 491,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,383,Primary/Secondary Classroom,D,31871.9079,2961,Primary/Secondary School,Europe/London,pre 1919,Joselyn,PrimClass,weather1.csv,51.4704074,-3.1940438,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 492,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,64,Primary/Secondary Classroom,B,42883.3776,3984,Primary/Secondary School,Europe/London,1967-1976,Josephine,PrimClass,weather1.csv,51.52607804,-3.142409295,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 493,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,389,Primary/Secondary Classroom,D,17050.0176,1584,Primary/Secondary School,Europe/London,1945-1966,Josue,PrimClass,weather1.csv,51.52678344,-3.328932893,,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 494,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,4,,Primary/Secondary Classroom,G,30612.5316,2844,Primary/Secondary School,Europe/London,Post 1976,Juanita,PrimClass,weather1.csv,51.48270582,-3.177400309,Cardiff,Wales,CF10 2PB,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 495,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,40,Primary/Secondary Classroom,E,12970.4995,1205,Primary/Secondary School,Europe/London,1967-1976,Judith,PrimClass,weather1.csv,51.5005101,-3.2152742,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 496,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,235,Primary/Secondary Classroom,D,11463.5535,1065,Primary/Secondary School,Europe/London,post 1976,Judy,PrimClass,weather1.csv,51.47370719,-3.271868193,Cardiff,Wales,CF5 4SZ,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 497,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,300,Primary/Secondary Classroom,E,18696.8943,1737,Primary/Secondary School,Europe/London,pre 1919,Julian,PrimClass,weather1.csv,51.5105769,-3.2017083,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 498,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,1,317,Primary/Secondary Classroom,D,34562.8829,3211,Primary/Secondary School,Europe/London,1945-1966,Julianna,PrimClass,weather1.csv,51.50051002,-3.215274215,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 499,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,2,427,Primary/Secondary Classroom,C,25865.6517,2403,Primary/Secondary School,Europe/London,pre 1919,Julianne,PrimClass,weather1.csv,51.47835428,-3.20040027,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 500,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,3,856,Primary/Secondary Classroom,G,94657.7366,8794,Primary/Secondary School,Europe/London,1967-1976,Julio,PrimClass,weather1.csv,51.4842701,-3.1373602,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 501,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,4,1173,Primary/Secondary Classroom,D,95432.7374,8866,Primary/Secondary School,Europe/London,1945-1966,Julius,PrimClass,weather1.csv,51.5041863,-3.1585606,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 502,30/11/15 23:00,1/12/2014 0:00,,Gas,Education,Gas,4,1164,Primary/Secondary Classroom,E,126045.269,11710,Primary/Secondary School,Europe/London,1945-1966,Justice,PrimClass,weather1.csv,51.4953081,-3.2303767,Cardiff,Wales,CF,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 503,30/11/15 23:00,1/12/2014 0:00,,Gas,Government,Gas,1,171,Primary/Secondary Classroom,F,14025.3617,1303,Primary/Secondary School,Europe/London,1945-1966,Justin,PrimClass,weather1.csv,51.5166566,-3.1094293,Cardiff,Wales,CF3 1RQ,4A,GBR_CARDIFF-WALES-AP_037150S_15.epw,GBR_CARDIFF-WALES-AP_037150S_15.ddy
-BUILDING ID 504,31/01/13 23:00,2/2/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,129166.8,12000,Primary/Secondary School,Asia/Singapore,,Ulysses,PrimClass,weather10.csv,1.3,103.8,Singapore,,148812,1A,SGP_SINGAPORE-CHANGI-AP_486980_13.epw,SGP_Singapore.486980_IWEC.ddy
-BUILDING ID 505,31/01/13 23:00,2/2/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,107639,10000,Primary/Secondary School,Asia/Singapore,,Uma,PrimClass,weather10.csv,1.3,103.8,Singapore,,148812,1A,SGP_SINGAPORE-CHANGI-AP_486980_13.epw,SGP_Singapore.486980_IWEC.ddy
-BUILDING ID 506,31/01/13 23:00,2/2/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,129166.8,12000,Primary/Secondary School,Asia/Singapore,,Umar,PrimClass,weather10.csv,1.3,103.8,Singapore,,148812,1A,SGP_SINGAPORE-CHANGI-AP_486980_13.epw,SGP_Singapore.486980_IWEC.ddy
-BUILDING ID 507,31/01/13 23:00,2/2/2012 0:00,,,Education,,,,Primary/Secondary Classroom,,129166.8,12000,Primary/Secondary School,Asia/Singapore,,Uriah,PrimClass,weather10.csv,1.3,103.8,Singapore,,148812,1A,SGP_SINGAPORE-CHANGI-AP_486980_13.epw,SGP_Singapore.486980_IWEC.ddy
+building_id,measurement_end_date,measurement_start_date,energystar_score,fuel_type_heating,number_of_stories,number_of_occupants,primary_building_type,floor_area_sqft,vintage,epw,ddy
+BUILDING ID 1,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,105530,,weather12.csv,
+BUILDING ID 2,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,56969,1967,weather2.csv,
+BUILDING ID 3,31/12/12 23:00,1/1/2012 0:00,,,,,Office,294651,,weather22.csv,
+BUILDING ID 4,31/12/12 23:00,1/1/2012 0:00,,,,,Office,496517,,weather28.csv,
+BUILDING ID 5,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,233062,,weather23.csv,
+BUILDING ID 6,31/12/15 23:00,1/1/2015 0:00,,,,,Office,92271,2001,weather2.csv,
+BUILDING ID 7,30/11/15 23:00,1/12/2014 0:00,,Gas,2,212,Primary/Secondary Classroom,31505.9353,pre 1919,weather1.csv,
+BUILDING ID 8,30/11/15 23:00,1/12/2014 0:00,,Gas,2,219,Primary/Secondary Classroom,47070.5347,1919-1945,weather1.csv,
+BUILDING ID 9,30/11/15 23:00,1/12/2014 0:00,,Gas,1,40,Office,42646.5718,Post 1976,weather1.csv,
+BUILDING ID 10,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,276443,,weather17.csv,
+BUILDING ID 11,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,315404,,weather14.csv,
+BUILDING ID 12,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,77247,,weather35.csv,
+BUILDING ID 13,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,108405,,weather12.csv,
+BUILDING ID 14,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,92032,,weather18.csv,
+BUILDING ID 15,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,72333,,weather18.csv,
+BUILDING ID 16,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,95132,,weather26.csv,
+BUILDING ID 17,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,105215,,weather12.csv,
+BUILDING ID 18,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,81681,,weather24.csv,
+BUILDING ID 19,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,153699,,weather29.csv,
+BUILDING ID 20,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,217241,,weather15.csv,
+BUILDING ID 21,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,79503,,weather19.csv,
+BUILDING ID 22,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,197266,,weather11.csv,
+BUILDING ID 23,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,94150,,weather14.csv,
+BUILDING ID 24,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,92179,,weather17.csv,
+BUILDING ID 25,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,86867,,weather15.csv,
+BUILDING ID 26,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,132737,,weather15.csv,
+BUILDING ID 27,31/12/12 23:00,1/1/2012 0:00,,,,,Office,126205,,weather14.csv,
+BUILDING ID 28,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,175537,,weather11.csv,
+BUILDING ID 29,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,80224,,weather38.csv,
+BUILDING ID 30,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,97901,,weather11.csv,
+BUILDING ID 31,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,117074,,weather16.csv,
+BUILDING ID 32,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,107639,,weather10.csv,
+BUILDING ID 33,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,5389.48473,,weather8.csv,
+BUILDING ID 34,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,129663,,weather21.csv,
+BUILDING ID 35,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,274418,,weather32.csv,
+BUILDING ID 36,31/12/12 23:00,1/1/2012 0:00,,,,,Office,1675720,,weather20.csv,
+BUILDING ID 37,30/11/15 23:00,1/12/2014 0:00,,Gas,1,269,Primary/Secondary Classroom,22948.6348,1967-1976,weather1.csv,
+BUILDING ID 38,31/12/12 23:00,1/1/2012 0:00,,,,,Office,191554,,weather36.csv,
+BUILDING ID 39,30/11/15 23:00,1/12/2014 0:00,,Gas,2,293,Primary/Secondary Classroom,31613.5743,1967-1976,weather1.csv,
+BUILDING ID 40,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,129166.8,,weather10.csv,
+BUILDING ID 41,31/12/12 23:00,1/1/2012 0:00,,,,,Office,169420,,weather37.csv,
+BUILDING ID 42,30/11/15 23:00,1/12/2014 0:00,,Gas,1,,Primary/Secondary Classroom,23163.9128,1967-1976,weather1.csv,
+BUILDING ID 43,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Office,7879.1748,pre 1919,weather1.csv,
+BUILDING ID 44,31/01/13 23:00,2/2/2012 0:00,,,,,Dormitory,129166.8,,weather10.csv,
+BUILDING ID 45,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,477724,,weather4.csv,
+BUILDING ID 46,30/11/15 23:00,1/12/2014 0:00,,Oil,2,0,Office,16597.9338,Post 1976,weather1.csv,
+BUILDING ID 47,31/12/12 23:00,1/1/2012 0:00,,,,,Office,318130,,weather27.csv,
+BUILDING ID 48,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,129166.8,,weather10.csv,
+BUILDING ID 49,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,129166.8,,weather10.csv,
+BUILDING ID 50,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,Office,47727.1326,1928,weather5.csv,
+BUILDING ID 51,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,96336,1913,weather2.csv,
+BUILDING ID 52,31/12/12 23:00,1/1/2012 0:00,,,,,Office,476246,,weather16.csv,
+BUILDING ID 53,31/12/12 23:00,1/1/2012 0:00,,,,,Office,428277,,weather25.csv,
+BUILDING ID 54,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,350333.7297,,weather8.csv,
+BUILDING ID 55,30/11/15 23:00,1/12/2014 0:00,,Gas,2,414,Primary/Secondary Classroom,27684.7508,pre 1919,weather1.csv,
+BUILDING ID 56,31/12/12 23:00,1/1/2012 0:00,,,,,Office,185847,,weather31.csv,
+BUILDING ID 57,30/11/15 23:00,1/12/2014 0:00,,Gas,2,230,Primary/Secondary Classroom,23185.4406,1945-1966,weather1.csv,
+BUILDING ID 58,30/11/15 23:00,1/12/2014 0:00,,Gas,2,64,Primary/Secondary Classroom,42883.3776,1967-1976,weather1.csv,
+BUILDING ID 59,31/12/12 23:00,1/1/2012 0:00,,,,,Office,179665,,weather30.csv,
+BUILDING ID 60,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Office,12206.2626,post 1976,weather1.csv,
+BUILDING ID 61,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,40629,1975,weather2.csv,
+BUILDING ID 62,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,31415,1912,weather2.csv,
+BUILDING ID 63,30/11/15 23:00,1/12/2014 0:00,,Gas,1,396,Primary/Secondary Classroom,20203.8403,post 1976,weather1.csv,
+BUILDING ID 64,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Primary/Secondary Classroom,23486.8298,1945-1966,weather1.csv,
+BUILDING ID 65,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1173,Primary/Secondary Classroom,95432.7374,1945-1966,weather1.csv,
+BUILDING ID 66,30/11/15 23:00,1/12/2014 0:00,,Gas,3,517,Primary/Secondary Classroom,31635.1021,1945-1966,weather1.csv,
+BUILDING ID 67,30/11/15 23:00,1/12/2014 0:00,,Gas,1,515,Primary/Secondary Classroom,28190.6541,pre 1919,weather1.csv,
+BUILDING ID 68,30/11/15 23:00,1/12/2014 0:00,,Gas,2,348,Primary/Secondary Classroom,27663.223,1945-1966,weather1.csv,
+BUILDING ID 69,30/11/15 23:00,1/12/2014 0:00,,Gas,2,304,Primary/Secondary Classroom,30300.3785,1945-1966,weather1.csv,
+BUILDING ID 70,30/11/15 23:00,1/12/2014 0:00,,Gas,1,101,Primary/Secondary Classroom,7922.2304,1945-1966,weather1.csv,
+BUILDING ID 71,30/11/15 23:00,1/12/2014 0:00,,Gas,2,441,Primary/Secondary Classroom,25133.7065,1945-1966,weather1.csv,
+BUILDING ID 72,30/11/15 23:00,1/12/2014 0:00,,Gas,4,29,Primary/Secondary Classroom,12087.8597,pre 1919,weather1.csv,
+BUILDING ID 73,30/11/15 23:00,1/12/2014 0:00,,Gas,1,317,Primary/Secondary Classroom,34562.8829,1945-1966,weather1.csv,
+BUILDING ID 74,30/11/15 23:00,1/12/2014 0:00,,Gas,2,315,Primary/Secondary Classroom,27501.7645,post 1976,weather1.csv,
+BUILDING ID 75,30/11/15 23:00,1/12/2014 0:00,,Gas,2,387,Primary/Secondary Classroom,22184.3979,pre 1919,weather1.csv,
+BUILDING ID 76,30/11/15 23:00,1/12/2014 0:00,,Gas,1,171,Primary/Secondary Classroom,14025.3617,1945-1966,weather1.csv,
+BUILDING ID 77,30/04/15 23:00,1/5/2014 0:00,,,,,Office,33401,,weather3.csv,
+BUILDING ID 78,30/11/15 23:00,1/12/2014 0:00,,Gas,3,241,Primary/Secondary Classroom,26027.1102,pre 1919,weather1.csv,
+BUILDING ID 79,30/11/15 23:00,1/12/2014 0:00,,Gas,2,427,Primary/Secondary Classroom,25865.6517,pre 1919,weather1.csv,
+BUILDING ID 80,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1164,Primary/Secondary Classroom,126045.269,1945-1966,weather1.csv,
+BUILDING ID 81,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,23232,1871,weather2.csv,
+BUILDING ID 82,30/11/15 23:00,1/12/2014 0:00,,Gas,2,284,Primary/Secondary Classroom,28825.7242,post 1976,weather1.csv,
+BUILDING ID 83,30/11/15 23:00,1/12/2014 0:00,,Gas,2,235,Primary/Secondary Classroom,11603.4842,1919-1945,weather1.csv,
+BUILDING ID 84,30/11/15 23:00,1/12/2014 0:00,,Gas,1,40,Primary/Secondary Classroom,12970.4995,1967-1976,weather1.csv,
+BUILDING ID 85,30/11/15 23:00,1/12/2014 0:00,,Gas,3,353,Primary/Secondary Classroom,33981.6323,1967-1976,weather1.csv,
+BUILDING ID 86,30/11/15 23:00,1/12/2014 0:00,,Gas,2,383,Primary/Secondary Classroom,31871.9079,pre 1919,weather1.csv,
+BUILDING ID 87,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,203787,1999,weather7.csv,
+BUILDING ID 88,30/11/15 23:00,1/12/2014 0:00,,Gas,1,235,Primary/Secondary Classroom,11463.5535,post 1976,weather1.csv,
+BUILDING ID 89,30/11/15 23:00,1/12/2014 0:00,,Gas,2,359,Primary/Secondary Classroom,29148.6412,pre 1919,weather1.csv,
+BUILDING ID 90,30/11/15 23:00,1/12/2014 0:00,,Gas,2,1104,Primary/Secondary Classroom,137045.9748,1945-1966,weather1.csv,
+BUILDING ID 91,30/11/15 23:00,1/12/2014 0:00,,Gas,1,201,Primary/Secondary Classroom,11689.5954,1967-1976,weather1.csv,
+BUILDING ID 92,30/11/15 23:00,1/12/2014 0:00,,Gas,2,300,Primary/Secondary Classroom,18696.8943,pre 1919,weather1.csv,
+BUILDING ID 93,30/11/15 23:00,1/12/2014 0:00,,Gas,2,583,Primary/Secondary Classroom,32194.8249,pre 1919,weather1.csv,
+BUILDING ID 94,30/11/15 23:00,1/12/2014 0:00,,Gas,3,,College Classroom,109070.5987,1945-1966,weather1.csv,
+BUILDING ID 95,30/04/15 23:00,1/5/2014 0:00,100,,,,Office,20864,,weather3.csv,
+BUILDING ID 96,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,57600,1948,weather7.csv,
+BUILDING ID 97,30/11/15 23:00,1/12/2014 0:00,,Gas,2,1071,Primary/Secondary Classroom,88855.9945,post 1976,weather1.csv,
+BUILDING ID 98,30/11/15 23:00,1/12/2014 0:00,,Gas,3,489,Primary/Secondary Classroom,29891.3503,1945-1966,weather1.csv,
+BUILDING ID 99,30/11/15 23:00,1/12/2014 0:00,,Gas,1,313,Primary/Secondary Classroom,24089.6082,post 1976,weather1.csv,
+BUILDING ID 100,30/11/15 23:00,1/12/2014 0:00,,Gas,1,197,Primary/Secondary Classroom,10914.5946,1967-1976,weather1.csv,
+BUILDING ID 101,30/04/15 23:00,1/5/2014 0:00,87,,,,Office,92994,,weather3.csv,
+BUILDING ID 102,30/11/15 23:00,1/12/2014 0:00,,Gas,3,956,Primary/Secondary Classroom,93764.3329,1919-1945,weather1.csv,
+BUILDING ID 103,30/11/15 23:00,1/12/2014 0:00,,Gas,2,333,Primary/Secondary Classroom,18201.7549,pre 1919,weather1.csv,
+BUILDING ID 104,30/11/15 23:00,1/12/2014 0:00,,Gas,1,456,Primary/Secondary Classroom,35768.4397,1945-1966,weather1.csv,
+BUILDING ID 105,30/11/15 23:00,1/12/2014 0:00,,Gas,1,193,Primary/Secondary Classroom,13788.5559,pre 1919,weather1.csv,
+BUILDING ID 106,31/12/15 23:00,1/1/2015 0:00,,,,,Office,21618,1887,weather2.csv,
+BUILDING ID 107,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,87661,,weather4.csv,
+BUILDING ID 108,30/11/15 23:00,1/12/2014 0:00,,Gas,1,402,Primary/Secondary Classroom,23293.0796,post 1976,weather1.csv,
+BUILDING ID 109,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,5119.31084,,weather8.csv,
+BUILDING ID 110,30/11/15 23:00,1/12/2014 0:00,,Gas,2,287,Primary/Secondary Classroom,15801.4052,1967-1976,weather1.csv,
+BUILDING ID 111,30/04/15 23:00,1/5/2014 0:00,88,,,,Office,84365,,weather3.csv,
+BUILDING ID 112,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1500,Primary/Secondary Classroom,128682.4245,1945-1966,weather1.csv,
+BUILDING ID 113,30/11/15 23:00,1/12/2014 0:00,,Gas,3,362,Primary/Secondary Classroom,37264.6218,pre 1919,weather1.csv,
+BUILDING ID 114,30/11/15 23:00,1/12/2014 0:00,,Gas,1,12,Office,11872.5817,1945-1966,weather1.csv,
+BUILDING ID 115,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,40492,1975,weather2.csv,
+BUILDING ID 116,30/11/15 23:00,1/12/2014 0:00,,Gas,1,464,Primary/Secondary Classroom,23842.0385,1919-1945,weather1.csv,
+BUILDING ID 117,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,41302,1975,weather2.csv,
+BUILDING ID 118,30/11/15 23:00,1/12/2014 0:00,,Gas,2,197,Primary/Secondary Classroom,14972.5849,1967-1976,weather1.csv,
+BUILDING ID 119,30/11/15 23:00,1/12/2014 0:00,,Gas,2,875,Primary/Secondary Classroom,120566.4439,1919-1945,weather1.csv,
+BUILDING ID 120,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,61439,1903,weather2.csv,
+BUILDING ID 121,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,48519,,weather4.csv,
+BUILDING ID 122,30/11/15 23:00,1/12/2014 0:00,,Gas,3,1695,Primary/Secondary Classroom,139112.6436,1967-1976,weather1.csv,
+BUILDING ID 123,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,124521,1967,weather2.csv,
+BUILDING ID 124,30/11/15 23:00,1/12/2014 0:00,,Gas,3,34,Dormitory,7588.5495,Post 1976,weather1.csv,
+BUILDING ID 125,30/04/15 23:00,1/5/2014 0:00,83,,,,Office,37096,,weather3.csv,
+BUILDING ID 126,30/11/15 23:00,1/12/2014 0:00,,Gas,3,524,Primary/Secondary Classroom,28976.4188,pre 1919,weather1.csv,
+BUILDING ID 127,30/11/15 23:00,1/12/2014 0:00,,Gas,3,1140,Primary/Secondary Classroom,121470.6115,1945-1966,weather1.csv,
+BUILDING ID 128,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,41236,1975,weather2.csv,
+BUILDING ID 129,30/11/15 23:00,1/12/2014 0:00,,Gas,1,392,Primary/Secondary Classroom,23605.2327,1967-1976,weather1.csv,
+BUILDING ID 130,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,179167,1971,weather0.csv,
+BUILDING ID 131,31/12/13 23:00,1/1/2013 0:00,,,,,Office,18103.80341,,weather8.csv,
+BUILDING ID 132,30/11/15 23:00,1/12/2014 0:00,,Gas,2,403,Primary/Secondary Classroom,23153.1489,1967-1976,weather1.csv,
+BUILDING ID 133,30/11/15 23:00,1/12/2014 0:00,,Gas,1,389,Primary/Secondary Classroom,17050.0176,1945-1966,weather1.csv,
+BUILDING ID 134,30/04/15 23:00,1/5/2014 0:00,46,,,,Dormitory,230747,,weather3.csv,
+BUILDING ID 135,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,137744.5519,,weather8.csv,
+BUILDING ID 136,30/11/15 23:00,1/12/2014 0:00,,Gas,3,856,Primary/Secondary Classroom,94657.7366,1967-1976,weather1.csv,
+BUILDING ID 137,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,168791,1946,weather2.csv,
+BUILDING ID 138,30/11/15 23:00,1/12/2014 0:00,,Gas,16,,Dormitory,62893.4677,1960,weather5.csv,
+BUILDING ID 139,30/11/15 23:00,1/12/2014 0:00,,Gas,2,219,Primary/Secondary Classroom,17189.9483,pre 1919,weather1.csv,
+BUILDING ID 140,30/11/15 23:00,1/12/2014 0:00,,Gas,4,,Primary/Secondary Classroom,30612.5316,Post 1976,weather1.csv,
+BUILDING ID 141,30/11/15 23:00,1/12/2014 0:00,,Gas,1,149,Primary/Secondary Classroom,13939.2505,1967-1976,weather1.csv,
+BUILDING ID 142,30/04/15 23:00,1/5/2014 0:00,,,,,Office,72709,,weather3.csv,
+BUILDING ID 143,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,124289,1904,weather2.csv,
+BUILDING ID 144,30/11/15 23:00,1/12/2014 0:00,,Biomass,2,1400,Primary/Secondary Classroom,155807.4525,2013,weather1.csv,
+BUILDING ID 145,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,166814,1929,weather2.csv,
+BUILDING ID 146,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,15715.294,1948,weather6.csv,
+BUILDING ID 147,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1598,Primary/Secondary Classroom,102429.2724,1919-1945,weather1.csv,
+BUILDING ID 148,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,44203,1950,weather0.csv,
+BUILDING ID 149,30/11/15 23:00,1/12/2014 0:00,,Gas,2,909,Primary/Secondary Classroom,68695.2098,1945-1966,weather1.csv,
+BUILDING ID 150,31/12/12 23:00,1/1/2012 0:00,,,,,Office,137297,1917,weather7.csv,
+BUILDING ID 151,30/11/15 23:00,1/12/2014 0:00,,District Heating,7,188,Office,33960.1045,1900,weather5.csv,
+BUILDING ID 152,30/11/15 23:00,1/12/2014 0:00,,Gas,1,230,Primary/Secondary Classroom,12927.4439,1967-1976,weather1.csv,
+BUILDING ID 153,30/11/15 23:00,1/12/2014 0:00,,,,,Office,16985.4342,1978,weather6.csv,
+BUILDING ID 154,30/04/15 23:00,1/5/2014 0:00,,,,,Office,47578,,weather3.csv,
+BUILDING ID 155,30/04/15 23:00,1/5/2014 0:00,85,,,,Office,56569,,weather3.csv,
+BUILDING ID 156,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,93313,,weather4.csv,
+BUILDING ID 157,31/12/15 23:00,1/1/2015 0:00,,,,,Office,131797,1968,weather0.csv,
+BUILDING ID 158,30/11/15 23:00,1/12/2014 0:00,,Gas,3,1395,Primary/Secondary Classroom,121061.5833,1967-1976,weather1.csv,
+BUILDING ID 159,30/11/15 23:00,1/12/2014 0:00,,Gas,2,124,Primary/Secondary Classroom,17103.8371,1945-1966,weather1.csv,
+BUILDING ID 160,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,93500,,weather4.csv,
+BUILDING ID 161,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,216526,1967,weather0.csv,
+BUILDING ID 162,30/04/15 23:00,1/5/2014 0:00,91,,,,Office,80205,,weather3.csv,
+BUILDING ID 163,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,18342,1960,weather2.csv,
+BUILDING ID 164,30/11/15 23:00,1/12/2014 0:00,,Gas,1,214,Primary/Secondary Classroom,15413.9048,post 1976,weather1.csv,
+BUILDING ID 165,30/11/15 23:00,1/12/2014 0:00,,Gas,2,133,Office,19428.8395,1919-1945,weather1.csv,
+BUILDING ID 166,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,9552,1961,weather2.csv,
+BUILDING ID 167,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,20291,1925,weather2.csv,
+BUILDING ID 168,30/11/15 23:00,1/12/2014 0:00,,Gas,2,262,Primary/Secondary Classroom,19041.3391,post 1976,weather1.csv,
+BUILDING ID 169,30/04/15 23:00,1/5/2014 0:00,47,,,,Office,28991,,weather3.csv,
+BUILDING ID 170,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,39538,1953,weather2.csv,
+BUILDING ID 171,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Dormitory,83108.0719,1995,weather5.csv,
+BUILDING ID 172,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Office,7416.3271,Post 1976,weather1.csv,
+BUILDING ID 173,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,80325,,weather4.csv,
+BUILDING ID 174,30/11/15 23:00,1/12/2014 0:00,,Gas,2,322,Primary/Secondary Classroom,24251.0667,1945-1966,weather1.csv,
+BUILDING ID 175,30/11/15 23:00,1/12/2014 0:00,,Gas,2,33,Office,4650.0048,post 1976,weather1.csv,
+BUILDING ID 176,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1598,Primary/Secondary Classroom,160037.6652,1945-1966,weather1.csv,
+BUILDING ID 177,31/12/15 23:00,1/1/2015 0:00,,,,,Office,42129,,weather4.csv,
+BUILDING ID 178,31/12/15 23:00,1/1/2015 0:00,,,,,Office,28750,,weather0.csv,
+BUILDING ID 179,30/11/15 23:00,1/12/2014 0:00,,Gas,1,270,Primary/Secondary Classroom,66187.2211,post 1976,weather1.csv,
+BUILDING ID 180,31/12/15 23:00,1/1/2015 0:00,,,,,Office,42214,1985,weather0.csv,
+BUILDING ID 181,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,44352,,weather4.csv,
+BUILDING ID 182,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,78268,1964,weather0.csv,
+BUILDING ID 183,30/04/15 23:00,1/5/2014 0:00,94,,,,Office,131745,,weather3.csv,
+BUILDING ID 184,31/12/15 23:00,1/1/2015 0:00,,,,,Office,29778,,weather0.csv,
+BUILDING ID 185,30/04/15 23:00,1/5/2014 0:00,,,,,Office,119509,,weather3.csv,
+BUILDING ID 186,31/12/15 23:00,1/1/2015 0:00,,,,,Office,87977,1947,weather2.csv,
+BUILDING ID 187,30/11/15 23:00,1/12/2014 0:00,,,,,Office,24681.6227,1970,weather6.csv,
+BUILDING ID 188,31/12/15 23:00,1/1/2015 0:00,,,,,Office,11524,1994,weather2.csv,
+BUILDING ID 189,31/10/15 23:00,1/11/2014 0:00,,,,1947,Office,92121,,weather9.csv,
+BUILDING ID 190,31/12/15 23:00,1/1/2015 0:00,,,,,Primary/Secondary Classroom,16744,,weather0.csv,
+BUILDING ID 191,31/12/15 23:00,1/1/2015 0:00,,,,,Office,74180,1930,weather0.csv,
+BUILDING ID 192,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,18277,1965,weather2.csv,
+BUILDING ID 193,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,98624,1866,weather2.csv,
+BUILDING ID 194,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,49108,1951,weather0.csv,
+BUILDING ID 195,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,25139,1970,weather0.csv,
+BUILDING ID 196,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,553210,2009,weather0.csv,
+BUILDING ID 197,30/11/15 23:00,1/12/2014 0:00,,Gas,3,293,Office,152470.6435,Pre 1919,weather1.csv,
+BUILDING ID 198,30/04/15 23:00,1/5/2014 0:00,,,,,Office,87187,,weather3.csv,
+BUILDING ID 199,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,48881,1902,weather2.csv,
+BUILDING ID 200,30/04/15 23:00,1/5/2014 0:00,86,,,,Office,94988,,weather3.csv,
+BUILDING ID 201,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,49078,1914,weather0.csv,
+BUILDING ID 202,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,133594,1961,weather2.csv,
+BUILDING ID 203,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,12773,,weather0.csv,
+BUILDING ID 204,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,75650,,weather0.csv,
+BUILDING ID 205,30/04/15 23:00,1/5/2014 0:00,,,,,Office,59476,,weather3.csv,
+BUILDING ID 206,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,45305.2551,1965,weather6.csv,
+BUILDING ID 207,30/04/15 23:00,1/5/2014 0:00,,,,,Office,53077,,weather3.csv,
+BUILDING ID 208,31/12/15 23:00,1/1/2015 0:00,,,,,Office,31316,1913,weather2.csv,
+BUILDING ID 209,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,116854,1978,weather2.csv,
+BUILDING ID 210,31/10/15 23:00,1/11/2014 0:00,,,,511,College Laboratory,27145,,weather9.csv,
+BUILDING ID 211,30/04/15 23:00,1/5/2014 0:00,91,,,,Office,52748,,weather3.csv,
+BUILDING ID 212,30/04/15 23:00,1/5/2014 0:00,85,,,,Dormitory,117054,,weather3.csv,
+BUILDING ID 213,30/04/15 23:00,1/5/2014 0:00,49,,,,Dormitory,177550,,weather3.csv,
+BUILDING ID 214,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,32841,1935,weather0.csv,
+BUILDING ID 215,30/04/15 23:00,1/5/2014 0:00,94,,,,Office,67839,,weather3.csv,
+BUILDING ID 216,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,61709.4387,1966,weather6.csv,
+BUILDING ID 217,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,4314,1907,weather0.csv,
+BUILDING ID 218,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,95944,1961,weather0.csv,
+BUILDING ID 219,31/12/15 23:00,1/1/2015 0:00,,,,,Office,155682,,weather0.csv,
+BUILDING ID 220,31/12/12 23:00,1/1/2012 0:00,,,,,Office,75488,1948,weather7.csv,
+BUILDING ID 221,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,82911,,weather4.csv,
+BUILDING ID 222,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,19876,1932,weather2.csv,
+BUILDING ID 223,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,278795,,weather4.csv,
+BUILDING ID 224,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,142672,,weather3.csv,
+BUILDING ID 225,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Dormitory,64723.3307,1960,weather5.csv,
+BUILDING ID 226,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,61246.591,1960,weather6.csv,
+BUILDING ID 227,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,36406,1940,weather0.csv,
+BUILDING ID 228,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,56602,1923,weather7.csv,
+BUILDING ID 229,30/04/15 23:00,1/5/2014 0:00,9,,,,Office,98212,,weather3.csv,
+BUILDING ID 230,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,65999,1975,weather2.csv,
+BUILDING ID 231,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,73981.36109,,weather8.csv,
+BUILDING ID 232,31/12/12 23:00,1/1/2012 0:00,,,,,Office,57343,1905,weather7.csv,
+BUILDING ID 233,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,47007,,weather4.csv,
+BUILDING ID 234,30/04/15 23:00,1/5/2014 0:00,83,,,,Dormitory,74584,,weather3.csv,
+BUILDING ID 235,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,24103,1964,weather2.csv,
+BUILDING ID 236,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,40461,2002,weather2.csv,
+BUILDING ID 237,31/12/12 23:00,1/1/2012 0:00,,,,,Office,236242,1962,weather7.csv,
+BUILDING ID 238,30/11/15 23:00,1/12/2014 0:00,,District heating,7,1815,Office,820241.4717,1862-1875,weather5.csv,
+BUILDING ID 239,30/11/15 23:00,1/12/2014 0:00,,Gas,7,,Dormitory,102773.7172,1956,weather5.csv,
+BUILDING ID 240,30/04/15 23:00,1/5/2014 0:00,,,,,Office,121714,,weather3.csv,
+BUILDING ID 241,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,95717,2969,weather0.csv,
+BUILDING ID 242,30/11/15 23:00,1/12/2014 0:00,,Gas,10,,Dormitory,66531.6659,1967,weather5.csv,
+BUILDING ID 243,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,113000,,weather4.csv,
+BUILDING ID 244,31/12/15 23:00,1/1/2015 0:00,,,,,Office,40611,1866,weather2.csv,
+BUILDING ID 245,31/12/15 23:00,1/1/2015 0:00,,,,,Office,23549,1941,weather0.csv,
+BUILDING ID 246,31/12/15 23:00,1/1/2015 0:00,,,,,Office,163959,2004,weather0.csv,
+BUILDING ID 247,31/12/15 23:00,1/1/2015 0:00,,,,,Office,9703,1940,weather0.csv,
+BUILDING ID 248,30/04/15 23:00,1/5/2014 0:00,,,,,Office,96612,,weather3.csv,
+BUILDING ID 249,30/11/15 23:00,1/12/2014 0:00,,Gas,7,,Dormitory,102956.7035,1968,weather5.csv,
+BUILDING ID 250,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,50567,1880,weather2.csv,
+BUILDING ID 251,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,282946,2003,weather0.csv,
+BUILDING ID 252,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,648094.419,,weather8.csv,
+BUILDING ID 253,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,30531,,weather4.csv,
+BUILDING ID 254,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,30949,1951,weather0.csv,
+BUILDING ID 255,30/04/15 23:00,1/5/2014 0:00,45,,,,Dormitory,174924,,weather3.csv,
+BUILDING ID 256,31/12/13 23:00,1/1/2013 0:00,,,,,Office,99501.4916,,weather8.csv,
+BUILDING ID 257,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,31613.5743,1956,weather5.csv,
+BUILDING ID 258,30/04/15 23:00,1/5/2014 0:00,,,,,Office,71936,,weather3.csv,
+BUILDING ID 259,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,62238,1970,weather0.csv,
+BUILDING ID 260,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,136522,2005,weather2.csv,
+BUILDING ID 261,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,58307,,weather4.csv,
+BUILDING ID 262,30/11/15 23:00,1/12/2014 0:00,,Gas,11,410,Office,242930.4591,,weather5.csv,
+BUILDING ID 263,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,111304,1964,weather0.csv,
+BUILDING ID 264,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,24586,,weather0.csv,
+BUILDING ID 265,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,128044,,weather4.csv,
+BUILDING ID 266,31/12/15 23:00,1/1/2015 0:00,,,,,Office,37485,,weather4.csv,
+BUILDING ID 267,30/11/15 23:00,1/12/2014 0:00,,Gas,5,46,Office,11388.2062,1754-1756,weather5.csv,
+BUILDING ID 268,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,86436.26978,,weather8.csv,
+BUILDING ID 269,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,64246.48993,,weather8.csv,
+BUILDING ID 270,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,13512,,weather4.csv,
+BUILDING ID 271,30/04/15 23:00,1/5/2014 0:00,56,,,,Dormitory,233341,,weather3.csv,
+BUILDING ID 272,30/11/15 23:00,1/12/2014 0:00,,Gas,1,71,Primary/Secondary Classroom,11269.8033,1967-1976,weather1.csv,
+BUILDING ID 273,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,65024.7199,1975,weather6.csv,
+BUILDING ID 274,31/12/15 23:00,1/1/2015 0:00,,,,,Office,23392,,weather0.csv,
+BUILDING ID 275,30/11/15 23:00,1/12/2014 0:00,,,,,Office,64152.844,1968,weather6.csv,
+BUILDING ID 276,31/12/15 23:00,1/1/2015 0:00,,,,,Office,84615,1963,weather2.csv,
+BUILDING ID 277,30/11/15 23:00,1/12/2014 0:00,,Electricity,1,192,Primary/Secondary Classroom,8729.5229,1967-1976,weather1.csv,
+BUILDING ID 278,31/12/15 23:00,1/1/2015 0:00,,,,,Office,187041,1973,weather2.csv,
+BUILDING ID 279,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,86323,1956,weather0.csv,
+BUILDING ID 280,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,64940.76148,,weather8.csv,
+BUILDING ID 281,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,180625,1933,weather2.csv,
+BUILDING ID 282,31/12/15 23:00,1/1/2015 0:00,,,,,Office,104667,,weather4.csv,
+BUILDING ID 283,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,4298,,weather2.csv,
+BUILDING ID 284,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,38319.484,1900,weather5.csv,
+BUILDING ID 285,30/04/15 23:00,1/5/2014 0:00,58,,,,Dormitory,153299,,weather3.csv,
+BUILDING ID 286,30/04/15 23:00,1/5/2014 0:00,,,,,College Classroom,14185,,weather3.csv,
+BUILDING ID 287,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,137065,1964,weather0.csv,
+BUILDING ID 288,31/12/15 23:00,1/1/2015 0:00,,,,,Office,121440,1983,weather0.csv,
+BUILDING ID 289,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,35936,,weather4.csv,
+BUILDING ID 290,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,32367.0473,1938,weather6.csv,
+BUILDING ID 291,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,31118.4349,1994,weather6.csv,
+BUILDING ID 292,30/04/15 23:00,1/5/2014 0:00,56,,,,Office,70852,,weather3.csv,
+BUILDING ID 293,30/11/15 23:00,1/12/2014 0:00,,Heat network,12,,Office,174601.2219,1960,weather5.csv,
+BUILDING ID 294,31/12/15 23:00,1/1/2015 0:00,,,,,Office,118966,1988,weather0.csv,
+BUILDING ID 295,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,39558,,weather4.csv,
+BUILDING ID 296,31/12/15 23:00,1/1/2015 0:00,,,,,Office,14744,1910,weather2.csv,
+BUILDING ID 297,31/10/15 23:00,1/11/2014 0:00,,,,1370,College Classroom,57964,,weather9.csv,
+BUILDING ID 298,31/12/15 23:00,1/1/2015 0:00,,,,,Office,33713,1956,weather0.csv,
+BUILDING ID 299,30/04/15 23:00,1/5/2014 0:00,49,,,,Dormitory,157070,,weather3.csv,
+BUILDING ID 300,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,71224,,weather0.csv,
+BUILDING ID 301,31/10/15 23:00,1/11/2014 0:00,,,,2417,College Classroom,100310,,weather9.csv,
+BUILDING ID 302,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,30596,1999,weather0.csv,
+BUILDING ID 303,31/10/15 23:00,1/11/2014 0:00,,,,3537,College Classroom,166151,,weather9.csv,
+BUILDING ID 304,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,212128,,weather0.csv,
+BUILDING ID 305,31/12/15 23:00,1/1/2015 0:00,,,,,Office,32766,,weather4.csv,
+BUILDING ID 306,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,91253,1888,weather2.csv,
+BUILDING ID 307,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,49384,1967,weather0.csv,
+BUILDING ID 308,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,88486,,weather0.csv,
+BUILDING ID 309,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,111635,1989,weather0.csv,
+BUILDING ID 310,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,34171,,weather0.csv,
+BUILDING ID 311,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,78438,2004,weather2.csv,
+BUILDING ID 312,30/04/15 23:00,1/5/2014 0:00,29,,,,Office,99946,,weather3.csv,
+BUILDING ID 313,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,105612,1967,weather2.csv,
+BUILDING ID 314,31/12/15 23:00,1/1/2015 0:00,,,,,Office,51732,1966,weather0.csv,
+BUILDING ID 315,31/12/15 23:00,1/1/2015 0:00,,,,,Office,148101,,weather0.csv,
+BUILDING ID 316,30/04/15 23:00,1/5/2014 0:00,69,,,,Office,10385,,weather3.csv,
+BUILDING ID 317,30/11/15 23:00,1/12/2014 0:00,,Gas,10,283,Office,60600.757,1906,weather5.csv,
+BUILDING ID 318,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,49513.94,2000,weather6.csv,
+BUILDING ID 319,30/11/15 23:00,1/12/2014 0:00,,,,,College Laboratory,16307.3085,2007,weather6.csv,
+BUILDING ID 320,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,77263,,weather4.csv,
+BUILDING ID 321,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,244964,2008,weather0.csv,
+BUILDING ID 322,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,140488,1961,weather2.csv,
+BUILDING ID 323,31/12/12 23:00,1/1/2012 0:00,,,,,Office,77055,1917,weather7.csv,
+BUILDING ID 324,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,172244,1963,weather7.csv,
+BUILDING ID 325,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,7481,1969,weather0.csv,
+BUILDING ID 326,30/04/15 23:00,1/5/2014 0:00,91,,,,Office,92099,,weather3.csv,
+BUILDING ID 327,30/11/15 23:00,1/12/2014 0:00,,Gas,9,1580,Office,1315596.15,11th Century onwards,weather5.csv,
+BUILDING ID 328,31/12/15 23:00,1/1/2015 0:00,,,,,Office,64818,,weather4.csv,
+BUILDING ID 329,30/04/15 23:00,1/5/2014 0:00,75,,,,Office,157545,,weather3.csv,
+BUILDING ID 330,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,128540,1968,weather7.csv,
+BUILDING ID 331,31/12/15 23:00,1/1/2015 0:00,,,,,Office,6203,1999,weather0.csv,
+BUILDING ID 332,30/11/15 23:00,1/12/2014 0:00,,Gas,4,340,Office,36220.5235,Post 1976,weather1.csv,
+BUILDING ID 333,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,84300,,weather0.csv,
+BUILDING ID 334,30/04/15 23:00,1/5/2014 0:00,,,,,Office,57394,,weather3.csv,
+BUILDING ID 335,31/12/15 23:00,1/1/2015 0:00,,,,,Office,140345,,weather0.csv,
+BUILDING ID 336,30/11/15 23:00,1/12/2014 0:00,,Gas,1,,Office,11442.0257,Post 1976,weather1.csv,
+BUILDING ID 337,30/04/15 23:00,1/5/2014 0:00,,,,,Office,35829,,weather3.csv,
+BUILDING ID 338,31/12/15 23:00,1/1/2015 0:00,,,,,Office,115288,1957,weather2.csv,
+BUILDING ID 339,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,65663,1975,weather2.csv,
+BUILDING ID 340,30/11/15 23:00,1/12/2014 0:00,,Gas,10,525,Office,117380.3295,1888-1890,weather5.csv,
+BUILDING ID 341,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,98829,1968,weather0.csv,
+BUILDING ID 342,30/11/15 23:00,1/12/2014 0:00,,Electric,8,,Dormitory,49589.2873,1998,weather5.csv,
+BUILDING ID 343,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,41179,,weather0.csv,
+BUILDING ID 344,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,83141,2006,weather2.csv,
+BUILDING ID 345,30/11/15 23:00,1/12/2014 0:00,,,,,Office,11517.373,1989,weather6.csv,
+BUILDING ID 346,30/04/15 23:00,1/5/2014 0:00,,,,,Office,58703,,weather3.csv,
+BUILDING ID 347,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,90903,,weather0.csv,
+BUILDING ID 348,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,99774,1955,weather2.csv,
+BUILDING ID 349,31/10/15 23:00,1/11/2014 0:00,,,,4144,College Classroom,164166,,weather9.csv,
+BUILDING ID 350,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,106440,1963,weather0.csv,
+BUILDING ID 351,30/11/15 23:00,1/12/2014 0:00,,,,,Office,11108.3448,1965,weather6.csv,
+BUILDING ID 352,30/04/15 23:00,1/5/2014 0:00,,,,,Office,25463,,weather3.csv,
+BUILDING ID 353,31/10/15 23:00,1/11/2014 0:00,,,,2740,Office,112178,,weather9.csv,
+BUILDING ID 354,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,9111,1958,weather2.csv,
+BUILDING ID 355,30/11/15 23:00,1/12/2014 0:00,,Gas,5,1122,Office,270033.9593,Post 1976,weather1.csv,
+BUILDING ID 356,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,71421,,weather0.csv,
+BUILDING ID 357,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,60086,2001,weather0.csv,
+BUILDING ID 358,31/12/15 23:00,1/1/2015 0:00,,,,,Office,83660,1973,weather0.csv,
+BUILDING ID 359,30/04/15 23:00,1/5/2014 0:00,,,,,Office,20444,,weather3.csv,
+BUILDING ID 360,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,88934,2009,weather0.csv,
+BUILDING ID 361,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,28084,1913,weather2.csv,
+BUILDING ID 362,30/04/15 23:00,1/5/2014 0:00,,,,,Office,87131,,weather3.csv,
+BUILDING ID 363,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,171008,1930,weather2.csv,
+BUILDING ID 364,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,169290,2006,weather2.csv,
+BUILDING ID 365,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,72102,1970,weather0.csv,
+BUILDING ID 366,31/10/15 23:00,1/11/2014 0:00,,,,1344,College Classroom,54461,,weather9.csv,
+BUILDING ID 367,31/10/15 23:00,1/11/2014 0:00,,,,2130,College Classroom,80078,,weather9.csv,
+BUILDING ID 368,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,108971,1990,weather2.csv,
+BUILDING ID 369,30/11/15 23:00,1/12/2014 0:00,,Gas,3,556,Office,57436.1704,Post 1976,weather1.csv,
+BUILDING ID 370,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,184098,,weather3.csv,
+BUILDING ID 371,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,137040,1957,weather0.csv,
+BUILDING ID 372,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,233863,1921,weather2.csv,
+BUILDING ID 373,31/12/15 23:00,1/1/2015 0:00,,,,,Office,59665,,weather4.csv,
+BUILDING ID 374,30/04/15 23:00,1/5/2014 0:00,,,,,Office,25977,,weather3.csv,
+BUILDING ID 375,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,47398,1912,weather2.csv,
+BUILDING ID 376,31/12/15 23:00,1/1/2015 0:00,,,,,Primary/Secondary Classroom,10334,,weather0.csv,
+BUILDING ID 377,30/04/15 23:00,1/5/2014 0:00,,,,,Office,92500,,weather3.csv,
+BUILDING ID 378,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,65907,1964,weather0.csv,
+BUILDING ID 379,30/11/15 23:00,1/12/2014 0:00,,Gas,10,721,Office,194805.0622,2000,weather5.csv,
+BUILDING ID 380,30/11/15 23:00,1/12/2014 0:00,,,,,Office,42495.8772,1997,weather6.csv,
+BUILDING ID 381,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,124950,1961,weather7.csv,
+BUILDING ID 382,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,20909.95214,1987,weather5.csv,
+BUILDING ID 383,31/10/15 23:00,1/11/2014 0:00,,,,3741,College Classroom,149679,,weather9.csv,
+BUILDING ID 384,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,63915,,weather3.csv,
+BUILDING ID 385,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,192152,,weather3.csv,
+BUILDING ID 386,30/11/15 23:00,1/12/2014 0:00,,Gas,9,393,Office,109824.0717,1903-1906,weather5.csv,
+BUILDING ID 387,31/12/15 23:00,1/1/2015 0:00,,,,,Office,104355,,weather4.csv,
+BUILDING ID 388,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,74599,1984,weather2.csv,
+BUILDING ID 389,30/11/15 23:00,1/12/2014 0:00,,Gas,7,264,Office,36704.899,1898-1902,weather5.csv,
+BUILDING ID 390,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,105791,,weather4.csv,
+BUILDING ID 391,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,91273,1951,weather0.csv,
+BUILDING ID 392,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,131710,1991,weather0.csv,
+BUILDING ID 393,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,89770,,weather0.csv,
+BUILDING ID 394,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,21168,1928,weather2.csv,
+BUILDING ID 395,31/12/15 23:00,1/1/2015 0:00,,,,,Office,31053,1915,weather2.csv,
+BUILDING ID 396,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,142901,2007,weather2.csv,
+BUILDING ID 397,31/10/15 23:00,1/11/2014 0:00,,,,3188,Office,136624,,weather9.csv,
+BUILDING ID 398,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,126985,1979,weather0.csv,
+BUILDING ID 399,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,28432,1933,weather2.csv,
+BUILDING ID 400,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,132518,1992,weather0.csv,
+BUILDING ID 401,31/12/15 23:00,1/1/2015 0:00,,,,,Office,10135,,weather0.csv,
+BUILDING ID 402,31/12/15 23:00,1/1/2015 0:00,,,,,Office,202435,1967,weather0.csv,
+BUILDING ID 403,31/12/15 23:00,1/1/2015 0:00,,,,,Office,157933,1932,weather2.csv,
+BUILDING ID 404,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,40451,1975,weather2.csv,
+BUILDING ID 405,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,9788,,weather0.csv,
+BUILDING ID 406,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,105434,2014,weather2.csv,
+BUILDING ID 407,30/11/15 23:00,1/12/2014 0:00,,Electricity,7,97,Office,18503.1441,1937,weather5.csv,
+BUILDING ID 408,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,96124,1959,weather0.csv,
+BUILDING ID 409,31/12/13 23:00,1/1/2013 0:00,,,,,Office,17765.81695,,weather8.csv,
+BUILDING ID 410,30/11/15 23:00,1/12/2014 0:00,,Electric,7,,Dormitory,66660.8327,1930,weather5.csv,
+BUILDING ID 411,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,39988,,weather3.csv,
+BUILDING ID 412,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,90900,,weather0.csv,
+BUILDING ID 413,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,204349,1993,weather0.csv,
+BUILDING ID 414,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,30495.20509,1997,weather5.csv,
+BUILDING ID 415,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,56886,1953,weather7.csv,
+BUILDING ID 416,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,204029,2010,weather2.csv,
+BUILDING ID 417,30/04/15 23:00,1/5/2014 0:00,,,,,Office,102191,,weather3.csv,
+BUILDING ID 418,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,64917.0809,2006,weather6.csv,
+BUILDING ID 419,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,32256,,weather3.csv,
+BUILDING ID 420,31/12/15 23:00,1/1/2015 0:00,,,,,Office,70832,2014,weather0.csv,
+BUILDING ID 421,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,34875,1993,weather2.csv,
+BUILDING ID 422,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,98125,2011,weather2.csv,
+BUILDING ID 423,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,129664,1941,weather2.csv,
+BUILDING ID 424,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,140092,,weather0.csv,
+BUILDING ID 425,31/12/15 23:00,1/1/2015 0:00,,,,,Office,110380,1985,weather2.csv,
+BUILDING ID 426,31/12/15 23:00,1/1/2015 0:00,,,,,Office,49553,1963,weather2.csv,
+BUILDING ID 427,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,53651,,weather4.csv,
+BUILDING ID 428,31/12/15 23:00,1/1/2015 0:00,,,,,Office,44332,,weather4.csv,
+BUILDING ID 429,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,156483,,weather3.csv,
+BUILDING ID 430,30/11/15 23:00,1/12/2014 0:00,,,,,College Laboratory,84066.059,1966,weather6.csv,
+BUILDING ID 431,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,122592,1971,weather0.csv,
+BUILDING ID 432,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,77469,,weather0.csv,
+BUILDING ID 433,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,College Laboratory,138316.115,1960,weather5.csv,
+BUILDING ID 434,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,61203.5354,1989,weather5.csv,
+BUILDING ID 435,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,33739,1939,weather0.csv,
+BUILDING ID 436,31/12/15 23:00,1/1/2015 0:00,,,,,Office,70837,2014,weather0.csv,
+BUILDING ID 437,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,40311,1913,weather2.csv,
+BUILDING ID 438,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,33148,1967,weather2.csv,
+BUILDING ID 439,30/11/15 23:00,1/12/2014 0:00,,Gas,10,818,Office,150640.7805,1913-1915,weather5.csv,
+BUILDING ID 440,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,241324,,weather4.csv,
+BUILDING ID 441,31/12/15 23:00,1/1/2015 0:00,,,,,Office,42755,1866,weather2.csv,
+BUILDING ID 442,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,71248,2004,weather0.csv,
+BUILDING ID 443,31/10/15 23:00,1/11/2014 0:00,,,,3090,College Classroom,123096,,weather9.csv,
+BUILDING ID 444,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,219608,1992,weather0.csv,
+BUILDING ID 445,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,52839,1942,weather7.csv,
+BUILDING ID 446,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,47934,,weather2.csv,
+BUILDING ID 447,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,279840,2008,weather2.csv,
+BUILDING ID 448,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,20889,1976,weather2.csv,
+BUILDING ID 449,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,327256,2012,weather0.csv,
+BUILDING ID 450,30/04/15 23:00,1/5/2014 0:00,3,,,,Office,38382,,weather3.csv,
+BUILDING ID 451,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,64560,1965,weather0.csv,
+BUILDING ID 452,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,74682,2006,weather0.csv,
+BUILDING ID 453,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,183460,2005,weather0.csv,
+BUILDING ID 454,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,131271,2010,weather2.csv,
+BUILDING ID 455,31/12/15 23:00,1/1/2015 0:00,,,,,Office,46981,1962,weather2.csv,
+BUILDING ID 456,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,179559,2006,weather0.csv,
+BUILDING ID 457,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,160673,1968,weather2.csv,
+BUILDING ID 458,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,173983,1986,weather2.csv,
+BUILDING ID 459,31/12/15 23:00,1/1/2015 0:00,,,,,Office,23458,,weather4.csv,
+BUILDING ID 460,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,24643,1982,weather0.csv,
+BUILDING ID 461,31/12/10 23:00,1/1/2010 0:00,,,,,Office,83321,1960,weather13.csv,
+BUILDING ID 462,31/12/15 23:00,1/1/2015 0:00,,,,,Office,54597,,weather4.csv,
+BUILDING ID 463,31/12/15 23:00,1/1/2015 0:00,,,,,Office,70042,,weather4.csv,
+BUILDING ID 464,31/12/15 23:00,1/1/2015 0:00,,,,,Office,49990,,weather4.csv,
+BUILDING ID 465,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,322341,1995,weather2.csv,
+BUILDING ID 466,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,111518,1968,weather2.csv,
+BUILDING ID 467,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,37107,,weather3.csv,
+BUILDING ID 468,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,125507,1974,weather2.csv,
+BUILDING ID 469,31/12/15 23:00,1/1/2015 0:00,,,,,Office,17879,,weather4.csv,
+BUILDING ID 470,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,83043.4885,1991,weather5.csv,
+BUILDING ID 471,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,129344,,weather4.csv,
+BUILDING ID 472,31/12/12 23:00,1/1/2012 0:00,,,,,Office,97618,1964,weather7.csv,
+BUILDING ID 473,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,9309,1970,weather0.csv,
+BUILDING ID 474,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,87216,1964,weather7.csv,
+BUILDING ID 475,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,4583,,weather0.csv,
+BUILDING ID 476,30/11/15 23:00,1/12/2014 0:00,,Heat network and steam,9,,College Laboratory,150317.8635,1906,weather5.csv,
+BUILDING ID 477,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,33695,1948,weather2.csv,
+BUILDING ID 478,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,214505,1990,weather2.csv,
+BUILDING ID 479,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,56497,1957,weather2.csv,
+BUILDING ID 480,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,49662,1964,weather0.csv,
+BUILDING ID 481,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,4689,2005,weather0.csv,
+BUILDING ID 482,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,250000,,weather4.csv,
+BUILDING ID 483,30/04/15 23:00,1/5/2014 0:00,,,,,Office,62837,,weather3.csv,
+BUILDING ID 484,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,48411,,weather0.csv,
+BUILDING ID 485,30/11/15 23:00,1/12/2014 0:00,,,,,College Laboratory,107585.1805,2010,weather6.csv,
+BUILDING ID 486,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,151637,1983,weather0.csv,
+BUILDING ID 487,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,46813,,weather4.csv,
+BUILDING ID 488,30/11/15 23:00,1/12/2014 0:00,,Oil,5,,College Laboratory,37264.6218,1800,weather33.csv,
+BUILDING ID 489,31/12/10 23:00,1/1/2010 0:00,,,,,Office,111077,1994,weather13.csv,
+BUILDING ID 490,30/11/15 23:00,1/12/2014 0:00,,,,,Office,15812.1691,,weather6.csv,
+BUILDING ID 491,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,193294,2006,weather0.csv,
+BUILDING ID 492,30/11/15 23:00,1/12/2014 0:00,,Gas,5,,College Laboratory,21538.5639,2004,weather5.csv,
+BUILDING ID 493,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,35990,,weather4.csv,
+BUILDING ID 494,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,75929,,weather4.csv,
+BUILDING ID 495,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,63348,2007,weather0.csv,
+BUILDING ID 496,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,149762,2004,weather2.csv,
+BUILDING ID 497,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,120836,,weather4.csv,
+BUILDING ID 498,31/12/15 23:00,1/1/2015 0:00,,,,,Office,41337,,weather4.csv,
+BUILDING ID 499,31/12/10 23:00,1/1/2010 0:00,,,,,College Laboratory,153700,1990,weather13.csv,
+BUILDING ID 500,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,29775,2001,weather2.csv,
+BUILDING ID 501,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,65656.56083,1955,weather5.csv,
+BUILDING ID 502,30/04/15 23:00,1/5/2014 0:00,,,,,Office,105167,,weather3.csv,
+BUILDING ID 503,30/11/15 23:00,1/12/2014 0:00,,Heat network,8,,Office,34455.2439,1907,weather5.csv,
+BUILDING ID 504,31/12/15 23:00,1/1/2015 0:00,,,,,Office,53303,1981,weather2.csv,
+BUILDING ID 505,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,16802.4479,1995,weather5.csv,
+BUILDING ID 506,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,30143,1951,weather2.csv,
+BUILDING ID 507,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,261188,,weather0.csv,

@@ -34,7 +34,7 @@ epw_file_path = ''
 if File.exist?(epw_file)
   epw_file_path = epw_file
 else
-  epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
+  epw_file_path = File.expand_path("../data/weather/#{epw_file}/", File.dirname(__FILE__))
 end
 
 ddy_file_path = ''
@@ -42,7 +42,7 @@ if !ddy_file.nil?
   ddy_file_path = ddy_file
 else
   ddy_file = 'temporary.ddy'
-  ddy_file_path = File.expand_path("../scripts/#{ddy_file}/", File.dirname(__FILE__))
+  ddy_file_path = File.expand_path("../data/weather/#{ddy_file}/", File.dirname(__FILE__))
 end
 
 # Run
