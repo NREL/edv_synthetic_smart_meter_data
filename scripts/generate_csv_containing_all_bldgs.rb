@@ -21,9 +21,9 @@ if !ARGV[2].nil? && File.exist?(ARGV[2])
 
   CSV.foreach(csv_file_with_EPWs, options) do |row|
     the_hash = {}
-    the_hash[:uid] = row[:uid]
-    the_hash[:epw] = row[:epw]
-    the_hash[:ddy] = row[:ddy]
+    the_hash[:building_id] = row[:building_id]
+    the_hash[:weather_file_name_epw] = row[:weather_file_name_epw]
+    the_hash[:weather_file_name_ddy] = row[:weather_file_name_ddy]
     epw_arr << the_hash
   end
   puts "custom epw_files found in :#{csv_file_with_EPWs}"
@@ -45,10 +45,10 @@ Dir.glob("#{root_dir}/*.xml").each do |xml_file|
   # puts "xml_file: #{xml_file} "
   # puts "xml_file: #{File.basename(xml_file, ".xml")}"
   # puts "standard: #{standard_to_be_used}"
-  matches = epw_arr.select {|row| row[:uid] === File.basename(xml_file, ".xml") }
+  matches = epw_arr.select {|row| row[:building_id] === File.basename(xml_file, ".xml") }
   if matches.size > 0
-    epw_file = File.expand_path(matches[0][:epw], weather_file_source_dir)
-    ddy_file = File.expand_path(matches[0][:ddy], weather_file_source_dir)
+    epw_file = File.expand_path(matches[0][:weather_file_name_epw], weather_file_source_dir)
+    ddy_file = File.expand_path(matches[0][:weather_file_name_ddy], weather_file_source_dir)
   end
   # puts " epw: #{epw_file} ddy: #{ddy_file}"
   csv.puts("#{File.basename(xml_file)},#{standard_to_be_used},#{epw_file},#{ddy_file}")
