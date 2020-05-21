@@ -1,4 +1,4 @@
-NAME_OF_OUTPUT_DIR = "BldgSync"
+NAME_OF_OUTPUT_DIR = "Results"
 NAME_OF_INPUT_DIR = "inputs"
 
 # EDITABLE
