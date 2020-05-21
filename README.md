@@ -1,4 +1,4 @@
-# Energy Data Vault (EDV) Workflow Development
+# Energy Data Vault (EDV) Synthetic Data Creation Workflow Development
 
 - Developing/Modifying/Fixing the workflow to answer questions below.
 
@@ -43,12 +43,14 @@ The following figure contains an overview of the scripts and input as well as ou
 
 ## Configurations Before Running the Entire Workflow
 
-- **Output path**: All output will go into a path this is defined with the constant NAME_OF_OUTPUT_DIR in the constants.rb file, 
-below the edv-experiment-1 main folder.
+- ```constants.rb``` file under ```scripts``` folder includes configurations of the EDV workflow to specify, 
+  - selection of the **data source** and where is the data read from
+  - simulation types between **baseline only** versus **considering all scenarios**
+  - **directories** of input and output files 
+  - application of **variability** in buildings ([occupant related variability](https://github.com/LBNL-ETA/OpenStudio-Occupant-Variability-Gem) & [other variability](https://github.com/LBNL-ETA/OpenStudio-Variability-Gem))
 
 - TODO,
-  - add rake task argument updates Cory is working on later on.
-  - add formats of inputs,
+  - add/standardize formats of inputs,
     - buildings metadata
     - buildings timeseries data
     - weather file configuration against buildings
@@ -79,10 +81,10 @@ bundle exec rake workflow_part_1
 
 - Run the following command to generate BuildingSync XMLs from CSV data:
 ```
-bundle exec rake generate_xmls path/and/name/of/metadata/csv/file
+bundle exec rake generate_xmls
 ```
 
-- The generated XML files will be saved in the NAME_OF_OUTPUT_DIR/Bldgsync_Files directory.
+- The generated XML files will be saved based on the configuration in ```constant.rb``` file.
 
 - Currently, this script is designed to work with the metadata `meta_open.csv` from the [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). 
 
@@ -98,10 +100,10 @@ bundle exec rake generate_xmls path/and/name/of/metadata/csv/file
 
 - Run the following command to add measured energy consumptions to the BuildingSync XMLs generated in step 1:
 ```
-bundle exec rake add_measured_data path/and/name/of/timeseries/csv/file/including/measured/data path/to/resultant/xml/files/from/previous/step
+bundle exec rake add_measured_data
 ```
 
-- The updated XML files will be saved in the NAME_OF_OUTPUT_DIR/Bldgsync_Files directory.
+- The updated XML files will be saved based on the configuration in ```constant.rb``` file.
 
 - Currently, monthly total consumptions are only calculated and stored back to xmls.
 
@@ -112,14 +114,12 @@ bundle exec rake add_measured_data path/and/name/of/timeseries/csv/file/includin
 
 - The following script will generate a csv file that includes combinations of BuildingSync XML files and weather files to create scenarios of EnergyPlus/OpenStudio simulations. 
 ```
-bundle exec rake generate_control_csv_1 path/to/resultant/xml/files/from/previous/step (optional)_standard_to_be_used path/and/name/of/csv/file/including/EPW/and/DDY/filenames path/to/weather/files
+bundle exec rake generate_control_csv_1
 ```
-
-- The first argument is required and should be the path (NAME_OF_OUTPUT_DIR/Bldgsync_Files) to the BuildingSync files.
 
 - The output control file contains the name of the BuildingSync file, the Standard to define buildings, and weather file names.
 
-- The output control file will be saved in the NAME_OF_OUTPUT_DIR/Control_Files directory.
+- The output control file will be saved based on the configuration in ```constant.rb``` file.
 
 - Users need to acquire weather files (EPWs and DDYs) separately.
 
@@ -130,7 +130,7 @@ bundle exec rake generate_control_csv_1 path/to/resultant/xml/files/from/previou
 
 - Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
 ```
-bundle exec rake simulate_batch_xml path/and/name/of/control/file/created/from/previous/step
+bundle exec rake simulate_batch_xml
 ```
 
 - The generated simulation files as well as updated BuildingSync XMLs will be saved in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.

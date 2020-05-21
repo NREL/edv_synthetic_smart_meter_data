@@ -2,6 +2,7 @@ source 'http://rubygems.org'
 ruby '~>2.2'
 
 allow_local = false
+allow_local_bsync = false
 
 gem 'rake', '12.3.1'
 gem 'rexml', '3.2.2'
@@ -29,7 +30,7 @@ if allow_local && File.exist?('../openstudio-common-measures-gem')
   # gem 'openstudio-model-articulation', github: 'NREL/openstudio-common-measures-gem', branch: 'develop'
   gem 'openstudio-common-measures', path: '../openstudio-common-measures-gem'
 else
-  gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', branch: 'develop'
+  gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', :tag => 'v0.1.1'
 end
 
 if allow_local && File.exist?('../openstudio-standards-gem')
@@ -39,7 +40,7 @@ else
   gem 'openstudio-standards', '>=0.2.9'
 end
 
-if allow_local && File.exists?('../BuildingSync-gem')
+if allow_local_bsync && File.exists?('../BuildingSync-gem')
   # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
