@@ -1291,16 +1291,4 @@ CSV.foreach(ARGV[0], options) do |feature|
     next
   end
 
-  # floor_area = get_floor_area(feature, datasource)
-  # building_type = get_occupancy_classification(feature, scenario_hash, datasource)
-  # year_built = get_year_built(feature) # default
-  # climate_zone = get_climate_zone(feature) # default
-  # if !(File.basename(ARGV[0]) =~ /monthlyenergy_bricr_filtered*/).nil?
-    # climate_zone = '3C'
-  # end
-  # building_name = "Building #{id}"
-
-  # puts "climate zone is not given for building with name #{building_name}" if climate_zone.nil?
-  # summary_file.puts "#{id},#{id}.xml,#{building_type},#{building_name},#{floor_area},#{year_built},#{climate_zone}"
-
 end
