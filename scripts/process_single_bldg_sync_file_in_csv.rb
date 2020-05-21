@@ -46,7 +46,7 @@ else
 end
 
 # Run
-result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, BASELINE_ONLY, OCC_VAR)
+result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, BASELINE_ONLY, OCC_VAR, NON_ROUTINE_VAR)
 
 output_dirs = []
 Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
