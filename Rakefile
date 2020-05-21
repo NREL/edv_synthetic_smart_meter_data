@@ -48,7 +48,7 @@ end
 desc 'Read the CSV file and update the BuildingSync files'
 task :add_measured_data do
 
-  default_path_to_csv = "#{RAW_DATA_DIR}/#{TIMESERIES_DATA_FILE}"
+  default_path_to_csv = "data/processed/timeseries.csv"
   default_path_to_xmls = "#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
   if ARGV[1] && ARGV[2]
 
@@ -70,7 +70,7 @@ desc 'generate csv control file 1'
 task :generate_control_csv_1 do
 
   default_path_to_add_measured = "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
-  bdgp_cz_metadata_file = "../edv-experiment-1-files/BDGP/#{BDGP_CZ_METADATA_FILE}"
+  bdgp_cz_metadata_file = "data/processed/metadata.csv"
   bdgp_cz_weather = "../edv-experiment-1-files/#{WEATHER_DIR}"
 
   if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
