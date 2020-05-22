@@ -112,24 +112,6 @@ task :simulate_batch_xml do
   end
 end
 
-desc 'simulate a batch of BuildingSync XML files with variability'
-task :simulate_batch_xml_w_variability do
-
-  if ARGV[1] && ARGV[2]
-    # ARGV[2] would be the folder with building sync files
-    ruby "scripts/process_all_bldg_sync_files_in_csv_with_variability.rb #{ARGV[1]} #{ARGV[2]}"
-  elsif ARGV[1]
-    # ARGV[1] should be a path to a BuildingSync XML file
-    ruby "scripts/process_all_bldg_sync_files_in_csv_with_variability.rb #{ARGV[1]}"
-
-  else
-    # need path to csv file
-    puts 'Error - No CSV file specified that would contain the BldgSync files to be process in this batch'
-    puts 'Usage: bundle exec rake process_all_bldg_sync_files_in_csv path/to/csv/file (optional) path/to/dir/with/bldgsyncfiles'
-
-  end
-end
-
 desc 'export the synthetic data'
 task :export_synthetic_data do
 
