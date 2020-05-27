@@ -11,6 +11,29 @@ DATASOURCE = "BDGP"
 # Options: true, false
 BASELINE_ONLY = true
 OCC_VAR = true
+NON_ROUTINE_VAR = {
+    :DR_GTA_os => true,
+    :DR_Lighting_os => true,
+    :DR_MELs_os => true,
+    :DR_Precool_Preheat_os => true,
+    :Fault_AirHandlingUnitFanMotorDegradation_ep => true,
+    :Fault_BiasedEconomizerSensorMixedT_ep => true,
+    :Fault_BiasedEconomizerSensorOutdoorRH_ep => true,
+    :Fault_BiasedEconomizerSensorOutdoorT_ep => true,
+    :Fault_BiasedEconomizerSensorReturnRH_ep => true,
+    :Fault_BiasedEconomizerSensorReturnT_ep => true,
+    :Fault_DuctFouling_os => true,
+    :Fault_EconomizerOpeningStuck_os => true,
+    :Fault_ExcessiveInfiltration_os => true,
+    :Fault_HVACSetbackErrorDelayedOnset_os => true,
+    :Fault_HVACSetbackErrorEarlyTermination_os => true,
+    :Fault_HVACSetbackErrorNoOvernightSetback_os => true,
+    :Fault_thermostat_offset_ep => true,
+    :Retrofit_equipment_os => true,
+    :Retrofit_lighting_os => true,
+    :Retrofit_exterior_wall_ep => true,
+    :Retrofit_roof_ep => true,
+}
 
 # DO NOT EDIT
 # Directory within edv-experiment-1 where raw data exists
@@ -44,5 +67,3 @@ CALC_METRICS_DIR = "Calc_Metrics"
 # Final results directory
 RESULTS_DIR = "Results"
 RESULTS_FILE_NAME = 'results.csv'
-
-
