@@ -121,6 +121,7 @@ task :simulate_batch_xml do
   if ARGV[1] && ARGV[2]
     # ARGV[2] would be the folder with building sync files
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]} #{ARGV[2]}"
+    # ruby "scripts/process_all_bldg_sync_files_in_csv_with_variability.rb #{ARGV[1]} #{ARGV[2]}" # Testing variability measures
   elsif ARGV[1]
     # ARGV[1] should be a path to a BuildingSync XML file
     ruby "scripts/process_all_bldg_sync_files_in_csv.rb #{ARGV[1]}"

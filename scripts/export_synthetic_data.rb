@@ -73,7 +73,7 @@ for i in 1..column_headers.count-1
   puts "------------------------------------------------------"
 
   building_sync_file_path = File.dirname(csv_file_path) + "/" + base_dir
-  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/SimulationFiles/#{File.basename(building_sync_file_path, File.extname(building_sync_file_path))}/", File.dirname(__FILE__))
+  out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(building_sync_file_path, File.extname(building_sync_file_path))}/", File.dirname(__FILE__))
 
   puts "out_path: #{out_path}"
 
