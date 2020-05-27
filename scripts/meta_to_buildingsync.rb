@@ -1290,5 +1290,5 @@ CSV.foreach(ARGV[0], options) do |feature|
     # puts e.backtrace # DLM: uncomment for debugging
     next
   end
-
 end
+

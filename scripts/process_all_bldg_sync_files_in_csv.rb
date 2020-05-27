@@ -62,7 +62,7 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
   end
   puts "xml? #{xml_file}"
 
-  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, BASELINE_ONLY, OCC_VAR)
+  result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, BASELINE_ONLY, OCC_VAR, NON_ROUTINE_VAR)
 
   #puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
   log.puts("#{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}")
