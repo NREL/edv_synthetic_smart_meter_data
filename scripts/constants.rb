@@ -1,4 +1,4 @@
-NAME_OF_OUTPUT_DIR = "Results"
+NAME_OF_OUTPUT_DIR = "results"
 NAME_OF_INPUT_DIR = "inputs"
 
 # EDITABLE
@@ -12,27 +12,27 @@ DATASOURCE = "BDGP"
 BASELINE_ONLY = true
 OCC_VAR = true
 NON_ROUTINE_VAR = {
-    :DR_GTA_os => true,
-    :DR_Lighting_os => true,
-    :DR_MELs_os => true,
-    :DR_Precool_Preheat_os => true,
-    :Fault_AirHandlingUnitFanMotorDegradation_ep => true,
-    :Fault_BiasedEconomizerSensorMixedT_ep => true,
-    :Fault_BiasedEconomizerSensorOutdoorRH_ep => true,
-    :Fault_BiasedEconomizerSensorOutdoorT_ep => true,
-    :Fault_BiasedEconomizerSensorReturnRH_ep => true,
-    :Fault_BiasedEconomizerSensorReturnT_ep => true,
-    :Fault_DuctFouling_os => true,
-    :Fault_EconomizerOpeningStuck_os => true,
-    :Fault_ExcessiveInfiltration_os => true,
-    :Fault_HVACSetbackErrorDelayedOnset_os => true,
-    :Fault_HVACSetbackErrorEarlyTermination_os => true,
-    :Fault_HVACSetbackErrorNoOvernightSetback_os => true,
-    :Fault_thermostat_offset_ep => true,
-    :Retrofit_equipment_os => true,
-    :Retrofit_lighting_os => true,
-    :Retrofit_exterior_wall_ep => true,
-    :Retrofit_roof_ep => true,
+    :DR_GTA_os => false,
+    :DR_Lighting_os => false,
+    :DR_MELs_os => false,
+    :DR_Precool_Preheat_os => false,
+    :Fault_AirHandlingUnitFanMotorDegradation_ep => false,
+    :Fault_BiasedEconomizerSensorMixedT_ep => false,
+    :Fault_BiasedEconomizerSensorOutdoorRH_ep => false,
+    :Fault_BiasedEconomizerSensorOutdoorT_ep => false,
+    :Fault_BiasedEconomizerSensorReturnRH_ep => false,
+    :Fault_BiasedEconomizerSensorReturnT_ep => false,
+    :Fault_DuctFouling_os => false,
+    :Fault_EconomizerOpeningStuck_os => false,
+    :Fault_ExcessiveInfiltration_os => false,
+    :Fault_HVACSetbackErrorDelayedOnset_os => false,
+    :Fault_HVACSetbackErrorEarlyTermination_os => false,
+    :Fault_HVACSetbackErrorNoOvernightSetback_os => false,
+    :Fault_thermostat_offset_ep => false,
+    :Retrofit_equipment_os => false,
+    :Retrofit_lighting_os => false,
+    :Retrofit_exterior_wall_ep => false,
+    :Retrofit_roof_ep => false,
 }
 
 # DO NOT EDIT
