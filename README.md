@@ -100,16 +100,27 @@ bundle exec rake workflow_part_1
 
 ## Executing the Workflow: Step-by-step for Every Task
 
-### Step 1: Generate BuildingSync XMLs from building metadata
+### Step 0 (optional): Convert raw data format from Building Data Genome Project to standardized input format
+
+- Run the following command to convert raw data to standardized format:
+```
+bundle exec rake standardize_metadata_and_timeseriesdata
+```
+
+- This step is only necessary when [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). data is being used.
+
+- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
+
+### Step 1: Generate BuildingSync XMLs from standardized building metadata
 
 - Run the following command to generate BuildingSync XMLs from CSV data:
 ```
 bundle exec rake generate_xmls
 ```
 
-- The generated XML files will be saved based on the configuration in ```constant.rb``` file.
+- The generated XML files will be saved in a location specified in the configuration ```constant.rb``` file.
 
-- Currently, this script is designed to work with the metadata `meta_open.csv` from the [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). 
+- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
 
 - TODO,
   - standardize data intake process
@@ -119,7 +130,7 @@ bundle exec rake generate_xmls
 - Note,
   - make sure not to commit data including private information to this repo.
 
-### Step 2: Add measured data into BuildingSync xmls 
+### Step 2: Add measured data into BuildingSync XMLs from standardized timeseries data  
 
 - Run the following command to add measured energy consumptions to the BuildingSync XMLs generated in step 1:
 ```
@@ -129,6 +140,8 @@ bundle exec rake add_measured_data
 - The updated XML files will be saved based on the configuration in ```constant.rb``` file.
 
 - Currently, monthly total consumptions are only calculated and stored back to xmls.
+
+- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
 
 - TODO,
   - add capability for adding granular (e.g., daily, hourly) timeseries data to xmls. 
