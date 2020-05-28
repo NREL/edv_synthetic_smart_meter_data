@@ -53,6 +53,29 @@ The following figure contains an overview of the scripts and input as well as ou
 
 - Sample template files for metadata and timeseries data that represent the standard input format are included under ```data/raw``` folder
 
+  - full set of metadata labels that can be used in this workflow are,
+    - ```building_id```
+    - ```xml_filename```
+    - ```primary_building_type```
+    - ```floor_area_sqft```
+    - ```vintage```
+    - ```climate_zone```
+    - ```zipcode```
+    - ```city```
+    - ```us_state```
+    - ```longitude```
+    - ```latitude```
+    - ```number_of_stories```
+    - ```number_of_occupants```
+    - ```fuel_type_heating```
+    - ```energystar_score```
+    - ```measurement_start_date```
+    - ```measurement_end_date```
+    - ```weather_file_name_epw```
+    - ```weather_file_name_ddy```
+    
+  - format of timeseries file can be referred to the template file ```timeseriesdata_template.csv``` and the column headers representing the building id should match with ```building_id``` in the metadata file.
+
 - Custom weather data can be stored in ```data/weather``` folder 
 
 
