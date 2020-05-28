@@ -7,40 +7,13 @@
   - Phase 3: Is the workflow automated properly, and is the ReadMe describing all relevant information ? 
 
 
+
 ## Synthetic Data Creation Workflow
 
 - Schematic below indicates the entire scope considered in the synthetic data creation as well as current status of the workflow.
 
 ![alt text](overallworkflow.PNG)
 
-
-## Installation
-
-- Install Ruby and OpenStudio
-
-  - Current working versions,
-    - [Ruby 2.2.4](https://rubyinstaller.org/downloads/archives/)
-    - Bundler 1.17.1 (use ```gem install bundler -v 1.17```)
-    - [OpenStudio 2.9.0](https://github.com/NREL/OpenStudio/releases/tag/v2.9.0) 
-  - [Instruction](https://github.com/NREL/openstudio-extension-gem/blob/0.1.X-LTS/README.md) for current working versions.
-
-- Clone this repo and run
-```
-bundle install
-```
-```
-bundle update
-``` 
-
-- TODO,
-  - update installation instructions when transitioning to OpenStudio 3.0 and Ruby 2.5.x
-
-## Script Overview
-
-The following figure contains an overview of the scripts and input as well as output files/paths:
-
-
-![alt text](ScriptOverview.PNG)
 
 
 # Feature Descriptions
@@ -68,6 +41,39 @@ The following figure contains an overview of the scripts and input as well as ou
 - Timeseries Stiching
 
   - TODO: include description
+
+
+
+## Installation
+
+- Install Ruby and OpenStudio
+
+  - Current working versions,
+    - [Ruby 2.2.4](https://rubyinstaller.org/downloads/archives/)
+    - Bundler 1.17.1 (use ```gem install bundler -v 1.17```)
+    - [OpenStudio 2.9.0](https://github.com/NREL/OpenStudio/releases/tag/v2.9.0) 
+  - [Instruction](https://github.com/NREL/openstudio-extension-gem/blob/0.1.X-LTS/README.md) for current working versions.
+
+- Clone this repo and run
+```
+bundle install
+```
+```
+bundle update
+``` 
+
+- TODO,
+  - update installation instructions when transitioning to OpenStudio 3.0 and Ruby 2.5.x
+
+
+
+## Script Overview
+
+The following figure contains an overview of the scripts and input as well as output files/paths:
+
+
+![alt text](ScriptOverview.PNG)
+
 
 
 ## Configurations Before Running the Entire Workflow
@@ -106,7 +112,10 @@ The following figure contains an overview of the scripts and input as well as ou
 - Custom weather data can be stored in ```data/weather``` folder 
 
 
+
 ## Executing the Workflow: Group Executions
+
+
 
 ### Group1: Step 1-3
 
@@ -125,7 +134,10 @@ bundle exec rake workflow_part_1
 - By the end of the run, all outputs from Steps 1 - 3 should be available.
 
 
+
 ## Executing the Workflow: Step-by-step for Every Task
+
+
 
 ### Step 0 (optional): Convert raw data format from Building Data Genome Project to standardized input format
 
@@ -137,6 +149,8 @@ bundle exec rake standardize_metadata_and_timeseriesdata
 - This step is only necessary when [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). data is being used.
 
 - This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
+
+
 
 ### Step 1: Generate BuildingSync XMLs from standardized building metadata
 
@@ -157,6 +171,8 @@ bundle exec rake generate_xmls
 - Note,
   - make sure not to commit data including private information to this repo.
 
+
+
 ### Step 2: Add measured data into BuildingSync XMLs from standardized timeseries data  
 
 - Run the following command to add measured energy consumptions to the BuildingSync XMLs generated in step 1:
@@ -173,6 +189,8 @@ bundle exec rake add_measured_data
 - TODO,
   - add capability for adding granular (e.g., daily, hourly) timeseries data to xmls. 
 
+
+
 ### Step 3: Generate the simulation control file
 
 - The following script will generate a csv file that includes combinations of BuildingSync XML files and weather files to create scenarios of EnergyPlus/OpenStudio simulations. 
@@ -188,10 +206,10 @@ bundle exec rake generate_control_csv_1
 
 - Users need to acquire weather files (EPWs and DDYs) separately and weather files could be saved under ```data/weather``` folder as a default location.
 
-
-
 - TODO,
   - standardize the format of the csv file (3rd argument) that includes connection between buildings and weather files.
+
+
 
 ### Step 4: Run building simulations (generate synthetic data) for all buildings
 
@@ -204,6 +222,8 @@ bundle exec rake simulate_batch_xml
 
 - Detail processes/capabilities of this step is also shown in the "Overall Workflow of Synthetic Smart-Meter Data Creation" above.
 
+
+
 ### Step 5: Calculate metrics based on information from both real and synthetic data
 
 - Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
@@ -215,6 +235,8 @@ bundle exec rake calculate_metrics path/to/simulation/results/created/from/previ
 
 - TODO,
   - include capability for granular (e.g., daily, hourly) timeseries data.
+
+
 
 ### Step 6: Generate stitched timeseries synthetic data
 
