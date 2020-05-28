@@ -120,7 +120,7 @@ bundle exec rake generate_xmls
 
 - The generated XML files will be saved in a location specified in the configuration ```constant.rb``` file.
 
-- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
+- This step can be skipped if importing BuildingSync XML files from SEED.
 
 - TODO,
   - standardize data intake process
@@ -141,7 +141,7 @@ bundle exec rake add_measured_data
 
 - Currently, monthly total consumptions are only calculated and stored back to xmls.
 
-- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
+- This step can be skipped if importing BuildingSync XML files from SEED.
 
 - TODO,
   - add capability for adding granular (e.g., daily, hourly) timeseries data to xmls. 
@@ -157,7 +157,11 @@ bundle exec rake generate_control_csv_1
 
 - The output control file will be saved based on the configuration in ```constant.rb``` file.
 
-- Users need to acquire weather files (EPWs and DDYs) separately.
+- If user has imported/downloaded BuildingSync XMLs from SEED, then the location to the folder that contains BuildingSync XMLs should be specified as an argument to the rake command.
+
+- Users need to acquire weather files (EPWs and DDYs) separately and weather files could be saved under ```data/weather``` folder as a default location.
+
+
 
 - TODO,
   - standardize the format of the csv file (3rd argument) that includes connection between buildings and weather files.
