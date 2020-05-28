@@ -7,6 +7,13 @@
   - Phase 3: Is the workflow automated properly, and is the ReadMe describing all relevant information ? 
 
 
+## Synthetic Data Creation Workflow
+
+- Schematic below indicates the entire scope considered in the synthetic data creation as well as current status of the workflow.
+
+![alt text](overallworkflow.PNG)
+
+
 ## Installation
 
 - Install Ruby and OpenStudio
@@ -34,11 +41,6 @@ The following figure contains an overview of the scripts and input as well as ou
 
 
 ![alt text](ScriptOverview.PNG)
-
-
-## Overall Workflow and Features of Synthetic Smart-Meter Data Creation
-
-![alt text](overallworkflow.PNG)
 
 
 ## Configurations Before Running the Entire Workflow
