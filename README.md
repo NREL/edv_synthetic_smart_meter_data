@@ -43,6 +43,33 @@ The following figure contains an overview of the scripts and input as well as ou
 ![alt text](ScriptOverview.PNG)
 
 
+# Feature Descriptions
+
+- Occupant Variability
+
+  - TODO: include description
+
+- Non-routine Events
+
+  - TODO: include description
+
+- Calibration
+
+  - in progress
+
+- NMEC
+
+  - in progress
+
+- Estimating Typical Hour of Operation
+
+  - in progress
+
+- Timeseries Stiching
+
+  - TODO: include description
+
+
 ## Configurations Before Running the Entire Workflow
 
 - ```constants.rb``` file under ```scripts``` folder includes configurations of the EDV workflow to specify, 
