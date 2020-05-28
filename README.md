@@ -51,11 +51,9 @@ The following figure contains an overview of the scripts and input as well as ou
   - **directories** of input and output files 
   - application of **variability** in buildings ([occupant related variability](https://github.com/LBNL-ETA/OpenStudio-Occupant-Variability-Gem) & [other variability](https://github.com/LBNL-ETA/OpenStudio-Variability-Gem))
 
-- TODO,
-  - add/standardize formats of inputs,
-    - buildings metadata
-    - buildings timeseries data
-    - weather file configuration against buildings
+- Sample template files for metadata and timeseries data that represent the standard input format are included under ```data/raw``` folder
+
+- Custom weather data can be stored in ```data/weather``` folder 
 
 
 ## Executing the Workflow: Group Executions
