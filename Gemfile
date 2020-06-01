@@ -15,51 +15,45 @@ if allow_local && File.exist?('../OpenStudio-extension-gem')
   gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
 else
   # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', branch: 'develop'
-  # Last edv compatible OS-ext-gem version:
+  # Last edv compatible version:
   gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', :tag => 'v0.1.6'
 end
 
 if allow_local && File.exist?('../openstudio-model-articulation-gem')
-  # gem 'openstudio-model-articulation', github: 'NREL/openstudio-model-articulation-gem', branch: 'develop'
   gem 'openstudio-model-articulation', path: '../openstudio-model-articulation-gem'
 else
   gem 'openstudio-model-articulation', github: 'NREL/openstudio-model-articulation-gem', branch: 'DA'
 end
 
 if allow_local && File.exist?('../openstudio-common-measures-gem')
-  # gem 'openstudio-model-articulation', github: 'NREL/openstudio-common-measures-gem', branch: 'develop'
   gem 'openstudio-common-measures', path: '../openstudio-common-measures-gem'
 else
+  # Last edv compatible version:
   gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', :tag => 'v0.1.1'
 end
 
 if allow_local && File.exist?('../openstudio-standards-gem')
-  gem 'openstudio-standards', '>=0.2.9'
-  # gem 'openstudio-standards', path: '../openstudio-standards'
+  gem 'openstudio-standards', path: '../openstudio-standards'
 else
   gem 'openstudio-standards', '>=0.2.9'
 end
 
 if allow_local_bsync && File.exists?('../BuildingSync-gem')
-  # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA'
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
+  # Last edv compatible version:
   gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA_EDV_testing'
 end
 
 if allow_local && File.exists?('../openstudio-occupant-variability-gem')
-  # gem 'openstudio-occupant-variability', github: 'tsbyq/openstudio-occupant-variability-gem', branch: 'master'
   gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
 else
-  # gem 'openstudio-occupant-variability', github: 'tsbyq/openstudio-occupant-variability-gem', branch: 'master'
   gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'master'
 end
 
 if allow_local && File.exists?('../openstudio-variability-gem')
-  # gem 'openstudio-occupant-variability', github: 'tsbyq/openstudio-occupant-variability-gem', branch: 'master'
   gem 'openstudio-variability', path: '../openstudio-variability-gem'
 else
-  # gem 'openstudio-variability', github: 'tsbyq/openstudio-variability-gem', branch: 'master'
   gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'master'
 end
 
