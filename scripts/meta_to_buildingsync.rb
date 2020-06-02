@@ -21,13 +21,7 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'are maintained in the BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb'
   exit(1)
 
-else
-  datasource = DATASOURCE
 end
-
-puts '##############################################'
-puts "Datasource to be considered: " + datasource
-puts '##############################################'
 
 occ_classification_file = NAME_OF_INPUT_DIR + '/default_scenario.json'
 state_hash_file = NAME_OF_INPUT_DIR + "/state_hash.json"
@@ -73,11 +67,11 @@ def convert(value, unit_in, unit_out)
   value
 end
 
-def get_building_id(feature, datasource)
+def get_building_id(feature)
   feature[:building_id]
 end
 
-def get_floor_area(feature, datasource)
+def get_floor_area(feature)
 
   feature[:floor_area_sqft]
 
@@ -111,13 +105,9 @@ def get_climate_zone(feature)
   return feature[:climate_zone]
 end
 
-def get_building_classification(feature, datasource)
+def get_building_classification(feature)
 
-  if datasource == 'BDGP'
-    classification = feature[:primary_building_type]
-  elsif datasoure == 'SFDE'
-    classification = feature[:seed_primary_property_type]
-  end
+  classification = feature[:primary_building_type]
   #classification = feature[:primary_building_type]
   #classification = feature[:seed_primary_property_type]
   # possible mappings: Commercial, Residential, Mixed use commercial, Other
@@ -144,17 +134,10 @@ def get_building_classification(feature, datasource)
   result
 end
 
-def get_occupancy_classification(feature, scenario_hash = nil, datasource)
+def get_occupancy_classification(feature, scenario_hash = nil)
 
-  if datasource == 'BDGP'
-    classification = feature[:primary_building_type]  #TODO_JK: standardize these feature names, and maybe create another script for converting raw labels to standardized labels
-  elsif datasource == 'BDGP'
-    classification = feature[:seed_primary_property_type]
-  end
-  #classification = feature[:primary_building_type]
-  #classification = feature[:seed_primary_property_type]
-  # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
-  # to: see BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb for up to date mappings
+  classification = feature[:primary_building_type]
+
   result = nil
   case classification
   when 'Office'
@@ -191,9 +174,9 @@ def json_to_hash(json_file)
   end
 end
 
-def create_site(feature, scenario_hash = nil, datasource, state_hash)
+def create_site(feature, scenario_hash = nil, state_hash)
   site = REXML::Element.new('auc:Site')
-  feature_id = get_building_id(feature, datasource)
+  feature_id = get_building_id(feature)
   raise 'Building ID is empty' if feature_id.nil?
 
   if feature.key?(:zipcode) || feature.key?(:city) || feature.key?(:us_state)
@@ -304,11 +287,11 @@ def create_site(feature, scenario_hash = nil, datasource, state_hash)
   building.add_element(premises_identifiers)
 
   building_classification = REXML::Element.new('auc:BuildingClassification')
-  building_classification.text = get_building_classification(feature, datasource)
+  building_classification.text = get_building_classification(feature)
   building.add_element(building_classification)
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
-  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash, datasource)
+  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash)
   building.add_element(occupancy_classification)
 
   floors_above_grade = REXML::Element.new('auc:FloorsAboveGrade')
@@ -359,7 +342,7 @@ def create_site(feature, scenario_hash = nil, datasource, state_hash)
   subsection.attributes['ID'] = 'Default_Section'
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
-  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash, datasource)
+  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash)
   subsection.add_element(occupancy_classification)
 
   if feature[:number_of_occupants]
@@ -489,9 +472,9 @@ def create_system(feature)
   hvac_systems
 end
 
-def create_measures(feature, datasource)
-  building_id = get_building_id(feature, datasource)
-  floor_area = get_floor_area(feature, datasource).to_f
+def create_measures(feature)
+  building_id = get_building_id(feature)
+  floor_area = get_floor_area(feature).to_f
 
   measures = []
   measures << {ID: 'Measure1',
@@ -888,11 +871,11 @@ def create_measures(feature, datasource)
   result
 end
 
-def create_scenarios(feature, datasource)
+def create_scenarios(feature)
 
   scenarios = REXML::Element.new('auc:Scenarios')
 
-  building_id = get_building_id(feature, datasource)
+  building_id = get_building_id(feature)
 
   scenario = nil
   unless feature[:energystar_score].nil?
@@ -1194,10 +1177,10 @@ def create_scenarios(feature, datasource)
 end
 
 
-def convert_building(feature, scenario_hash = nil, datasource, state_hash)
+def convert_building(feature, scenario_hash = nil, state_hash)
 
-  building_id = get_building_id(feature, datasource)
-  floor_area = get_floor_area(feature, datasource)
+  building_id = get_building_id(feature)
+  floor_area = get_floor_area(feature)
 
   source = "<auc:BuildingSync #{xml_namespace}>
   	<auc:Facilities>
@@ -1219,7 +1202,7 @@ def convert_building(feature, scenario_hash = nil, datasource, state_hash)
 
   doc = REXML::Document.new(source)
   sites = doc.elements['*/*/*/auc:Sites']
-  site = create_site(feature, scenario_hash, datasource, state_hash)
+  site = create_site(feature, scenario_hash, state_hash)
   sites.add_element(site)
 
   # add hvac system if heatingtype is present
@@ -1230,14 +1213,14 @@ def convert_building(feature, scenario_hash = nil, datasource, state_hash)
   end
 
   # add measures
-  measures = create_measures(feature, datasource)
+  measures = create_measures(feature)
   unless measures.nil?
     old_measures = doc.elements['*/*/*/auc:Measures']
     old_measures.parent.replace_child(old_measures, measures)
   end
 
   # add scenario (energystarscore, datastart, dataend?)
-  scenarios = create_scenarios(feature, datasource)
+  scenarios = create_scenarios(feature)
   unless scenarios.nil?
     report = doc.elements['*/*/*/auc:Reports/auc:Report']
     report.add_element(scenarios)
@@ -1280,7 +1263,7 @@ CSV.foreach(ARGV[0], options) do |feature|
   state_hash = json_to_hash(state_hash_file)
   
   begin
-    doc = convert_building(feature, scenario_hash, datasource, state_hash)
+    doc = convert_building(feature, scenario_hash, state_hash)
     filename = File.join(outdir, "#{id}.xml")
     File.open(filename, 'w') do |file|
       doc.write(file)
