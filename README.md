@@ -10,6 +10,7 @@
 
 ## Synthetic Data Creation Workflow
 
+- Refer to (this study)[https://github.com/NREL/edv-experiment-1/blob/standardizing_input_files/references/Generation%20and%20representation%20of%20synthetic%20smart%20meter%20data.pdf] describing the overall purpose and capabilities of this synthetic data creation workflow.
 - Schematic below indicates the entire scope considered in the synthetic data creation as well as current status of the workflow.
 
 ![alt text](overallworkflow.PNG)
