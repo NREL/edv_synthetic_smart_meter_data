@@ -3,6 +3,7 @@
 require 'csv'
 require 'fileutils'
 require_relative 'constants'
+require_relative './helper/standardize_input'
 
 if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'Error - No metadata CSV file specified'
@@ -25,11 +26,16 @@ FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 #######################################################################
 
 metadata_file = File.open(outdir + '/metadata.csv', 'w')
-metadata_file.puts 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type_heating,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
+
+std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type_heating,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
+
+# metadata_file.puts std_labels
+
+StdInput.include_headers(metadata_file, std_labels)
 
 options = {headers: true,
            header_converters: :symbol}
-
+           
 CSV.foreach(ARGV[0], options) do |feature|
   
   building_id = feature[:uid]
