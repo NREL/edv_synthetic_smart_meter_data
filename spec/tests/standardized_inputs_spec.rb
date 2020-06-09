@@ -68,9 +68,7 @@ RSpec.describe 'Standardized inputs' do
     # puts csv.read.headers
 
     f = StdInput.new
-    option = {headers: true,
-              header_converters: :symbol}
-    f.copy_columns('../files/meta_open_epw_ddy.csv', option)
+    f.copy_columns('../files/meta_open_epw_ddy.csv')
     
     # compare before and after files size: meta_open_epw_ddy.csv vs meta_open_epw_ddy_standardized.csv:
     expect(CSV.read('../files/meta_open_epw_ddy.csv').size).to eq (CSV.read('meta_open_epw_ddy_standardized.csv').size)

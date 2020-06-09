@@ -4,7 +4,7 @@ class StdInput
     return new_file.puts std_labels
   end
 
-  def copy_columns(file, options)
+  def copy_columns(file, options = {headers: true, header_converters: :symbol})
     unless File.exists?(File.basename(file, '.csv') + '_standardized.csv')
       CSV.open((File.basename(file, '.csv') + '_standardized.csv'), 'a+') do |csv|
         csv << ['building_id',
