@@ -51,7 +51,6 @@ class StdInput
 
         File.open((File.basename(file, '.csv') + '_standardized.csv'), 'a+').puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type_heating},#{energystar_score},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
       end
-      return (File.basename(file, '.csv') + '_standardized.csv').to_s
     end
   end
 end
