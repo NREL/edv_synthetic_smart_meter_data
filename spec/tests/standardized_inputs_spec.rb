@@ -34,7 +34,7 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 # OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # *******************************************************************************
-
+require 'csv'
 require_relative './../../scripts/helper/standardize_input.rb'
 
 RSpec.describe 'Standardized inputs' do
@@ -43,22 +43,37 @@ RSpec.describe 'Standardized inputs' do
   it 'should correctly convert raw labels in the metadata file to standardized labels' do
     
     #standardized labels
-    std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type_heating,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
+    std_labels = ['building_id',
+                  'xml_filename',
+                  'primary_building_type',
+                  'floor_area_sqft',
+                  'vintage',
+                  'climate_zone',
+                  'zipcode',
+                  'city',
+                  'us_state',
+                  'longitude',
+                  'latitude',
+                  'number_of_stories',
+                  'number_of_occupants',
+                  'fuel_type_heating',
+                  'energystar_score',
+                  'measurement_start_date',
+                  'measurement_end_date',
+                  'weather_file_name_epw',
+                  'weather_file_name_ddy']
     
-    #create new file
-    new_metadata_file = File.open('./metadata.csv', 'w')
+    # read test data headers:
+    # csv = CSV.open('../files/meta_open_epw_ddy.csv', headers: true)
+    # puts csv.read.headers
+
+    f = StdInput.new
+    option = {headers: true,
+              header_converters: :symbol}
+    f.copy_columns('../files/meta_open_epw_ddy.csv', option)
     
-    #run method for including new headers
-    StdInput.include_headers(new_metadata_file, std_labels)
-    new_metadata_file.close
+    # compare before and after files: meta_open_epw_ddy.csv vs meta_open_epw_ddy_standardized.csv
     
-    #read newly created file
-    lines = File.open('./metadata.csv').to_a
-    
-    #read headers
-    new_label = lines.first.delete!("\n")
-                
-    expect(new_label).to eq std_labels
   end
 
 end
