@@ -73,7 +73,7 @@ RSpec.describe 'Standardized inputs' do
     f.copy_columns('../files/meta_open_epw_ddy.csv', option)
     
     # compare before and after files: meta_open_epw_ddy.csv vs meta_open_epw_ddy_standardized.csv
-    
+    expect(CSV.read('../files/meta_open_epw_ddy.csv').size).to eq (CSV.read('meta_open_epw_ddy_standardized.csv').size)
   end
 
 end
