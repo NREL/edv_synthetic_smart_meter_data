@@ -72,8 +72,19 @@ RSpec.describe 'Standardized inputs' do
               header_converters: :symbol}
     f.copy_columns('../files/meta_open_epw_ddy.csv', option)
     
-    # compare before and after files: meta_open_epw_ddy.csv vs meta_open_epw_ddy_standardized.csv
+    # compare before and after files size: meta_open_epw_ddy.csv vs meta_open_epw_ddy_standardized.csv:
     expect(CSV.read('../files/meta_open_epw_ddy.csv').size).to eq (CSV.read('meta_open_epw_ddy_standardized.csv').size)
+
+    # spot-check column values:
+    original_uid = []
+    converted_id = []
+    CSV.foreach('../files/meta_open_epw_ddy.csv', :headers => true) do |row|
+      original_uid.push row['uid']
+    end
+    CSV.foreach('meta_open_epw_ddy_standardized.csv', :headers => true) do |row|
+      converted_id.push row['building_id']
+    end
+    expect(original_uid).to eq converted_id
   end
 
 end
