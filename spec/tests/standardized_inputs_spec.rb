@@ -38,51 +38,35 @@ require 'csv'
 require_relative './../../scripts/helper/standardize_input.rb'
 
 RSpec.describe 'Standardized inputs' do
-  # first we want to check labels converted are matching with pre-defined standardized labels
-  # bundle exec rake standardize_metadata_and_timeseriesdata
-  it 'should correctly convert raw labels in the metadata file to standardized labels' do
-    
-    #standardized labels
-    std_labels = ['building_id',
-                  'xml_filename',
-                  'primary_building_type',
-                  'floor_area_sqft',
-                  'vintage',
-                  'climate_zone',
-                  'zipcode',
-                  'city',
-                  'us_state',
-                  'longitude',
-                  'latitude',
-                  'number_of_stories',
-                  'number_of_occupants',
-                  'fuel_type_heating',
-                  'energystar_score',
-                  'measurement_start_date',
-                  'measurement_end_date',
-                  'weather_file_name_epw',
-                  'weather_file_name_ddy']
-    
-    # read test data headers:
-    # csv = CSV.open('../files/meta_open_epw_ddy.csv', headers: true)
-    # puts csv.read.headers
-
-    f = StdInput.new
-    f.copy_columns('../files/meta_open_epw_ddy.csv')
-    
-    # compare before and after files size: meta_open_epw_ddy.csv vs meta_open_epw_ddy_standardized.csv:
-    expect(CSV.read('../files/meta_open_epw_ddy.csv').size).to eq (CSV.read('meta_open_epw_ddy_standardized.csv').size)
-
-    # spot-check column values:
-    original_uid = []
-    converted_id = []
-    CSV.foreach('../files/meta_open_epw_ddy.csv', :headers => true) do |row|
-      original_uid.push row['uid']
-    end
-    CSV.foreach('meta_open_epw_ddy_standardized.csv', :headers => true) do |row|
-      converted_id.push row['building_id']
-    end
-    expect(original_uid).to eq converted_id
+  before(:all) do
+    StdInput.new.copy_columns('../files/meta_open_epw_ddy.csv')
   end
 
+  it 'should correctly convert raw labels in the metadata file to standardized labels' do
+
+    # compare before and after files size
+    original_size = converted_size = 0
+    Thread.start do
+      original_size = CSV.read('../files/meta_open_epw_ddy.csv').size
+      converted_size = CSV.read('meta_open_epw_ddy_standardized.csv').size
+    end
+
+    expect(original_size).to eq (converted_size) 
+  end
+
+  it "shoud output the same building ids" do
+
+    # spot-check column values:
+    original_uid = converted_id = []
+    Thread.start do
+      CSV.foreach('../files/meta_open_epw_ddy.csv', :headers => true) do |row|
+        original_uid.push row['uid']
+      end
+      CSV.foreach('meta_open_epw_ddy_standardized.csv', :headers => true) do |row|
+        converted_id.push row['building_id']
+      end
+    end
+
+    expect(original_uid.sort).to eq converted_id.sort
+  end
 end
