@@ -260,7 +260,6 @@ task :workflow_part_2 do
     end
   end
 
-
   puts("")
   puts "Rake: Finishing workflow_part_2"
 end
