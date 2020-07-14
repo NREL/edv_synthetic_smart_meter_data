@@ -1,10 +1,10 @@
 class StandardizedInput
 
-  def copy_columns(file, std_label, outdir, options = {headers: true, header_converters: :symbol})
+  def copy_columns(file, std_labels, outdir, options = {headers: true, header_converters: :symbol})
     unless File.exists?(outdir + '/metadata.csv')
-      CSV.open((outdir + '/metadata.csv'), 'a+') do |csv|
-        csv << std_label if csv.count.eql?0
-      end
+    
+      metadata_file = File.open(outdir + '/metadata.csv', 'w')
+      metadata_file.puts std_labels
 
       CSV.foreach(file, options) do |feature|
 
@@ -26,11 +26,13 @@ class StandardizedInput
         energystar_score = feature[:energystarscore]
         measurement_start_date = feature[:datastart]
         measurement_end_date = feature[:dataend]
-
-        File.open((outdir + '/metadata.csv'), 'a+').puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type_heating},#{energystar_score},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
+        
+        metadata_file.puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type_heating},#{energystar_score},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
         
       end
+      
     end
+    
   end
   
 end
