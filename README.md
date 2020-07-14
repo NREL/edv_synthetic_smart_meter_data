@@ -195,7 +195,7 @@ bundle exec rake add_measured_data
 
 - The following script will generate a csv file that includes combinations of BuildingSync XML files and weather files to create scenarios of EnergyPlus/OpenStudio simulations. 
 ```
-bundle exec rake generate_control_csv_1
+bundle exec rake generate_control_csv
 ```
 
 - The output control file contains the name of the BuildingSync file, the Standard to define buildings, and weather file names.
