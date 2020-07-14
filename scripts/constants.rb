@@ -3,7 +3,7 @@ NAME_OF_INPUT_DIR = "inputs"
 
 # EDITABLE
 # Options include: ['default', 'processed']
-RUN_TYPE = "default"
+RUN_TYPE = "processed"
 
 # Options: true, false
 BASELINE_ONLY = true
