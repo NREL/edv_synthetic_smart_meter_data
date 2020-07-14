@@ -73,8 +73,8 @@ task :add_measured_data do
   end
 end
 #############################################################################################
-desc 'generate csv control file 1'
-task :generate_control_csv_1 do
+desc 'generate csv control file'
+task :generate_control_csv do
 
   default_path_to_add_measured = "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
   default_metadata_file = "#{RAW_DATA_DIR}/#{DEFAULT_METADATA_FILE}"
@@ -203,7 +203,7 @@ desc 'run steps through generating all.csv'
 task :workflow_part_1 do
   Rake::Task["generate_xmls"].execute
   Rake::Task["add_measured_data"].execute
-  Rake::Task["generate_control_csv_1"].execute
+  Rake::Task["generate_control_csv"].execute
 end
 #############################################################################################
 desc 'simulate batch and calculate metrics'
