@@ -913,8 +913,10 @@ def create_scenarios(feature)
   time_series_data = REXML::Element.new('auc:TimeSeriesData')
 
   if !feature[:measurement_end_date].nil? && !feature[:measurement_start_date].nil?
-#    scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
-#    time_series_data = REXML::Element.new('auc:TimeSeriesData')
+  
+    scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
+    time_series_data = REXML::Element.new('auc:TimeSeriesData')
+
     time_series = REXML::Element.new('auc:TimeSeries')
     start_ts = REXML::Element.new('auc:StartTimestamp')
     end_ts = REXML::Element.new('auc:EndTimestamp')
@@ -1256,17 +1258,9 @@ else
   puts "No scenario file available.  Using the following mapping: #{scenario_hash}"
 end
 
-puts "#################################################"
-puts "TEST"
-puts "#################################################"
-
 CSV.foreach(ARGV[0], options) do |feature|
     
   id = feature[:building_id]
-  
-  puts "#################################################"
-  puts "id = #{id}"
-  puts "#################################################"
     
   state_hash = json_to_hash(state_hash_file)
   
