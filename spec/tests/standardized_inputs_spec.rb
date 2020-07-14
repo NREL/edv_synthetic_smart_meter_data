@@ -37,9 +37,11 @@
 require 'csv'
 require_relative './../../scripts/helper/standardize_input.rb'
 
+std_label = ['building_id, xml_filename, primary_building_type, floor_area_sqft,vintage, climate_zone, zipcode, city, us_state, longitude, latitude, number_of_stories, number_of_occupants, fuel_type_heating, energystar_score, measurement_start_date, measurement_end_date, weather_file_name_epw, weather_file_name_ddy']
+
 RSpec.describe 'Standardized inputs' do
   before(:all) do
-    StdInput.new.copy_columns('../files/meta_open_epw_ddy.csv')
+    StandardizedInput.new.copy_columns('../files/meta_open_epw_ddy.csv', std_label, './')
   end
 
   it 'should correctly convert raw labels in the metadata file to standardized labels' do
@@ -48,7 +50,7 @@ RSpec.describe 'Standardized inputs' do
     original_size = converted_size = 0
     Thread.start do
       original_size = CSV.read('../files/meta_open_epw_ddy.csv').size
-      converted_size = CSV.read('meta_open_epw_ddy_standardized.csv').size
+      converted_size = CSV.read('metadata.csv').size
     end
 
     expect(original_size).to eq (converted_size) 
@@ -62,7 +64,7 @@ RSpec.describe 'Standardized inputs' do
       CSV.foreach('../files/meta_open_epw_ddy.csv', :headers => true) do |row|
         original_uid.push row['uid']
       end
-      CSV.foreach('meta_open_epw_ddy_standardized.csv', :headers => true) do |row|
+      CSV.foreach('metadata.csv', :headers => true) do |row|
         converted_id.push row['building_id']
       end
     end
