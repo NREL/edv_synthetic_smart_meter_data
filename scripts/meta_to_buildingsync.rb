@@ -1256,9 +1256,17 @@ else
   puts "No scenario file available.  Using the following mapping: #{scenario_hash}"
 end
 
+puts "#################################################"
+puts "TEST"
+puts "#################################################"
+
 CSV.foreach(ARGV[0], options) do |feature|
     
   id = feature[:building_id]
+  
+  puts "#################################################"
+  puts "id = #{id}"
+  puts "#################################################"
     
   state_hash = json_to_hash(state_hash_file)
   
