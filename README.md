@@ -1,49 +1,3 @@
-# Energy Data Vault (EDV) Synthetic Data Creation Workflow Development
-
-- Developing/Modifying/Fixing the workflow to answer questions below.
-
-  - Phase 1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
-  - Phase 2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
-
-
-
-## Synthetic Data Creation Workflow
-
-- Refer to [this study](https://github.com/NREL/edv-experiment-1/blob/standardizing_input_files/references/Generation%20and%20representation%20of%20synthetic%20smart%20meter%20data.pdf) describing the overall purpose and capabilities of this synthetic data creation workflow.
-- Schematic below indicates the entire scope considered in the synthetic data creation as well as current status of the workflow.
-
-![alt text](overallworkflow.PNG)
-
-
-
-## Feature Descriptions
-
-- Occupant Variability
-
-  - TODO: include description
-
-- Non-routine Events
-
-  - TODO: include description
-
-- Calibration
-
-  - in progress
-
-- NMEC
-
-  - in progress
-
-- Estimating Typical Hour of Operation
-
-  - in progress
-
-- Timeseries Stiching
-
-  - TODO: include description
-
-
-
 ## Installation
 
 - Install Ruby and OpenStudio
@@ -52,9 +6,9 @@
     - [Ruby 2.2.4](https://rubyinstaller.org/downloads/archives/)
     - Bundler 1.17.1 (use ```gem install bundler -v 1.17```)
     - [OpenStudio 2.9.0](https://github.com/NREL/OpenStudio/releases/tag/v2.9.0) 
-  - [Instruction](https://github.com/NREL/openstudio-extension-gem/blob/0.1.X-LTS/README.md) for current working versions.
+  - [Instruction](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) for current working versions.
 
-- Clone this repo and run
+- Clone this repository and run commands below in the highest repository directory.
 ```
 bundle install
 ```
@@ -63,7 +17,7 @@ bundle update
 ``` 
 
 - TODO,
-  - update installation instructions when transitioning to OpenStudio 3.0 and Ruby 2.5.x
+  - update installation instructions when transitioning to OpenStudio 3.0 and Ruby 2.5.5
 
 
 
@@ -74,19 +28,22 @@ The following figure contains an overview of the scripts and input as well as ou
 
 ![alt text](ScriptOverview.PNG)
 
-
+- TODO,
+  - update figure
+  
+  
 
 ## Configurations Before Running the Entire Workflow
 
 - ```constants.rb``` file under ```scripts``` folder includes configurations of the EDV workflow to specify, 
-  - selection of the **data source** and where is the data read from
-  - simulation types between **baseline only** versus **considering all scenarios**
+  - selection of the **data source** and where the data is read from,
+  - simulation types between **baseline only** versus **considering all energy efficiency measure scenarios**,
   - **directories** of input and output files 
   - application of **variability** in buildings ([occupant related variability](https://github.com/LBNL-ETA/OpenStudio-Occupant-Variability-Gem) & [other variability](https://github.com/LBNL-ETA/OpenStudio-Variability-Gem))
 
-- Sample template files for metadata and timeseries data that represent the standard input format are included under ```data/raw``` folder
+- Sample template files for [metadata](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/metadata_template.csv) and [timeseries data](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/timeseriesdata_template.csv) that represent the standard input format are included under ```data/raw``` folder
 
-  - full set of metadata labels that can be used in this workflow are,
+  - metadata information that can be used in the current workflow are,
     - ```building_id```
     - ```xml_filename```
     - ```primary_building_type```
@@ -113,29 +70,9 @@ The following figure contains an overview of the scripts and input as well as ou
 
 
 
-## Executing the Workflow: Group Executions
-
-
-
-### Group1: Step 1-3
-
-- Steps 1 - 3 of the workflow (described in "Executing the Workflow: Step-by-step for Every Task") are aggregated into a single Rake task.
-```
-bundle exec rake workflow_part_1
-```
-- The Rake task makes the following assumptions:
-  - The user has cloned the edv-experiment-1-files (where building/weather data are stored separately) repository and it is at the same level as the edv-experiment-1 dir, i.e.
-    ```
-    dir/edv-experiment-1
-    dir/edv-experiment-files
-    ```
-  - The ```edv-experiment-1-files/bdgp_with_climatezones_epw_ddy.csv``` is used for Step 1.
-
-- By the end of the run, all outputs from Steps 1 - 3 should be available.
-
-
-
 ## Executing the Workflow: Step-by-step for Every Task
+
+- All rake commands are executed in the highest directory of this repository.
 
 
 
@@ -148,7 +85,7 @@ bundle exec rake standardize_metadata_and_timeseriesdata
 
 - This step is only necessary when [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). data is being used.
 
-- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
+- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/) and if the XML files are already including sufficient metadata information of buildings.
 
 
 
@@ -161,15 +98,9 @@ bundle exec rake generate_xmls
 
 - The generated XML files will be saved in a location specified in the configuration ```constant.rb``` file.
 
-- This step can be skipped if importing BuildingSync XML files from SEED.
+- This step can be skipped if importing BuildingSync XML files from SEED and if the XML files are already including sufficient metadata information of buildings.
 
-- TODO,
-  - standardize data intake process
-    - standard building metadata format
-    - standard building timeseries data format
-
-- Note,
-  - make sure not to commit data including private information to this repo.
+- Note: make sure not to commit data that includes private information to this repo.
 
 
 
@@ -182,18 +113,18 @@ bundle exec rake add_measured_data
 
 - The updated XML files will be saved based on the configuration in ```constant.rb``` file.
 
-- Currently, monthly total consumptions are only calculated and stored back to xmls.
+- Currently, monthly interval data are only calculated and stored back to xmls.
 
-- This step can be skipped if importing BuildingSync XML files from SEED.
+- This step can be skipped if importing BuildingSync XML files from SEED and if the XML files are already including sufficient metadata information of buildings.
 
 - TODO,
-  - add capability for adding granular (e.g., daily, hourly) timeseries data to xmls. 
+  - add capability for adding granular (e.g., daily, hourly) timeseries data to XML files. 
 
 
 
 ### Step 3: Generate the simulation control file
 
-- The following script will generate a csv file that includes combinations of BuildingSync XML files and weather files to create scenarios of EnergyPlus/OpenStudio simulations. 
+- The following script will generate a csv file that creates a list of simulation scenarios specifying BuildingSync XML files and associated weather files. 
 ```
 bundle exec rake generate_control_csv
 ```
@@ -206,21 +137,16 @@ bundle exec rake generate_control_csv
 
 - Users need to acquire weather files (EPWs and DDYs) separately and weather files could be saved under ```data/weather``` folder as a default location.
 
-- TODO,
-  - standardize the format of the csv file (3rd argument) that includes connection between buildings and weather files.
-
 
 
 ### Step 4: Run building simulations (generate synthetic data) for all buildings
 
-- Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run all related simulations:
+- Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run simulations:
 ```
 bundle exec rake simulate_batch_xml
 ```
 
 - The generated simulation files as well as updated BuildingSync XMLs will be saved in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
-
-- Detail processes/capabilities of this step is also shown in the "Overall Workflow of Synthetic Smart-Meter Data Creation" above.
 
 
 
