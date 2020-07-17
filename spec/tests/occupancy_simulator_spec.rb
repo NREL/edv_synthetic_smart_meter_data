@@ -49,7 +49,7 @@ RSpec.describe 'EDV Experiment 1' do
     expect(result).to be true
   end
 
-  def test_occupancy_mesure(xml_name, epw_name = nil, max_number_parallel_run=4)
+  def test_occupancy_measure(xml_name, epw_name = nil, max_number_parallel_run=4)
     root_dir = File.join(File.dirname(__FILE__), '../../')
     xml_path = File.join(root_dir, "spec/files/#{xml_name}")
     epw_path = File.join(root_dir, "scripts/#{epw_name}")
