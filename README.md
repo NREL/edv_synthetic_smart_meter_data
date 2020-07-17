@@ -4,7 +4,44 @@
 
   - Phase 1: Does synthetic smart-meter data sufficiently represent variability and other characteristics of real data ?
   - Phase 2: Can synthetic smart-meter data sufficiently calibrated based on real data ?
-  - Phase 3: Is the workflow automated properly, and is the ReadMe describing all relevant information ? 
+
+
+
+## Synthetic Data Creation Workflow
+
+- Refer to [this study](https://github.com/NREL/edv-experiment-1/blob/standardizing_input_files/references/Generation%20and%20representation%20of%20synthetic%20smart%20meter%20data.pdf) describing the overall purpose and capabilities of this synthetic data creation workflow.
+- Schematic below indicates the entire scope considered in the synthetic data creation as well as current status of the workflow.
+
+![alt text](overallworkflow.PNG)
+
+
+
+## Feature Descriptions
+
+- Occupant Variability
+
+  - TODO: include description
+
+- Non-routine Events
+
+  - TODO: include description
+
+- Calibration
+
+  - in progress
+
+- NMEC
+
+  - in progress
+
+- Estimating Typical Hour of Operation
+
+  - in progress
+
+- Timeseries Stiching
+
+  - TODO: include description
+
 
 
 ## Installation
@@ -28,6 +65,8 @@ bundle update
 - TODO,
   - update installation instructions when transitioning to OpenStudio 3.0 and Ruby 2.5.x
 
+
+
 ## Script Overview
 
 The following figure contains an overview of the scripts and input as well as output files/paths:
@@ -35,10 +74,6 @@ The following figure contains an overview of the scripts and input as well as ou
 
 ![alt text](ScriptOverview.PNG)
 
-
-## Overall Workflow and Features of Synthetic Smart-Meter Data Creation
-
-![alt text](overallworkflow.PNG)
 
 
 ## Configurations Before Running the Entire Workflow
@@ -49,14 +84,38 @@ The following figure contains an overview of the scripts and input as well as ou
   - **directories** of input and output files 
   - application of **variability** in buildings ([occupant related variability](https://github.com/LBNL-ETA/OpenStudio-Occupant-Variability-Gem) & [other variability](https://github.com/LBNL-ETA/OpenStudio-Variability-Gem))
 
-- TODO,
-  - add/standardize formats of inputs,
-    - buildings metadata
-    - buildings timeseries data
-    - weather file configuration against buildings
+- Sample template files for metadata and timeseries data that represent the standard input format are included under ```data/raw``` folder
+
+  - full set of metadata labels that can be used in this workflow are,
+    - ```building_id```
+    - ```xml_filename```
+    - ```primary_building_type```
+    - ```floor_area_sqft```
+    - ```vintage```
+    - ```climate_zone```
+    - ```zipcode```
+    - ```city```
+    - ```us_state```
+    - ```longitude```
+    - ```latitude```
+    - ```number_of_stories```
+    - ```number_of_occupants```
+    - ```fuel_type_heating```
+    - ```energystar_score```
+    - ```measurement_start_date```
+    - ```measurement_end_date```
+    - ```weather_file_name_epw```
+    - ```weather_file_name_ddy```
+    
+  - format of timeseries file can be referred to the template file ```timeseriesdata_template.csv``` and the column headers representing the building id should match with ```building_id``` in the metadata file.
+
+- Custom weather data can be stored in ```data/weather``` folder 
+
 
 
 ## Executing the Workflow: Group Executions
+
+
 
 ### Group1: Step 1-3
 
@@ -75,18 +134,34 @@ bundle exec rake workflow_part_1
 - By the end of the run, all outputs from Steps 1 - 3 should be available.
 
 
+
 ## Executing the Workflow: Step-by-step for Every Task
 
-### Step 1: Generate BuildingSync XMLs from building metadata
+
+
+### Step 0 (optional): Convert raw data format from Building Data Genome Project to standardized input format
+
+- Run the following command to convert raw data to standardized format:
+```
+bundle exec rake standardize_metadata_and_timeseriesdata
+```
+
+- This step is only necessary when [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). data is being used.
+
+- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/).
+
+
+
+### Step 1: Generate BuildingSync XMLs from standardized building metadata
 
 - Run the following command to generate BuildingSync XMLs from CSV data:
 ```
 bundle exec rake generate_xmls
 ```
 
-- The generated XML files will be saved based on the configuration in ```constant.rb``` file.
+- The generated XML files will be saved in a location specified in the configuration ```constant.rb``` file.
 
-- Currently, this script is designed to work with the metadata `meta_open.csv` from the [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). 
+- This step can be skipped if importing BuildingSync XML files from SEED.
 
 - TODO,
   - standardize data intake process
@@ -96,7 +171,9 @@ bundle exec rake generate_xmls
 - Note,
   - make sure not to commit data including private information to this repo.
 
-### Step 2: Add measured data into BuildingSync xmls 
+
+
+### Step 2: Add measured data into BuildingSync XMLs from standardized timeseries data  
 
 - Run the following command to add measured energy consumptions to the BuildingSync XMLs generated in step 1:
 ```
@@ -107,24 +184,32 @@ bundle exec rake add_measured_data
 
 - Currently, monthly total consumptions are only calculated and stored back to xmls.
 
+- This step can be skipped if importing BuildingSync XML files from SEED.
+
 - TODO,
   - add capability for adding granular (e.g., daily, hourly) timeseries data to xmls. 
+
+
 
 ### Step 3: Generate the simulation control file
 
 - The following script will generate a csv file that includes combinations of BuildingSync XML files and weather files to create scenarios of EnergyPlus/OpenStudio simulations. 
 ```
-bundle exec rake generate_control_csv_1
+bundle exec rake generate_control_csv
 ```
 
 - The output control file contains the name of the BuildingSync file, the Standard to define buildings, and weather file names.
 
 - The output control file will be saved based on the configuration in ```constant.rb``` file.
 
-- Users need to acquire weather files (EPWs and DDYs) separately.
+- If user has imported/downloaded BuildingSync XMLs from SEED, then the location to the folder that contains BuildingSync XMLs should be specified as an argument to the rake command.
+
+- Users need to acquire weather files (EPWs and DDYs) separately and weather files could be saved under ```data/weather``` folder as a default location.
 
 - TODO,
   - standardize the format of the csv file (3rd argument) that includes connection between buildings and weather files.
+
+
 
 ### Step 4: Run building simulations (generate synthetic data) for all buildings
 
@@ -137,6 +222,8 @@ bundle exec rake simulate_batch_xml
 
 - Detail processes/capabilities of this step is also shown in the "Overall Workflow of Synthetic Smart-Meter Data Creation" above.
 
+
+
 ### Step 5: Calculate metrics based on information from both real and synthetic data
 
 - Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
@@ -148,6 +235,8 @@ bundle exec rake calculate_metrics path/to/simulation/results/created/from/previ
 
 - TODO,
   - include capability for granular (e.g., daily, hourly) timeseries data.
+
+
 
 ### Step 6: Generate stitched timeseries synthetic data
 

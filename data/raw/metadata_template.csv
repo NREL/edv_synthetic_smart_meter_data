@@ -1,0 +1,508 @@
+building_id,measurement_end_date,measurement_start_date,energystar_score,fuel_type_heating,number_of_stories,number_of_occupants,primary_building_type,floor_area_sqft,vintage,weather_file_name_epw,weather_file_name_ddy
+BUILDING ID 1,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,105530,,temporary.epw,temporary.ddy
+BUILDING ID 2,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,56969,1967,temporary.epw,temporary.ddy
+BUILDING ID 3,31/12/12 23:00,1/1/2012 0:00,,,,,Office,294651,,temporary.epw,temporary.ddy
+BUILDING ID 4,31/12/12 23:00,1/1/2012 0:00,,,,,Office,496517,,temporary.epw,temporary.ddy
+BUILDING ID 5,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,233062,,temporary.epw,temporary.ddy
+BUILDING ID 6,31/12/15 23:00,1/1/2015 0:00,,,,,Office,92271,2001,temporary.epw,temporary.ddy
+BUILDING ID 7,30/11/15 23:00,1/12/2014 0:00,,Gas,2,212,Primary/Secondary Classroom,31505.9353,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 8,30/11/15 23:00,1/12/2014 0:00,,Gas,2,219,Primary/Secondary Classroom,47070.5347,1919-1945,temporary.epw,temporary.ddy
+BUILDING ID 9,30/11/15 23:00,1/12/2014 0:00,,Gas,1,40,Office,42646.5718,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 10,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,276443,,temporary.epw,temporary.ddy
+BUILDING ID 11,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,315404,,temporary.epw,temporary.ddy
+BUILDING ID 12,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,77247,,temporary.epw,temporary.ddy
+BUILDING ID 13,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,108405,,temporary.epw,temporary.ddy
+BUILDING ID 14,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,92032,,temporary.epw,temporary.ddy
+BUILDING ID 15,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,72333,,temporary.epw,temporary.ddy
+BUILDING ID 16,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,95132,,temporary.epw,temporary.ddy
+BUILDING ID 17,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,105215,,temporary.epw,temporary.ddy
+BUILDING ID 18,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,81681,,temporary.epw,temporary.ddy
+BUILDING ID 19,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,153699,,temporary.epw,temporary.ddy
+BUILDING ID 20,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,217241,,temporary.epw,temporary.ddy
+BUILDING ID 21,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,79503,,temporary.epw,temporary.ddy
+BUILDING ID 22,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,197266,,temporary.epw,temporary.ddy
+BUILDING ID 23,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,94150,,temporary.epw,temporary.ddy
+BUILDING ID 24,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,92179,,temporary.epw,temporary.ddy
+BUILDING ID 25,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,86867,,temporary.epw,temporary.ddy
+BUILDING ID 26,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,132737,,temporary.epw,temporary.ddy
+BUILDING ID 27,31/12/12 23:00,1/1/2012 0:00,,,,,Office,126205,,temporary.epw,temporary.ddy
+BUILDING ID 28,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,175537,,temporary.epw,temporary.ddy
+BUILDING ID 29,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,80224,,temporary.epw,temporary.ddy
+BUILDING ID 30,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,97901,,temporary.epw,temporary.ddy
+BUILDING ID 31,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,117074,,temporary.epw,temporary.ddy
+BUILDING ID 32,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,107639,,temporary.epw,temporary.ddy
+BUILDING ID 33,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,5389.48473,,temporary.epw,temporary.ddy
+BUILDING ID 34,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,129663,,temporary.epw,temporary.ddy
+BUILDING ID 35,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,274418,,temporary.epw,temporary.ddy
+BUILDING ID 36,31/12/12 23:00,1/1/2012 0:00,,,,,Office,1675720,,temporary.epw,temporary.ddy
+BUILDING ID 37,30/11/15 23:00,1/12/2014 0:00,,Gas,1,269,Primary/Secondary Classroom,22948.6348,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 38,31/12/12 23:00,1/1/2012 0:00,,,,,Office,191554,,temporary.epw,temporary.ddy
+BUILDING ID 39,30/11/15 23:00,1/12/2014 0:00,,Gas,2,293,Primary/Secondary Classroom,31613.5743,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 40,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,129166.8,,temporary.epw,temporary.ddy
+BUILDING ID 41,31/12/12 23:00,1/1/2012 0:00,,,,,Office,169420,,temporary.epw,temporary.ddy
+BUILDING ID 42,30/11/15 23:00,1/12/2014 0:00,,Gas,1,,Primary/Secondary Classroom,23163.9128,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 43,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Office,7879.1748,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 44,31/01/13 23:00,2/2/2012 0:00,,,,,Dormitory,129166.8,,temporary.epw,temporary.ddy
+BUILDING ID 45,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,477724,,temporary.epw,temporary.ddy
+BUILDING ID 46,30/11/15 23:00,1/12/2014 0:00,,Oil,2,0,Office,16597.9338,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 47,31/12/12 23:00,1/1/2012 0:00,,,,,Office,318130,,temporary.epw,temporary.ddy
+BUILDING ID 48,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,129166.8,,temporary.epw,temporary.ddy
+BUILDING ID 49,31/01/13 23:00,2/2/2012 0:00,,,,,Primary/Secondary Classroom,129166.8,,temporary.epw,temporary.ddy
+BUILDING ID 50,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,Office,47727.1326,1928,temporary.epw,temporary.ddy
+BUILDING ID 51,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,96336,1913,temporary.epw,temporary.ddy
+BUILDING ID 52,31/12/12 23:00,1/1/2012 0:00,,,,,Office,476246,,temporary.epw,temporary.ddy
+BUILDING ID 53,31/12/12 23:00,1/1/2012 0:00,,,,,Office,428277,,temporary.epw,temporary.ddy
+BUILDING ID 54,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,350333.7297,,temporary.epw,temporary.ddy
+BUILDING ID 55,30/11/15 23:00,1/12/2014 0:00,,Gas,2,414,Primary/Secondary Classroom,27684.7508,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 56,31/12/12 23:00,1/1/2012 0:00,,,,,Office,185847,,temporary.epw,temporary.ddy
+BUILDING ID 57,30/11/15 23:00,1/12/2014 0:00,,Gas,2,230,Primary/Secondary Classroom,23185.4406,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 58,30/11/15 23:00,1/12/2014 0:00,,Gas,2,64,Primary/Secondary Classroom,42883.3776,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 59,31/12/12 23:00,1/1/2012 0:00,,,,,Office,179665,,temporary.epw,temporary.ddy
+BUILDING ID 60,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Office,12206.2626,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 61,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,40629,1975,temporary.epw,temporary.ddy
+BUILDING ID 62,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,31415,1912,temporary.epw,temporary.ddy
+BUILDING ID 63,30/11/15 23:00,1/12/2014 0:00,,Gas,1,396,Primary/Secondary Classroom,20203.8403,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 64,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Primary/Secondary Classroom,23486.8298,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 65,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1173,Primary/Secondary Classroom,95432.7374,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 66,30/11/15 23:00,1/12/2014 0:00,,Gas,3,517,Primary/Secondary Classroom,31635.1021,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 67,30/11/15 23:00,1/12/2014 0:00,,Gas,1,515,Primary/Secondary Classroom,28190.6541,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 68,30/11/15 23:00,1/12/2014 0:00,,Gas,2,348,Primary/Secondary Classroom,27663.223,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 69,30/11/15 23:00,1/12/2014 0:00,,Gas,2,304,Primary/Secondary Classroom,30300.3785,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 70,30/11/15 23:00,1/12/2014 0:00,,Gas,1,101,Primary/Secondary Classroom,7922.2304,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 71,30/11/15 23:00,1/12/2014 0:00,,Gas,2,441,Primary/Secondary Classroom,25133.7065,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 72,30/11/15 23:00,1/12/2014 0:00,,Gas,4,29,Primary/Secondary Classroom,12087.8597,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 73,30/11/15 23:00,1/12/2014 0:00,,Gas,1,317,Primary/Secondary Classroom,34562.8829,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 74,30/11/15 23:00,1/12/2014 0:00,,Gas,2,315,Primary/Secondary Classroom,27501.7645,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 75,30/11/15 23:00,1/12/2014 0:00,,Gas,2,387,Primary/Secondary Classroom,22184.3979,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 76,30/11/15 23:00,1/12/2014 0:00,,Gas,1,171,Primary/Secondary Classroom,14025.3617,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 77,30/04/15 23:00,1/5/2014 0:00,,,,,Office,33401,,temporary.epw,temporary.ddy
+BUILDING ID 78,30/11/15 23:00,1/12/2014 0:00,,Gas,3,241,Primary/Secondary Classroom,26027.1102,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 79,30/11/15 23:00,1/12/2014 0:00,,Gas,2,427,Primary/Secondary Classroom,25865.6517,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 80,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1164,Primary/Secondary Classroom,126045.269,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 81,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,23232,1871,temporary.epw,temporary.ddy
+BUILDING ID 82,30/11/15 23:00,1/12/2014 0:00,,Gas,2,284,Primary/Secondary Classroom,28825.7242,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 83,30/11/15 23:00,1/12/2014 0:00,,Gas,2,235,Primary/Secondary Classroom,11603.4842,1919-1945,temporary.epw,temporary.ddy
+BUILDING ID 84,30/11/15 23:00,1/12/2014 0:00,,Gas,1,40,Primary/Secondary Classroom,12970.4995,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 85,30/11/15 23:00,1/12/2014 0:00,,Gas,3,353,Primary/Secondary Classroom,33981.6323,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 86,30/11/15 23:00,1/12/2014 0:00,,Gas,2,383,Primary/Secondary Classroom,31871.9079,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 87,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,203787,1999,temporary.epw,temporary.ddy
+BUILDING ID 88,30/11/15 23:00,1/12/2014 0:00,,Gas,1,235,Primary/Secondary Classroom,11463.5535,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 89,30/11/15 23:00,1/12/2014 0:00,,Gas,2,359,Primary/Secondary Classroom,29148.6412,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 90,30/11/15 23:00,1/12/2014 0:00,,Gas,2,1104,Primary/Secondary Classroom,137045.9748,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 91,30/11/15 23:00,1/12/2014 0:00,,Gas,1,201,Primary/Secondary Classroom,11689.5954,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 92,30/11/15 23:00,1/12/2014 0:00,,Gas,2,300,Primary/Secondary Classroom,18696.8943,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 93,30/11/15 23:00,1/12/2014 0:00,,Gas,2,583,Primary/Secondary Classroom,32194.8249,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 94,30/11/15 23:00,1/12/2014 0:00,,Gas,3,,College Classroom,109070.5987,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 95,30/04/15 23:00,1/5/2014 0:00,100,,,,Office,20864,,temporary.epw,temporary.ddy
+BUILDING ID 96,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,57600,1948,temporary.epw,temporary.ddy
+BUILDING ID 97,30/11/15 23:00,1/12/2014 0:00,,Gas,2,1071,Primary/Secondary Classroom,88855.9945,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 98,30/11/15 23:00,1/12/2014 0:00,,Gas,3,489,Primary/Secondary Classroom,29891.3503,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 99,30/11/15 23:00,1/12/2014 0:00,,Gas,1,313,Primary/Secondary Classroom,24089.6082,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 100,30/11/15 23:00,1/12/2014 0:00,,Gas,1,197,Primary/Secondary Classroom,10914.5946,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 101,30/04/15 23:00,1/5/2014 0:00,87,,,,Office,92994,,temporary.epw,temporary.ddy
+BUILDING ID 102,30/11/15 23:00,1/12/2014 0:00,,Gas,3,956,Primary/Secondary Classroom,93764.3329,1919-1945,temporary.epw,temporary.ddy
+BUILDING ID 103,30/11/15 23:00,1/12/2014 0:00,,Gas,2,333,Primary/Secondary Classroom,18201.7549,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 104,30/11/15 23:00,1/12/2014 0:00,,Gas,1,456,Primary/Secondary Classroom,35768.4397,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 105,30/11/15 23:00,1/12/2014 0:00,,Gas,1,193,Primary/Secondary Classroom,13788.5559,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 106,31/12/15 23:00,1/1/2015 0:00,,,,,Office,21618,1887,temporary.epw,temporary.ddy
+BUILDING ID 107,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,87661,,temporary.epw,temporary.ddy
+BUILDING ID 108,30/11/15 23:00,1/12/2014 0:00,,Gas,1,402,Primary/Secondary Classroom,23293.0796,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 109,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,5119.31084,,temporary.epw,temporary.ddy
+BUILDING ID 110,30/11/15 23:00,1/12/2014 0:00,,Gas,2,287,Primary/Secondary Classroom,15801.4052,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 111,30/04/15 23:00,1/5/2014 0:00,88,,,,Office,84365,,temporary.epw,temporary.ddy
+BUILDING ID 112,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1500,Primary/Secondary Classroom,128682.4245,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 113,30/11/15 23:00,1/12/2014 0:00,,Gas,3,362,Primary/Secondary Classroom,37264.6218,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 114,30/11/15 23:00,1/12/2014 0:00,,Gas,1,12,Office,11872.5817,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 115,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,40492,1975,temporary.epw,temporary.ddy
+BUILDING ID 116,30/11/15 23:00,1/12/2014 0:00,,Gas,1,464,Primary/Secondary Classroom,23842.0385,1919-1945,temporary.epw,temporary.ddy
+BUILDING ID 117,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,41302,1975,temporary.epw,temporary.ddy
+BUILDING ID 118,30/11/15 23:00,1/12/2014 0:00,,Gas,2,197,Primary/Secondary Classroom,14972.5849,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 119,30/11/15 23:00,1/12/2014 0:00,,Gas,2,875,Primary/Secondary Classroom,120566.4439,1919-1945,temporary.epw,temporary.ddy
+BUILDING ID 120,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,61439,1903,temporary.epw,temporary.ddy
+BUILDING ID 121,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,48519,,temporary.epw,temporary.ddy
+BUILDING ID 122,30/11/15 23:00,1/12/2014 0:00,,Gas,3,1695,Primary/Secondary Classroom,139112.6436,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 123,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,124521,1967,temporary.epw,temporary.ddy
+BUILDING ID 124,30/11/15 23:00,1/12/2014 0:00,,Gas,3,34,Dormitory,7588.5495,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 125,30/04/15 23:00,1/5/2014 0:00,83,,,,Office,37096,,temporary.epw,temporary.ddy
+BUILDING ID 126,30/11/15 23:00,1/12/2014 0:00,,Gas,3,524,Primary/Secondary Classroom,28976.4188,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 127,30/11/15 23:00,1/12/2014 0:00,,Gas,3,1140,Primary/Secondary Classroom,121470.6115,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 128,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,41236,1975,temporary.epw,temporary.ddy
+BUILDING ID 129,30/11/15 23:00,1/12/2014 0:00,,Gas,1,392,Primary/Secondary Classroom,23605.2327,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 130,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,179167,1971,temporary.epw,temporary.ddy
+BUILDING ID 131,31/12/13 23:00,1/1/2013 0:00,,,,,Office,18103.80341,,temporary.epw,temporary.ddy
+BUILDING ID 132,30/11/15 23:00,1/12/2014 0:00,,Gas,2,403,Primary/Secondary Classroom,23153.1489,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 133,30/11/15 23:00,1/12/2014 0:00,,Gas,1,389,Primary/Secondary Classroom,17050.0176,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 134,30/04/15 23:00,1/5/2014 0:00,46,,,,Dormitory,230747,,temporary.epw,temporary.ddy
+BUILDING ID 135,31/12/13 23:00,1/1/2013 0:00,,,,,College Classroom,137744.5519,,temporary.epw,temporary.ddy
+BUILDING ID 136,30/11/15 23:00,1/12/2014 0:00,,Gas,3,856,Primary/Secondary Classroom,94657.7366,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 137,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,168791,1946,temporary.epw,temporary.ddy
+BUILDING ID 138,30/11/15 23:00,1/12/2014 0:00,,Gas,16,,Dormitory,62893.4677,1960,temporary.epw,temporary.ddy
+BUILDING ID 139,30/11/15 23:00,1/12/2014 0:00,,Gas,2,219,Primary/Secondary Classroom,17189.9483,pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 140,30/11/15 23:00,1/12/2014 0:00,,Gas,4,,Primary/Secondary Classroom,30612.5316,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 141,30/11/15 23:00,1/12/2014 0:00,,Gas,1,149,Primary/Secondary Classroom,13939.2505,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 142,30/04/15 23:00,1/5/2014 0:00,,,,,Office,72709,,temporary.epw,temporary.ddy
+BUILDING ID 143,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,124289,1904,temporary.epw,temporary.ddy
+BUILDING ID 144,30/11/15 23:00,1/12/2014 0:00,,Biomass,2,1400,Primary/Secondary Classroom,155807.4525,2013,temporary.epw,temporary.ddy
+BUILDING ID 145,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,166814,1929,temporary.epw,temporary.ddy
+BUILDING ID 146,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,15715.294,1948,temporary.epw,temporary.ddy
+BUILDING ID 147,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1598,Primary/Secondary Classroom,102429.2724,1919-1945,temporary.epw,temporary.ddy
+BUILDING ID 148,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,44203,1950,temporary.epw,temporary.ddy
+BUILDING ID 149,30/11/15 23:00,1/12/2014 0:00,,Gas,2,909,Primary/Secondary Classroom,68695.2098,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 150,31/12/12 23:00,1/1/2012 0:00,,,,,Office,137297,1917,temporary.epw,temporary.ddy
+BUILDING ID 151,30/11/15 23:00,1/12/2014 0:00,,District Heating,7,188,Office,33960.1045,1900,temporary.epw,temporary.ddy
+BUILDING ID 152,30/11/15 23:00,1/12/2014 0:00,,Gas,1,230,Primary/Secondary Classroom,12927.4439,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 153,30/11/15 23:00,1/12/2014 0:00,,,,,Office,16985.4342,1978,temporary.epw,temporary.ddy
+BUILDING ID 154,30/04/15 23:00,1/5/2014 0:00,,,,,Office,47578,,temporary.epw,temporary.ddy
+BUILDING ID 155,30/04/15 23:00,1/5/2014 0:00,85,,,,Office,56569,,temporary.epw,temporary.ddy
+BUILDING ID 156,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,93313,,temporary.epw,temporary.ddy
+BUILDING ID 157,31/12/15 23:00,1/1/2015 0:00,,,,,Office,131797,1968,temporary.epw,temporary.ddy
+BUILDING ID 158,30/11/15 23:00,1/12/2014 0:00,,Gas,3,1395,Primary/Secondary Classroom,121061.5833,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 159,30/11/15 23:00,1/12/2014 0:00,,Gas,2,124,Primary/Secondary Classroom,17103.8371,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 160,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,93500,,temporary.epw,temporary.ddy
+BUILDING ID 161,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,216526,1967,temporary.epw,temporary.ddy
+BUILDING ID 162,30/04/15 23:00,1/5/2014 0:00,91,,,,Office,80205,,temporary.epw,temporary.ddy
+BUILDING ID 163,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,18342,1960,temporary.epw,temporary.ddy
+BUILDING ID 164,30/11/15 23:00,1/12/2014 0:00,,Gas,1,214,Primary/Secondary Classroom,15413.9048,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 165,30/11/15 23:00,1/12/2014 0:00,,Gas,2,133,Office,19428.8395,1919-1945,temporary.epw,temporary.ddy
+BUILDING ID 166,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,9552,1961,temporary.epw,temporary.ddy
+BUILDING ID 167,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,20291,1925,temporary.epw,temporary.ddy
+BUILDING ID 168,30/11/15 23:00,1/12/2014 0:00,,Gas,2,262,Primary/Secondary Classroom,19041.3391,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 169,30/04/15 23:00,1/5/2014 0:00,47,,,,Office,28991,,temporary.epw,temporary.ddy
+BUILDING ID 170,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,39538,1953,temporary.epw,temporary.ddy
+BUILDING ID 171,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Dormitory,83108.0719,1995,temporary.epw,temporary.ddy
+BUILDING ID 172,30/11/15 23:00,1/12/2014 0:00,,Gas,2,,Office,7416.3271,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 173,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,80325,,temporary.epw,temporary.ddy
+BUILDING ID 174,30/11/15 23:00,1/12/2014 0:00,,Gas,2,322,Primary/Secondary Classroom,24251.0667,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 175,30/11/15 23:00,1/12/2014 0:00,,Gas,2,33,Office,4650.0048,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 176,30/11/15 23:00,1/12/2014 0:00,,Gas,4,1598,Primary/Secondary Classroom,160037.6652,1945-1966,temporary.epw,temporary.ddy
+BUILDING ID 177,31/12/15 23:00,1/1/2015 0:00,,,,,Office,42129,,temporary.epw,temporary.ddy
+BUILDING ID 178,31/12/15 23:00,1/1/2015 0:00,,,,,Office,28750,,temporary.epw,temporary.ddy
+BUILDING ID 179,30/11/15 23:00,1/12/2014 0:00,,Gas,1,270,Primary/Secondary Classroom,66187.2211,post 1976,temporary.epw,temporary.ddy
+BUILDING ID 180,31/12/15 23:00,1/1/2015 0:00,,,,,Office,42214,1985,temporary.epw,temporary.ddy
+BUILDING ID 181,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,44352,,temporary.epw,temporary.ddy
+BUILDING ID 182,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,78268,1964,temporary.epw,temporary.ddy
+BUILDING ID 183,30/04/15 23:00,1/5/2014 0:00,94,,,,Office,131745,,temporary.epw,temporary.ddy
+BUILDING ID 184,31/12/15 23:00,1/1/2015 0:00,,,,,Office,29778,,temporary.epw,temporary.ddy
+BUILDING ID 185,30/04/15 23:00,1/5/2014 0:00,,,,,Office,119509,,temporary.epw,temporary.ddy
+BUILDING ID 186,31/12/15 23:00,1/1/2015 0:00,,,,,Office,87977,1947,temporary.epw,temporary.ddy
+BUILDING ID 187,30/11/15 23:00,1/12/2014 0:00,,,,,Office,24681.6227,1970,temporary.epw,temporary.ddy
+BUILDING ID 188,31/12/15 23:00,1/1/2015 0:00,,,,,Office,11524,1994,temporary.epw,temporary.ddy
+BUILDING ID 189,31/10/15 23:00,1/11/2014 0:00,,,,1947,Office,92121,,temporary.epw,temporary.ddy
+BUILDING ID 190,31/12/15 23:00,1/1/2015 0:00,,,,,Primary/Secondary Classroom,16744,,temporary.epw,temporary.ddy
+BUILDING ID 191,31/12/15 23:00,1/1/2015 0:00,,,,,Office,74180,1930,temporary.epw,temporary.ddy
+BUILDING ID 192,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,18277,1965,temporary.epw,temporary.ddy
+BUILDING ID 193,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,98624,1866,temporary.epw,temporary.ddy
+BUILDING ID 194,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,49108,1951,temporary.epw,temporary.ddy
+BUILDING ID 195,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,25139,1970,temporary.epw,temporary.ddy
+BUILDING ID 196,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,553210,2009,temporary.epw,temporary.ddy
+BUILDING ID 197,30/11/15 23:00,1/12/2014 0:00,,Gas,3,293,Office,152470.6435,Pre 1919,temporary.epw,temporary.ddy
+BUILDING ID 198,30/04/15 23:00,1/5/2014 0:00,,,,,Office,87187,,temporary.epw,temporary.ddy
+BUILDING ID 199,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,48881,1902,temporary.epw,temporary.ddy
+BUILDING ID 200,30/04/15 23:00,1/5/2014 0:00,86,,,,Office,94988,,temporary.epw,temporary.ddy
+BUILDING ID 201,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,49078,1914,temporary.epw,temporary.ddy
+BUILDING ID 202,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,133594,1961,temporary.epw,temporary.ddy
+BUILDING ID 203,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,12773,,temporary.epw,temporary.ddy
+BUILDING ID 204,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,75650,,temporary.epw,temporary.ddy
+BUILDING ID 205,30/04/15 23:00,1/5/2014 0:00,,,,,Office,59476,,temporary.epw,temporary.ddy
+BUILDING ID 206,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,45305.2551,1965,temporary.epw,temporary.ddy
+BUILDING ID 207,30/04/15 23:00,1/5/2014 0:00,,,,,Office,53077,,temporary.epw,temporary.ddy
+BUILDING ID 208,31/12/15 23:00,1/1/2015 0:00,,,,,Office,31316,1913,temporary.epw,temporary.ddy
+BUILDING ID 209,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,116854,1978,temporary.epw,temporary.ddy
+BUILDING ID 210,31/10/15 23:00,1/11/2014 0:00,,,,511,College Laboratory,27145,,temporary.epw,temporary.ddy
+BUILDING ID 211,30/04/15 23:00,1/5/2014 0:00,91,,,,Office,52748,,temporary.epw,temporary.ddy
+BUILDING ID 212,30/04/15 23:00,1/5/2014 0:00,85,,,,Dormitory,117054,,temporary.epw,temporary.ddy
+BUILDING ID 213,30/04/15 23:00,1/5/2014 0:00,49,,,,Dormitory,177550,,temporary.epw,temporary.ddy
+BUILDING ID 214,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,32841,1935,temporary.epw,temporary.ddy
+BUILDING ID 215,30/04/15 23:00,1/5/2014 0:00,94,,,,Office,67839,,temporary.epw,temporary.ddy
+BUILDING ID 216,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,61709.4387,1966,temporary.epw,temporary.ddy
+BUILDING ID 217,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,4314,1907,temporary.epw,temporary.ddy
+BUILDING ID 218,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,95944,1961,temporary.epw,temporary.ddy
+BUILDING ID 219,31/12/15 23:00,1/1/2015 0:00,,,,,Office,155682,,temporary.epw,temporary.ddy
+BUILDING ID 220,31/12/12 23:00,1/1/2012 0:00,,,,,Office,75488,1948,temporary.epw,temporary.ddy
+BUILDING ID 221,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,82911,,temporary.epw,temporary.ddy
+BUILDING ID 222,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,19876,1932,temporary.epw,temporary.ddy
+BUILDING ID 223,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,278795,,temporary.epw,temporary.ddy
+BUILDING ID 224,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,142672,,temporary.epw,temporary.ddy
+BUILDING ID 225,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Dormitory,64723.3307,1960,temporary.epw,temporary.ddy
+BUILDING ID 226,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,61246.591,1960,temporary.epw,temporary.ddy
+BUILDING ID 227,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,36406,1940,temporary.epw,temporary.ddy
+BUILDING ID 228,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,56602,1923,temporary.epw,temporary.ddy
+BUILDING ID 229,30/04/15 23:00,1/5/2014 0:00,9,,,,Office,98212,,temporary.epw,temporary.ddy
+BUILDING ID 230,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,65999,1975,temporary.epw,temporary.ddy
+BUILDING ID 231,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,73981.36109,,temporary.epw,temporary.ddy
+BUILDING ID 232,31/12/12 23:00,1/1/2012 0:00,,,,,Office,57343,1905,temporary.epw,temporary.ddy
+BUILDING ID 233,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,47007,,temporary.epw,temporary.ddy
+BUILDING ID 234,30/04/15 23:00,1/5/2014 0:00,83,,,,Dormitory,74584,,temporary.epw,temporary.ddy
+BUILDING ID 235,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,24103,1964,temporary.epw,temporary.ddy
+BUILDING ID 236,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,40461,2002,temporary.epw,temporary.ddy
+BUILDING ID 237,31/12/12 23:00,1/1/2012 0:00,,,,,Office,236242,1962,temporary.epw,temporary.ddy
+BUILDING ID 238,30/11/15 23:00,1/12/2014 0:00,,District heating,7,1815,Office,820241.4717,1862-1875,temporary.epw,temporary.ddy
+BUILDING ID 239,30/11/15 23:00,1/12/2014 0:00,,Gas,7,,Dormitory,102773.7172,1956,temporary.epw,temporary.ddy
+BUILDING ID 240,30/04/15 23:00,1/5/2014 0:00,,,,,Office,121714,,temporary.epw,temporary.ddy
+BUILDING ID 241,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,95717,2969,temporary.epw,temporary.ddy
+BUILDING ID 242,30/11/15 23:00,1/12/2014 0:00,,Gas,10,,Dormitory,66531.6659,1967,temporary.epw,temporary.ddy
+BUILDING ID 243,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,113000,,temporary.epw,temporary.ddy
+BUILDING ID 244,31/12/15 23:00,1/1/2015 0:00,,,,,Office,40611,1866,temporary.epw,temporary.ddy
+BUILDING ID 245,31/12/15 23:00,1/1/2015 0:00,,,,,Office,23549,1941,temporary.epw,temporary.ddy
+BUILDING ID 246,31/12/15 23:00,1/1/2015 0:00,,,,,Office,163959,2004,temporary.epw,temporary.ddy
+BUILDING ID 247,31/12/15 23:00,1/1/2015 0:00,,,,,Office,9703,1940,temporary.epw,temporary.ddy
+BUILDING ID 248,30/04/15 23:00,1/5/2014 0:00,,,,,Office,96612,,temporary.epw,temporary.ddy
+BUILDING ID 249,30/11/15 23:00,1/12/2014 0:00,,Gas,7,,Dormitory,102956.7035,1968,temporary.epw,temporary.ddy
+BUILDING ID 250,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,50567,1880,temporary.epw,temporary.ddy
+BUILDING ID 251,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,282946,2003,temporary.epw,temporary.ddy
+BUILDING ID 252,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,648094.419,,temporary.epw,temporary.ddy
+BUILDING ID 253,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,30531,,temporary.epw,temporary.ddy
+BUILDING ID 254,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,30949,1951,temporary.epw,temporary.ddy
+BUILDING ID 255,30/04/15 23:00,1/5/2014 0:00,45,,,,Dormitory,174924,,temporary.epw,temporary.ddy
+BUILDING ID 256,31/12/13 23:00,1/1/2013 0:00,,,,,Office,99501.4916,,temporary.epw,temporary.ddy
+BUILDING ID 257,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,31613.5743,1956,temporary.epw,temporary.ddy
+BUILDING ID 258,30/04/15 23:00,1/5/2014 0:00,,,,,Office,71936,,temporary.epw,temporary.ddy
+BUILDING ID 259,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,62238,1970,temporary.epw,temporary.ddy
+BUILDING ID 260,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,136522,2005,temporary.epw,temporary.ddy
+BUILDING ID 261,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,58307,,temporary.epw,temporary.ddy
+BUILDING ID 262,30/11/15 23:00,1/12/2014 0:00,,Gas,11,410,Office,242930.4591,,temporary.epw,temporary.ddy
+BUILDING ID 263,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,111304,1964,temporary.epw,temporary.ddy
+BUILDING ID 264,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,24586,,temporary.epw,temporary.ddy
+BUILDING ID 265,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,128044,,temporary.epw,temporary.ddy
+BUILDING ID 266,31/12/15 23:00,1/1/2015 0:00,,,,,Office,37485,,temporary.epw,temporary.ddy
+BUILDING ID 267,30/11/15 23:00,1/12/2014 0:00,,Gas,5,46,Office,11388.2062,1754-1756,temporary.epw,temporary.ddy
+BUILDING ID 268,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,86436.26978,,temporary.epw,temporary.ddy
+BUILDING ID 269,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,64246.48993,,temporary.epw,temporary.ddy
+BUILDING ID 270,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,13512,,temporary.epw,temporary.ddy
+BUILDING ID 271,30/04/15 23:00,1/5/2014 0:00,56,,,,Dormitory,233341,,temporary.epw,temporary.ddy
+BUILDING ID 272,30/11/15 23:00,1/12/2014 0:00,,Gas,1,71,Primary/Secondary Classroom,11269.8033,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 273,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,65024.7199,1975,temporary.epw,temporary.ddy
+BUILDING ID 274,31/12/15 23:00,1/1/2015 0:00,,,,,Office,23392,,temporary.epw,temporary.ddy
+BUILDING ID 275,30/11/15 23:00,1/12/2014 0:00,,,,,Office,64152.844,1968,temporary.epw,temporary.ddy
+BUILDING ID 276,31/12/15 23:00,1/1/2015 0:00,,,,,Office,84615,1963,temporary.epw,temporary.ddy
+BUILDING ID 277,30/11/15 23:00,1/12/2014 0:00,,Electricity,1,192,Primary/Secondary Classroom,8729.5229,1967-1976,temporary.epw,temporary.ddy
+BUILDING ID 278,31/12/15 23:00,1/1/2015 0:00,,,,,Office,187041,1973,temporary.epw,temporary.ddy
+BUILDING ID 279,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,86323,1956,temporary.epw,temporary.ddy
+BUILDING ID 280,31/12/13 23:00,1/1/2013 0:00,,,,,College Laboratory,64940.76148,,temporary.epw,temporary.ddy
+BUILDING ID 281,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,180625,1933,temporary.epw,temporary.ddy
+BUILDING ID 282,31/12/15 23:00,1/1/2015 0:00,,,,,Office,104667,,temporary.epw,temporary.ddy
+BUILDING ID 283,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,4298,,temporary.epw,temporary.ddy
+BUILDING ID 284,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,38319.484,1900,temporary.epw,temporary.ddy
+BUILDING ID 285,30/04/15 23:00,1/5/2014 0:00,58,,,,Dormitory,153299,,temporary.epw,temporary.ddy
+BUILDING ID 286,30/04/15 23:00,1/5/2014 0:00,,,,,College Classroom,14185,,temporary.epw,temporary.ddy
+BUILDING ID 287,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,137065,1964,temporary.epw,temporary.ddy
+BUILDING ID 288,31/12/15 23:00,1/1/2015 0:00,,,,,Office,121440,1983,temporary.epw,temporary.ddy
+BUILDING ID 289,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,35936,,temporary.epw,temporary.ddy
+BUILDING ID 290,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,32367.0473,1938,temporary.epw,temporary.ddy
+BUILDING ID 291,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,31118.4349,1994,temporary.epw,temporary.ddy
+BUILDING ID 292,30/04/15 23:00,1/5/2014 0:00,56,,,,Office,70852,,temporary.epw,temporary.ddy
+BUILDING ID 293,30/11/15 23:00,1/12/2014 0:00,,Heat network,12,,Office,174601.2219,1960,temporary.epw,temporary.ddy
+BUILDING ID 294,31/12/15 23:00,1/1/2015 0:00,,,,,Office,118966,1988,temporary.epw,temporary.ddy
+BUILDING ID 295,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,39558,,temporary.epw,temporary.ddy
+BUILDING ID 296,31/12/15 23:00,1/1/2015 0:00,,,,,Office,14744,1910,temporary.epw,temporary.ddy
+BUILDING ID 297,31/10/15 23:00,1/11/2014 0:00,,,,1370,College Classroom,57964,,temporary.epw,temporary.ddy
+BUILDING ID 298,31/12/15 23:00,1/1/2015 0:00,,,,,Office,33713,1956,temporary.epw,temporary.ddy
+BUILDING ID 299,30/04/15 23:00,1/5/2014 0:00,49,,,,Dormitory,157070,,temporary.epw,temporary.ddy
+BUILDING ID 300,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,71224,,temporary.epw,temporary.ddy
+BUILDING ID 301,31/10/15 23:00,1/11/2014 0:00,,,,2417,College Classroom,100310,,temporary.epw,temporary.ddy
+BUILDING ID 302,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,30596,1999,temporary.epw,temporary.ddy
+BUILDING ID 303,31/10/15 23:00,1/11/2014 0:00,,,,3537,College Classroom,166151,,temporary.epw,temporary.ddy
+BUILDING ID 304,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,212128,,temporary.epw,temporary.ddy
+BUILDING ID 305,31/12/15 23:00,1/1/2015 0:00,,,,,Office,32766,,temporary.epw,temporary.ddy
+BUILDING ID 306,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,91253,1888,temporary.epw,temporary.ddy
+BUILDING ID 307,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,49384,1967,temporary.epw,temporary.ddy
+BUILDING ID 308,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,88486,,temporary.epw,temporary.ddy
+BUILDING ID 309,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,111635,1989,temporary.epw,temporary.ddy
+BUILDING ID 310,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,34171,,temporary.epw,temporary.ddy
+BUILDING ID 311,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,78438,2004,temporary.epw,temporary.ddy
+BUILDING ID 312,30/04/15 23:00,1/5/2014 0:00,29,,,,Office,99946,,temporary.epw,temporary.ddy
+BUILDING ID 313,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,105612,1967,temporary.epw,temporary.ddy
+BUILDING ID 314,31/12/15 23:00,1/1/2015 0:00,,,,,Office,51732,1966,temporary.epw,temporary.ddy
+BUILDING ID 315,31/12/15 23:00,1/1/2015 0:00,,,,,Office,148101,,temporary.epw,temporary.ddy
+BUILDING ID 316,30/04/15 23:00,1/5/2014 0:00,69,,,,Office,10385,,temporary.epw,temporary.ddy
+BUILDING ID 317,30/11/15 23:00,1/12/2014 0:00,,Gas,10,283,Office,60600.757,1906,temporary.epw,temporary.ddy
+BUILDING ID 318,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,49513.94,2000,temporary.epw,temporary.ddy
+BUILDING ID 319,30/11/15 23:00,1/12/2014 0:00,,,,,College Laboratory,16307.3085,2007,temporary.epw,temporary.ddy
+BUILDING ID 320,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,77263,,temporary.epw,temporary.ddy
+BUILDING ID 321,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,244964,2008,temporary.epw,temporary.ddy
+BUILDING ID 322,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,140488,1961,temporary.epw,temporary.ddy
+BUILDING ID 323,31/12/12 23:00,1/1/2012 0:00,,,,,Office,77055,1917,temporary.epw,temporary.ddy
+BUILDING ID 324,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,172244,1963,temporary.epw,temporary.ddy
+BUILDING ID 325,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,7481,1969,temporary.epw,temporary.ddy
+BUILDING ID 326,30/04/15 23:00,1/5/2014 0:00,91,,,,Office,92099,,temporary.epw,temporary.ddy
+BUILDING ID 327,30/11/15 23:00,1/12/2014 0:00,,Gas,9,1580,Office,1315596.15,11th Century onwards,temporary.epw,temporary.ddy
+BUILDING ID 328,31/12/15 23:00,1/1/2015 0:00,,,,,Office,64818,,temporary.epw,temporary.ddy
+BUILDING ID 329,30/04/15 23:00,1/5/2014 0:00,75,,,,Office,157545,,temporary.epw,temporary.ddy
+BUILDING ID 330,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,128540,1968,temporary.epw,temporary.ddy
+BUILDING ID 331,31/12/15 23:00,1/1/2015 0:00,,,,,Office,6203,1999,temporary.epw,temporary.ddy
+BUILDING ID 332,30/11/15 23:00,1/12/2014 0:00,,Gas,4,340,Office,36220.5235,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 333,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,84300,,temporary.epw,temporary.ddy
+BUILDING ID 334,30/04/15 23:00,1/5/2014 0:00,,,,,Office,57394,,temporary.epw,temporary.ddy
+BUILDING ID 335,31/12/15 23:00,1/1/2015 0:00,,,,,Office,140345,,temporary.epw,temporary.ddy
+BUILDING ID 336,30/11/15 23:00,1/12/2014 0:00,,Gas,1,,Office,11442.0257,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 337,30/04/15 23:00,1/5/2014 0:00,,,,,Office,35829,,temporary.epw,temporary.ddy
+BUILDING ID 338,31/12/15 23:00,1/1/2015 0:00,,,,,Office,115288,1957,temporary.epw,temporary.ddy
+BUILDING ID 339,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,65663,1975,temporary.epw,temporary.ddy
+BUILDING ID 340,30/11/15 23:00,1/12/2014 0:00,,Gas,10,525,Office,117380.3295,1888-1890,temporary.epw,temporary.ddy
+BUILDING ID 341,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,98829,1968,temporary.epw,temporary.ddy
+BUILDING ID 342,30/11/15 23:00,1/12/2014 0:00,,Electric,8,,Dormitory,49589.2873,1998,temporary.epw,temporary.ddy
+BUILDING ID 343,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,41179,,temporary.epw,temporary.ddy
+BUILDING ID 344,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,83141,2006,temporary.epw,temporary.ddy
+BUILDING ID 345,30/11/15 23:00,1/12/2014 0:00,,,,,Office,11517.373,1989,temporary.epw,temporary.ddy
+BUILDING ID 346,30/04/15 23:00,1/5/2014 0:00,,,,,Office,58703,,temporary.epw,temporary.ddy
+BUILDING ID 347,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,90903,,temporary.epw,temporary.ddy
+BUILDING ID 348,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,99774,1955,temporary.epw,temporary.ddy
+BUILDING ID 349,31/10/15 23:00,1/11/2014 0:00,,,,4144,College Classroom,164166,,temporary.epw,temporary.ddy
+BUILDING ID 350,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,106440,1963,temporary.epw,temporary.ddy
+BUILDING ID 351,30/11/15 23:00,1/12/2014 0:00,,,,,Office,11108.3448,1965,temporary.epw,temporary.ddy
+BUILDING ID 352,30/04/15 23:00,1/5/2014 0:00,,,,,Office,25463,,temporary.epw,temporary.ddy
+BUILDING ID 353,31/10/15 23:00,1/11/2014 0:00,,,,2740,Office,112178,,temporary.epw,temporary.ddy
+BUILDING ID 354,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,9111,1958,temporary.epw,temporary.ddy
+BUILDING ID 355,30/11/15 23:00,1/12/2014 0:00,,Gas,5,1122,Office,270033.9593,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 356,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,71421,,temporary.epw,temporary.ddy
+BUILDING ID 357,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,60086,2001,temporary.epw,temporary.ddy
+BUILDING ID 358,31/12/15 23:00,1/1/2015 0:00,,,,,Office,83660,1973,temporary.epw,temporary.ddy
+BUILDING ID 359,30/04/15 23:00,1/5/2014 0:00,,,,,Office,20444,,temporary.epw,temporary.ddy
+BUILDING ID 360,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,88934,2009,temporary.epw,temporary.ddy
+BUILDING ID 361,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,28084,1913,temporary.epw,temporary.ddy
+BUILDING ID 362,30/04/15 23:00,1/5/2014 0:00,,,,,Office,87131,,temporary.epw,temporary.ddy
+BUILDING ID 363,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,171008,1930,temporary.epw,temporary.ddy
+BUILDING ID 364,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,169290,2006,temporary.epw,temporary.ddy
+BUILDING ID 365,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,72102,1970,temporary.epw,temporary.ddy
+BUILDING ID 366,31/10/15 23:00,1/11/2014 0:00,,,,1344,College Classroom,54461,,temporary.epw,temporary.ddy
+BUILDING ID 367,31/10/15 23:00,1/11/2014 0:00,,,,2130,College Classroom,80078,,temporary.epw,temporary.ddy
+BUILDING ID 368,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,108971,1990,temporary.epw,temporary.ddy
+BUILDING ID 369,30/11/15 23:00,1/12/2014 0:00,,Gas,3,556,Office,57436.1704,Post 1976,temporary.epw,temporary.ddy
+BUILDING ID 370,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,184098,,temporary.epw,temporary.ddy
+BUILDING ID 371,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,137040,1957,temporary.epw,temporary.ddy
+BUILDING ID 372,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,233863,1921,temporary.epw,temporary.ddy
+BUILDING ID 373,31/12/15 23:00,1/1/2015 0:00,,,,,Office,59665,,temporary.epw,temporary.ddy
+BUILDING ID 374,30/04/15 23:00,1/5/2014 0:00,,,,,Office,25977,,temporary.epw,temporary.ddy
+BUILDING ID 375,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,47398,1912,temporary.epw,temporary.ddy
+BUILDING ID 376,31/12/15 23:00,1/1/2015 0:00,,,,,Primary/Secondary Classroom,10334,,temporary.epw,temporary.ddy
+BUILDING ID 377,30/04/15 23:00,1/5/2014 0:00,,,,,Office,92500,,temporary.epw,temporary.ddy
+BUILDING ID 378,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,65907,1964,temporary.epw,temporary.ddy
+BUILDING ID 379,30/11/15 23:00,1/12/2014 0:00,,Gas,10,721,Office,194805.0622,2000,temporary.epw,temporary.ddy
+BUILDING ID 380,30/11/15 23:00,1/12/2014 0:00,,,,,Office,42495.8772,1997,temporary.epw,temporary.ddy
+BUILDING ID 381,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,124950,1961,temporary.epw,temporary.ddy
+BUILDING ID 382,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,20909.95214,1987,temporary.epw,temporary.ddy
+BUILDING ID 383,31/10/15 23:00,1/11/2014 0:00,,,,3741,College Classroom,149679,,temporary.epw,temporary.ddy
+BUILDING ID 384,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,63915,,temporary.epw,temporary.ddy
+BUILDING ID 385,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,192152,,temporary.epw,temporary.ddy
+BUILDING ID 386,30/11/15 23:00,1/12/2014 0:00,,Gas,9,393,Office,109824.0717,1903-1906,temporary.epw,temporary.ddy
+BUILDING ID 387,31/12/15 23:00,1/1/2015 0:00,,,,,Office,104355,,temporary.epw,temporary.ddy
+BUILDING ID 388,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,74599,1984,temporary.epw,temporary.ddy
+BUILDING ID 389,30/11/15 23:00,1/12/2014 0:00,,Gas,7,264,Office,36704.899,1898-1902,temporary.epw,temporary.ddy
+BUILDING ID 390,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,105791,,temporary.epw,temporary.ddy
+BUILDING ID 391,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,91273,1951,temporary.epw,temporary.ddy
+BUILDING ID 392,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,131710,1991,temporary.epw,temporary.ddy
+BUILDING ID 393,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,89770,,temporary.epw,temporary.ddy
+BUILDING ID 394,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,21168,1928,temporary.epw,temporary.ddy
+BUILDING ID 395,31/12/15 23:00,1/1/2015 0:00,,,,,Office,31053,1915,temporary.epw,temporary.ddy
+BUILDING ID 396,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,142901,2007,temporary.epw,temporary.ddy
+BUILDING ID 397,31/10/15 23:00,1/11/2014 0:00,,,,3188,Office,136624,,temporary.epw,temporary.ddy
+BUILDING ID 398,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,126985,1979,temporary.epw,temporary.ddy
+BUILDING ID 399,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,28432,1933,temporary.epw,temporary.ddy
+BUILDING ID 400,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,132518,1992,temporary.epw,temporary.ddy
+BUILDING ID 401,31/12/15 23:00,1/1/2015 0:00,,,,,Office,10135,,temporary.epw,temporary.ddy
+BUILDING ID 402,31/12/15 23:00,1/1/2015 0:00,,,,,Office,202435,1967,temporary.epw,temporary.ddy
+BUILDING ID 403,31/12/15 23:00,1/1/2015 0:00,,,,,Office,157933,1932,temporary.epw,temporary.ddy
+BUILDING ID 404,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,40451,1975,temporary.epw,temporary.ddy
+BUILDING ID 405,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,9788,,temporary.epw,temporary.ddy
+BUILDING ID 406,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,105434,2014,temporary.epw,temporary.ddy
+BUILDING ID 407,30/11/15 23:00,1/12/2014 0:00,,Electricity,7,97,Office,18503.1441,1937,temporary.epw,temporary.ddy
+BUILDING ID 408,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,96124,1959,temporary.epw,temporary.ddy
+BUILDING ID 409,31/12/13 23:00,1/1/2013 0:00,,,,,Office,17765.81695,,temporary.epw,temporary.ddy
+BUILDING ID 410,30/11/15 23:00,1/12/2014 0:00,,Electric,7,,Dormitory,66660.8327,1930,temporary.epw,temporary.ddy
+BUILDING ID 411,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,39988,,temporary.epw,temporary.ddy
+BUILDING ID 412,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,90900,,temporary.epw,temporary.ddy
+BUILDING ID 413,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,204349,1993,temporary.epw,temporary.ddy
+BUILDING ID 414,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,30495.20509,1997,temporary.epw,temporary.ddy
+BUILDING ID 415,31/12/12 23:00,1/1/2012 0:00,,,,,College Classroom,56886,1953,temporary.epw,temporary.ddy
+BUILDING ID 416,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,204029,2010,temporary.epw,temporary.ddy
+BUILDING ID 417,30/04/15 23:00,1/5/2014 0:00,,,,,Office,102191,,temporary.epw,temporary.ddy
+BUILDING ID 418,30/11/15 23:00,1/12/2014 0:00,,,,,College Classroom,64917.0809,2006,temporary.epw,temporary.ddy
+BUILDING ID 419,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,32256,,temporary.epw,temporary.ddy
+BUILDING ID 420,31/12/15 23:00,1/1/2015 0:00,,,,,Office,70832,2014,temporary.epw,temporary.ddy
+BUILDING ID 421,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,34875,1993,temporary.epw,temporary.ddy
+BUILDING ID 422,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,98125,2011,temporary.epw,temporary.ddy
+BUILDING ID 423,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,129664,1941,temporary.epw,temporary.ddy
+BUILDING ID 424,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,140092,,temporary.epw,temporary.ddy
+BUILDING ID 425,31/12/15 23:00,1/1/2015 0:00,,,,,Office,110380,1985,temporary.epw,temporary.ddy
+BUILDING ID 426,31/12/15 23:00,1/1/2015 0:00,,,,,Office,49553,1963,temporary.epw,temporary.ddy
+BUILDING ID 427,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,53651,,temporary.epw,temporary.ddy
+BUILDING ID 428,31/12/15 23:00,1/1/2015 0:00,,,,,Office,44332,,temporary.epw,temporary.ddy
+BUILDING ID 429,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,156483,,temporary.epw,temporary.ddy
+BUILDING ID 430,30/11/15 23:00,1/12/2014 0:00,,,,,College Laboratory,84066.059,1966,temporary.epw,temporary.ddy
+BUILDING ID 431,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,122592,1971,temporary.epw,temporary.ddy
+BUILDING ID 432,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,77469,,temporary.epw,temporary.ddy
+BUILDING ID 433,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,College Laboratory,138316.115,1960,temporary.epw,temporary.ddy
+BUILDING ID 434,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,61203.5354,1989,temporary.epw,temporary.ddy
+BUILDING ID 435,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,33739,1939,temporary.epw,temporary.ddy
+BUILDING ID 436,31/12/15 23:00,1/1/2015 0:00,,,,,Office,70837,2014,temporary.epw,temporary.ddy
+BUILDING ID 437,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,40311,1913,temporary.epw,temporary.ddy
+BUILDING ID 438,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,33148,1967,temporary.epw,temporary.ddy
+BUILDING ID 439,30/11/15 23:00,1/12/2014 0:00,,Gas,10,818,Office,150640.7805,1913-1915,temporary.epw,temporary.ddy
+BUILDING ID 440,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,241324,,temporary.epw,temporary.ddy
+BUILDING ID 441,31/12/15 23:00,1/1/2015 0:00,,,,,Office,42755,1866,temporary.epw,temporary.ddy
+BUILDING ID 442,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,71248,2004,temporary.epw,temporary.ddy
+BUILDING ID 443,31/10/15 23:00,1/11/2014 0:00,,,,3090,College Classroom,123096,,temporary.epw,temporary.ddy
+BUILDING ID 444,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,219608,1992,temporary.epw,temporary.ddy
+BUILDING ID 445,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,52839,1942,temporary.epw,temporary.ddy
+BUILDING ID 446,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,47934,,temporary.epw,temporary.ddy
+BUILDING ID 447,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,279840,2008,temporary.epw,temporary.ddy
+BUILDING ID 448,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,20889,1976,temporary.epw,temporary.ddy
+BUILDING ID 449,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,327256,2012,temporary.epw,temporary.ddy
+BUILDING ID 450,30/04/15 23:00,1/5/2014 0:00,3,,,,Office,38382,,temporary.epw,temporary.ddy
+BUILDING ID 451,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,64560,1965,temporary.epw,temporary.ddy
+BUILDING ID 452,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,74682,2006,temporary.epw,temporary.ddy
+BUILDING ID 453,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,183460,2005,temporary.epw,temporary.ddy
+BUILDING ID 454,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,131271,2010,temporary.epw,temporary.ddy
+BUILDING ID 455,31/12/15 23:00,1/1/2015 0:00,,,,,Office,46981,1962,temporary.epw,temporary.ddy
+BUILDING ID 456,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,179559,2006,temporary.epw,temporary.ddy
+BUILDING ID 457,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,160673,1968,temporary.epw,temporary.ddy
+BUILDING ID 458,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,173983,1986,temporary.epw,temporary.ddy
+BUILDING ID 459,31/12/15 23:00,1/1/2015 0:00,,,,,Office,23458,,temporary.epw,temporary.ddy
+BUILDING ID 460,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,24643,1982,temporary.epw,temporary.ddy
+BUILDING ID 461,31/12/10 23:00,1/1/2010 0:00,,,,,Office,83321,1960,temporary.epw,temporary.ddy
+BUILDING ID 462,31/12/15 23:00,1/1/2015 0:00,,,,,Office,54597,,temporary.epw,temporary.ddy
+BUILDING ID 463,31/12/15 23:00,1/1/2015 0:00,,,,,Office,70042,,temporary.epw,temporary.ddy
+BUILDING ID 464,31/12/15 23:00,1/1/2015 0:00,,,,,Office,49990,,temporary.epw,temporary.ddy
+BUILDING ID 465,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,322341,1995,temporary.epw,temporary.ddy
+BUILDING ID 466,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,111518,1968,temporary.epw,temporary.ddy
+BUILDING ID 467,30/04/15 23:00,1/5/2014 0:00,,,,,College Laboratory,37107,,temporary.epw,temporary.ddy
+BUILDING ID 468,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,125507,1974,temporary.epw,temporary.ddy
+BUILDING ID 469,31/12/15 23:00,1/1/2015 0:00,,,,,Office,17879,,temporary.epw,temporary.ddy
+BUILDING ID 470,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,83043.4885,1991,temporary.epw,temporary.ddy
+BUILDING ID 471,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,129344,,temporary.epw,temporary.ddy
+BUILDING ID 472,31/12/12 23:00,1/1/2012 0:00,,,,,Office,97618,1964,temporary.epw,temporary.ddy
+BUILDING ID 473,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,9309,1970,temporary.epw,temporary.ddy
+BUILDING ID 474,31/12/12 23:00,1/1/2012 0:00,,,,,College Laboratory,87216,1964,temporary.epw,temporary.ddy
+BUILDING ID 475,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,4583,,temporary.epw,temporary.ddy
+BUILDING ID 476,30/11/15 23:00,1/12/2014 0:00,,Heat network and steam,9,,College Laboratory,150317.8635,1906,temporary.epw,temporary.ddy
+BUILDING ID 477,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,33695,1948,temporary.epw,temporary.ddy
+BUILDING ID 478,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,214505,1990,temporary.epw,temporary.ddy
+BUILDING ID 479,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,56497,1957,temporary.epw,temporary.ddy
+BUILDING ID 480,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,49662,1964,temporary.epw,temporary.ddy
+BUILDING ID 481,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,4689,2005,temporary.epw,temporary.ddy
+BUILDING ID 482,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,250000,,temporary.epw,temporary.ddy
+BUILDING ID 483,30/04/15 23:00,1/5/2014 0:00,,,,,Office,62837,,temporary.epw,temporary.ddy
+BUILDING ID 484,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,48411,,temporary.epw,temporary.ddy
+BUILDING ID 485,30/11/15 23:00,1/12/2014 0:00,,,,,College Laboratory,107585.1805,2010,temporary.epw,temporary.ddy
+BUILDING ID 486,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,151637,1983,temporary.epw,temporary.ddy
+BUILDING ID 487,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,46813,,temporary.epw,temporary.ddy
+BUILDING ID 488,30/11/15 23:00,1/12/2014 0:00,,Oil,5,,College Laboratory,37264.6218,1800,temporary.epw,temporary.ddy
+BUILDING ID 489,31/12/10 23:00,1/1/2010 0:00,,,,,Office,111077,1994,temporary.epw,temporary.ddy
+BUILDING ID 490,30/11/15 23:00,1/12/2014 0:00,,,,,Office,15812.1691,,temporary.epw,temporary.ddy
+BUILDING ID 491,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,193294,2006,temporary.epw,temporary.ddy
+BUILDING ID 492,30/11/15 23:00,1/12/2014 0:00,,Gas,5,,College Laboratory,21538.5639,2004,temporary.epw,temporary.ddy
+BUILDING ID 493,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,35990,,temporary.epw,temporary.ddy
+BUILDING ID 494,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,75929,,temporary.epw,temporary.ddy
+BUILDING ID 495,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,63348,2007,temporary.epw,temporary.ddy
+BUILDING ID 496,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,149762,2004,temporary.epw,temporary.ddy
+BUILDING ID 497,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,120836,,temporary.epw,temporary.ddy
+BUILDING ID 498,31/12/15 23:00,1/1/2015 0:00,,,,,Office,41337,,temporary.epw,temporary.ddy
+BUILDING ID 499,31/12/10 23:00,1/1/2010 0:00,,,,,College Laboratory,153700,1990,temporary.epw,temporary.ddy
+BUILDING ID 500,31/12/15 23:00,1/1/2015 0:00,,,,,Dormitory,29775,2001,temporary.epw,temporary.ddy
+BUILDING ID 501,30/11/15 23:00,1/12/2014 0:00,,Gas,8,,Office,65656.56083,1955,temporary.epw,temporary.ddy
+BUILDING ID 502,30/04/15 23:00,1/5/2014 0:00,,,,,Office,105167,,temporary.epw,temporary.ddy
+BUILDING ID 503,30/11/15 23:00,1/12/2014 0:00,,Heat network,8,,Office,34455.2439,1907,temporary.epw,temporary.ddy
+BUILDING ID 504,31/12/15 23:00,1/1/2015 0:00,,,,,Office,53303,1981,temporary.epw,temporary.ddy
+BUILDING ID 505,30/11/15 23:00,1/12/2014 0:00,,Gas,6,,College Laboratory,16802.4479,1995,temporary.epw,temporary.ddy
+BUILDING ID 506,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,30143,1951,temporary.epw,temporary.ddy
+BUILDING ID 507,31/12/15 23:00,1/1/2015 0:00,,,,,College Laboratory,261188,,temporary.epw,temporary.ddy
