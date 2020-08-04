@@ -108,10 +108,7 @@ end
 def get_building_classification(feature)
 
   classification = feature[:primary_building_type]
-  #classification = feature[:primary_building_type]
-  #classification = feature[:seed_primary_property_type]
-  # possible mappings: Commercial, Residential, Mixed use commercial, Other
-  # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
+  #TODO: need more extension of classifications depending on the building type classified in the data source
 
   result = nil
   case classification
@@ -126,6 +123,36 @@ def get_building_classification(feature)
   when 'Dormitory'
     result = 'Commercial'
   when 'College Laboratory'
+    result = 'Commercial'
+  when 'Retail'
+    result = 'Commercial'
+  when 'Education'
+    result = 'Commercial'
+  when 'Lodging/residential'
+    result = 'Commercial'
+  when 'Entertainment/public assembly'
+    result = 'Commercial'
+  when 'Services'
+    result = 'Commercial'
+  when 'Public services'
+    result = 'Commercial'
+  when 'Utility'
+    result = 'Commercial'
+  when 'Parking'
+    result = 'Commercial'
+  when 'Healthcare'
+    result = 'Commercial'
+  when 'Food sales and service'
+    result = 'Commercial'
+  when 'Manufacturing/industrial'
+    result = 'Industrial'
+  when 'Warehouse/storage'
+    result = 'Commercial'
+  when 'Religious worship'
+    result = 'Commercial'
+  when 'Technology/science'
+    result = 'Commercial'
+  when 'Other'
     result = 'Commercial'
   else
     raise "Unknown classification #{classification}"
@@ -152,6 +179,36 @@ def get_occupancy_classification(feature, scenario_hash = nil)
     result = scenario_hash[:Dormitory]
   when 'College Laboratory'
     result = scenario_hash[:"College Laboratory"]
+  when 'Retail'
+	result = scenario_hash[:"Retail"]
+  when 'Education'
+	result = scenario_hash[:"Education"]
+  when 'Lodging/residential'
+	result = scenario_hash[:"Lodging/residential"]
+  when 'Entertainment/public assembly'
+	result = scenario_hash[:"Entertainment/public assembly"]
+  when 'Services'
+	result = scenario_hash[:"Services"]
+  when 'Public services'
+	result = scenario_hash[:"Public services"]
+  when 'Utility'
+	result = scenario_hash[:"Utility"]
+  when 'Parking'
+	result = scenario_hash[:"Parking"]
+  when 'Healthcare'
+	result = scenario_hash[:"Healthcare"]
+  when 'Food sales and service'
+	result = scenario_hash[:"Food sales and service"]
+  when 'Manufacturing/industrial'
+	result = scenario_hash[:"Manufacturing/industrial"]
+  when 'Warehouse/storage'
+	result = scenario_hash[:"Warehouse/storage"]
+  when 'Religious worship'
+	result = scenario_hash[:"Religious worship"]
+  when 'Technology/science'
+    result = scenario_hash[:"Technology/science"]
+  when 'Other'
+	result = scenario_hash[:"Other"]
   else
     raise "Unknown classification #{classification}"
   end
