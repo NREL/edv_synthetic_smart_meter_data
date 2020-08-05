@@ -168,47 +168,47 @@ def get_occupancy_classification(feature, scenario_hash = nil)
   result = nil
   case classification
   when 'Office'
-    result = scenario_hash[:Office]
+    result = scenario_hash[:"Office"]
   when 'Retail Store'
-    result = scenario_hash[:"Retail Store"]
+    result = scenario_hash[:"Retail"]
+  when 'Retail'
+	result = scenario_hash[:"Retail"]
   when 'Primary/Secondary Classroom'
-    result = scenario_hash[:"Primary/Secondary Classroom"]
+    result = scenario_hash[:"PrimarySchool"]
   when 'College Classroom'
     result = scenario_hash[:"College Classroom"]
   when 'Dormitory'
-    result = scenario_hash[:Dormitory]
+    result = scenario_hash[:"Multifamily"]
   when 'College Laboratory'
     result = scenario_hash[:"College Laboratory"]
-  when 'Retail'
-	result = scenario_hash[:"Retail"]
   when 'Education'
-	result = scenario_hash[:"Education"]
+	result = scenario_hash[:"PrimarySchool"]
   when 'Lodging/residential'
-	result = scenario_hash[:"Lodging/residential"]
+	result = scenario_hash[:"Lodging with extended amenities"]
   when 'Entertainment/public assembly'
-	result = scenario_hash[:"Entertainment/public assembly"]
+	result = scenario_hash[:"Office"]
   when 'Services'
-	result = scenario_hash[:"Services"]
+	result = scenario_hash[:"Office"]
   when 'Public services'
-	result = scenario_hash[:"Public services"]
+	result = scenario_hash[:"Office"]
   when 'Utility'
-	result = scenario_hash[:"Utility"]
+	result = scenario_hash[:"Office"]
   when 'Parking'
 	result = scenario_hash[:"Parking"]
   when 'Healthcare'
-	result = scenario_hash[:"Healthcare"]
+	result = scenario_hash[:"Hospital"]
   when 'Food sales and service'
-	result = scenario_hash[:"Food sales and service"]
+	result = scenario_hash[:"Food service"]
   when 'Manufacturing/industrial'
-	result = scenario_hash[:"Manufacturing/industrial"]
+	result = scenario_hash[:"Office"]
   when 'Warehouse/storage'
-	result = scenario_hash[:"Warehouse/storage"]
+	result = scenario_hash[:"Warehouse"]
   when 'Religious worship'
-	result = scenario_hash[:"Religious worship"]
+	result = scenario_hash[:"Office"]
   when 'Technology/science'
-    result = scenario_hash[:"Technology/science"]
+    result = scenario_hash[:"Office"]
   when 'Other'
-	result = scenario_hash[:"Other"]
+	result = scenario_hash[:"Office"]
   else
     raise "Unknown classification #{classification}"
   end
