@@ -1315,8 +1315,14 @@ else
   puts "No scenario file available.  Using the following mapping: #{scenario_hash}"
 end
 
+puts "###############################################"
+totalnumberofbuildings = CSV.read(ARGV[0]).count
+i=0
 CSV.foreach(ARGV[0], options) do |feature|
-    
+  
+  i=i+1
+  puts "Processing building #{i} from a total of #{totalnumberofbuildings} buildings"
+  
   id = feature[:building_id]
     
   state_hash = json_to_hash(state_hash_file)
@@ -1332,5 +1338,6 @@ CSV.foreach(ARGV[0], options) do |feature|
     # puts e.backtrace # DLM: uncomment for debugging
     next
   end
+  puts "###############################################"
 end
 
