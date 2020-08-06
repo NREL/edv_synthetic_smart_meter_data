@@ -1,14 +1,16 @@
 ## Installation
 
+In order to execute the workflow properly, certain environments listed below need to be installed.
+
 - Install Ruby and OpenStudio
 
   - Current working versions,
     - [Ruby 2.2.4](https://rubyinstaller.org/downloads/archives/)
     - Bundler 1.17.1 (use ```gem install bundler -v 1.17```)
     - [OpenStudio 2.9.0](https://github.com/NREL/OpenStudio/releases/tag/v2.9.0) 
-  - [Instruction](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) for current working versions.
+  - Follow the [instruction](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) for current working versions.
 
-- Clone this repository and run commands below in the highest repository directory.
+- Clone this repository and run commands below in the highest directory of the repository.
 ```
 bundle install
 ```
@@ -23,7 +25,7 @@ bundle update
 
 ## Script Overview
 
-The following figure contains an overview of the scripts and input as well as output files/paths:
+The following figure contains an overview of the workflow.
 
 
 ![alt text](ScriptOverview.PNG)
@@ -35,11 +37,18 @@ The following figure contains an overview of the scripts and input as well as ou
 
 ## Configurations Before Running the Entire Workflow
 
-- ```constants.rb``` file under ```scripts``` folder includes configurations of the EDV workflow to specify, 
-  - selection of the **data source** and where the data is read from,
-  - simulation types between **baseline only** versus **considering all energy efficiency measure scenarios**,
-  - **directories** of input and output files 
-  - application of **variability** in buildings ([occupant related variability](https://github.com/LBNL-ETA/OpenStudio-Occupant-Variability-Gem) & [other variability](https://github.com/LBNL-ETA/OpenStudio-Variability-Gem))
+There are different ways to control and configure the workflow based on included capabilities. ```constants.rb``` file under ```scripts``` folder includes configurations listed below.
+
+- selection of the data source: which data is going to be used as an input to the workflow?
+- selection of simulation type: are simulations going to consider baseline scenarios only? or will be considering pre-defined energy efficiency measures?
+- configuration of directories: where do inputs read from? and where do outputs being saved?
+- configuration of variability application: what kind of variability in building operation is going to be implemented in the simulation?
+
+
+
+## Standardized Input Data Source
+
+User can use their own data for creating synthetic smart meter data set by standardizing the format of metadata and timeseries data as described below.
 
 - Sample template files for [metadata](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/metadata_template.csv) and [timeseries data](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/timeseriesdata_template.csv) that represent the standard input format are included under ```data/raw``` folder
 
@@ -72,7 +81,7 @@ The following figure contains an overview of the scripts and input as well as ou
 
 ## Executing the Workflow: Step-by-step for Every Task
 
-- All rake commands are executed in the highest directory of this repository.
+All rake commands are executed in the highest directory of this repository.
 
 
 
@@ -83,7 +92,7 @@ The following figure contains an overview of the scripts and input as well as ou
 bundle exec rake standardize_metadata_and_timeseriesdata
 ```
 
-- This step is only necessary when [Building Data Genome Project](https://github.com/buds-lab/the-building-data-genome-project/tree/master/data/raw). data is being used.
+- This step is only necessary when [Building Data Genome Project](https://github.com/buds-lab/building-data-genome-project-2) data is being used.
 
 - This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/) and if the XML files are already including sufficient metadata information of buildings.
 
