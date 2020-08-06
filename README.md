@@ -1,4 +1,4 @@
-## Installation
+# Installation
 
 In order to execute the workflow properly, certain environments listed below need to be installed.
 
@@ -23,7 +23,7 @@ bundle update
 
 
 
-## Script Overview
+# Script Overview
 
 The following figure contains an overview of the workflow.
 
@@ -35,7 +35,7 @@ The following figure contains an overview of the workflow.
   
   
 
-## Configurations Before Running the Entire Workflow
+# Configurations Before Running the Entire Workflow
 
 There are different ways to control and configure the workflow based on included capabilities. ```constants.rb``` file under ```scripts``` folder includes configurations listed below.
 
@@ -46,7 +46,7 @@ There are different ways to control and configure the workflow based on included
 
 
 
-## Standardized Input Data Source
+# Standardized Input Data Source
 
 User can use their own data for creating synthetic smart meter data set by standardizing the format of metadata and timeseries data as described below.
 
@@ -79,7 +79,7 @@ User can use their own data for creating synthetic smart meter data set by stand
 
 
 
-## Executing the Workflow: Step-by-step for Every Task
+# Executing the Workflow: Step-by-step for Every Task
 
 All rake commands are executed in the highest directory of this repository.
 
