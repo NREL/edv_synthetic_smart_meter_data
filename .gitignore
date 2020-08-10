@@ -20,3 +20,9 @@ analysis/tests
 cory_test.rb
 inputs/building_type_scenarios.json
 SRvt/
+.vscode
+__pycache__
+runner.conf
+BldgSync
+data/raw/metadata_template.csv
+data/raw/timeseriesdata_template.csv

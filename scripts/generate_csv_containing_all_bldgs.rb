@@ -13,10 +13,10 @@ end
 puts "standard_to_be_used:#{standard_to_be_used}"
 
 epw_file = 'temporary.epw'
+ddy_file = 'temporary.ddy'
 epw_arr = []
 if !ARGV[2].nil? && File.exist?(ARGV[2])
   csv_file_with_EPWs = ARGV[2]
-
   options = {headers:true, header_converters: :symbol}
 
   CSV.foreach(csv_file_with_EPWs, options) do |row|
@@ -29,33 +29,24 @@ if !ARGV[2].nil? && File.exist?(ARGV[2])
   puts "custom epw_files found in :#{csv_file_with_EPWs}"
 end
 
-weather_file_source_dir = ""
+weather_file_source_dir = "../../edv-experiment-1-files/weather/⁩"
 if !ARGV[3].nil?  && Dir.exist?(ARGV[3])
   weather_file_source_dir = ARGV[3]
 end
 
-csv_file_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/ControlFiles/all.csv", File.dirname(__FILE__))
+csv_file_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Control_Files/all.csv", File.dirname(__FILE__))
 FileUtils.mkdir_p File.dirname(csv_file_path)
-puts "csv_file_path: #{csv_file_path}"
 
 csv = File.open(csv_file_path, 'w')
-puts "Looking for #{"#{root_dir}/*.xml"} "
-puts "found #{Dir.glob("#{root_dir}/*.xml").count} xml files in this directory. "
 Dir.glob("#{root_dir}/*.xml").each do |xml_file|
-  # puts "xml_file: #{xml_file} "
-  # puts "xml_file: #{File.basename(xml_file, ".xml")}"
-  # puts "standard: #{standard_to_be_used}"
   matches = epw_arr.select {|row| row[:uid] === File.basename(xml_file, ".xml") }
   if matches.size > 0
     epw_file = File.expand_path(matches[0][:epw], weather_file_source_dir)
     ddy_file = File.expand_path(matches[0][:ddy], weather_file_source_dir)
   end
-  # puts " epw: #{epw_file} ddy: #{ddy_file}"
   csv.puts("#{File.basename(xml_file)},#{standard_to_be_used},#{epw_file},#{ddy_file}")
   csv.flush
 end
 csv.close
 
-# puts "ARGV[0]:#{ARGV[0]} ARGV[1]:#{ARGV[1]} ARGV[2]:#{ARGV[2]} ARGV[3]:#{ARGV[3]}"
-
-# puts 'bye'
+puts 'bye'

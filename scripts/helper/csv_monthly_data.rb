@@ -44,7 +44,6 @@ class MonthlyData
     @end_time_stamp = nil
     @total_value = {}
     @total_native_value = {}
-    @annual_peak_value = []
     @monthly_values = []
     @local_header = ''
   end
@@ -103,12 +102,12 @@ class MonthlyData
     return @monthly_values.max
   end
 
-  def get_sum
+  def get_summary
     total = 0
     @total_value.each do |item, value|
       total += value.to_f
     end
-    return total
+    total
   end
 
   attr_reader :month, :year, :start_time_stamp, :end_time_stamp

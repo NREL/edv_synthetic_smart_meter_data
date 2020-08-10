@@ -2,8 +2,8 @@ require 'rexml/document'
 require 'csv'
 include REXML
 
-xml_dir = File.join(File.dirname(__FILE__), '..', 'Test_output/Bldg_Sync_Files_w_Metrics')
-csv_dir = File.join(File.dirname(__FILE__), '..', 'Test_output/results')
+xml_dir = File.join(File.dirname(__FILE__), '..', "#{NAME_OF_OUTPUT_DIR}/#{CALC_METRICS_DIR}")
+csv_dir = File.join(File.dirname(__FILE__), '..', "#{NAME_OF_OUTPUT_DIR}/results")
 
 
 if !File.exists?(xml_dir)

@@ -10,8 +10,8 @@ end
 
 indir = ARGV[0]
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync"
-FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
+# outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync_Files"
+# FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 ns = 'auc'
 puts "looking at directory: #{indir}"
@@ -51,12 +51,12 @@ def read_time_series_data(scenario_element, ns, resource_use_id = nil)
   time_series_data = scenario_element.elements["#{ns}:TimeSeriesData"]
   time_series_data.each do |time_series|
     if resource_use_id.nil? || time_series.elements["#{ns}:ResourceUseID"].attributes['IDref'] == resource_use_id
-      datetime = time_series.elements["#{ns}:StartTimeStamp"].text
+      datetime = time_series.elements["#{ns}:StartTimestamp"].text
       monthly_data.add_start_date_string(datetime)
-      #monthly_measured_data.update_year(datetime.year)
-      #monthly_measured_data.update_month(datetime.month)
-      #monthly_measured_data.update_end_time(time_series.elements["#{ns}:EndTimeStamp"].text)
-      monthly_data.update_values(time_series.elements["#{ns}:IntervalReading"].text, counter)
+      # monthly_measured_data.update_year(datetime.year)
+      # monthly_measured_data.update_month(datetime.month)
+      # monthly_measured_data.update_end_time(time_series.elements["#{ns}:EndTimestamp"].text)
+      monthly_data.update_total_values(time_series.elements["#{ns}:IntervalReading"].text, counter)
       counter += 1
     end
   end
@@ -83,7 +83,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
       if scenario_element.attributes['ID'] == 'Measured'
         monthly_measured_data = read_time_series_data(scenario_element, ns)
 
-        eui = MetricsCalc.calculate_eui_value(monthly_measured_data.get_sum, floor_area)
+        eui = MetricsCalc.calculate_eui_value(monthly_measured_data.get_summary, floor_area)
         eui_mea_count += MetricsCalc.add_eui(scenario_element, eui, ns)
       end
     end
@@ -96,7 +96,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
 
           monthly_simulated_data = read_time_series_data(scenario_element, ns, electricity_resource_use_id)
 
-          eui = MetricsCalc.calculate_eui_value(monthly_simulated_data.get_sum, floor_area)
+          eui = MetricsCalc.calculate_eui_value(monthly_simulated_data.get_summary, floor_area)
           eui_sim_count += MetricsCalc.add_eui(scenario_element, eui, ns)
 
           cvrmse = MetricsCalc.calculate_cvrmse(monthly_measured_data, monthly_simulated_data)
@@ -108,7 +108,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
       end
     end
 
-    new_xml_file_path = File.absolute_path(xml_file_path).gsub('Simulation_Files', 'Bldg_Sync_Files_w_Metrics')
+    new_xml_file_path = File.absolute_path(xml_file_path).gsub("#{SIM_FILES_DIR}", "#{CALC_METRICS_DIR}")
     # save the file as
     unless Dir.exist?(File.dirname(new_xml_file_path))
       FileUtils.mkdir_p(File.dirname(new_xml_file_path))

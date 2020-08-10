@@ -20,9 +20,16 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'College Laboratory, Dormitory.  Valid values for OpenStudio occupancy classifications'
   puts 'are maintained in the BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb'
   exit(1)
+else
+  datasource = DATASOURCE
 end
 
+puts '##############################################'
+puts "Datasource to be considered: " + datasource
+puts '##############################################'
+
 occ_classification_file = NAME_OF_INPUT_DIR + '/default_scenario.json'
+state_hash_file = NAME_OF_INPUT_DIR + "/state_hash.json"
 scenario_hash = nil
 if !ARGV[1].nil?
   if File.exist?(ARGV[1])
@@ -49,12 +56,8 @@ else
 
 end
 
-buildingsync_schema_url = ''
-# BuildingSync 1.0: https://raw.githubusercontent.com/BuildingSync/schema/v1.0/BuildingSync.xsd
-# BuildingSync 2.0-prerelease: https://raw.githubusercontent.com/BuildingSync/schema/1c73127d389b779c6b74029be72c6e9ff3187113/BuildingSync.xsd
-
 def xml_namespace()
-  'xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 https://raw.githubusercontent.com/BuildingSync/schema/1c73127d389b779c6b74029be72c6e9ff3187113/BuildingSync.xsd"'
+  'xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 https://raw.githubusercontent.com/BuildingSync/schema/v2.0/BuildingSync.xsd"'
 end
 
 def convert(value, unit_in, unit_out)
@@ -69,21 +72,34 @@ def convert(value, unit_in, unit_out)
   value
 end
 
-def get_building_id(feature)
-#  feature[:uid]
-  feature[:id]
+def get_building_id(feature, datasource)
+
+  if datasource == 'BDGP'
+    feature[:uid]
+  elsif datasource == 'SFDE'
+    feature[:id]
+  end
 end
 
-def get_floor_area(feature)
-  feature[:sqft] = feature[:bricr_gfa_ft2]
+def get_floor_area(feature, datasource)
+
+  if datasource == 'BDGP'
+    feature[:sqft]
+  elsif datasource == 'SFDE'
+    feature[:sqft] = feature[:bricr_gfa_ft2]
+  end
   raise 'Floor Area (SQFT) is empty' if feature[:sqft].nil?
 
   convert(feature[:sqft], 'ft2', 'ft2')
 end
 
-def get_year_built(feature)
+def get_year_built(feature, datasource)
   # remove "pre" and "post"
-  yrblt = feature[:yearbuilt]
+  if datasource == 'BDGP'
+    yrblt = feature[:yearbuilt]
+  elsif datasource == 'SFDE'
+    yrblt = feature[:bricr_completed_construction_status_date]
+  end
   unless yrblt.nil?
     yrblt.gsub('pre ', '')
     yrblt.gsub('Pre ', '')
@@ -106,51 +122,54 @@ def get_climate_zone(feature)
   return feature[:climate_zone]
 end
 
-def get_building_classification(feature)
-#  classification = feature[:primaryspaceusage]
-  classification = feature[:seed_primary_property_type]
+def get_building_classification(feature, datasource)
+  if datasource == 'BDGP'
+    classification = feature[:primaryspaceusage]
+  elsif datasource == 'SFDE'
+    classification = feature[:seed_primary_property_type]
+  end
   # possible mappings: Commercial, Residential, Mixed use commercial, Other
   # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
-
   result = nil
-  case classification
-  when 'Office'
+  if classification.include?'Office'
     result = 'Commercial'
-  when'Retail Store'
+  elsif classification.include?('Retail Store') || classification.include?('Mall')
     result = 'Commercial'
-  when 'Primary/Secondary Classroom'
+  elsif classification.include?'Primary/Secondary Classroom'
     result = 'Commercial'
-  when 'College Classroom'
+  elsif classification.include?'College Classroom'
     result = 'Commercial'
-  when 'Dormitory'
+  elsif classification.include?'Dormitory'
     result = 'Commercial'
-  when 'College Laboratory'
+  elsif classification.include?'College Laboratory'
     result = 'Commercial'
   else
     raise "Unknown classification #{classification}"
   end
-
   result
 end
 
-def get_occupancy_classification(feature, scenario_hash = nil)
-#  classification = feature[:primaryspaceusage]
-  classification = feature[:seed_primary_property_type]
+def get_occupancy_classification(feature, scenario_hash = nil, datasource)
+
+  if datasource == 'BDGP'
+    classification = feature[:primaryspaceusage]  
+  elsif datasource == 'SFDE'
+    classification = feature[:seed_primary_property_type]
+  end
   # from CSV: Office, Primary/Secondary Classroom, College Classroom, Dormitory, College Laboratory
   # to: see BuildingSync-gem spec/tests/model_articulation/occupancy_types_spec.rb for up to date mappings
   result = nil
-  case classification
-  when 'Office'
+  if classification.include?'Office'
     result = scenario_hash[:Office]
-  when 'Retail Store'
+  elsif classification.include?('Retail Store') || classification.include?('Mall')
     result = scenario_hash[:"Retail Store"]
-  when 'Primary/Secondary Classroom'
+  elsif classification.include?'Primary/Secondary Classroom'
     result = scenario_hash[:"Primary/Secondary Classroom"]
-  when 'College Classroom'
+  elsif classification.include?'College Classroom'
     result = scenario_hash[:"College Classroom"]
-  when 'Dormitory'
+  elsif classification.include?'Dormitory'
     result = scenario_hash[:Dormitory]
-  when 'College Laboratory'
+  elsif classification.include?'College Laboratory'
     result = scenario_hash[:"College Laboratory"]
   else
     raise "Unknown classification #{classification}"
@@ -174,16 +193,9 @@ def json_to_hash(json_file)
   end
 end
 
-def create_site(feature, scenario_hash = nil)
+def create_site(feature, scenario_hash = nil, datasource, state_hash)
   site = REXML::Element.new('auc:Site')
-  feature_id = get_building_id(feature)
-
-  raise 'Building ID is empty' if feature_id.nil?
-
-  # ownership
-  ownership = REXML::Element.new('auc:Ownership')
-  ownership.text = 'Unknown'
-  site.add_element(ownership)
+  feature_id = get_building_id(feature, datasource)
 
   if feature.key?(:zipcode) || feature.key?(:city) || feature.key?(:state)
     address = REXML::Element.new('auc:Address')
@@ -194,10 +206,28 @@ def create_site(feature, scenario_hash = nil)
       address.add_element(city)
     end
 
+    country = nil
     if feature.key?(:state) && !feature[:state].nil?
-      state = REXML::Element.new('auc:State')
-      state.text = feature[:state]
-      address.add_element(state)
+      st = feature[:state]
+      not_states = {
+          "Wales" => "Wales",
+          "England" => "England",
+          "Zurich" => "Switzerland"
+      }
+      v = not_states[st]
+      country = REXML::Element.new('auc:Country')
+      if !v.nil?
+        country.text = v
+      else
+        state_abbrev = state_hash.key(feature[:state])
+        if state_abbrev.nil? || state_abbrev == ''
+        else
+          state = REXML::Element.new('auc:State')
+          state.text = state_abbrev
+          address.add_element(state)
+          country.text = "USA"
+        end
+      end
     end
 
     # zipcode (if present)
@@ -207,6 +237,9 @@ def create_site(feature, scenario_hash = nil)
       address.add_element(postal_code)
     end
 
+    if !country.nil?
+      address.add_element(country)
+    end
     site.add_element(address)
 
   end
@@ -235,6 +268,11 @@ def create_site(feature, scenario_hash = nil)
     latitude.text = feature[:lat]
     site.add_element(latitude)
   end
+
+  # ownership
+  ownership = REXML::Element.new('auc:Ownership')
+  ownership.text = 'Unknown'
+  site.add_element(ownership)
 
   # buildings
   buildings = REXML::Element.new('auc:Buildings')
@@ -267,11 +305,11 @@ def create_site(feature, scenario_hash = nil)
   building.add_element(premises_identifiers)
 
   building_classification = REXML::Element.new('auc:BuildingClassification')
-  building_classification.text = get_building_classification(feature)
+  building_classification.text = get_building_classification(feature, datasource)
   building.add_element(building_classification)
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
-  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash)
+  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash, datasource)
   building.add_element(occupancy_classification)
 
   floors_above_grade = REXML::Element.new('auc:FloorsAboveGrade')
@@ -307,8 +345,14 @@ def create_site(feature, scenario_hash = nil)
 
   # year of construction and modified
   year_of_construction = REXML::Element.new('auc:YearOfConstruction')
-  year_of_construction.text = get_year_built(feature)
+  year_of_construction.text = get_year_built(feature, datasource)
+  if year_of_construction.text.nil? || year_of_construction.text == ''
+    def_year = 1980
+    puts "No built year provided, setting to default year: #{def_year}"
+    year_of_construction.text = def_year
+  end
   building.add_element(year_of_construction)
+
 
   subsections = REXML::Element.new('auc:Sections')
   # create single subsection
@@ -316,7 +360,7 @@ def create_site(feature, scenario_hash = nil)
   subsection.attributes['ID'] = 'Default_Section'
 
   occupancy_classification = REXML::Element.new('auc:OccupancyClassification')
-  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash)
+  occupancy_classification.text = get_occupancy_classification(feature, scenario_hash, datasource)
   subsection.add_element(occupancy_classification)
 
   if feature[:occupants]
@@ -400,9 +444,9 @@ def create_system(feature)
     when 'electric'
       new_fuel = 'Electricity'
     when 'gas'
-      new_fuel = 'Natural Gas'
+      new_fuel = 'Natural gas'
     when 'oil'
-      new_fuel = 'Fuel Oil'
+      new_fuel = 'Fuel oil'
     when 'steam'
       new_fuel = 'Dry steam' # or Flash steam
     when 'biomass'
@@ -446,9 +490,9 @@ def create_system(feature)
   hvac_systems
 end
 
-def create_measures(feature)
-  building_id = get_building_id(feature)
-  floor_area = get_floor_area(feature).to_f
+def create_measures(feature, datasource)
+  building_id = get_building_id(feature, datasource)
+  floor_area = get_floor_area(feature, datasource).to_f
 
   measures = []
   measures << {ID: 'Measure1',
@@ -845,11 +889,11 @@ def create_measures(feature)
   result
 end
 
-def create_scenarios(feature)
+def create_scenarios(feature, datasource)
 
   scenarios = REXML::Element.new('auc:Scenarios')
 
-  building_id = get_building_id(feature)
+  building_id = get_building_id(feature, datasource)
 
   scenario = nil
   unless feature[:energystarscore].nil?
@@ -892,8 +936,8 @@ def create_scenarios(feature)
 #    scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
 #    time_series_data = REXML::Element.new('auc:TimeSeriesData')
     time_series = REXML::Element.new('auc:TimeSeries')
-    start_ts = REXML::Element.new('auc:StartTimeStamp')
-    end_ts = REXML::Element.new('auc:EndTimeStamp')
+    start_ts = REXML::Element.new('auc:StartTimestamp')
+    end_ts = REXML::Element.new('auc:EndTimestamp')
 
     splitdate = feature[:datastart].split('/')
     splityr = splitdate[2].split(' ')
@@ -919,13 +963,13 @@ def create_scenarios(feature)
     time_series.add_element(start_ts)
     time_series.add_element(end_ts)
     time_series_data.add_element(time_series)
-#    scenario.add_element(time_series_data) 
+    scenario.add_element(time_series_data) 
   end
 
-  annual_total = 0
-
-  feature.headers.each do |header|
-    if header.match(/seed_2018_([1-9]|1[0-2])_elec_kwh/)
+  if datasource == 'SFDE'
+    annual_total = 0
+  
+    feature.headers.each do |header|
       time_series = REXML::Element.new('auc:TimeSeries')
 
       reading_type = REXML::Element.new('auc:RedingType')
@@ -934,8 +978,8 @@ def create_scenarios(feature)
       reading_quantity = REXML::Element.new('auc:TimeSeriesReadingQuantity')
       reading_quantity.text = 'Energy'
 
-      start_ts = REXML::Element.new('auc:StartTimeStamp')
-      end_ts = REXML::Element.new('auc:EndTimeStamp')
+      start_ts = REXML::Element.new('auc:StartTimestamp')
+      end_ts = REXML::Element.new('auc:EndTimestamp')
 
       interval_frequency = REXML::Element.new('auc:IntervalFrequency')
       interval_frequency.text = 'Month'
@@ -944,10 +988,11 @@ def create_scenarios(feature)
       interval_reading.text = feature[header]
       m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_elec_kwh/).join('')
       annual_total += interval_reading.text.to_f
-      d = Date.new(2018, m.to_i, -1).day
-#      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
-      start_ts.text = '2018' + '-' + '%02d'%m + '-' + '1' + ' 00:00:00'
-      end_ts.text = '2018' + '-' + '%02d'%m + '-' + d.to_s + ' 23:00:00+00:00'
+      if !m.empty?
+        d = Date.new(2018, m.to_i, -1).day 
+        start_ts.text = '2018' + '-' + '%02d'%m + '-' + '01' + 'T00:00:00'
+        end_ts.text = '2018' + '-' + '%02d'%m + '-' + d.to_s + 'T23:00:00'
+      end
 
       time_series.add_element(reading_type)
       time_series.add_element(reading_quantity)
@@ -958,8 +1003,6 @@ def create_scenarios(feature)
       time_series_data.add_element(time_series)
     end
   end
-
-  puts "annual_#{feature[:id]}: #{annual_total}"
   scenario.add_element(time_series_data)
 
   # add resource type
@@ -981,86 +1024,6 @@ def create_scenarios(feature)
   scenario.add_element(resource_uses)
 
   scenarios.add_element(scenario) unless scenario.nil?
-=begin
-  # add electricity total
-  all_elec_totals = REXML::Element.new('auc:AllResourceTotals')
-
-  feature.headers.each do |header|
-    if header.match(/seed_2018_([1-9]|1[0-2])_elec_kwh/)
-      all_elec_total = REXML::Element.new('auc:AllResourceTotal')
-      # add EndUse
-      # add ReourceBoundary
-      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_elec_kwh/).join('')
-      site_energy_use = REXML::Element.new('auc:SiteEnergyUse')
-      site_energy_use.text = feature[header]
-      # add EnergyCost
-      # add UDFs
-      all_elec_total.add_element(site_energy_use)
-      all_elec_totals.add_element(all_elec_total)
-    end
-  end
-  
-  scenario.add_element(all_elec_totals)
-
-  # add gas time series data and totals
-  scenario_gas = REXML::Element.new('auc:Scenario')
-  time_series_data_gas = REXML::Element.new('auc:TimeSeriesData')
-
-  # add resource type
-  resource_uses_gas = REXML::Element.new('auc:ResourceUses')
-
-  # electricity time series data
-  resource_use_gas = REXML::Element.new('auc:ResourceUse')
-  energy_resource_gas = REXML::Element.new('auc:EnergyResource')
-  energy_resource_gas.text = 'Gas'
-  resource_unit_therm = REXML::Element.new('auc:ResourceUnits')
-  resource_unit_therm.text = 'therm'
-  resource_use_gas.add_element(energy_resource_gas)
-  resource_use_gas.add_element(resource_unit_therm)
-  resource_uses_gas.add_element(resource_use_gas)
-  scenario_gas.add_element(resource_uses_gas)
-
-  feature.headers.each do |header|
-    if header.match(/seed_2018_([1-9]|1[0-2])_gas_therm/)
-      time_series = REXML::Element.new('auc:TimeSeries')
-      start_ts = REXML::Element.new('auc:StartTimeStamp')
-      end_ts = REXML::Element.new('auc:EndTimeStamp')
-
-      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_gas_therm/).join('')
-      d = Date.new(2018, m.to_i, -1).day
-#      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
-      start_ts.text = '2018' + '-' + m + '-' + '1' + ' 00:00:00'
-      end_ts.text = '2018' + '-' + m + '-' + d.to_s + ' 23:59:59'
-
-      time_series.add_element(start_ts)
-      time_series.add_element(end_ts)
-      time_series_data_gas.add_element(time_series)
-    end
-  end
-
-  scenario_gas.add_element(time_series_data_gas)
-
-  # add gas total
-  all_gas_totals = REXML::Element.new('auc:AllResourceTotals')
-
-  feature.headers.each do |header|
-    if header.match(/seed_2018_([1-9]|1[0-2])_gas_therm/)
-      all_gas_total = REXML::Element.new('auc:AllResourceTotal')
-      # add EndUse
-      # add ReourceBoundary
-      m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_gas_therm/).join('')
-      site_energy_use = REXML::Element.new('auc:SiteEnergyUse')
-      site_energy_use.text = feature[header]
-      # add EnergyCost
-      # add UDFs
-      all_gas_total.add_element(site_energy_use)
-      all_gas_totals.add_element(all_gas_total)
-    end
-  end
-  
-  scenario_gas.add_element(all_gas_totals)
-  scenarios.add_element(scenario_gas)
-=end
 
   # add baseline scenario
   text = "<auc:Scenario ID=\"Baseline\" #{xml_namespace}>
@@ -1152,10 +1115,10 @@ def create_scenarios(feature)
 end
 
 
-def convert_building(feature, scenario_hash = nil)
+def convert_building(feature, scenario_hash = nil, datasource, state_hash)
 
-  building_id = get_building_id(feature)
-  floor_area = get_floor_area(feature)
+  building_id = get_building_id(feature, datasource)
+  floor_area = get_floor_area(feature, datasource)
 
   source = "<auc:BuildingSync #{xml_namespace}>
   	<auc:Facilities>
@@ -1177,7 +1140,7 @@ def convert_building(feature, scenario_hash = nil)
 
   doc = REXML::Document.new(source)
   sites = doc.elements['*/*/*/auc:Sites']
-  site = create_site(feature, scenario_hash)
+  site = create_site(feature, scenario_hash, datasource, state_hash)
   sites.add_element(site)
 
   # add hvac system if heatingtype is present
@@ -1188,14 +1151,14 @@ def convert_building(feature, scenario_hash = nil)
   end
 
   # add measures
-  measures = create_measures(feature)
+  measures = create_measures(feature, datasource)
   unless measures.nil?
     old_measures = doc.elements['*/*/*/auc:Measures']
     old_measures.parent.replace_child(old_measures, measures)
   end
 
   # add scenario (energystarscore, datastart, dataend?)
-  scenarios = create_scenarios(feature)
+  scenarios = create_scenarios(feature, datasource)
   unless scenarios.nil?
     report = doc.elements['*/*/*/auc:Reports/auc:Report']
     report.add_element(scenarios)
@@ -1206,7 +1169,7 @@ def convert_building(feature, scenario_hash = nil)
 end
 
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/BldgSync_SF_2018"
+outdir = "./#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file
@@ -1232,10 +1195,18 @@ else
 end
 
 CSV.foreach(ARGV[0], options) do |feature|
-#  id = feature[:uid]  
-  id = feature[:id]
+  
+  if datasource == 'BDGP'
+    id = feature[:uid]
+  elsif datasource == 'SFDE'
+    id = feature[:id]
+  end
+  raise 'Building ID is empty' if id.nil?
+
+  state_hash = json_to_hash(state_hash_file)
+  
   begin
-    doc = convert_building(feature, scenario_hash)
+    doc = convert_building(feature, scenario_hash, datasource, state_hash)
     filename = File.join(outdir, "#{id}.xml")
     File.open(filename, 'w') do |file|
       doc.write(file)
@@ -1246,13 +1217,11 @@ CSV.foreach(ARGV[0], options) do |feature|
     next
   end
 
-  floor_area = get_floor_area(feature)
-  building_type = get_occupancy_classification(feature, scenario_hash)
-  year_built = get_year_built(feature) # default
+  floor_area = get_floor_area(feature, datasource)
+  building_type = get_occupancy_classification(feature, scenario_hash, datasource)
+  year_built = get_year_built(feature, datasource) # default
   climate_zone = get_climate_zone(feature) # default
-  if !(File.basename(ARGV[0]) =~ /monthlyenergy_bricr_filtered*/).nil?
-    climate_zone = '3C'
-  end
+  climate_zone = '3C' if datasource == 'SFDE'
   building_name = "Building #{id}"
 
   puts "climate zone is not given for building with name #{building_name}" if climate_zone.nil?
