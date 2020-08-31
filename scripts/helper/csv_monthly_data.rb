@@ -37,16 +37,19 @@
 
 class MonthlyData
 
+  @month = nil
+  @year = nil
+  @start_time_stamp = nil
+  @end_time_stamp = nil
+  @@total_value = {}
+  @@total_native_value = {}
+  @annual_peak_value = []
+  @monthly_values = []
+  @local_header = ''
+  @@fuel_type = []
+
   def initialize
-    @month = nil
-    @year = nil
-    @start_time_stamp = nil
-    @end_time_stamp = nil
-    @total_value = {}
-    @total_native_value = {}
-    @annual_peak_value = []
-    @monthly_values = []
-    @local_header = ''
+    # Place holder
   end
 
   def update_month(month_value)
@@ -74,12 +77,12 @@ class MonthlyData
 
   def update_total_values(value, counter)
     csv_value = value.to_f
-    if @total_value[counter].nil? || @total_native_value[counter].nil?
-      @total_native_value[counter] = csv_value
-      @total_value[counter] = csv_value * 3.41214
+    if @@total_value[counter].nil? || @@total_native_value[counter].nil?
+      @@total_native_value[counter] = csv_value
+      @@total_value[counter] = csv_value * 3.41214
     else
-      @total_native_value[counter] += csv_value
-      @total_value[counter] += csv_value * 3.41214
+      @@total_native_value[counter] += csv_value
+      @@total_value[counter] += csv_value * 3.41214
     end
   end
 
@@ -92,11 +95,11 @@ class MonthlyData
   end
 
   def get_total_values
-    return @total_value
+    return @@total_value
   end
 
   def get_native_values
-    return @total_native_value
+    return @@total_native_value
   end
 
   def get_monthly_peak_values
@@ -109,6 +112,14 @@ class MonthlyData
       total += value.to_f
     end
     return total
+  end
+
+  def initialize_native_value
+    @@total_native_value = {}
+  end
+
+  def initialize_total_value
+    @@total_value = {}
   end
 
   attr_reader :month, :year, :start_time_stamp, :end_time_stamp
