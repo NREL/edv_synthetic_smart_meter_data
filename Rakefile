@@ -8,8 +8,8 @@ task :standardize_metadata_and_timeseriesdata do
 
 
   #TODO JK: need to change file location to bdgp repo once bdgp2 data intake mod is implemented.
-  raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata.csv" #metadata file containing private info
-  raw_timeseries_file = "../building-data-genome-project-2/data/meters/raw/electricity.csv" #timeseries file in the same location for easy access
+  raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata_2.csv" #metadata file containing private info
+  raw_timeseries_file = "../building-data-genome-project-2/data/meters/raw/electricity_2.csv" #timeseries file in the same location for easy access
   #raw_metadata_file = "../the-building-data-genome-project/data/raw/meta_open.csv" #metadata in public version
   #raw_timeseries_file = "../the-building-data-genome-project/data/raw/temp_open_utc.csv"
   
@@ -33,7 +33,7 @@ task :generate_xmls do
 
   default_metadata_file = "#{RAW_DATA_DIR}/#{DEFAULT_METADATA_FILE}"
   processed_metadata_file = "#{PROCESSED_DATA_DIR}/#{PROCESSED_METADATA_FILE}"
-  puts "#{default_metadata_file}, #{processed_metadata_file}"
+
   if ARGV[1]
 
     # ARGV[1] should be a path to a metadata CSV file

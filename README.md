@@ -66,7 +66,7 @@ User can use their own data for creating synthetic smart meter data set by stand
     - ```latitude```
     - ```number_of_stories```
     - ```number_of_occupants```
-    - ```fuel_type_heating```
+    - ```fuel_type```
     - ```energystar_score```
     - ```measurement_start_date```
     - ```measurement_end_date```

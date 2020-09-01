@@ -63,7 +63,6 @@ class StandardizedInput
 	  puts "Adding values of standard labels into metadata.csv file"
     updated_features.each do |row|
       building_id = row[:building_id]
-      fuel_type = ""
       primary_building_type = row[:primaryspaceusage]
       floor_area_sqft = row[:sqft]
       vintage = row[:yearbuilt]
@@ -77,12 +76,12 @@ class StandardizedInput
       latitude = row[:lat]
       number_of_stories = row[:numberoffloors]
       number_of_occupants = row[:occupants]
-      fuel_type_heating = row[:heatingtype]
+      fuel_type = row[:heatingtype]
       energystar_score = row[:energystarscore]
       measurement_start_date = row[:datastart]
       measurement_end_date = row[:dataend]
 		
-	    metadata_file.puts "#{building_id},#{building_id}.xml,#{fuel_type},#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type_heating},#{energystar_score},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
+	    metadata_file.puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type},#{energystar_score},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
 
     end
 	  puts "###############################################"
