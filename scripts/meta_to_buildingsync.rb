@@ -52,7 +52,7 @@ else
 end
 
 def xml_namespace()
-  'xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 https://raw.githubusercontent.com/BuildingSync/schema/v2.0/BuildingSync.xsd"'
+  'xmlns:auc="http://buildingsync.net/schemas/bedes-auc/2019" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://buildingsync.net/schemas/bedes-auc/2019 https://raw.githubusercontent.com/BuildingSync/schema/v2.0/BuildingSync.xsd" version="2.0.0"'
 end
 
 def convert(value, unit_in, unit_out)
@@ -392,7 +392,6 @@ def create_site(feature, scenario_hash = nil, state_hash)
   end
   building.add_element(year_of_construction)
 
-
   subsections = REXML::Element.new('auc:Sections')
   # create single subsection
   subsection = REXML::Element.new('auc:Section')
@@ -470,13 +469,13 @@ end
 
 def create_system(feature)
   hvac_systems = nil
-
-  unless feature[:fuel_type_heating].nil?
+  
+  unless feature[:fuel_type].nil?
 
     # add heating system with primary fuel UNLESS value = District Heating, then add a Plant
     # Biomass, District Heating, Electric, Electricity, Gas, Heat Network, and Steam, Oil
     new_fuel = nil
-    fuel = feature[:fuel_type_heating].downcase
+    fuel = feature[:fuel_type].downcase
     case fuel
     when 'electricity'
       new_fuel = 'Electricity'
@@ -931,11 +930,9 @@ end
 def create_scenarios(feature)
 
   scenarios = REXML::Element.new('auc:Scenarios')
-
-  building_id = get_building_id(feature)
-
   scenario = nil
-  unless feature[:energystar_score].nil?
+
+  if !feature[:energystar_score].nil?
     scenario = REXML::Element.new('auc:Scenario')
     scenario_type = REXML::Element.new('auc:ScenarioType')
     current_building = REXML::Element.new('auc:CurrentBuilding')
@@ -946,31 +943,7 @@ def create_scenarios(feature)
     scenario.add_element(scenario_type)
   end
 
-  scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
-  if !(File.basename(ARGV[0]) =~ /monthlyenergy_bricr_filtered*/).nil?
-    scenario.add_attribute('ID', 'Measured')
-    measured_scenario = REXML::Element.new('auc:ScenarioName')
-    measured_scenario.text = 'Measured'
-    scenario.add_element(measured_scenario)
-
-    scenario_type = REXML::Element.new("auc:ScenarioType")
-    scenario.add_element(scenario_type)
-    package_of_measures = REXML::Element.new("auc:PackageOfMeasures")
-    scenario_type.add_element(package_of_measures)
-    reference_case = REXML::Element.new("auc:ReferenceCase")
-    reference_case.add_attribute('IDref', 'Baseline')
-    package_of_measures.add_element(reference_case)
-    calculation_method = REXML::Element.new("auc:CalculationMethod")
-    package_of_measures.add_element(calculation_method)
-    measured = REXML::Element.new("auc:Measured")
-    measured.add_element(other)
-  end
-
-  # add time series data
-  time_series_data = REXML::Element.new('auc:TimeSeriesData')
-
   if !feature[:measurement_end_date].nil? && !feature[:measurement_start_date].nil?
-  
     scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
     time_series_data = REXML::Element.new('auc:TimeSeriesData')
 
@@ -1002,7 +975,7 @@ def create_scenarios(feature)
     time_series.add_element(start_ts)
     time_series.add_element(end_ts)
     time_series_data.add_element(time_series)
-    scenario.add_element(time_series_data) 
+    scenario.add_element(time_series_data)
   end
 
   # annual_total = 0
@@ -1063,9 +1036,9 @@ def create_scenarios(feature)
   # resource_uses.add_element(resource_use)
   # scenario.add_element(resource_uses)
 
-  # scenarios.add_element(scenario) unless scenario.nil?
-  scenarios.add_element(scenario) if scenario.nil?
-# =begin
+  scenario = REXML::Element.new('auc:Scenario') if scenario.nil?
+  scenarios.add_element(scenario)
+
   # # add electricity total
   # all_elec_totals = REXML::Element.new('auc:AllResourceTotals')
 
@@ -1112,7 +1085,7 @@ def create_scenarios(feature)
 
       # m = header.to_s.scan(/seed_2018_([1-9]|1[0-2])_gas_therm/).join('')
       # d = Date.new(2018, m.to_i, -1).day
-# #      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
+#      puts "#{Date::MONTHNAMES[m.to_i]}: #{Date.new(2018, m.to_i, -1).day}"
       # start_ts.text = '2018' + '-' + m + '-' + '1' + ' 00:00:00'
       # end_ts.text = '2018' + '-' + m + '-' + d.to_s + ' 23:59:59'
 
@@ -1144,7 +1117,6 @@ def create_scenarios(feature)
   
   # scenario_gas.add_element(all_gas_totals)
   # scenarios.add_element(scenario_gas)
-# =end
 
   # add baseline scenario
   text = "<auc:Scenario ID=\"Baseline\" #{xml_namespace}>
@@ -1158,6 +1130,8 @@ def create_scenarios(feature)
   element = REXML::Document.new(text)
   element = element.root.delete_namespace('auc').delete_namespace('xsi').delete_attribute('xsi:schemaLocation')
   scenarios.add_element(element)
+
+  building_id = get_building_id(feature)
 
   # add single measures
   measures = $Measures
@@ -1240,8 +1214,9 @@ def convert_building(feature, scenario_hash = nil, state_hash)
 
   building_id = get_building_id(feature)
   floor_area = get_floor_area(feature)
-
-  source = "<auc:BuildingSync #{xml_namespace}>
+  
+  source = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
+  <auc:BuildingSync #{xml_namespace}>
   	<auc:Facilities>
   		<auc:Facility>
     		<auc:Sites>
@@ -1297,8 +1272,7 @@ FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 #summary_file = File.open(outdir + '/meta_summary.csv', 'w')
 #summary_file.puts 'building_id,xml_filename,OccupancyClassification,BuildingName,FloorArea(ft2),YearBuilt,ClimateZone'
 
-options = {headers: true,
-           header_converters: :symbol}
+options = {headers: true, header_converters: :symbol}
 
 if !occ_classification_file.nil?
   scenario_hash = json_to_hash(occ_classification_file)
@@ -1316,25 +1290,24 @@ else
 end
 
 puts "###############################################"
-totalnumberofbuildings = CSV.read(ARGV[0]).count
-i=0
-CSV.foreach(ARGV[0], options) do |feature|
+total_number_of_buildings = CSV.read(ARGV[0], :headers => true).count
+
+CSV.foreach(ARGV[0], options).with_index do |feature, i|
+
+  puts "Processing building #{i.next} from a total of #{total_number_of_buildings} buildings"
   
-  i=i+1
-  puts "Processing building #{i} from a total of #{totalnumberofbuildings} buildings"
-  
-  id = feature[:building_id]
-    
+  building_id = feature[:building_id]
+
   state_hash = json_to_hash(state_hash_file)
-  
+
   begin
     doc = convert_building(feature, scenario_hash, state_hash)
-    filename = File.join(outdir, "#{id}.xml")
+    filename = File.join(outdir, "#{building_id}.xml")
     File.open(filename, 'w') do |file|
       doc.write(file)
     end
   rescue => e
-    puts "Building #{id} not converted, #{e.message}"
+    puts "Building #{building_id} not converted, #{e.message}"
     # puts e.backtrace # DLM: uncomment for debugging
     next
   end

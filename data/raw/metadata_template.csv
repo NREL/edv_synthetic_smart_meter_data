@@ -1,4 +1,4 @@
-building_id,measurement_end_date,measurement_start_date,energystar_score,fuel_type_heating,number_of_stories,number_of_occupants,primary_building_type,floor_area_sqft,vintage,weather_file_name_epw,weather_file_name_ddy
+building_id,measurement_end_date,measurement_start_date,energystar_score,fuel_type,number_of_stories,number_of_occupants,primary_building_type,floor_area_sqft,vintage,weather_file_name_epw,weather_file_name_ddy
 BUILDING ID 1,31/12/12 23:00,1/1/2012 0:00,,,,,Primary/Secondary Classroom,105530,,temporary.epw,temporary.ddy
 BUILDING ID 2,31/12/15 23:00,1/1/2015 0:00,,,,,College Classroom,56969,1967,temporary.epw,temporary.ddy
 BUILDING ID 3,31/12/12 23:00,1/1/2012 0:00,,,,,Office,294651,,temporary.epw,temporary.ddy
