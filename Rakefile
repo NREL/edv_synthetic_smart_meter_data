@@ -65,6 +65,7 @@ task :add_measured_data do
   elsif RUN_TYPE == 'default' && File.exist?(default_timeseries_file) && Dir.exist?(default_path_to_xmls)
     ruby "scripts/add_measured_data.rb #{default_timeseries_file} #{default_path_to_xmls}"
   elsif RUN_TYPE == 'processed' && File.exist?(processed_timeseries_file) && Dir.exist?(default_path_to_xmls)
+    puts "path: #{default_path_to_xmls}, #{processed_timeseries_file}"
     ruby "scripts/add_measured_data.rb #{processed_timeseries_file} #{default_path_to_xmls}"
   else
     puts 'Error - No CSV files specified'
