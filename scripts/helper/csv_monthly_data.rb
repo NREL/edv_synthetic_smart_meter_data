@@ -41,6 +41,8 @@ class MonthlyData
   @year = nil
   @start_time_stamp = nil
   @end_time_stamp = nil
+  @native_total = nil
+  @total = nil
   @@total_value = {}
   @@total_native_value = {}
   @annual_peak_value = []
@@ -95,11 +97,11 @@ class MonthlyData
   end
 
   def get_total_values
-    return @@total_value
+    @total = @@total_value
   end
 
   def get_native_values
-    return @@total_native_value
+    @native_total = @@total_native_value
   end
 
   def get_monthly_peak_values
@@ -122,5 +124,5 @@ class MonthlyData
     @@total_value = {}
   end
 
-  attr_reader :month, :year, :start_time_stamp, :end_time_stamp
+  attr_reader :month, :year, :start_time_stamp, :end_time_stamp, :total, :native_total
 end
