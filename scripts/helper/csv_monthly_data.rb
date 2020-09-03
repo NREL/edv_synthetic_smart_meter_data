@@ -37,21 +37,27 @@
 
 class MonthlyData
 
+  @day = nil
   @month = nil
   @year = nil
   @start_time_stamp = nil
   @end_time_stamp = nil
   @native_total = nil
   @total = nil
-  @@total_value = {}
-  @@total_native_value = {}
-  @annual_peak_value = []
+  @hourly_values = {}
   @monthly_values = []
   @local_header = ''
-  @@fuel_type = []
+  @@csv_hourly = {}
+  @@total_value = {}
+  @@total_native_value = {}
+  @@start_time_hourly = {}
 
   def initialize
     # Place holder
+  end
+
+  def update_day(day_value)
+    @day = day_value
   end
 
   def update_month(month_value)
@@ -69,12 +75,24 @@ class MonthlyData
     @month = split[1]
   end
 
+  def update_start_time_hourly(start_time)
+    @@start_time_hourly = [] if @@start_time_hourly.nil?
+    @@start_time_hourly[@year] = [] if @@start_time_hourly[@year].nil?
+    @@start_time_hourly[@year][@month] = [] if @@start_time_hourly[@year][@month].nil?
+    @@start_time_hourly[@year][@month][@day] = [] if @@start_time_hourly[@year][@month][@day].nil?
+    @@start_time_hourly[@year][@month][@day].push (start_time.gsub('/', '-') + ":00")
+  end
+
+  def get_hourly_start_timestamp
+    @start_time_stamp = @@start_time_hourly[@year][@month]
+  end
+
   def update_start_time(start_time)
-    @start_time_stamp = start_time
+    @start_time_stamp = start_time.gsub('/', '-') + ":00"
   end
 
   def update_end_time(end_time)
-    @end_time_stamp = end_time
+    @end_time_stamp = end_time.gsub('/', '-') + ":00"
   end
 
   def update_total_values(value, counter)
@@ -96,6 +114,19 @@ class MonthlyData
     @monthly_values.push monthly_collection[hour][header].to_f
   end
 
+  def update_hourly_values(value, counter)
+    csv_hourly_value = value.to_f
+    @@csv_hourly = [] if @@csv_hourly.nil?
+    @@csv_hourly[@year] = [] if @@csv_hourly[@year].nil?
+    @@csv_hourly[@year][@month] = [] if @@csv_hourly[@year][@month].nil?
+    @@csv_hourly[@year][@month][counter] = [] if @@csv_hourly[@year][@month][counter].nil?
+    @@csv_hourly[@year][@month][counter].push csv_hourly_value
+  end
+
+  def get_hourly_values
+    @hourly_values = @@csv_hourly[@year][@month]
+  end
+
   def get_total_values
     @total = @@total_value
   end
@@ -108,14 +139,14 @@ class MonthlyData
     return @monthly_values.max
   end
 
-  def get_sum
+  def get_summary
     total = 0
     @total_value.each do |item, value|
       total += value.to_f
     end
-    return total
+    total
   end
-
+  
   def initialize_native_value
     @@total_native_value = {}
   end
@@ -124,5 +155,5 @@ class MonthlyData
     @@total_value = {}
   end
 
-  attr_reader :month, :year, :start_time_stamp, :end_time_stamp, :total, :native_total
+  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :total, :native_total, :hourly_values
 end

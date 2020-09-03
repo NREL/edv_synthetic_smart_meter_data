@@ -83,7 +83,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
       if scenario_element.attributes['ID'] == 'Measured'
         monthly_measured_data = read_time_series_data(scenario_element, ns)
 
-        eui = MetricsCalc.calculate_eui_value(monthly_measured_data.get_sum, floor_area)
+        eui = MetricsCalc.calculate_eui_value(monthly_measured_data.get_summary, floor_area)
         eui_mea_count += MetricsCalc.add_eui(scenario_element, eui, ns)
       end
     end
@@ -96,7 +96,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
 
           monthly_simulated_data = read_time_series_data(scenario_element, ns, electricity_resource_use_id)
 
-          eui = MetricsCalc.calculate_eui_value(monthly_simulated_data.get_sum, floor_area)
+          eui = MetricsCalc.calculate_eui_value(monthly_simulated_data.get_summary, floor_area)
           eui_sim_count += MetricsCalc.add_eui(scenario_element, eui, ns)
 
           cvrmse = MetricsCalc.calculate_cvrmse(monthly_measured_data, monthly_simulated_data)
