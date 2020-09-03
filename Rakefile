@@ -8,8 +8,8 @@ task :standardize_metadata_and_timeseriesdata do
 
 
   #TODO JK: need to change file location to bdgp repo once bdgp2 data intake mod is implemented.
-  raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata_2.csv" #metadata file containing private info
-  raw_timeseries_file = "../building-data-genome-project-2/data/meters/raw/electricity_2.csv" #timeseries file in the same location for easy access
+  raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata.csv" #metadata file containing private info
+  raw_timeseries_file = "../building-data-genome-project-2/data/meters/raw/electricity.csv" #timeseries file in the same location for easy access
   #raw_metadata_file = "../the-building-data-genome-project/data/raw/meta_open.csv" #metadata in public version
   #raw_timeseries_file = "../the-building-data-genome-project/data/raw/temp_open_utc.csv"
   
@@ -65,7 +65,6 @@ task :add_measured_data do
   elsif RUN_TYPE == 'default' && File.exist?(default_timeseries_file) && Dir.exist?(default_path_to_xmls)
     ruby "scripts/add_measured_data.rb #{default_timeseries_file} #{default_path_to_xmls}"
   elsif RUN_TYPE == 'processed' && File.exist?(processed_timeseries_file) && Dir.exist?(default_path_to_xmls)
-    puts "path: #{default_path_to_xmls}, #{processed_timeseries_file}"
     ruby "scripts/add_measured_data.rb #{processed_timeseries_file} #{default_path_to_xmls}"
   else
     puts 'Error - No CSV files specified'
