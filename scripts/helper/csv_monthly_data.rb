@@ -42,8 +42,8 @@ class MonthlyData
   @year = nil
   @start_time_stamp = nil
   @end_time_stamp = nil
-  @native_total = nil
-  @total = nil
+  @annual_native_total = nil
+  @annual_total = nil
   @hourly_values = {}
   @monthly_values = []
   @local_header = ''
@@ -95,6 +95,17 @@ class MonthlyData
     @end_time_stamp = end_time.gsub('/', '-') + ":00"
   end
 
+  def update_monthly_total(value, counter)
+    csv_value = value.to_f
+    if @@total_value[counter].nil? || @@total_native_value[counter].nil?
+      @@total_native_value[counter] = csv_value
+      @@total_value[counter] = csv_value * 3.41214
+    else
+      @@total_native_value[counter] += csv_value
+      @@total_value[counter] += csv_value * 3.41214
+    end
+  end
+
   def update_total_values(value, counter)
     csv_value = value.to_f
     if @@total_value[counter].nil? || @@total_native_value[counter].nil?
@@ -127,12 +138,22 @@ class MonthlyData
     @hourly_values = @@csv_hourly[@year][@month]
   end
 
-  def get_total_values
-    @total = @@total_value
+  def get_annual_total
+    @annual_total = @@total_value
   end
 
-  def get_native_values
-    @native_total = @@total_native_value
+  def get_annual_native_total
+    @annual_native_total = @@total_native_value
+  end
+  
+  def get_monthly_native_total
+    @monthly_native_total = @@total_native_value
+    # puts "#{@month} monthly native total: #{@monthly_native_total}"
+  end
+
+  def get_monthly_total
+    @monthly_total = @@total_value
+    # puts "#{@month} monthly total: #{@@total_value}"
   end
 
   def get_monthly_peak_values
@@ -155,5 +176,5 @@ class MonthlyData
     @@total_value = {}
   end
 
-  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :total, :native_total, :hourly_values
+  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :annual_total, :annual_native_total, :hourly_values, :monthly_native_total, :monthly_total
 end

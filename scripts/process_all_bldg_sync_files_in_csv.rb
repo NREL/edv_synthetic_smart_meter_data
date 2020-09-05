@@ -60,7 +60,6 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
     ddy_file = 'temporary.ddy'
     ddy_file_path = File.expand_path("../scripts/#{ddy_file}/", File.dirname(__FILE__))
   end
-  puts "xml? #{xml_file}"
 
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, BASELINE_ONLY, OCC_VAR, NON_ROUTINE_VAR)
 
