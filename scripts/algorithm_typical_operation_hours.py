@@ -6,7 +6,7 @@ import datetime
 ################################################################
 # inputs
 ################################################################
-timeseries_load = pd.read_csv("./Processed_StartAndStopTime.csv", index_col = ['Date','BldgType','DayOfWeek','BldgID'])
+timeseries_load = pd.read_csv("./sample_input_file.csv") #TODO: consider of not creating csv and just directly read XML via python
 time_interval = 1 #TODO: change it to detect based on input file
 list_hist_start_final = []
 list_hist_stop_final = []
