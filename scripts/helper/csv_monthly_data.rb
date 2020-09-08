@@ -51,6 +51,8 @@ class MonthlyData
   @@total_value = {}
   @@total_native_value = {}
   @@start_time_hourly = {}
+  @@peak_values = {}
+  @peak_value_array = nil
 
   def initialize
     # Place holder
@@ -134,6 +136,13 @@ class MonthlyData
     @@csv_hourly[@year][@month][counter].push csv_hourly_value
   end
 
+  def update_peak_values(value, counter)
+    @@peak_values = [] if @@peak_values.nil?
+    @@peak_values[@year] = [] if @@peak_values[@year].nil?
+    @@peak_values[@year][counter] = [] if @@peak_values[@year][counter].nil?
+    @@peak_values[@year][counter].push value
+  end
+
   def get_hourly_values
     @hourly_values = @@csv_hourly[@year][@month]
   end
@@ -146,8 +155,8 @@ class MonthlyData
     @btu_total = @@total_value
   end
 
-  def get_monthly_peak_values
-    return @monthly_values.max
+  def get_peak_value_array
+    @peak_value_array = @@peak_values[@year]
   end
 
   def get_summary
@@ -166,5 +175,5 @@ class MonthlyData
     @@total_value = {}
   end
 
-  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :btu_total, :kwh_total
+  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :btu_total, :kwh_total, :peak_value_array
 end
