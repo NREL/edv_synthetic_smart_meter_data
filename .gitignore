@@ -26,3 +26,5 @@ runner.conf
 workflow_results
 /spec/tests/meta_open_epw_ddy_standardized.csv
 /data/processed
+/JupyterNotebook/*csv
+/JupyterNotebook/images
