@@ -48,33 +48,38 @@ class MeasuredDataCalculation
     end
     ts_elements = []
 
+    def add_interval_reading(name_space, interval, interval_reading_value, start_time, end_time)
+      ns = name_space
+      time_series = REXML::Element.new("#{ns}:TimeSeries")
+      reading_type = REXML::Element.new("#{ns}:ReadingType")
+      reading_type.text = 'Total'
+      time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
+      time_series_reading_quantity.text = 'Energy'
+      start_time_stamp = REXML::Element.new("#{ns}:StartTimestamp")
+      start_time_stamp.text = start_time
+      end_time_stamp = REXML::Element.new("#{ns}:EndTimestamp")
+      end_time_stamp.text = end_time
+      interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
+      interval_frequency.text = interval
+      interval_reading = REXML::Element.new("#{ns}:IntervalReading")
+      interval_reading.text = interval_reading_value
+      time_series.add_element(reading_type)
+      time_series.add_element(time_series_reading_quantity)
+      time_series.add_element(start_time_stamp)
+      time_series.add_element(end_time_stamp)
+      time_series.add_element(interval_frequency)
+      time_series.add_element(interval_reading)
+      time_series
+    end
+
     years.each do |year|
       file_native_value = []
       file_total_value = []
       csv_month_class_collection.each do |single_csv_class|
         if single_csv_class.year == year
           if interval.downcase == 'month'
-            time_series = REXML::Element.new("#{ns}:TimeSeries")
-            reading_type = REXML::Element.new("#{ns}:ReadingType")
-            reading_type.text = 'Total'
-            time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
-            time_series_reading_quantity.text = 'Energy'
-            start_time_stamp = REXML::Element.new("#{ns}:StartTimestamp")
-            start_time_stamp.text = single_csv_class.start_time_stamp
-            end_time_stamp = REXML::Element.new("#{ns}:EndTimestamp")
-            end_time_stamp.text = single_csv_class.end_time_stamp
-            interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
-            interval_frequency.text = interval
-            interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-            interval_reading.text = single_csv_class.annual_native_total[counter]
-            time_series.add_element(interval_reading)
-            time_series.add_element(reading_type)
-            time_series.add_element(time_series_reading_quantity)
-            time_series.add_element(start_time_stamp)
-            time_series.add_element(end_time_stamp)
-            time_series.add_element(interval_frequency)
-            time_series.add_element(interval_reading)
-            ts_elements.push(time_series)
+            ts_elements.push(add_interval_reading(ns, interval, single_csv_class.kwh_total[counter], 
+              single_csv_class.start_time_stamp, single_csv_class.end_time_stamp))
           elsif interval.downcase == 'hour'
             start_time_hourly = []
             end_time_hourly = []
@@ -84,28 +89,8 @@ class MeasuredDataCalculation
                 end_time_hourly.push ((start.split(' ')[0]) + ' ' + (start.split(' ')[1].to_i+1).to_s+":00:00")
               end
             end
-
             single_csv_class.hourly_values[counter].each_with_index do |hourly_value, i|
-              time_series = REXML::Element.new("#{ns}:TimeSeries")
-              reading_type = REXML::Element.new("#{ns}:ReadingType")
-              reading_type.text = 'Total'
-              time_series_reading_quantity = REXML::Element.new("#{ns}:TimeSeriesReadingQuantity")
-              time_series_reading_quantity.text = 'Energy'
-              start_time_stamp = REXML::Element.new("#{ns}:StartTimestamp")
-              start_time_stamp.text = start_time_hourly[i]
-              end_time_stamp = REXML::Element.new("#{ns}:EndTimestamp")
-              end_time_stamp.text = end_time_hourly[i]
-              interval_frequency = REXML::Element.new("#{ns}:IntervalFrequency")
-              interval_frequency.text = interval
-              interval_reading = REXML::Element.new("#{ns}:IntervalReading")
-              interval_reading.text = hourly_value
-              time_series.add_element(reading_type)
-              time_series.add_element(time_series_reading_quantity)
-              time_series.add_element(start_time_stamp)
-              time_series.add_element(end_time_stamp)
-              time_series.add_element(interval_frequency)
-              time_series.add_element(interval_reading)
-              ts_elements.push(time_series)
+              ts_elements.push(add_interval_reading(ns, interval, hourly_value, start_time_hourly[i], end_time_hourly[i]))
             end
           end
           file_native_value.push(single_csv_class.kwh_total[counter])
