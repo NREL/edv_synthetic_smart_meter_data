@@ -138,22 +138,12 @@ class MonthlyData
     @hourly_values = @@csv_hourly[@year][@month]
   end
 
-  def get_annual_total
-    @annual_total = @@total_value
+  def get_kwh_total
+    @kwh_total = @@total_native_value
   end
 
-  def get_annual_native_total
-    @annual_native_total = @@total_native_value
-  end
-  
-  def get_monthly_native_total
-    @monthly_native_total = @@total_native_value
-    # puts "#{@month} monthly native total: #{@monthly_native_total}"
-  end
-
-  def get_monthly_total
-    @monthly_total = @@total_value
-    # puts "#{@month} monthly total: #{@@total_value}"
+  def get_btu_total
+    @btu_total = @@total_value
   end
 
   def get_monthly_peak_values
@@ -176,5 +166,5 @@ class MonthlyData
     @@total_value = {}
   end
 
-  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :annual_total, :annual_native_total, :hourly_values, :monthly_native_total, :monthly_total
+  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :btu_total, :kwh_total
 end
