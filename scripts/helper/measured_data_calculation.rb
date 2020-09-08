@@ -104,7 +104,6 @@ class MeasuredDataCalculation
     ts_elements.each do |ts|
       time_series_data.add_element(ts)
     end
-
     save_xml(xml_file.gsub("#{GENERATE_DIR}", "#{ADD_MEASURED_DIR}"), doc)
   end
 
