@@ -44,7 +44,6 @@ class MeasuredDataCalculation
       package_of_measures.add_element(calculation_method)
       measured = REXML::Element.new("#{ns}:Measured")
       calculation_method.add_element(measured)
-
       scenario_elements.add_element(measured_scenario_element)
     end
     ts_elements = []
@@ -76,9 +75,6 @@ class MeasuredDataCalculation
             time_series.add_element(interval_frequency)
             time_series.add_element(interval_reading)
             ts_elements.push(time_series)
-
-            file_native_value.push(single_csv_class.annual_native_total[counter])
-            file_total_value.push(single_csv_class.annual_total[counter])
           elsif interval.downcase == 'hour'
             start_time_hourly = []
             end_time_hourly = []
@@ -111,9 +107,9 @@ class MeasuredDataCalculation
               time_series.add_element(interval_reading)
               ts_elements.push(time_series)
             end
-            file_native_value.push(single_csv_class.monthly_native_total[counter])
-            file_total_value.push(single_csv_class.monthly_total[counter])
           end
+          file_native_value.push(single_csv_class.kwh_total[counter])
+          file_total_value.push(single_csv_class.btu_total[counter])
         end
       end
       calculate_annual_value(file_native_value, file_total_value, measured_scenario_element, year)
@@ -131,7 +127,7 @@ class MeasuredDataCalculation
     ns = 'auc'
     annual_native_total = file_native_value.inject(0, :+)
     annual_total = file_total_value.inject(0, :+)
-    annual_max_value = file_native_value.max
+    # annual_max_value = file_native_value.max
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
@@ -143,12 +139,14 @@ class MeasuredDataCalculation
     annual_fuel_use_native_units.text = annual_native_total
     annual_fuel_use_consistent_units = REXML::Element.new("#{ns}:AnnualFuelUseConsistentUnits")
     annual_fuel_use_consistent_units.text = annual_total
-    peak_resource_units = REXML::Element.new("#{ns}:PeakResourceUnits")
-    peak_resource_units.text = 'kW'
-    annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
-    annual_peak_native_units.text = annual_max_value
-    annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
-    annual_peak_consistent_units.text = annual_max_value
+
+    # TODO: Peak vaule for hourly and monthly data
+    # peak_resource_units = REXML::Element.new("#{ns}:PeakResourceUnits")
+    # peak_resource_units.text = 'kW'
+    # annual_peak_native_units = REXML::Element.new("#{ns}:AnnualPeakNativeUnits")
+    # annual_peak_native_units.text = annual_max_value
+    # annual_peak_consistent_units = REXML::Element.new("#{ns}:AnnualPeakConsistentUnits")
+    # annual_peak_consistent_units.text = annual_max_value
 
     scenario_element.add_element(resource_uses)
     resource_uses.add_element(resource_use)
@@ -156,9 +154,9 @@ class MeasuredDataCalculation
     resource_use.add_element(resource_units)
     resource_use.add_element(annual_fuel_use_native_units)
     resource_use.add_element(annual_fuel_use_consistent_units)
-    resource_use.add_element(peak_resource_units)
-    resource_use.add_element(annual_peak_native_units)
-    resource_use.add_element(annual_peak_consistent_units)
+    # resource_use.add_element(peak_resource_units)
+    # resource_use.add_element(annual_peak_native_units)
+    # resource_use.add_element(annual_peak_consistent_units)
 
     # Add user_defined_field for multi-year annual total
     user_defined_fields = REXML::Element.new("#{ns}:UserDefinedFields")
@@ -216,24 +214,14 @@ class MeasuredDataCalculation
       counter = 0
       single_row.headers.each do |header|
         next if header == 'timestamp'
-        if interval.downcase == 'hour'
-          monthly_csv_obj.update_hourly_values(single_row[header], counter)
-          monthly_csv_obj.update_monthly_total(single_row[header], counter)
-        elsif interval.downcase == 'month'
-          monthly_csv_obj.update_total_values(single_row[header], counter)
-        end
+        monthly_csv_obj.update_hourly_values(single_row[header], counter) if interval.downcase == 'hour'
+        monthly_csv_obj.update_total_values(single_row[header], counter)
         counter += 1
       end
     end
-    if interval.downcase == 'hour'
-      monthly_csv_obj.get_hourly_values
-      monthly_csv_obj.get_monthly_native_total
-      monthly_csv_obj.get_monthly_total
-      # puts "#{monthly_csv_obj.month} monthly native total and total: #{monthly_csv_obj.get_monthly_native_total}, #{monthly_csv_obj.monthly_total}"
-    elsif interval.downcase == 'month'
-      monthly_csv_obj.get_annual_native_total
-      monthly_csv_obj.get_annual_total
-    end
+    monthly_csv_obj.get_hourly_values if interval.downcase == 'hour'
+    monthly_csv_obj.get_kwh_total
+    monthly_csv_obj.get_btu_total
 
     monthly_csv_obj
   end
@@ -276,14 +264,16 @@ class MeasuredDataCalculation
     counter = 0
     completed_files = 0
     header_name.drop(1).each do |file_name|
-      xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
-      if File.exist?(xml_file)
-        add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years.uniq)
-        completed_files += 1
-      else
-        puts "No #{file_name} found!"
+      if !file_name.nil?
+        xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s) 
+        if File.exist?(xml_file)
+          add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years.uniq)
+          completed_files += 1
+        else
+          puts "No #{file_name} found!"
+        end
+        counter += 1
       end
-      counter += 1
     end
     puts "Successfully processed #{completed_files} of #{counter} possible files"
   end
