@@ -114,7 +114,7 @@ class MeasuredDataCalculation
     ns = 'auc'
     annual_native_total = file_native_value.inject(0, :+)
     annual_total = file_total_value.inject(0, :+)
-    annual_peak_value = file_peak_value_array.last.max
+    annual_peak_value = file_peak_value_array.max
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")

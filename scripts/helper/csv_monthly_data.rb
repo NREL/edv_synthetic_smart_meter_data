@@ -37,23 +37,21 @@
 
 class MonthlyData
 
-  @day = nil
-  @month = nil
-  @year = nil
-  @start_time_stamp = nil
-  @end_time_stamp = nil
-  @annual_native_total = nil
-  @annual_total = nil
-  @peak_value_array = nil
-  @hourly_values = {}
-  @csv_hourly = {}
-  @total_value = {}
-  @total_native_value = {}
-  @start_time_hourly = {}
-  @@peak_values = {}
-
   def initialize
-    # Place holder
+    @day = nil
+    @month = nil
+    @year = nil
+    @start_time_stamp = nil
+    @end_time_stamp = nil
+    @annual_native_total = nil
+    @annual_total = nil
+    @peak_value_array = nil
+    @hourly_values = {}
+    @csv_hourly = {}
+    @total_value = {}
+    @total_native_value = {}
+    @start_time_hourly = {}
+    @peak_values = {}
   end
 
   def update_day(day_value)
@@ -129,10 +127,13 @@ class MonthlyData
   end
 
   def update_peak_values(value, counter)
-    @@peak_values = [] if @@peak_values.nil?
-    @@peak_values[@year] = [] if @@peak_values[@year].nil?
-    @@peak_values[@year][counter] = [] if @@peak_values[@year][counter].nil?
-    @@peak_values[@year][counter].push value
+    @peak_values = [] if @peak_values.nil?
+    @peak_values[@year] = [] if @peak_values[@year].nil?
+    if @peak_values[@year][counter].nil?
+      @peak_values[@year][counter] = value
+    else
+      @peak_values[@year][counter].push value
+    end
   end
 
   def get_hourly_values
@@ -148,7 +149,7 @@ class MonthlyData
   end
 
   def get_peak_value_array
-    @peak_value_array = @@peak_values[@year]
+    @peak_value_array = @peak_values[@year]
   end
 
   def get_summary
