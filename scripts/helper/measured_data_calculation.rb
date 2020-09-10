@@ -264,7 +264,7 @@ class MeasuredDataCalculation
         add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years.uniq)
         completed_files += 1
       else
-        puts "No xml file found!"
+        puts "No #{file_name} found!"
       end
       counter += 1
     end
