@@ -96,7 +96,7 @@ class MeasuredDataCalculation
             end
           end
           file_native_value.push(single_csv_class.kwh_total[counter])
-          file_total_value.push(single_csv_class.btu_total[counter])
+          file_total_value.push(single_csv_class.kbtu_total[counter])
           file_peak_value_array.push(single_csv_class.peak_value_array[counter])
         end
       end
@@ -215,7 +215,7 @@ class MeasuredDataCalculation
     end
     monthly_csv_obj.get_peak_value_array
     monthly_csv_obj.get_kwh_total
-    monthly_csv_obj.get_btu_total
+    monthly_csv_obj.get_kbtu_total
 
     monthly_csv_obj
   end
@@ -258,6 +258,7 @@ class MeasuredDataCalculation
     counter = 0
     completed_files = 0
     header_name.drop(1).each do |file_name|
+      next if file_name.nil?
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
         add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years.uniq)

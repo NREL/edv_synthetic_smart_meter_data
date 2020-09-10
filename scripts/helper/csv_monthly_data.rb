@@ -44,15 +44,13 @@ class MonthlyData
   @end_time_stamp = nil
   @annual_native_total = nil
   @annual_total = nil
-  @hourly_values = {}
-  @monthly_values = []
-  @local_header = ''
-  @@csv_hourly = {}
-  @@total_value = {}
-  @@total_native_value = {}
-  @@start_time_hourly = {}
-  @@peak_values = {}
   @peak_value_array = nil
+  @hourly_values = {}
+  @csv_hourly = {}
+  @total_value = {}
+  @total_native_value = {}
+  @start_time_hourly = {}
+  @@peak_values = {}
 
   def initialize
     # Place holder
@@ -78,62 +76,56 @@ class MonthlyData
   end
 
   def update_start_time_hourly(start_time)
-    @@start_time_hourly = [] if @@start_time_hourly.nil?
-    @@start_time_hourly[@year] = [] if @@start_time_hourly[@year].nil?
-    @@start_time_hourly[@year][@month] = [] if @@start_time_hourly[@year][@month].nil?
-    @@start_time_hourly[@year][@month][@day] = [] if @@start_time_hourly[@year][@month][@day].nil?
-    @@start_time_hourly[@year][@month][@day].push (start_time.gsub('/', '-') + ":00")
+    @start_time_hourly = [] if @start_time_hourly.nil?
+    @start_time_hourly[@year] = [] if @start_time_hourly[@year].nil?
+    @start_time_hourly[@year][@month] = [] if @start_time_hourly[@year][@month].nil?
+    @start_time_hourly[@year][@month][@day] = [] if @start_time_hourly[@year][@month][@day].nil?
+    @start_time_hourly[@year][@month][@day].push (start_time.gsub('/', '-') + ":00")
   end
 
   def get_hourly_start_timestamp
-    @start_time_stamp = @@start_time_hourly[@year][@month]
+    @start_time_stamp = @start_time_hourly[@year][@month]
   end
 
   def update_start_time(start_time)
+    # BDGP/BDGP2 raw start timestamp -> XSD date/time data types
     @start_time_stamp = start_time.gsub('/', '-') + ":00"
   end
 
   def update_end_time(end_time)
+    # BDGP/BDGP2 raw end timestamp -> XSD date/time data types
     @end_time_stamp = end_time.gsub('/', '-') + ":00"
   end
 
   def update_monthly_total(value, counter)
     csv_value = value.to_f
-    if @@total_value[counter].nil? || @@total_native_value[counter].nil?
-      @@total_native_value[counter] = csv_value
-      @@total_value[counter] = csv_value * 3.41214
+    if @total_value[counter].nil? || @total_native_value[counter].nil?
+      @total_native_value[counter] = csv_value
+      @total_value[counter] = csv_value * 3.41214
     else
-      @@total_native_value[counter] += csv_value
-      @@total_value[counter] += csv_value * 3.41214
+      @total_native_value[counter] += csv_value
+      @total_value[counter] += csv_value * 3.41214
     end
   end
 
   def update_total_values(value, counter)
     csv_value = value.to_f
-    if @@total_value[counter].nil? || @@total_native_value[counter].nil?
-      @@total_native_value[counter] = csv_value
-      @@total_value[counter] = csv_value * 3.41214
+    if @total_value[counter].nil? || @total_native_value[counter].nil?
+      @total_native_value[counter] = csv_value
+      @total_value[counter] = csv_value * 3.41214
     else
-      @@total_native_value[counter] += csv_value
-      @@total_value[counter] += csv_value * 3.41214
+      @total_native_value[counter] += csv_value
+      @total_value[counter] += csv_value * 3.41214
     end
-  end
-
-  def update_monthly_values(monthly_collection, hour, header)
-    if header != @local_header
-      @local_header = header
-      @monthly_values.clear
-    end
-    @monthly_values.push monthly_collection[hour][header].to_f
   end
 
   def update_hourly_values(value, counter)
     csv_hourly_value = value.to_f
-    @@csv_hourly = [] if @@csv_hourly.nil?
-    @@csv_hourly[@year] = [] if @@csv_hourly[@year].nil?
-    @@csv_hourly[@year][@month] = [] if @@csv_hourly[@year][@month].nil?
-    @@csv_hourly[@year][@month][counter] = [] if @@csv_hourly[@year][@month][counter].nil?
-    @@csv_hourly[@year][@month][counter].push csv_hourly_value
+    @csv_hourly = [] if @csv_hourly.nil?
+    @csv_hourly[@year] = [] if @csv_hourly[@year].nil?
+    @csv_hourly[@year][@month] = [] if @csv_hourly[@year][@month].nil?
+    @csv_hourly[@year][@month][counter] = [] if @csv_hourly[@year][@month][counter].nil?
+    @csv_hourly[@year][@month][counter].push csv_hourly_value
   end
 
   def update_peak_values(value, counter)
@@ -144,15 +136,15 @@ class MonthlyData
   end
 
   def get_hourly_values
-    @hourly_values = @@csv_hourly[@year][@month]
+    @hourly_values = @csv_hourly[@year][@month]
   end
 
   def get_kwh_total
-    @kwh_total = @@total_native_value
+    @kwh_total = @total_native_value
   end
 
-  def get_btu_total
-    @btu_total = @@total_value
+  def get_kbtu_total
+    @kbtu_total = @total_value
   end
 
   def get_peak_value_array
@@ -168,12 +160,12 @@ class MonthlyData
   end
   
   def initialize_native_value
-    @@total_native_value = {}
+    @total_native_value = {}
   end
 
   def initialize_total_value
-    @@total_value = {}
+    @total_value = {}
   end
 
-  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :btu_total, :kwh_total, :peak_value_array
+  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :kbtu_total, :kwh_total, :peak_value_array
 end
