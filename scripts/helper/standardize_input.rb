@@ -80,7 +80,7 @@ class StandardizedInput
       energystar_score = row[:energystarscore]
       measurement_start_date = row[:datastart]
       measurement_end_date = row[:dataend]
-		
+
 	    metadata_file.puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type},#{energystar_score},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
 
     end
