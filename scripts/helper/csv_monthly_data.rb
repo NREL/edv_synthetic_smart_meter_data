@@ -87,7 +87,7 @@ class MonthlyData
 
   def update_start_time(start_time)
     # BDGP/BDGP2 raw start timestamp -> XSD date/time data types
-    @start_time_stamp = start_time.gsub('/', '-') + ":00"
+    @start_time_stamp = start_time.gsub('/', '-')
   end
 
   def update_end_time(end_time)
