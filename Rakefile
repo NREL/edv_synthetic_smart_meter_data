@@ -2,6 +2,7 @@ require 'rspec/core/rake_task'
 require_relative 'scripts/constants'
 RSpec::Core::RakeTask.new(:spec)
 
+default_path_to_add_measured = "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 #############################################################################################
 desc 'convert raw data to standardized data format'
 task :standardize_metadata_and_timeseriesdata do
@@ -76,7 +77,6 @@ end
 desc 'generate csv control file'
 task :generate_control_csv do
 
-  default_path_to_add_measured = "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
   default_metadata_file = "#{RAW_DATA_DIR}/#{DEFAULT_METADATA_FILE}"
   processed_metadata_file = "#{PROCESSED_DATA_DIR}/#{PROCESSED_METADATA_FILE}"
   default_weather = "#{DEFAULT_WEATHERDATA_DIR}"
@@ -265,4 +265,10 @@ task :workflow_part_2 do
 
   puts("")
   puts "Rake: Finishing workflow_part_2"
+end
+
+#############################################################################################
+desc 'Apply sg filter to hourly measured data'
+task :sg do
+  exec("python", "scripts/algorithm_typical_operation_hours.py", default_path_to_add_measured)
 end
