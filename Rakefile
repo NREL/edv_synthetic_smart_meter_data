@@ -268,7 +268,7 @@ task :workflow_part_2 do
 end
 
 #############################################################################################
-desc 'Apply sg filter to hourly measured data'
-task :sg do
+desc 'Apply typical operation hours detection to hourly measured data'
+task :typical_operation_hours do
   exec("python", "scripts/algorithm_typical_operation_hours.py", default_path_to_add_measured)
 end

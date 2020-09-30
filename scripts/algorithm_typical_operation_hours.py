@@ -11,7 +11,7 @@ import datetime
 from lxml import etree
 from scipy.signal import savgol_filter
 
-def sg(dir_path):
+def typical_operation_hours(dir_path):
     if dir_path:
         for f in os.listdir(dir_path):
             bsync = os.path.join(dir_path, f)
@@ -19,7 +19,7 @@ def sg(dir_path):
             ################################################################
             # inputs
             ################################################################
-            tree = etree.parse(bsync) #etree.parse('workflow_results/Add_Measured_Data_Files/Bear_assembly_Angel.xml')
+            tree = etree.parse(bsync)
             root = tree.getroot()
             tag = root.tag
             ns = tag.split('BuildingSync')[0]
@@ -46,10 +46,9 @@ def sg(dir_path):
                 years[key] = np.reshape(np.array(years[key]).astype(np.float), (len(years[key])//24, 24))
                 for i in range(len(years[key])):
                     ################################################################
-                    # apply G-S filter
+                    # apply S_G filter
                     ################################################################
                     time_series_96_gaf = savgol_filter(years[key][i], 3, 1)
-                    #print("time_series_96_gaf: ", time_series_96_gaf)
                     ################################################################
                     # start and stop time threshold definition (currently both thresholds are defined as the same)
                     ################################################################
@@ -140,5 +139,5 @@ def sg(dir_path):
             list_combined = [[a,b] for a,b in zip(list_hist_start_final,list_hist_stop_final) if a*b != 0]
 
 if __name__ == "__main__":
-    if os.path.isdir(sys.argv[1]): sg(dir_path=sys.argv[1])
+    if os.path.isdir(sys.argv[1]): typical_operation_hours(dir_path=sys.argv[1])
     else: logging.error("Incorrect measured data path")
