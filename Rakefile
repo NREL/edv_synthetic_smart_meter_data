@@ -56,7 +56,7 @@ task :add_measured_data do
   default_timeseries_file = "#{RAW_DATA_DIR}/#{DEFAULT_TIMESERIESDATA_FILE}"
   processed_timeseries_file = "#{PROCESSED_DATA_DIR}/#{PROCESSED_TIMESERIESDATA_FILE}"
   default_path_to_xmls = "#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
-  
+
   if ARGV[1] && ARGV[2]
 
     # ARGV[1] should be a path to a CSV file

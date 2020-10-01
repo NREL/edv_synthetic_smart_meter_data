@@ -78,7 +78,7 @@ class MonthlyData
     @start_time_hourly[@year] = [] if @start_time_hourly[@year].nil?
     @start_time_hourly[@year][@month] = [] if @start_time_hourly[@year][@month].nil?
     @start_time_hourly[@year][@month][@day] = [] if @start_time_hourly[@year][@month][@day].nil?
-    @start_time_hourly[@year][@month][@day].push (start_time.gsub('/', '-') + ":00")
+    @start_time_hourly[@year][@month][@day].push (start_time.gsub('/', '-'))
   end
 
   def get_hourly_start_timestamp
