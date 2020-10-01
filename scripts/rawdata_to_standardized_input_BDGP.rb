@@ -25,8 +25,6 @@ FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 # metadata data conversion from raw labels to standardized labels
 #######################################################################
 
-# std_labels = ['building_id','xml_filename','primary_building_type','floor_area_sqft','vintage','climate_zone','zipcode','city','us_state','longitude','latitude','number_of_stories','number_of_occupants','fuel_type_heating','energystar_score','measurement_start_date','measurement_end_date','weather_file_name_epw','weather_file_name_ddy']
-
 std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type_heating,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
 
 StandardizedInput.new.copy_columns(ARGV[0], std_labels, outdir)
