@@ -4,7 +4,7 @@ require_relative 'helper/metrics_calculation'
 require 'rexml/document'
 
 if ARGV[0].nil? || !Dir.exist?(ARGV[0])
-  puts 'usage: bundle exec ruby calculate_metrics /path/to/simulated/data'
+  puts 'usage: bundle exec rake calculate_metrics /path/to/simulated/data'
   exit(1)
 end
 
@@ -14,13 +14,14 @@ indir = ARGV[0]
 # FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 ns = 'auc'
-puts "looking at directory: #{indir}"
-puts "found #{Dir.glob(File.join(indir, "*.xml")).count} files "
+if !Dir.glob(File.join(indir, "*.xml")).count
+  puts "No BuildingSync files found in directory"
+end
 
 def get_electric_resource_use_id(scenario_element, ns)
   resource_uses = scenario_element.elements["#{ns}:ResourceUses"]
   if resource_uses.nil?
-    puts scenario_element.elements["#{ns}:ScenarioName"].to_s + " has nil ResourceUses"
+    puts "can not find ResourceUses for scenario " + scenario_element.elements["#{ns}:ScenarioName"].text if !scenario_element.elements["#{ns}:ScenarioName"].nil?
     return nil
   end
   resource_uses.each do |resource_use_element|
@@ -34,12 +35,13 @@ def get_floor_area_value(doc, ns)
   measured_floor_element = nil
   floor_areas = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Sites/#{ns}:Site/#{ns}:Buildings/#{ns}:Building/#{ns}:FloorAreas"]
   floor_areas.each do |floor_element|
+    next if floor_element.class == REXML::Text
     begin
       if floor_element.elements["#{ns}:FloorAreaType"].text == 'Gross'
         measured_floor_element = floor_element
       end
-    rescue
-      puts "scenario issue found floor_areas: #{floor_areas}"
+    rescue => e
+      puts e
     end
   end
   return measured_floor_element.elements["#{ns}:FloorAreaValue"].text.to_f
@@ -51,6 +53,7 @@ def read_time_series_data(scenario_element, ns, resource_use_id = nil)
   time_series_data = scenario_element.elements["#{ns}:TimeSeriesData"]
   time_series_data.each do |time_series|
     if resource_use_id.nil? || time_series.elements["#{ns}:ResourceUseID"].attributes['IDref'] == resource_use_id
+      next if time_series.class == REXML::Text
       datetime = time_series.elements["#{ns}:StartTimestamp"].text
       monthly_data.add_start_date_string(datetime)
       #monthly_measured_data.update_year(datetime.year)
@@ -80,6 +83,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
     # for the first pass we just look for the measured scenario
     scenario_elements.each do |scenario_element|
+      next if scenario_element.class == REXML::Text
       if scenario_element.attributes['ID'] == 'Measured'
         monthly_measured_data = read_time_series_data(scenario_element, ns)
 
@@ -90,6 +94,7 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
 
     # the second pass we look for simulated scenarios
     scenario_elements.each do |scenario_element|
+      next if scenario_element.class == REXML::Text
       if scenario_element.attributes['ID'] != 'Measured'
         electricity_resource_use_id = get_electric_resource_use_id(scenario_element, ns)
         if electricity_resource_use_id
