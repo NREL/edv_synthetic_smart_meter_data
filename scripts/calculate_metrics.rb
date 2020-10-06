@@ -25,6 +25,7 @@ def get_electric_resource_use_id(scenario_element, ns)
     return nil
   end
   resource_uses.each do |resource_use_element|
+    next if resource_use_element.class != REXML::Element
     if resource_use_element.elements["#{ns}:EnergyResource"].text == "Electricity"
       return resource_use_element.attributes['ID']
     end
@@ -52,12 +53,14 @@ def read_time_series_data(scenario_element, ns, resource_use_id = nil)
   counter = 0
   time_series_data = scenario_element.elements["#{ns}:TimeSeriesData"]
   time_series_data.each do |time_series|
-    if resource_use_id.nil? || time_series.elements["#{ns}:ResourceUseID"].attributes['IDref'] == resource_use_id
-      next if time_series.class != REXML::Element
-      datetime = time_series.elements["#{ns}:StartTimestamp"].text
-      monthly_data.add_start_date_string(datetime)
-      monthly_data.update_total_values(time_series.elements["#{ns}:IntervalReading"].text, counter)
-      counter += 1
+    if time_series.class == REXML::Element
+      if resource_use_id.nil?
+        next if time_series.class != REXML::Element
+        datetime = time_series.elements["#{ns}:StartTimestamp"].text
+        monthly_data.add_start_date_string(datetime)
+        monthly_data.update_total_values(time_series.elements["#{ns}:IntervalReading"].text, counter)
+        counter += 1
+      end
     end
   end
   return monthly_data
@@ -78,25 +81,28 @@ Dir.glob(File.join(indir, "/*.xml")).each do |xml_file_path|
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
     scenario_elements.each do |scenario_element|
       next if scenario_element.class != REXML::Element
+      # electricity_resource_use_id = scenario_element.elements["#{ns}:ResourceUses/#{ns}:ResourceUse/#{ns}:EnergyResource"].text
       if scenario_element.attributes['ID'] == 'Measured'
-        monthly_measured_data = read_time_series_data(scenario_element, ns)
-
-        eui = MetricsCalc.calculate_eui_value(monthly_measured_data.get_summary, floor_area)
-        eui_mea_count += MetricsCalc.add_eui(scenario_element, eui, ns)
+        scenario_element.each_element do |e|
+          if e.name == 'ResourceUses'
+            e.each_element do |resource|
+              eui = Metrics.calculate_eui_value(resource.elements["#{ns}:AnnualFuelUseConsistentUnits"].text.to_f, floor_area)
+              eui_mea_count += Metrics.add_eui(resource, eui, ns)
+            end
+          end
+        end
       else
+        # TODO: 10/5/20 - eui, cvrmse, and nmbe for not measured scenarios
         electricity_resource_use_id = get_electric_resource_use_id(scenario_element, ns)
         if electricity_resource_use_id
+          eui = Metrics.calculate_eui_value(scenario_element.elements["#{ns}:AnnualFuelUseConsistentUnits"].text.to_f, floor_area)
+          eui_sim_count += Metrics.add_eui(scenario_element, eui, ns)
 
-          monthly_simulated_data = read_time_series_data(scenario_element, ns, electricity_resource_use_id)
+          cvrmse = Metrics.calculate_cvrmse(monthly_measured_data, monthly_simulated_data)
+          cvrmse_count += Metrics.add_user_defined_field(scenario_element, "CVRMSE", cvrmse, ns)
 
-          eui = MetricsCalc.calculate_eui_value(monthly_simulated_data.get_summary, floor_area)
-          eui_sim_count += MetricsCalc.add_eui(scenario_element, eui, ns)
-
-          cvrmse = MetricsCalc.calculate_cvrmse(monthly_measured_data, monthly_simulated_data)
-          cvrmse_count += MetricsCalc.add_user_defined_field(scenario_element, "CVRMSE", cvrmse, ns)
-
-          nmbe = MetricsCalc.calculate_nmbe(monthly_measured_data, monthly_simulated_data)
-          nmbe_count += MetricsCalc.add_user_defined_field(scenario_element, "NMBE", nmbe, ns)
+          nmbe = Metrics.calculate_nmbe(monthly_measured_data, monthly_simulated_data)
+          nmbe_count += Metrics.add_user_defined_field(scenario_element, "NMBE", nmbe, ns)
         end
       end
     end

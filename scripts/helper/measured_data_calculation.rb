@@ -154,7 +154,7 @@ class MeasuredDataCalculation
     field_value.text = year
     user_defined_field.add_element(field_name)
     user_defined_field.add_element(field_value)
-    user_defined_fields.add_element(user_defined_field)
+    user_defined_field.add_element(user_defined_field)
     resource_uses.add_element(user_defined_fields)
 
     annual_total

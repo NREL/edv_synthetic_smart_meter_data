@@ -1,20 +1,15 @@
 
-class MetricsCalc
+class Metrics
 
   def self.calculate_eui_value(annual_energy_consumption, floor_area)
     return annual_energy_consumption / floor_area
   end
 
-  def self.add_eui(scenario_element, eui, ns)
+  def self.add_eui(resource_element, eui, ns)
     begin
-      electricity_resource_use_element = nil
-      resource_uses = scenario_element.elements["#{ns}:ResourceUses"]
-      resource_uses.each do |resource_use_element|
-        if !resource_use_element.elements["#{ns}:EnergyResource"].nil?
-          if resource_use_element.elements["#{ns}:EnergyResource"].first == "Electricity"
-            electricity_resource_use_element = resource_use_element
-          end
-        end
+      electricity_resource_use_element = nil?
+      if resource_element.elements["#{ns}:EnergyResource"].text == "Electricity"
+        electricity_resource_use_element = resource_element
       end
       if electricity_resource_use_element.nil?
         electricity_resource_use_element = REXML::Element.new("#{ns}:EnergyResource")
