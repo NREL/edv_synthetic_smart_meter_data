@@ -44,7 +44,7 @@ RSpec.describe 'EDV Experiment 1' do
   it 'should correctly calculate eui' do
     energy_consumption = 10000
     floor_area = 200
-    calculated_eui = MetricsCalc.calculate_eui_value(energy_consumption, floor_area)
+    calculated_eui = Metrics.calculate_eui_value(energy_consumption, floor_area)
     expect(calculated_eui).to eq energy_consumption / floor_area
   end
 
@@ -59,7 +59,7 @@ RSpec.describe 'EDV Experiment 1' do
     measured_data.update_values(value_kWh, 1)
     measured_data.update_values(value_kWh, 2)
 
-    calculated_cvrmse = MetricsCalc.calculate_cvrmse(measured_data, measured_data)
+    calculated_cvrmse = Metrics.calculate_cvrmse(measured_data, measured_data)
     expect(calculated_cvrmse).to eq 0
   end
 
@@ -87,7 +87,7 @@ RSpec.describe 'EDV Experiment 1' do
     simulated_data.update_values(simulated_value_kWh_1, 1)
     simulated_data.update_values(simulated_value_kWh_2, 2)
 
-    calculated_cvrmse = MetricsCalc.calculate_cvrmse(measured_data, simulated_data)
+    calculated_cvrmse = Metrics.calculate_cvrmse(measured_data, simulated_data)
 
     ysum = measured_value_kWh_1 + measured_value_kWh_2
     squared_error = (measured_value_kWh_1 - simulated_value_kWh_1)**2 + (measured_value_kWh_2 - simulated_value_kWh_2)**2
@@ -122,7 +122,7 @@ RSpec.describe 'EDV Experiment 1' do
     simulated_data.update_values(simulated_value_kWh_1, 1)
     simulated_data.update_values(simulated_value_kWh_2, 2)
 
-    calculated_nmbe = MetricsCalc.calculate_nmbe(measured_data, simulated_data)
+    calculated_nmbe = Metrics.calculate_nmbe(measured_data, simulated_data)
 
     ysum = measured_value_kWh_1 + measured_value_kWh_2
     sum_error = (measured_value_kWh_1 - simulated_value_kWh_1) + (measured_value_kWh_2 - simulated_value_kWh_2)
