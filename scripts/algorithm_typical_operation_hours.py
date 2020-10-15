@@ -16,6 +16,7 @@ def typical_operation_hours(dir_path):
         if dir_path:
             for f in os.listdir(dir_path):
                 bsync = os.path.join(dir_path, f)
+                # TODO: check if file is a BSync file (xml format)
                 print("processing", bsync)
                 ################################################################
                 # inputs
