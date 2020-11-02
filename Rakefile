@@ -81,7 +81,7 @@ task :generate_control_csv do
   processed_metadata_file = "#{PROCESSED_DATA_DIR}/#{PROCESSED_METADATA_FILE}"
   default_weather = "#{DEFAULT_WEATHERDATA_DIR}"
   processed_weather = "../edv-experiment-1-files/weather" #private weather data
-  puts "#{RUN_TYPE}: #{default_path_to_add_measured}, #{processed_metadata_file}, #{processed_weather}"
+
   if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
     # ARGV[4] should be a path to a directory with weather files
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
