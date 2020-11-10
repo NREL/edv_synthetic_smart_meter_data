@@ -180,7 +180,7 @@ class MeasuredDataCalculation
 
   def create_monthly_csv_data(csv_row_collection, interval)
     monthly_csv_obj = MonthlyData.new
-    datetime = DateTime.parse(csv_row_collection[0][0])
+    datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%y")#datetime = DateTime.parse(csv_row_collection[0][0])
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_year(datetime.year)
     monthly_csv_obj.initialize_native_value
@@ -188,7 +188,7 @@ class MeasuredDataCalculation
 
     if interval.downcase == 'hour'
       csv_row_collection.each do |time|
-        monthly_csv_obj.update_day(DateTime.parse(time[0]).day)
+        monthly_csv_obj.update_day(DateTime.strptime(time[0], "%m/%d/%y %H:%M").day)#monthly_csv_obj.update_day(DateTime.parse(time[0]).day)
         monthly_csv_obj.update_start_time_hourly(time[0])
       end
       monthly_csv_obj.get_hourly_start_timestamp
@@ -232,7 +232,7 @@ class MeasuredDataCalculation
     interval = ''
 
     csv_table.each do |csv_row|
-      datetime = DateTime.parse(csv_row["timestamp"])
+      datetime = DateTime.strptime(csv_row["timestamp"], "%m/%d/%y %k:%M")#datetime = DateTime.parse(csv_row["timestamp"])
       if !datetime.hour.nil?
         interval = 'Hour'
       elsif !datetime.month.nil?
@@ -245,8 +245,10 @@ class MeasuredDataCalculation
     years.uniq.each do |year|
       months.uniq.each do |month|
         csv_table.each do |row|
-          if DateTime.parse(row["timestamp"]).year == year &&
-            DateTime.parse(row["timestamp"]).month == month
+          if DateTime.strptime(row["timestamp"], "%m/%d/%y").year == year &&
+            DateTime.strptime(row["timestamp"], "%m/%d/%y").month == month
+          #if DateTime.parse(row["timestamp"]).year == year &&
+          #  DateTime.parse(row["timestamp"]).month == month
             csv_row_collection.push(row)
           end
         end
