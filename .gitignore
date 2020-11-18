@@ -25,4 +25,6 @@ __pycache__
 runner.conf
 workflow_results
 /spec/tests/meta_open_epw_ddy_standardized.csv
-/data/processed
+/data/processed/JupyterNotebook/*.csv
+!sample_input_file.csv
+/JupyterNotebook/images
