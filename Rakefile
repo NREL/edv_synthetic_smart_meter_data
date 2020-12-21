@@ -1,12 +1,11 @@
-require 'rspec/core/rake_task'
+# require 'rspec/core/rake_task'
+# RSpec::Core::RakeTask.new(:spec)
 require_relative 'scripts/constants'
-RSpec::Core::RakeTask.new(:spec)
 
 default_path_to_add_measured = "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 #############################################################################################
 desc 'convert raw data to standardized data format'
 task :standardize_metadata_and_timeseriesdata do
-
 
   #TODO JK: need to change file location to bdgp repo once bdgp2 data intake mod is implemented.
   raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata.csv" #metadata file containing private info
