@@ -29,6 +29,7 @@ end
 if allow_local && File.exist?('../openstudio-model-articulation-gem')
   gem 'openstudio-model-articulation', path: '../openstudio-model-articulation-gem'
 else
+  # edv ruby-2.2.4 compatible version:
   # gem 'openstudio-model-articulation', github: 'NREL/openstudio-model-articulation-gem', branch: 'DA'
 
   gem 'openstudio-model-articulation'
