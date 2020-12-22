@@ -167,7 +167,7 @@ bundle exec rake calculate_metrics path/to/simulation/results
 bundle exec rake export_synthetic_data path/to/configuration/csv/file
 ```
 
-- See the [format](https://github.com/NREL/edv-experiment-1/blob/develop/spec/files/generation_script.csv) of the configuration csv file.
+- See [format](https://github.com/NREL/edv-experiment-1/blob/develop/spec/files/generation_script.csv) of configuration csv file.
 
 
 # TODO
