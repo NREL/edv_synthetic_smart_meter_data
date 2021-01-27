@@ -90,7 +90,7 @@ Execute all rake tasks from root directory.
 #### Step 1 (optional): convert raw data to standard input data format. Example:
 
 ```
-bundle exec rake standardize_metadata_and_timeseriesdata
+rake standardize_metadata_and_timeseriesdata
 ```
 
 - Note that rake task ```standardize_metadata_and_timeseriesdata``` works exclusively for [Building Data Genome Project](https://github.com/buds-lab/building-data-genome-project-2). Users should create a custom rake task to convert raw input data to standard format.
@@ -101,7 +101,7 @@ bundle exec rake standardize_metadata_and_timeseriesdata
 #### Step 2: Generate BuildingSync XMLs
 
 ```
-bundle exec rake generate_xmls
+rake generate_xmls
 ```
 
 - The generated XML files will be saved ```workflow_results/Bldg_Sync_Files``` direcotry specified in ```constant.rb```. These data are not to be committed.
@@ -113,7 +113,7 @@ bundle exec rake generate_xmls
 #### Step 3: Add measured time-series data to BuildingSync XMLs
 
 ```
-bundle exec rake add_measured_data
+rake add_measured_data
 ```
 
 - Previously generated BuildingSync XMLs are now updated with time-series energy consumption data.
@@ -126,7 +126,7 @@ bundle exec rake add_measured_data
 
 - The following rake task will generate a csv file that contains a list of simulation scenarios specifying dedicated BuildingSync XML files and associated weather files. 
 ```
-bundle exec rake generate_control_csv
+rake generate_control_csv
 ```
 
 - The output control file contains the name of the BuildingSync file, the Standard to define buildings, and weather file names.
@@ -143,7 +143,7 @@ bundle exec rake generate_control_csv
 
 - This rake task translates BuildingSync XMLs into OSMs/OSWs for simulations:
 ```
-bundle exec rake simulate_batch_xml
+rake simulate_batch_xml
 ```
 
 - The generated simulation files as well as updated BuildingSync XMLs will be saved in the ```workflow_results/Simulation_Files``` directory.
@@ -154,7 +154,7 @@ bundle exec rake simulate_batch_xml
 
 - This rake task calculates Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
 ```
-bundle exec rake calculate_metrics path/to/simulation/results
+rake calculate_metrics path/to/simulation/results
 ```
 
 - Currently, only monthly data metric calculations are implmented.
@@ -164,7 +164,7 @@ bundle exec rake calculate_metrics path/to/simulation/results
 
 - This rake task combines before and after intervention time-series data and creates a new set of time-series data that indicates before and after intervention content (e.g., energy efficiency measure, non-routine event) based on the timing of the interventions. Intervention scenarios are defined in a separate csv file. 
 ```
-bundle exec rake export_synthetic_data path/to/configuration/csv/file
+rake export_synthetic_data path/to/configuration/csv/file
 ```
 
 - See [format](https://github.com/NREL/edv-experiment-1/blob/develop/spec/files/generation_script.csv) of configuration csv file.

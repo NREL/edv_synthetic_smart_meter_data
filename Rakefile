@@ -8,8 +8,8 @@ desc 'convert raw data to standardized data format'
 task :standardize_metadata_and_timeseriesdata do
 
   #TODO JK: need to change file location to bdgp repo once bdgp2 data intake mod is implemented.
-  raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata.csv" #metadata file containing private info
-  raw_timeseries_file = "../building-data-genome-project-2/data/meters/raw/electricity.csv" #timeseries file in the same location for easy access
+  raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata_2.csv" #metadata file containing private info
+  raw_timeseries_file = "../building-data-genome-project-2/data/meters/raw/electricity_2.csv" #timeseries file in the same location for easy access
   #raw_metadata_file = "../the-building-data-genome-project/data/raw/meta_open.csv" #metadata in public version
   #raw_timeseries_file = "../the-building-data-genome-project/data/raw/temp_open_utc.csv"
   
@@ -24,7 +24,7 @@ task :standardize_metadata_and_timeseriesdata do
     # need path to csv file
     puts "Error - No CSV file specified and default not found at: #{raw_metadata_file}"
     puts "Error - No CSV file specified and default not found at: #{raw_timeseries_file}"
-    puts 'Usage: bundle exec rake standardize_metadata_and_timeseriesdata path/to/metadata/csv/file path/to/timeseriesdata/csv/file'
+    puts 'Usage: rake standardize_metadata_and_timeseriesdata path/to/metadata/csv/file path/to/timeseriesdata/csv/file'
   end
 end
 #############################################################################################
@@ -46,7 +46,7 @@ task :generate_xmls do
   else
     # need path to csv file
     puts "Error - No CSV file specified and default not found at either #{default_metadata_file} or #{processed_metadata_file}"
-    puts 'Usage: bundle exec rake generate_xmls path/to/metadata/csv/file'
+    puts 'Usage: rake generate_xmls path/to/metadata/csv/file'
   end
 end
 #############################################################################################
@@ -100,7 +100,7 @@ task :generate_control_csv do
   else
     # need path to a directory with BldgSync files
     puts "Error - No directory with BuildingSync files specified"
-    puts "Usage: bundle exec rake generate_csv_containing_all_bldgs /path/to/buildingsync/XML/files/folder (optional) standard_to_be_used path/to/metadata/csv/file weather/file/source/dir"
+    puts "Usage: rake generate_csv_containing_all_bldgs /path/to/buildingsync/XML/files/folder (optional) standard_to_be_used path/to/metadata/csv/file weather/file/source/dir"
 
   end
 end
@@ -129,7 +129,7 @@ task :simulate_batch_xml do
   else
     # need path to csv file
     puts 'Error - No CSV file specified that would contain the BldgSync files to be process in this batch'
-    puts 'Usage: bundle exec rake process_all_bldg_sync_files_in_csv path/to/csv/file (optional) path/to/dir/with/bldgsyncfiles'
+    puts 'Usage: rake process_all_bldg_sync_files_in_csv path/to/csv/file (optional) path/to/dir/with/bldgsyncfiles'
 
   end
 end
@@ -145,7 +145,7 @@ task :export_synthetic_data do
   else
     # need path to csv file
     puts 'Error - No CSV file specified that would contain information about the export process'
-    puts 'Usage: bundle exec rake export_synthetic_data path/to/scenario/configuration/csv/file'
+    puts 'Usage: rake export_synthetic_data path/to/scenario/configuration/csv/file'
 
   end
 end
