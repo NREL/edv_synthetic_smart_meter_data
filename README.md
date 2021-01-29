@@ -84,8 +84,14 @@ Custom metadata and time-series data can be standardized for creating synthetic 
 
 
 ### Executing the Workflow:
+#### To run rake task without warnings: export RUBYOPT=-W0 ####
 
 Execute all rake tasks from root directory.
+
+To run rake task without warnings:
+```
+export RUBYOPT=-W0
+```
 
 #### Step 1 (optional): convert raw data to standard input data format. Example:
 
