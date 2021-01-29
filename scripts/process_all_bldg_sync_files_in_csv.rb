@@ -1,7 +1,8 @@
 # Run a BuildingSync XML file to generate synthetic smart meter data
 
+require 'bundler/setup'
 require 'openstudio/extension'
-require 'openstudio/model_articulation/os_lib_model_generation_bricr'
+require 'openstudio/model_articulation'
 require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'

@@ -1,12 +1,12 @@
 require 'openstudio'
 require 'openstudio/extension'
-require 'openstudio/model_articulation/os_lib_model_generation_bricr'
+require 'openstudio/model_articulation'
 require 'buildingsync'
 require 'buildingsync/translator'
-require_relative '../constants'
-require 'openstudio-occupant-variability'
+require 'openstudio/occupant_variability'
 require 'openstudio-variability'
 
+require_relative '../constants'
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only, occ_var, non_routine_var)
   simulation_file_path = File.join(File.expand_path(NAME_OF_OUTPUT_DIR), SIM_FILES_DIR)

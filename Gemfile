@@ -4,10 +4,10 @@ ruby '~>2.5'
 allow_local = false
 allow_local_bsync = false
 
-gem 'rake', '13.0.1'
+gem 'rake', '~>13.0.1'
 gem 'rexml', '3.2.4'
 
-gem 'rspec', '~> 3.10'
+gem 'rspec', '~>3.10'
 gem 'multipart-post', '2.1.1'
 gem 'geocoder', '1.6.4'
 
@@ -20,7 +20,7 @@ else
   # edv Ruby-2.2.4 compatible version:
   # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', :tag => 'v0.1.6'
 
-  gem 'openstudio-extension'
+  gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', tag: 'v0.2.6'
 end
 
 ########################################################################
@@ -32,7 +32,7 @@ else
   # edv ruby-2.2.4 compatible version:
   # gem 'openstudio-model-articulation', github: 'NREL/openstudio-model-articulation-gem', branch: 'DA'
 
-  gem 'openstudio-model-articulation'
+  gem 'openstudio-model-articulation', github: 'NREL/openstudio-model-articulation-gem', tag: 'v0.2.1'
 end
 
 ########################################################################
@@ -44,7 +44,7 @@ else
   # edv ruby-2.2.4 compatible version:
   # gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', :tag => 'v0.1.1'
 
-  gem 'openstudio-common-measures'
+  gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', tag: 'v0.2.1'
 end
 
 ########################################################################
@@ -68,16 +68,16 @@ else
   # edv ruby-2.2.4 compatible version:
   # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA_EDV_testing'
 
-  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'develop'
+  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', :tag => 'v0.2.0'
 end
-=begin
+
 ########################################################################
 ########################################################################
 
 if allow_local && File.exists?('../openstudio-occupant-variability-gem')
   gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
 else
-  gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'master'
+  gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'ruby_upgrade'
 end
 
 ########################################################################
@@ -86,9 +86,8 @@ end
 if allow_local && File.exists?('../openstudio-variability-gem')
   gem 'openstudio-variability', path: '../openstudio-variability-gem'
 else
-  gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'master'
+  gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'ruby_upgrade'
 end
-=end
 ########################################################################
 ########################################################################
 

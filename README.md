@@ -88,7 +88,7 @@ Custom metadata and time-series data can be standardized for creating synthetic 
 
 Execute all rake tasks from root directory.
 
-To run rake task without warnings:
+To run rake task without warnings, add following command to your ```bash_profile``` (or similar) file:
 ```
 export RUBYOPT=-W0
 ```
