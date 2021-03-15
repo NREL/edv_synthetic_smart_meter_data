@@ -16,7 +16,8 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
   end
 
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
-  out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
+  # out_xml = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path)}", File.dirname(__FILE__))
+  out_xml = File.basename(xml_file_path)
   root_dir = File.expand_path('../..', File.dirname(__FILE__))
 
   begin
