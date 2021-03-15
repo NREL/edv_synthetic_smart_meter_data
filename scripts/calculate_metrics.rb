@@ -76,7 +76,7 @@ Dir.glob(File.join(indir, "**/*.xml")).each do |xml_file_path|
     floor_area = get_floor_area_value(doc, ns)
     monthly_measured_data = nil
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
-    # begin
+    begin
       scenario_elements.each do |scenario_element|
         next if scenario_element.class != REXML::Element
         # electricity_resource_use_id = scenario_element.elements["#{ns}:ResourceUses/#{ns}:ResourceUse/#{ns}:EnergyResource"].text
@@ -107,9 +107,9 @@ Dir.glob(File.join(indir, "**/*.xml")).each do |xml_file_path|
           end
         end
       end
-    # rescue NoMethodError => e
-      # puts "Error #{e} occurred while processing #{File.basename(xml_file_path)}"
-    # end
+    rescue NoMethodError => e
+      puts "Error #{e} occurred while processing #{File.basename(xml_file_path)}"
+    end
 
     new_xml_file_path = File.absolute_path(xml_file_path).gsub("#{SIM_FILES_DIR}", "#{CALC_METRICS_DIR}")
     unless Dir.exist?(File.dirname(new_xml_file_path))
