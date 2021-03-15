@@ -128,7 +128,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     translator.write_osws
 
     translator.run_osws(baseline_only)
-    translator.gather_results(out_path, baseline_only)
+    translator.gather_results(m2.assumedYear)
     translator.prepare_final_xml
     translator.save_xml(out_xml)
   rescue StandardError => e
