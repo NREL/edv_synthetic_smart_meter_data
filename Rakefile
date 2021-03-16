@@ -183,13 +183,12 @@ task :lookup_climate_zone_csv do
 end
 #############################################################################################
 desc 'read the directory, iterate over BldgSync files and calcuate the metrics'
-task :calculate_metrics do
+task :generate_metrics_result do
 
   if ARGV[1]
-
     # ARGV[1] should be a path to a CSV file
     ruby "scripts/calculate_metrics.rb #{ARGV[1]}"
-
+    ruby "scripts/sum_metrics.rb"
   else
     # need path to csv file
     puts 'Error - No directory with BldgSync files specified'
