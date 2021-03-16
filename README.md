@@ -160,10 +160,10 @@ rake simulate_batch_xml
 
 - This rake task calculates Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
 ```
-rake calculate_metrics path/to/simulation/results
+rake calculate_metrics <Simulation_Files_Dir>
 ```
 
-- Currently, only monthly data metric calculations are implmented.
+- Currently, only monthly data metric calculation is implmented.
 
 
 #### Step 7: Generate synthetic time-series data
@@ -178,4 +178,5 @@ rake export_synthetic_data path/to/configuration/csv/file
 
 # TODO
 
-- [ ] Update figures.
+- [ ] Update figures;
+- [ ] To include capability for more granular timeseries data for step 5.
