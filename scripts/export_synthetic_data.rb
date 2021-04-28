@@ -1,7 +1,7 @@
 # export synthetic smart meter data
 
+require 'bundler/setup'
 require 'openstudio/extension'
-require 'openstudio/model_articulation/os_lib_model_generation_bricr'
 require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'

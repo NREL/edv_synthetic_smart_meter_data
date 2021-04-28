@@ -156,7 +156,7 @@ rake simulate_batch_xml
 
 
 
-#### Step 6: Calculate metrics based on information from real and synthetic data
+#### Step 6: Calculate metrics with real and synthetic data
 
 - This rake task calculates Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
 ```
