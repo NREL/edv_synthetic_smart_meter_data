@@ -80,7 +80,7 @@ class MeasuredDataCalculation
       csv_month_class_collection.each do |single_csv_class|
         if single_csv_class.year == year
           if interval.downcase == 'month'
-            ts_elements.push(add_interval_reading(ns, interval, single_csv_class.kwh_total[counter], 
+            ts_elements.push(add_interval_reading(ns, interval, single_csv_class.total_native_value[counter], 
               single_csv_class.start_time_stamp, single_csv_class.end_time_stamp))
           elsif interval.downcase == 'hour'
             start_time_hourly = []
@@ -95,8 +95,8 @@ class MeasuredDataCalculation
               ts_elements.push(add_interval_reading(ns, interval, hourly_value, start_time_hourly[i], end_time_hourly[i]))
             end
           end
-          file_native_value.push(single_csv_class.kwh_total[counter])
-          file_total_value.push(single_csv_class.kbtu_total[counter])
+          file_native_value.push(single_csv_class.total_native_value[counter])
+          file_total_value.push(single_csv_class.total_value[counter])
           file_peak_value_array.push(single_csv_class.peak_value_array[counter])
         end
       end
@@ -180,17 +180,15 @@ class MeasuredDataCalculation
 
   def create_monthly_csv_data(csv_row_collection, interval)
     monthly_csv_obj = MonthlyData.new
-    # datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%y")
-    datetime = DateTime.parse(csv_row_collection[0][0])
+    datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%y")
+    # datetime = DateTime.parse(csv_row_collection[0][0])
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_year(datetime.year)
-    monthly_csv_obj.initialize_native_value
-    monthly_csv_obj.initialize_total_value
 
     if interval.downcase == 'hour'
       csv_row_collection.each do |time|
-        # monthly_csv_obj.update_day(DateTime.strptime(time[0], "%m/%d/%y %H:%M").day)
-        monthly_csv_obj.update_day(DateTime.parse(time[0]).day)
+        monthly_csv_obj.update_day(DateTime.strptime(time[0], "%m/%d/%y %H:%M").day)
+        # monthly_csv_obj.update_day(DateTime.parse(time[0]).day)
         monthly_csv_obj.update_start_time_hourly(time[0])
       end
       monthly_csv_obj.get_hourly_start_timestamp
@@ -216,8 +214,8 @@ class MeasuredDataCalculation
       end
     end
     monthly_csv_obj.get_peak_value_array
-    monthly_csv_obj.get_kwh_total
-    monthly_csv_obj.get_kbtu_total
+    monthly_csv_obj.get_native_total_values
+    monthly_csv_obj.get_total_values
 
     monthly_csv_obj
   end
@@ -234,8 +232,8 @@ class MeasuredDataCalculation
     interval = ''
 
     csv_table.each do |csv_row|
-      # datetime = DateTime.strptime(csv_row["timestamp"], "%m/%d/%y %k:%M")
-      datetime = DateTime.parse(csv_row["timestamp"])
+      datetime = DateTime.strptime(csv_row["timestamp"], "%m/%d/%y %k:%M")
+      # datetime = DateTime.parse(csv_row["timestamp"])
       if !datetime.hour.nil?
         interval = 'Hour'
       elsif !datetime.month.nil?
@@ -248,10 +246,10 @@ class MeasuredDataCalculation
     years.uniq.each do |year|
       months.uniq.each do |month|
         csv_table.each do |row|
-          # if DateTime.strptime(row["timestamp"], "%m/%d/%y").year == year &&
-            # DateTime.strptime(row["timestamp"], "%m/%d/%y").month == month
-          if DateTime.parse(row["timestamp"]).year == year &&
-            DateTime.parse(row["timestamp"]).month == month
+          if DateTime.strptime(row["timestamp"], "%m/%d/%y").year == year &&
+            DateTime.strptime(row["timestamp"], "%m/%d/%y").month == month
+          # if DateTime.parse(row["timestamp"]).year == year &&
+            # DateTime.parse(row["timestamp"]).month == month
             csv_row_collection.push(row)
           end
         end

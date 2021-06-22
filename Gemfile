@@ -17,9 +17,6 @@ gem 'geocoder', '1.6.4'
 if allow_local && File.exist?('../OpenStudio-extension-gem')
   gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
 else
-  # edv Ruby-2.2.4 compatible version:
-  # gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', :tag => 'v0.1.6'
-
   gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', tag: 'v0.2.6'
 end
 
@@ -29,9 +26,6 @@ end
 if allow_local && File.exist?('../openstudio-model-articulation-gem')
   gem 'openstudio-model-articulation', path: '../openstudio-model-articulation-gem'
 else
-  # edv ruby-2.2.4 compatible version:
-  # gem 'openstudio-model-articulation', github: 'NREL/openstudio-model-articulation-gem', branch: 'DA'
-
   gem 'openstudio-model-articulation', github: 'NREL/openstudio-model-articulation-gem', tag: 'v0.2.1'
 end
 
@@ -41,36 +35,28 @@ end
 if allow_local && File.exist?('../openstudio-common-measures-gem')
   gem 'openstudio-common-measures', path: '../openstudio-common-measures-gem'
 else
-  # edv ruby-2.2.4 compatible version:
-  # gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', :tag => 'v0.1.1'
-
   gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', tag: 'v0.2.1'
 end
 
 ########################################################################
 ########################################################################
 
-if allow_local && File.exist?('../openstudio-standards-gem')
+# if allow_local && File.exist?('../openstudio-standards-gem')
   gem 'openstudio-standards', path: '../openstudio-standards'
-else
-  # edv ruby-2.2.4 compatible version:
-  # gem 'openstudio-standards', github: 'NREL/openstudio-standards', :tag => 'v0.2.11'
-
-  gem 'openstudio-standards'
-end
+# else
+#   gem 'openstudio-standards'
+# end
 
 ########################################################################
 ########################################################################
-
+=begin
 if allow_local_bsync && File.exists?('../BuildingSync-gem')
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
-  # edv ruby-2.2.4 compatible version:
-  # gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', branch: 'DA_EDV_testing'
-
   gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', :tag => 'v0.2.0'
 end
-
+=end
+gem 'buildingsync', path: '../BuildingSync-gem'
 ########################################################################
 ########################################################################
 

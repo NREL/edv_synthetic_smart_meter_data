@@ -95,7 +95,7 @@ class MonthlyData
     @end_time_stamp = end_time.gsub('/', '-') + ":00"
   end
 
-  def update_monthly_total(value, counter)
+  def update_total_values(value, counter)
     csv_value = value.to_f
     if @total_value[counter].nil? || @total_native_value[counter].nil?
       @total_native_value[counter] = csv_value
@@ -106,15 +106,12 @@ class MonthlyData
     end
   end
 
-  def update_total_values(value, counter)
-    csv_value = value.to_f
-    if @total_value[counter].nil? || @total_native_value[counter].nil?
-      @total_native_value[counter] = csv_value
-      @total_value[counter] = csv_value * 3.41214
-    else
-      @total_native_value[counter] += csv_value
-      @total_value[counter] += csv_value * 3.41214
-    end
+  def get_total_values
+    return @total_value
+  end
+
+  def get_native_total_values
+    return @total_native_value
   end
 
   def update_hourly_values(value, counter)
@@ -140,14 +137,6 @@ class MonthlyData
     @hourly_values = @csv_hourly[@year][@month]
   end
 
-  def get_kwh_total
-    @kwh_total = @total_native_value
-  end
-
-  def get_kbtu_total
-    @kbtu_total = @total_value
-  end
-
   def get_peak_value_array
     @peak_value_array = @peak_values[@year]
   end
@@ -168,5 +157,5 @@ class MonthlyData
     @total_value = {}
   end
 
-  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :kbtu_total, :kwh_total, :peak_value_array
+  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :kbtu_total, :kwh_total, :peak_value_array, :total_value, :total_native_value
 end
