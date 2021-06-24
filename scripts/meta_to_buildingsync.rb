@@ -1320,7 +1320,6 @@ CSV.foreach(ARGV[0], options).with_index do |feature, i|
     end
   rescue => e
     puts "Building #{building_id} not converted, #{e.message}"
-    # puts e.backtrace # DLM: uncomment for debugging
     next
   end
   puts "###############################################"
