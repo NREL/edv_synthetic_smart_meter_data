@@ -3,7 +3,6 @@
 require 'csv'
 require 'fileutils'
 require_relative 'constants'
-require 'geocoder'
 
 # sf monthly
 sf_monthly_energy_file = File.join(__dir__, '../', 'data', 'example', 'monthlyenergy_bricr_filtered.csv')
