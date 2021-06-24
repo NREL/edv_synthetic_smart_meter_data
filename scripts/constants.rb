@@ -40,9 +40,9 @@ DEFAULT_WEATHERDATA_DIR = "data/weather"
 
 # Input file names for generate_xmls, assumed location depends on RUN_TYPE
 DEFAULT_METADATA_FILE = "metadata_template.csv"
-PROCESSED_METADATA_FILE = "metadata_2.csv"
+PROCESSED_METADATA_FILE = "metadata.csv"
 DEFAULT_TIMESERIESDATA_FILE = "timeseriesdata_template.csv"
-PROCESSED_TIMESERIESDATA_FILE = "timeseriesdata_2.csv"
+PROCESSED_TIMESERIESDATA_FILE = "timeseriesdata.csv"
 
 # Output location for generate_xmls task and name of summary file
 GENERATE_DIR = "Bldg_Sync_Files"
@@ -63,3 +63,6 @@ CALC_METRICS_DIR = "Calc_Metrics"
 # Final results directory
 RESULTS_DIR = "Results"
 RESULTS_FILE_NAME = 'results.csv'
+
+# SF DATA
+SF_MONTHLY = true

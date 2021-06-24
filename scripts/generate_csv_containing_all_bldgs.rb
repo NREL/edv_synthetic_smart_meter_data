@@ -20,7 +20,6 @@ epw_arr = []
 if !ARGV[2].nil? && File.exist?(ARGV[2])
 
   options = {headers:true, header_converters: :symbol}
-
   CSV.foreach(ARGV[2], options) do |row|
     the_hash = {}
     the_hash[:building_id] = row[:building_id]
@@ -50,11 +49,9 @@ csv_file_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Control_Files/all.csv
 FileUtils.mkdir_p File.dirname(csv_file_path)
 
 csv = File.open(csv_file_path, 'w')
-totalcount = Dir.glob("#{root_dir}/*.xml").count
 
-puts "Generating control file..."
+puts "Generating control file"
 Dir.glob("#{root_dir}/*.xml").each do |xml_file|
-
   matches = epw_arr.select { |row| row[:building_id] === File.basename(xml_file, ".xml") }
   
   begin
@@ -63,7 +60,6 @@ Dir.glob("#{root_dir}/*.xml").each do |xml_file|
         if matches[0][:weather_file_name_epw] == 'temporary.epw' || matches[0][:weather_file_name_ddy] == 'temporary.ddy'
           weather_file_source_dir = File.join(temp_dir, 'data', 'weather')
         end
-
         epw_file = File.expand_path(matches[0][:weather_file_name_epw], weather_file_source_dir)
         ddy_file = File.expand_path(matches[0][:weather_file_name_ddy], weather_file_source_dir)
       end
@@ -72,7 +68,6 @@ Dir.glob("#{root_dir}/*.xml").each do |xml_file|
     puts "ERROR - could not add epw and ddy info to #{File.basename(xml_file, ".xml")}"
   end
 
-  puts "Successfully added epw and ddy info to #{File.basename(xml_file, ".xml")}"
   csv.puts("#{File.basename(xml_file)},#{standard_to_be_used},#{epw_file},#{ddy_file}")
   csv.flush
 end

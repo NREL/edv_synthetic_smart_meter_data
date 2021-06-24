@@ -157,5 +157,9 @@ class MonthlyData
     @total_value = {}
   end
 
-  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :hourly_values, :kbtu_total, :kwh_total, :peak_value_array, :total_value, :total_native_value
+  def update_fuel(fuel_type)
+    @fuel = fuel_type
+  end
+
+  attr_reader :day, :month, :year, :start_time_stamp, :end_time_stamp, :fuel, :hourly_values, :kbtu_total, :kwh_total, :total_native_value, :total_value, :peak_value_array
 end

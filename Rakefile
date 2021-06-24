@@ -13,18 +13,22 @@ task :standardize_metadata_and_timeseriesdata do
   #raw_metadata_file = "../the-building-data-genome-project/data/raw/meta_open.csv" #metadata in public version
   #raw_timeseries_file = "../the-building-data-genome-project/data/raw/temp_open_utc.csv"
   
-  if ARGV[1] && ARGV[2]
-
-    # ARGV[1] should be a path to a CSV file
-    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{ARGV[1]} #{ARGV[2]}"
-
-  elsif File.exist?(raw_metadata_file) && File.exist?(raw_timeseries_file)
-    ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{raw_metadata_file} #{raw_timeseries_file}"
+  if SF_MONTHLY
+    ruby "scripts/rawdata_to_standardized_input_SF.rb"
   else
-    # need path to csv file
-    puts "Error - No CSV file specified and default not found at: #{raw_metadata_file}"
-    puts "Error - No CSV file specified and default not found at: #{raw_timeseries_file}"
-    puts 'Usage: rake standardize_metadata_and_timeseriesdata path/to/metadata/csv/file path/to/timeseriesdata/csv/file'
+    if ARGV[1] && ARGV[2]
+
+      # ARGV[1] should be a path to a CSV file
+      ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{ARGV[1]} #{ARGV[2]}"
+
+    elsif File.exist?(raw_metadata_file) && File.exist?(raw_timeseries_file)
+      ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{raw_metadata_file} #{raw_timeseries_file}"
+    else
+      # need path to csv file
+      puts "Error - No CSV file specified and default not found at: #{raw_metadata_file}"
+      puts "Error - No CSV file specified and default not found at: #{raw_timeseries_file}"
+      puts 'Usage: rake standardize_metadata_and_timeseriesdata path/to/metadata/csv/file path/to/timeseriesdata/csv/file'
+    end
   end
 end
 #############################################################################################
@@ -81,27 +85,30 @@ task :generate_control_csv do
   default_weather = "#{DEFAULT_WEATHERDATA_DIR}"
   processed_weather = "../edv-experiment-1-files/weather" #private weather data
 
-  if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
-    # ARGV[4] should be a path to a directory with weather files
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
-  elsif ARGV[1] && ARGV[2] && ARGV[3]
-    # ARGV[3] should be a path to csv_file_with_EPWs
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
-  elsif ARGV[1] && ARGV[2]
-    # ARGV[2] should be the standard_to_be_used
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]}"
-  elsif ARGV[1]
-    # ARGV[1] should be a path to a directory with BldgSync files (root_dir)
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} "
-  elsif RUN_TYPE == 'default' && Dir.exist?(default_path_to_add_measured) && File.exist?(default_metadata_file) && Dir.exist?(default_weather)
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{default_metadata_file} #{default_weather}"
-  elsif RUN_TYPE == 'processed' && Dir.exist?(default_path_to_add_measured) && File.exist?(processed_metadata_file) && Dir.exist?(processed_weather)
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{processed_metadata_file} #{processed_weather}"
+  if SF_MONTHLY
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{processed_metadata_file}"
   else
-    # need path to a directory with BldgSync files
-    puts "Error - No directory with BuildingSync files specified"
-    puts "Usage: rake generate_csv_containing_all_bldgs /path/to/buildingsync/XML/files/folder (optional) standard_to_be_used path/to/metadata/csv/file weather/file/source/dir"
-
+    if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
+      # ARGV[4] should be a path to a directory with weather files
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
+    elsif ARGV[1] && ARGV[2] && ARGV[3]
+      # ARGV[3] should be a path to csv_file_with_EPWs
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
+    elsif ARGV[1] && ARGV[2]
+      # ARGV[2] should be the standard_to_be_used
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]}"
+    elsif ARGV[1]
+      # ARGV[1] should be a path to a directory with BldgSync files (root_dir)
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} "
+    elsif RUN_TYPE == 'default' && Dir.exist?(default_path_to_add_measured) && File.exist?(default_metadata_file) && Dir.exist?(default_weather)
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{default_metadata_file} #{default_weather}"
+    elsif RUN_TYPE == 'processed' && Dir.exist?(default_path_to_add_measured) && File.exist?(processed_metadata_file) && Dir.exist?(processed_weather)
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{processed_metadata_file} #{processed_weather}"
+    else
+      # need path to a directory with BldgSync files
+      puts "Error - No directory with BuildingSync files specified"
+      puts "Usage: rake generate_csv_containing_all_bldgs /path/to/buildingsync/XML/files/folder (optional) standard_to_be_used path/to/metadata/csv/file weather/file/source/dir"
+    end
   end
 end
 #############################################################################################

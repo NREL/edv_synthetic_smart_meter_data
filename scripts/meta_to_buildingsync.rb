@@ -68,7 +68,9 @@ def convert(value, unit_in, unit_out)
 end
 
 def get_building_id(feature)
+
   feature[:building_id]
+
 end
 
 def get_floor_area(feature)
@@ -82,21 +84,22 @@ end
 
 def get_year_built(feature)
   # remove "pre" and "post"
-  yrblt = feature[:vintage]
-  unless yrblt.nil?
-    yrblt.gsub('pre ', '')
-    yrblt.gsub('Pre ', '')
-    yrblt.gsub('post ', '')
-    yrblt.gsub('Post ', '')
+  yr_blt = feature[:vintage]
+
+  unless yr_blt.nil?
+    yr_blt.gsub('pre ', '')
+    yr_blt.gsub('Pre ', '')
+    yr_blt.gsub('post ', '')
+    yr_blt.gsub('Post ', '')
 
     # take last number if given a range
-    yrs = yrblt.split('-')
-    yrblt = yrs[-1]
+    yrs = yr_blt.split('-')
+    yr_blt = yrs[-1]
   end
-  if !/\A\d+\z/.match(yrblt)
+  if !/\A\d+\z/.match(yr_blt)
     return ''
   else
-    return yrblt
+    return yr_blt
   end
 end
 
@@ -154,6 +157,8 @@ def get_building_classification(feature)
     result = 'Commercial'
   when 'Other'
     result = 'Commercial'
+  when 'Strip Mall'
+    result = 'Commercial'
   else
     raise "Unknown classification #{classification}"
   end
@@ -208,7 +213,9 @@ def get_occupancy_classification(feature, scenario_hash = nil)
   when 'Technology/science'
     result = scenario_hash[:"Office"]
   when 'Other'
-	result = scenario_hash[:"Office"]
+    result = scenario_hash[:"Office"]
+  when 'Strip Mall'
+    result = scenario_hash[:"Office"]
   else
     raise "Unknown classification #{classification}"
   end
@@ -280,7 +287,6 @@ def create_site(feature, scenario_hash = nil, state_hash)
       address.add_element(country)
     end
     site.add_element(address)
-
   end
 
   # climate zone
@@ -352,8 +358,9 @@ def create_site(feature, scenario_hash = nil, state_hash)
   building.add_element(occupancy_classification)
 
   floors_above_grade = REXML::Element.new('auc:FloorsAboveGrade')
-  numberoffloors = [feature[:number_of_stories].to_i, 1].max # DLM: assume 1 story if no information
-  floors_above_grade.text = numberoffloors
+  number_of_floors = [feature[:number_of_stories].to_i, 1].max # DLM: assume 1 story if no information
+
+  floors_above_grade.text = number_of_floors
   building.add_element(floors_above_grade)
 
   floors_below_grade = REXML::Element.new('auc:FloorsBelowGrade')
@@ -361,7 +368,6 @@ def create_site(feature, scenario_hash = nil, state_hash)
   building.add_element(floors_below_grade)
 
   floor_areas = REXML::Element.new('auc:FloorAreas')
-
   floor_area = REXML::Element.new('auc:FloorArea')
   floor_area_type = REXML::Element.new('auc:FloorAreaType')
   floor_area_type.text = 'Gross'
@@ -470,57 +476,64 @@ end
 def create_system(feature)
   hvac_systems = nil
   
+  feature[:fuel_type] = ['electricity', 'gas']
+  
   unless feature[:fuel_type].nil?
+    hvac_systems = REXML::Element.new('auc:HVACSystems')
 
-    # add heating system with primary fuel UNLESS value = District Heating, then add a Plant
-    # Biomass, District Heating, Electric, Electricity, Gas, Heat Network, and Steam, Oil
-    new_fuel = nil
-    fuel = feature[:fuel_type].downcase
-    case fuel
-    when 'electricity'
-      new_fuel = 'Electricity'
-    when 'electric'
-      new_fuel = 'Electricity'
-    when 'gas'
-      new_fuel = 'Natural gas'
-    when 'oil'
-      new_fuel = 'Fuel oil'
-    when 'steam'
-      new_fuel = 'Dry steam' # or Flash steam
-    when 'biomass'
-      new_fuel = 'Biomass'
-    end
+    feature[:fuel_type].split('/').each do |fuel|
 
-    if fuel === 'district heating' || fuel === 'heat network'
-      # add plant
-      hvac_systems = REXML::Element.new('auc:HVACSystems')
-      hvac_system = REXML::Element.new('auc:HVACSystem')
-      plants = REXML::Element.new('auc:Plants')
-      heating_plants = REXML::Element.new('auc:HeatingPlants')
-      heating_plant = REXML::Element.new('auc:HeatingPlant')
-      district_heating = REXML::Element.new('auc:DistrictHeating')
-      dh_type = REXML::Element.new('auc:DistrictHeatingType')
-      dh_type.text = 'Unknown'
-      district_heating.add_element(dh_type)
-      heating_plant.add_element(district_heating)
-      heating_plants.add_element(heating_plant)
-      plants.add_element(heating_plants)
-      hvac_system.add_element(plants)
-      hvac_systems.add_element(hvac_system)
+      # add heating system with primary fuel UNLESS value = District Heating, then add a Plant
+      # Biomass, District Heating, Electric, Electricity, Gas, Heat Network, and Steam, Oil
+      new_fuel = nil
+      # fuel = feature[:fuel_type].downcase
+      case fuel
+        when 'electricity'
+          new_fuel = 'Electricity'
+        when 'electric'
+          new_fuel = 'Electricity'
+        when 'gas'
+          new_fuel = 'Natural gas'
+        when 'oil'
+          new_fuel = 'Fuel oil'
+        when 'steam'
+          new_fuel = 'Dry steam' # or Flash steam
+        when 'biomass'
+          new_fuel = 'Biomass'
+      end
 
-    elsif !new_fuel.nil?
-      # add system
-      hvac_systems = REXML::Element.new('auc:HVACSystems')
-      hvac_system = REXML::Element.new('auc:HVACSystem')
-      h_and_c = REXML::Element.new('auc:HeatingAndCoolingSystems')
-      heating_sources = REXML::Element.new('auc:HeatingSources')
-      heating_source = REXML::Element.new('auc:HeatingSource')
-      primary_fuel = REXML::Element.new('auc:PrimaryFuel')
-      primary_fuel.text = new_fuel
-      heating_source.add_element(primary_fuel)
-      heating_sources.add_element(heating_source)
-      h_and_c.add_element(heating_sources)
-      hvac_system.add_element(h_and_c)
+      if fuel === 'district heating' || fuel === 'heat network'
+        # add plant
+        # hvac_systems = REXML::Element.new('auc:HVACSystems')
+        hvac_system = REXML::Element.new('auc:HVACSystem')
+        plants = REXML::Element.new('auc:Plants')
+        heating_plants = REXML::Element.new('auc:HeatingPlants')
+        heating_plant = REXML::Element.new('auc:HeatingPlant')
+        district_heating = REXML::Element.new('auc:DistrictHeating')
+        dh_type = REXML::Element.new('auc:DistrictHeatingType')
+        dh_type.text = 'Unknown'
+        district_heating.add_element(dh_type)
+        heating_plant.add_element(district_heating)
+        heating_plants.add_element(heating_plant)
+        plants.add_element(heating_plants)
+        hvac_system.add_element(plants)
+        # hvac_systems.add_element(hvac_system)
+
+      elsif !new_fuel.nil?
+        # add system
+        # hvac_systems = REXML::Element.new('auc:HVACSystems')
+        hvac_system = REXML::Element.new('auc:HVACSystem')
+        h_and_c = REXML::Element.new('auc:HeatingAndCoolingSystems')
+        heating_sources = REXML::Element.new('auc:HeatingSources')
+        heating_source = REXML::Element.new('auc:HeatingSource')
+        primary_fuel = REXML::Element.new('auc:PrimaryFuel')
+        primary_fuel.text = new_fuel
+        heating_source.add_element(primary_fuel)
+        heating_sources.add_element(heating_source)
+        h_and_c.add_element(heating_sources)
+        hvac_system.add_element(h_and_c)
+        # hvac_systems.add_element(hvac_system)
+      end
       hvac_systems.add_element(hvac_system)
     end
   end
@@ -1214,7 +1227,7 @@ def convert_building(feature, scenario_hash = nil, state_hash)
 
   building_id = get_building_id(feature)
   floor_area = get_floor_area(feature)
-  
+
   source = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
   <auc:BuildingSync #{xml_namespace}>
   	<auc:Facilities>
@@ -1293,7 +1306,6 @@ puts "###############################################"
 total_number_of_buildings = CSV.read(ARGV[0], :headers => true).count
 
 CSV.foreach(ARGV[0], options).with_index do |feature, i|
-
   puts "Processing building #{i.next} from a total of #{total_number_of_buildings} buildings"
   
   building_id = feature[:building_id]
