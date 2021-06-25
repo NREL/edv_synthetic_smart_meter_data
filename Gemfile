@@ -41,22 +41,21 @@ end
 ########################################################################
 ########################################################################
 
-# if allow_local && File.exist?('../openstudio-standards-gem')
+if allow_local && File.exist?('../openstudio-standards-gem')
   gem 'openstudio-standards', path: '../openstudio-standards'
-# else
-#   gem 'openstudio-standards'
-# end
+else
+  gem 'openstudio-standards'
+end
 
 ########################################################################
 ########################################################################
-=begin
+
 if allow_local_bsync && File.exists?('../BuildingSync-gem')
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
   gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', :tag => 'v0.2.0'
 end
-=end
-gem 'buildingsync', path: '../BuildingSync-gem'
+
 ########################################################################
 ########################################################################
 
