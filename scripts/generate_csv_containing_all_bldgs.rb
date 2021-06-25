@@ -57,7 +57,7 @@ Dir.glob("#{root_dir}/*.xml").each do |xml_file|
     if matches.size > 0
       if (!matches[0][:weather_file_name_epw].nil?) || (!matches[0][:weather_file_name_ddy].nil?)
         if matches[0][:weather_file_name_epw] == 'temporary.epw' || matches[0][:weather_file_name_ddy] == 'temporary.ddy'
-          weather_file_source_dir = File.join(temp_dir, 'data', 'weather')
+          weather_file_source_dir = File.join(temp_dir, 'data', 'weather', 'temporary')
         end
         epw_file = File.expand_path(matches[0][:weather_file_name_epw], weather_file_source_dir)
         ddy_file = File.expand_path(matches[0][:weather_file_name_ddy], weather_file_source_dir)
