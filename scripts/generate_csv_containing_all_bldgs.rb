@@ -50,7 +50,6 @@ FileUtils.mkdir_p File.dirname(csv_file_path)
 
 csv = File.open(csv_file_path, 'w')
 
-puts "Generating control file"
 Dir.glob("#{root_dir}/*.xml").each do |xml_file|
   matches = epw_arr.select { |row| row[:building_id] === File.basename(xml_file, ".xml") }
   
@@ -73,3 +72,6 @@ Dir.glob("#{root_dir}/*.xml").each do |xml_file|
 end
 
 csv.close
+puts "*************************"
+puts "* Control CSV generated *"
+puts "*************************"

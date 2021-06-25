@@ -475,9 +475,7 @@ end
 
 def create_system(feature)
   hvac_systems = nil
-  
-  feature[:fuel_type] = ['electricity', 'gas']
-  
+
   unless feature[:fuel_type].nil?
     hvac_systems = REXML::Element.new('auc:HVACSystems')
 

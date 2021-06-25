@@ -14,7 +14,6 @@ class MeasuredDataCalculation
   end
 
   def add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years, fuels)
-    puts "#{years}"
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
     measured_scenario_element = nil
@@ -184,16 +183,17 @@ class MeasuredDataCalculation
     doc
   end
 
-  def create_monthly_csv_data(csv_row_collection, interval)
+  def create_monthly_csv_data(csv_row_collection, interval, fuel_type)
     monthly_csv_obj = MonthlyData.new
     if SF_MONTHLY
       datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%Y")
     else
       datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%Y")
     end
+
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_year(datetime.year)
-    monthly_csv_obj.update_fuel(csv_row_collection[0][1])
+    monthly_csv_obj.update_fuel(fuel_type)
 
     if interval.downcase == 'hour'
       csv_row_collection.each do |time|
@@ -240,6 +240,7 @@ class MeasuredDataCalculation
     years = []
     fuels = []
     interval = ''
+    fuel_type = ''
 
     csv_table.each do |csv_row|
       if SF_MONTHLY
@@ -258,6 +259,9 @@ class MeasuredDataCalculation
       end
       years.push(datetime.year)
       months.push(datetime.month)
+      if csv_row['fuel_type'].nil?
+        csv_row['fuel_type'] = "electricity"
+      end
       fuels.push(csv_row['fuel_type'])
     end
 
@@ -274,10 +278,11 @@ class MeasuredDataCalculation
               m = DateTime.strptime(row["timestamp"], "%m/%d/%Y").month
             end
             if y == year && m == month && f == fuel
+              fuel_type = f
               csv_row_collection.push(row)
             end
           end
-          csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, interval))
+          csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, interval, fuel_type))
           csv_row_collection.clear
         end
       end
