@@ -12,8 +12,6 @@ begin
     ruby "scripts/rawdata_to_standardized_input_bdgp.rb"
   elsif args.data_option.downcase == 'sf' || args.data_option.downcase == 'sf_monthly'
     ruby "scripts/rawdata_to_standardized_input_sf.rb"
-  # elsif ARGV[1] && ARGV[2]
-  #   ruby "scripts/rawdata_to_standardized_input_bdgp.rb #{ARGV[1]} #{ARGV[2]}"
   else
     puts "Error - No metadata or timeseries data CSV file specified"
   end
