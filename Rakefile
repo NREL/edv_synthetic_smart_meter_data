@@ -9,9 +9,9 @@ task :format_data, [:data_option] do |task, args|
 
 begin
   if args.data_option.downcase == 'bdgp'
-    ruby "scripts/rawdata_to_standardized_input_bdgp.rb"
+    ruby "scripts/format_data_bdgp.rb"
   elsif args.data_option.downcase == 'sf' || args.data_option.downcase == 'sf_monthly'
-    ruby "scripts/rawdata_to_standardized_input_sf.rb"
+    ruby "scripts/format_data_sf.rb"
   else
     puts "Error - No metadata or timeseries data CSV file specified"
   end
