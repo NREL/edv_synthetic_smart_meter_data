@@ -19,7 +19,6 @@ def map_location_with_latlng(file, outdir, options = {headers: true, header_conv
     lat_lng_arr << {:building_id => row[:id]}
   end
 
-  puts "###############################################"
   CSV.foreach(file, options).with_index do |feature, i|
 
     feature[:zipcode] = ""
@@ -84,4 +83,7 @@ CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
     header_info = header.to_s.split('_')
     csv << table[:"#{header}"].insert(0, "#{header_info[2]}/#{header_info[1]}").insert(1, "#{header_info[3]}")
   end
+  puts "#######################################################################"
+  puts "Successfully formatted metadata and timeseries data for SF monthly data."
+  puts "#######################################################################"
 end
