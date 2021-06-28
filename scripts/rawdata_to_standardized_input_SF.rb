@@ -72,7 +72,7 @@ data_original = CSV.read(sf_monthly_energy_file)
 header = CSV.open(sf_monthly_energy_file, &:readline)
 
 header_id = ['timestamp', 'fuel_type']
-CSV.open(outdir + '/timeseriesdata_sf.csv', "w", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
   data_original.each_with_index do |row, i|
     next if i == 0
     header_id << row[header.find_index('id')]

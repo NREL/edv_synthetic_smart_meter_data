@@ -185,11 +185,8 @@ class MeasuredDataCalculation
 
   def create_monthly_csv_data(csv_row_collection, interval, fuel_type)
     monthly_csv_obj = MonthlyData.new
-    if SF_MONTHLY
-      datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%Y")
-    else
-      datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%Y")
-    end
+    datetime = DateTime.parse(csv_row_collection[0][0])
+    # datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%Y")
 
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_year(datetime.year)
@@ -197,7 +194,8 @@ class MeasuredDataCalculation
 
     if interval.downcase == 'hour'
       csv_row_collection.each do |time|
-        monthly_csv_obj.update_day(DateTime.strptime(time[0], "%m/%d/%Y %H:%M").day)
+        monthly_csv_obj.update_day(DateTime.parse(csv_row_collection[0][0]).day)
+        # monthly_csv_obj.update_day(DateTime.strptime(time[0], "%m/%d/%Y %H:%M").day)
         monthly_csv_obj.update_start_time_hourly(time[0])
       end
       monthly_csv_obj.get_hourly_start_timestamp
@@ -243,19 +241,12 @@ class MeasuredDataCalculation
     fuel_type = ''
 
     csv_table.each do |csv_row|
-      if SF_MONTHLY
-        datetime = DateTime.strptime(csv_row["timestamp"], "%m/%Y")
-      else
-        datetime = DateTime.strptime(csv_row["timestamp"], "%m/%d/%Y %k:%M")
-      end
-      if SF_MONTHLY
+      datetime = DateTime.parse(csv_row["timestamp"])
+      puts "datetime: #{datetime}"
+      if datetime.hour.nil?
         interval = 'Month'
       else
-        if !datetime.hour.nil?
-          interval = 'Hour'
-        elsif !datetime.month.nil?
-          interval = 'Month'
-        end
+        interval = 'Hour'
       end
       years.push(datetime.year)
       months.push(datetime.month)
@@ -270,13 +261,8 @@ class MeasuredDataCalculation
         months.uniq.each do |month|
           csv_table.each do |row|
             f = row['fuel_type']
-            if SF_MONTHLY
-              y = DateTime.strptime(row["timestamp"], "%m/%Y").year
-              m = DateTime.strptime(row["timestamp"], "%m/%Y").month
-            else
-              y = DateTime.strptime(row["timestamp"], "%m/%d/%Y").year
-              m = DateTime.strptime(row["timestamp"], "%m/%d/%Y").month
-            end
+            y = DateTime.parse(row["timestamp"]).year
+            m = DateTime.parse(row["timestamp"]).month
             if y == year && m == month && f == fuel
               fuel_type = f
               csv_row_collection.push(row)

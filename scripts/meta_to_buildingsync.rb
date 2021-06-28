@@ -962,26 +962,23 @@ def create_scenarios(feature)
     start_ts = REXML::Element.new('auc:StartTimestamp')
     end_ts = REXML::Element.new('auc:EndTimestamp')
 
-    splitdate = feature[:measurement_start_date].split('/')
-    splityr = splitdate[2].split(' ')
-    splittime = splityr[1].split(':')
+    start_date = DateTime.parse(feature[:measurement_start_date])
+    d = start_date.day
+    m = start_date.month
+    y = start_date.year
+    h = start_date.hour
+    min = start_date.minute
 
-    d = splitdate[0]
-    m = splitdate[1]
-    y = splityr[0]
-    h = splittime[0]
-    min = splittime[1]
+    start_ts.text = start_date
 
-    start_ts.text = '20' + y + '-' + m + '-' + d + ' ' + h + ':' + min + ':00'
-    # puts "reformatted starttime: #{start_ts}"
+    end_date = DateTime.parse(feature[:measurement_end_date])
+    d = end_date.day
+    m = end_date.month
+    y = end_date.year
+    h = end_date.hour
+    min = end_date.minute
 
-    d = feature[:measurement_end_date][0, 2]
-    m = feature[:measurement_end_date][3, 2]
-    y = feature[:measurement_end_date][6, 2]
-    h = feature[:measurement_end_date][9, 2]
-    min = feature[:measurement_end_date][12, 2]
-
-    end_ts.text = '20' + y + '-' + m + '-' + d + ' ' + h + ':' + min + ':00'
+    end_ts.text = end_date
 
     time_series.add_element(start_ts)
     time_series.add_element(end_ts)

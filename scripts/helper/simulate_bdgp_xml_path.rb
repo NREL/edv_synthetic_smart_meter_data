@@ -23,8 +23,6 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
     facility = translator.get_facility
     facility.add_cb_modeled('Baseline')
-    # simulation_files/<building>/in.log: A Current Building Modeled scenario was added (Scenario ID: Baseline).
-    # puts "#{facility.report.cb_modeled.xget_id}"
 
     measure_dir = File.join(root_dir, 'lib', 'measures', 'hourly_consumption_by_fuel_to_csv')
     translator.add_measure_path(measure_dir)

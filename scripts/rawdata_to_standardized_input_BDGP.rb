@@ -5,17 +5,8 @@ require 'fileutils'
 require_relative 'constants'
 require 'geocoder'
 
-if ARGV[0].nil? || !File.exist?(ARGV[0])
-  puts 'Error - No metadata CSV file specified'
-  exit(1)
-
-end
-
-if ARGV[1].nil? || !File.exist?(ARGV[1])
-  puts 'Error - No timeseries CSV file specified'
-  exit(1)
-
-end
+metadata_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'metadata_2.csv')
+timeseries_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'electricity_2.csv')
 
 # output directory
 outdir = "./data/processed"
@@ -91,16 +82,26 @@ def copy_columns(file, std_labels, outdir, updated_features, options = {headers:
   
 end
 
-updated_features = map_location_with_latlng(ARGV[0], outdir)
+updated_features = map_location_with_latlng(metadata_bdgp2, outdir)
 
 std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
-copy_columns(ARGV[0], std_labels, outdir, updated_features)
+copy_columns(metadata_bdgp2, std_labels, outdir, updated_features)
 
-data_original = CSV.read(ARGV[1])
-header = CSV.open(ARGV[1], &:readline)
+data_original = CSV.read(timeseries_bdgp2)
+header = CSV.open(timeseries_bdgp2, &:readline)
 
 puts "Copying timeseries data into timeseriesdata.csv file"
 CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
   csv << header
-  data_original.each_with_index {|row,i| next if i == 0; csv << row }
+  data_original.each_with_index do |row,i| 
+    next if i == 0;
+
+    split_date = row[0].split(' ')[0].split('/')
+    # for DateTime.parse, YYYY-MM-DD
+    date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
+    time = row[0].split(' ')[-1]
+    row[0] = date + ' ' + time
+
+    csv << row
+  end
 end

@@ -96,10 +96,10 @@ export RUBYOPT=-W0
 #### Step 1 (optional): convert raw data to standard input data format. Example:
 
 ```
-rake standardize_metadata_and_timeseriesdata
+rake format_data[data_option]
 ```
 
-- Note that rake task ```standardize_metadata_and_timeseriesdata``` works exclusively for [Building Data Genome Project](https://github.com/buds-lab/building-data-genome-project-2). Users should create a custom rake task to convert raw input data to standard format.
+- Note that rake task ```format_data``` works exclusively for [Building Data Genome Project](https://github.com/buds-lab/building-data-genome-project-2) or San Francisco monthly data. Users should create a custom rake task to convert raw input data to standard format.
 
 - Skip if [BuildingSync](https://buildingsync.net/) files with sufficient building metadata imported direclty from [SEED](https://bricr.seed-platform.org/) are used as input data source.
 

@@ -5,31 +5,22 @@ require_relative 'scripts/constants'
 default_path_to_add_measured = "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 #############################################################################################
 desc 'convert raw data to standardized data format'
-task :standardize_metadata_and_timeseriesdata do
+task :format_data, [:data_option] do |task, args|
 
-  #TODO JK: need to change file location to bdgp repo once bdgp2 data intake mod is implemented.
-  raw_metadata_file = "../building-data-genome-project-2/data/metadata/metadata.csv" #metadata file containing private info
-  raw_timeseries_file = "../building-data-genome-project-2/data/meters/raw/electricity.csv" #timeseries file in the same location for easy access
-  #raw_metadata_file = "../the-building-data-genome-project/data/raw/meta_open.csv" #metadata in public version
-  #raw_timeseries_file = "../the-building-data-genome-project/data/raw/temp_open_utc.csv"
-  
-  if SF_MONTHLY
-    ruby "scripts/rawdata_to_standardized_input_SF.rb"
+begin
+  if args.data_option.downcase == 'bdgp'
+    ruby "scripts/rawdata_to_standardized_input_bdgp.rb"
+  elsif args.data_option.downcase == 'sf' || args.data_option.downcase == 'sf_monthly'
+    ruby "scripts/rawdata_to_standardized_input_sf.rb"
+  # elsif ARGV[1] && ARGV[2]
+  #   ruby "scripts/rawdata_to_standardized_input_bdgp.rb #{ARGV[1]} #{ARGV[2]}"
   else
-    if ARGV[1] && ARGV[2]
-
-      # ARGV[1] should be a path to a CSV file
-      ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{ARGV[1]} #{ARGV[2]}"
-
-    elsif File.exist?(raw_metadata_file) && File.exist?(raw_timeseries_file)
-      ruby "scripts/rawdata_to_standardized_input_BDGP.rb #{raw_metadata_file} #{raw_timeseries_file}"
-    else
-      # need path to csv file
-      puts "Error - No CSV file specified and default not found at: #{raw_metadata_file}"
-      puts "Error - No CSV file specified and default not found at: #{raw_timeseries_file}"
-      puts 'Usage: rake standardize_metadata_and_timeseriesdata path/to/metadata/csv/file path/to/timeseriesdata/csv/file'
-    end
+    puts "Error - No metadata or timeseries data CSV file specified"
   end
+rescue
+  puts "Usage: rake format_data[data_option] path/to/metadata path/to/timeseriesdata"
+end
+
 end
 #############################################################################################
 desc 'generate BuildingSync XMLs'
@@ -141,6 +132,15 @@ task :simulate_batch_xml do
   end
 end
 #############################################################################################
+desc 'building calibration'
+task :calibration do
+
+  output_dir = NAME_OF_OUTPUT_DIR
+  sim_results_dir = output_dir + "/#{SIM_FILES_DIR}"
+
+  ruby "scripts/calibration.rb"
+end
+#############################################################################################
 desc 'create synthetic data that are stictched between different scenarios'
 task :export_synthetic_data do
 
@@ -221,7 +221,7 @@ task :workflow_part_2 do
   results_file = results_dir + "/#{RESULTS_FILE_NAME}"
 
   if !File.exists?(all_csv_file)
-    puts "Rake: " + all_csv_file.to_s + " file does not exist.  Exiting program"
+    puts "Rake: " + all_csv_file.to_s + " file does not exist. Exiting program"
     exit(1)
   end
 
