@@ -73,6 +73,13 @@ if allow_local && File.exists?('../openstudio-variability-gem')
 else
   gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'ruby_upgrade'
 end
+
+########################################################################
+########################################################################
+
+# Version compatibility: after downloading openstudio-bldgs-calibration-gem, modify gem to use v0.2.6 openstudio-extension-gem locally
+gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
+
 ########################################################################
 ########################################################################
 
