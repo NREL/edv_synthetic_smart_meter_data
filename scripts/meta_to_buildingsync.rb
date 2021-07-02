@@ -1273,7 +1273,7 @@ def convert_building(feature, scenario_hash = nil, state_hash)
 end
 
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
+outdir = "./#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file

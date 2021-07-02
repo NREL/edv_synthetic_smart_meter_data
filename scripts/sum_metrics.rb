@@ -5,8 +5,8 @@ require_relative 'constants'
 
 include REXML
 
-xml_dir = File.join(File.dirname(__FILE__), '..', "#{NAME_OF_OUTPUT_DIR}/#{CALC_METRICS_DIR}")
-csv_dir = File.join(File.dirname(__FILE__), '..', "#{NAME_OF_OUTPUT_DIR}/results")
+xml_dir = File.join(File.dirname(__FILE__), '..', "#{WORKFLOW_OUTPUT_DIR}/#{CALC_METRICS_DIR}")
+csv_dir = File.join(File.dirname(__FILE__), '..', "#{WORKFLOW_OUTPUT_DIR}/results")
 
 
 if !File.exists?(xml_dir)

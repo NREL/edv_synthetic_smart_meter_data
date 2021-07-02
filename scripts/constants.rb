@@ -1,5 +1,5 @@
-NAME_OF_OUTPUT_DIR = "workflow_results"
-NAME_OF_INPUT_DIR = "inputs"
+WORKFLOW_OUTPUT_DIR = "workflow_results"
+INPUT_DIR = "inputs"
 
 # EDITABLE
 # Options include: ['default', 'processed']
@@ -57,6 +57,9 @@ CONTROL_SUMMARY_FILE_NAME = "all.csv"
 # Output location for files produced by simulation
 SIM_FILES_DIR = "Simulation_Files"
 
+# Calibration output directory
+CALIBRATION_OUTPUT_DIR = "Calibration_Files"
+
 # Output location for files after metrics added
 CALC_METRICS_DIR = "Calc_Metrics"
 
@@ -65,4 +68,6 @@ RESULTS_DIR = "Results"
 RESULTS_FILE_NAME = 'results.csv'
 
 # SF DATA
+# Change this arg to a cmd line arg
 SF_MONTHLY = true
+BDGP = false

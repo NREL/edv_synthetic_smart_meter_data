@@ -10,7 +10,7 @@ require 'rexml/document'
 require_relative '../constants'
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only, occ_var, non_routine_var)
-  simulation_file_path = File.join(File.expand_path(NAME_OF_OUTPUT_DIR), SIM_FILES_DIR)
+  simulation_file_path = File.join(File.expand_path(WORKFLOW_OUTPUT_DIR), SIM_FILES_DIR)
   if !File.exist?(simulation_file_path)
     FileUtils.mkdir_p(simulation_file_path)
   end

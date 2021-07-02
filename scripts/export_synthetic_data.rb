@@ -68,7 +68,7 @@ begin
     puts "-------------------------------------------------------" + "-" * column_headers[i].length
 
     building_sync_file_path = File.dirname(csv_file_path) + "/" + base_dir
-    out_path = File.expand_path("../#{NAME_OF_OUTPUT_DIR}/Simulation_Files/#{File.basename(building_sync_file_path, File.extname(building_sync_file_path))}/", File.dirname(__FILE__))
+    out_path = File.expand_path("../#{WORKFLOW_OUTPUT_DIR}/Simulation_Files/#{File.basename(building_sync_file_path, File.extname(building_sync_file_path))}/", File.dirname(__FILE__))
 
     puts "---------------------------------------------------------------------" + "-" * column_headers[i].length
     puts " Create hash for matching measure name and timeseries file for case #{column_headers[i]}"

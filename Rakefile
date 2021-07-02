@@ -2,7 +2,7 @@
 # RSpec::Core::RakeTask.new(:spec)
 require_relative 'scripts/constants'
 
-default_path_to_add_measured = "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
+default_path_to_add_measured = "#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 #############################################################################################
 desc 'convert raw data to standardized data format'
 task :format_data, [:data_option] do |task, args|
@@ -48,7 +48,7 @@ task :add_measured_data do
 
   default_timeseries_file = "#{RAW_DATA_DIR}/#{DEFAULT_TIMESERIESDATA_FILE}"
   processed_timeseries_file = "#{PROCESSED_DATA_DIR}/#{PROCESSED_TIMESERIESDATA_FILE}"
-  default_path_to_xmls = "#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
+  default_path_to_xmls = "#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"
 
   if ARGV[1] && ARGV[2]
 
@@ -103,7 +103,7 @@ end
 #############################################################################################
 desc 'simulate a single BuildingSync XML files'
 task :single_file_run do
-  output_dir = NAME_OF_OUTPUT_DIR
+  output_dir = WORKFLOW_OUTPUT_DIR
   all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   ruby "scripts/process_single_bldg_sync_file_in_csv.rb " + all_csv_file
 end
@@ -111,7 +111,7 @@ end
 desc 'simulate a batch of BuildingSync XML files'
 task :simulate_batch_xml do
 
-  output_dir = NAME_OF_OUTPUT_DIR
+  output_dir = WORKFLOW_OUTPUT_DIR
   all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   if ARGV[1] && ARGV[2]
     # ARGV[2] would be the folder with building sync files
@@ -133,7 +133,7 @@ end
 desc 'building calibration'
 task :calibration do
 
-  output_dir = NAME_OF_OUTPUT_DIR
+  output_dir = WORKFLOW_OUTPUT_DIR
   sim_results_dir = output_dir + "/#{SIM_FILES_DIR}"
 
   ruby "scripts/calibration.rb"
@@ -211,7 +211,7 @@ end
 #############################################################################################
 desc 'simulate batch and calculate metrics'
 task :workflow_part_2 do
-  output_dir = NAME_OF_OUTPUT_DIR
+  output_dir = WORKFLOW_OUTPUT_DIR
   all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   sim_results_dir = output_dir + "/#{SIM_FILES_DIR}"
   bldg_sync_files_w_metrics = output_dir + "/#{CALC_METRICS_DIR}"
