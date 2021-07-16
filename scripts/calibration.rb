@@ -174,7 +174,7 @@ class BuildingPortfolio
         File.open(path, 'w') do |f|
             f.write(JSON.pretty_generate(monthly_gas))
         end
-        puts "gas absolut path: #{path}"
+        puts "gas absolute path: #{path}"
         path
     end
 

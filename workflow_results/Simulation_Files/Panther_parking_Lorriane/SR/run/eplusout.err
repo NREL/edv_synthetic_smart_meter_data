@@ -1,0 +1,292 @@
+Program Version,EnergyPlus, Version 9.4.0-998c4b761e, YMD=2021.06.25 08:51,
+   ************* Beginning Zone Sizing Calculations
+   ** Warning ** Weather file location will be used rather than entered (IDF) Location object.
+   **   ~~~   ** ..Location object=CLIMATE ZONE 3_CA_USA
+   **   ~~~   ** ..Weather File Location=Climate Zone 3 CA USA CTZRV2 WMO#=724930
+   **   ~~~   ** ..due to location differences, Latitude difference=[9.18] degrees, Longitude difference=[40.82] degrees.
+   **   ~~~   ** ..Time Zone difference=[0.0] hour(s), Elevation difference=[0.00] percent, [0.00] meters.
+   ** Warning ** ProcessScheduleInput: Schedule:Constant="ALWAYS OFF DISCRETE", Blank Schedule Type Limits Name input -- will not be validated.
+   ** Warning ** ProcessScheduleInput: Schedule:Constant="ALWAYS ON CONTINUOUS", Blank Schedule Type Limits Name input -- will not be validated.
+   ** Warning ** GetHTSurfaceData: Surfaces with interface to Ground found but no "Ground Temperatures" were input.
+   **   ~~~   ** Found first in surface=SURFACE 19
+   **   ~~~   ** Defaults, constant throughout the year of (18.0) will be used.
+   ** Warning ** CheckUsedConstructions: There are 11 nominally unused constructions in input.
+   **   ~~~   ** For explicit details on each unused construction, use Output:Diagnostics,DisplayExtraWarnings;
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND".
+   **   ~~~   ** Item length=[106] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND".
+   **   ~~~   ** Item length=[106] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND".
+   **   ~~~   ** Item length=[106] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: People Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE".
+   ** Warning ** GetInternalHeatGains: People="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE PEOPLE" has comfort related schedules but no thermal comfort model selected.
+   **   ~~~   ** If schedules are specified for air velocity, clothing insulation, and/or work efficiency but no thermal comfort
+   **   ~~~   ** thermal comfort model is selected, the schedules will be listed as unused schedules in the .err file.
+   **   ~~~   ** To avoid these errors, select a valid thermal comfort model or eliminate these schedules in the PEOPLE input.
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND".
+   **   ~~~   ** Item length=[106] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND".
+   **   ~~~   ** Item length=[106] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND".
+   **   ~~~   ** Item length=[106] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: Lights Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND".
+   **   ~~~   ** Item length=[111] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [12] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE LIGHTS".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND".
+   **   ~~~   ** Item length=[110] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND".
+   **   ~~~   ** Item length=[115] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND".
+   **   ~~~   ** Item length=[115] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND".
+   **   ~~~   ** Item length=[110] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND".
+   **   ~~~   ** Item length=[115] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND".
+   **   ~~~   ** Item length=[115] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND".
+   **   ~~~   ** Item length=[110] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND".
+   **   ~~~   ** Item length=[115] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ** Warning ** GetInternalHeatGains: ElectricEquipment Combination of ZoneList and Object Name generate a name too long.
+   **   ~~~   ** Object Name="MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   **   ~~~   ** ZoneList/Zone Name="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND".
+   **   ~~~   ** Item length=[115] > Maximum Length=[100]. You may need to shorten the names.
+   **   ~~~   ** Shortening the Object Name by [16] characters will assure uniqueness for this ZoneList.
+   **   ~~~   ** name that will be used (may be needed in reporting)="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND MEDIUMOFFICE WHOLEBUILDING - MD OFFICE ELEC EQUIP".
+   ************* Beginning System Sizing Calculations
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND VAV TERMINAL
+   ** Warning ** Since Zone Minimum Air Flow Input Method = CONSTANT, input for Fixed Minimum Air Flow Rate will be ignored.
+   **   ~~~   ** Occurs in AirTerminal:SingleDuct:VAV:Reheat = ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND VAV TERMINAL
+   ************* Beginning Plant Sizing Calculations
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A  - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_A - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE A END_B - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B  - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_A - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE B END_B - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C  - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_A - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** GetOAControllerInputs: Controller:MechanicalVentilation="9 ZONE PVAV VENTILATION CONTROLLER
+   **   ~~~   ** Cannot locate a matching DesignSpecification:ZoneAirDistribution object for Zone="ZONE MEDIUMOFFICE WHOLEBUILDING - MD OFFICE C END_B - STORY GROUND".
+   **   ~~~   ** Using default zone air distribution effectiveness of 1.0 for heating and cooling.
+   ** Warning ** Missing temperature setpoint for LeavingSetpointModulated mode Boiler named BOILER
+   **   ~~~   **   A temperature setpoint is needed at the outlet node of a boiler in variable flow mode, use a SetpointManager
+   **   ~~~   **   The overall loop setpoint will be assumed for Boiler. The simulation continues ... 
+   ** Warning ** Output:Meter: invalid Key Name="DISTRICTCOOLING:FACILITY" - not found.
+   ** Warning ** Output:Meter: invalid Key Name="DISTRICTHEATING:FACILITY" - not found.
+   ** Warning ** Output:Meter:MeterFileOnly requested for "Electricity:Facility" (TimeStep), already on "Output:Meter". Will report to both eplusout.eso and eplusout.mtr
+   ************* Testing Individual Branch Integrity
+   ************* All Branches passed integrity testing
+   ************* Testing Individual Supply Air Path Integrity
+   ************* All Supply Air Paths passed integrity testing
+   ************* Testing Individual Return Air Path Integrity
+   ************* All Return Air Paths passed integrity testing
+   ************* No node connection errors were found.
+   ** Warning ** Output:Table:Monthly requested with SimulationControl Run Simulation for Weather File Run Periods set to No so Output:Table:Monthly will not be generated
+   ************* Beginning Simulation
+   ************* Simulation Error Summary *************
+   ************* There are 8 unused objects in input.
+   ************* Use Output:Diagnostics,DisplayUnusedObjects; to see them.
+   ************* There are 7 unused schedules in input.
+   ************* There are 9 unused week schedules in input.
+   ************* There are 16 unused day schedules in input.
+   ************* Use Output:Diagnostics,DisplayUnusedSchedules; to see them.
+   *************
+   ************* ===== Final Error Summary =====
+   ************* The following error categories occurred.  Consider correcting or noting.
+   ************* Nominally Unused Constructions
+   ************* ..The nominally unused constructions warning is provided to alert you to potential conditions that can cause
+   ************* ..extra time during simulation. Each construction is calculated by the algorithm indicated in the HeatBalanceAlgorithm
+   ************* ..object. You may remove the constructions indicated (when you use the DisplayExtraWarnings option).
+   *************
+   ************* EnergyPlus Warmup Error Summary. During Warmup: 0 Warning; 0 Severe Errors.
+   ************* EnergyPlus Sizing Error Summary. During Sizing: 50 Warning; 0 Severe Errors.
+   ************* EnergyPlus Completed Successfully-- 64 Warning; 0 Severe Errors; Elapsed Time=00hr 00min  1.85sec
