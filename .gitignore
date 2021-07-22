@@ -28,3 +28,4 @@ workflow_results
 /data/processed/JupyterNotebook/*.csv
 !sample_input_file.csv
 /JupyterNotebook/images
+/data/processed
