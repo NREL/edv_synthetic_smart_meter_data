@@ -5,8 +5,9 @@ require 'fileutils'
 require_relative 'constants'
 require 'geocoder'
 
-metadata_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'metadata_2.csv')
-timeseries_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'electricity_2.csv')
+metadata_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'metadata_bdgp.csv')
+timeseries_electricity_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'electricity_bdgp.csv')
+timeseries_gas_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'gas_bdgp.csv')
 
 # output directory
 outdir = "./data/processed"
@@ -49,7 +50,7 @@ def map_location_with_latlng(file, outdir, options = {headers: true, header_conv
 end
 
 def copy_columns(file, std_labels, outdir, updated_features, options = {headers: true, header_converters: :symbol})
-  metadata_file = File.open(outdir + '/metadata.csv', 'w+')
+  metadata_file = File.open(outdir + '/metadata_bdgp.csv', 'w+')
 
   puts "Adding standard labels (header names) into metadata.csv file"
   metadata_file.puts std_labels
@@ -78,7 +79,6 @@ def copy_columns(file, std_labels, outdir, updated_features, options = {headers:
     metadata_file.puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type},#{energystar_score},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
 
   end
-  puts "###############################################"
   
 end
 
@@ -87,13 +87,15 @@ updated_features = map_location_with_latlng(metadata_bdgp2, outdir)
 std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
 copy_columns(metadata_bdgp2, std_labels, outdir, updated_features)
 
-data_original = CSV.read(timeseries_bdgp2)
-header = CSV.open(timeseries_bdgp2, &:readline)
+puts "Copying electricity timeseries data into timeseriesdata.csv file"
+timeseries_electricity = CSV.read(timeseries_electricity_bdgp2)
+header = CSV.open(timeseries_electricity_bdgp2, &:readline)
+header.insert(1, 'fuel_type')
+puts "header: #{header}"
 
-puts "Copying timeseries data into timeseriesdata.csv file"
-CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "w", :headers => true) do |csv|
   csv << header
-  data_original.each_with_index do |row,i| 
+  timeseries_electricity.each_with_index do |row,i| 
     next if i == 0;
 
     split_date = row[0].split(' ')[0].split('/')
@@ -101,6 +103,24 @@ CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
     date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
     time = row[0].split(' ')[-1]
     row[0] = date + ' ' + time
+    row[1] = 'Electricity'
+
+    csv << row
+  end
+end
+
+puts "Copying gas timeseries data into timeseriesdata.csv file"
+timeseries_gas = CSV.read(timeseries_gas_bdgp2)
+CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "a", :headers => true) do |csv|
+  timeseries_gas.each_with_index do |row,i| 
+    next if i == 0;
+
+    split_date = row[0].split(' ')[0].split('/')
+    # for DateTime.parse, YYYY-MM-DD
+    date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
+    time = row[0].split(' ')[-1]
+    row[0] = date + ' ' + time
+    row[1] = 'NaturalGas'
 
     csv << row
   end

@@ -13,7 +13,7 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'usage: bundle exec ruby meta_to_buildingsync.rb /path/to/csv scenario_file.json'
   puts '.csv files only'
   puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
-  puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
+  puts 'The scenario_file.json shall be located in the INPUT_DIR directory.'
   puts "The key shall designate the BDGP 'primary_building_type' column, and the value"
   puts "shall designate the desired OpenStudio occupancy classification."
   puts 'Valid values for primary_building_type: Office, College Classroom, Primary/Secondary Classroom, '
@@ -23,8 +23,8 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
 
 end
 
-occ_classification_file = NAME_OF_INPUT_DIR + '/default_scenario.json'
-state_hash_file = NAME_OF_INPUT_DIR + "/state_hash.json"
+occ_classification_file = INPUT_DIR + '/default_scenario.json'
+state_hash_file = INPUT_DIR + "/state_hash.json"
 scenario_hash = nil
 if !ARGV[1].nil?
   if File.exist?(ARGV[1])
@@ -33,7 +33,7 @@ if !ARGV[1].nil?
     puts 'usage: bundle exec ruby meta_to_buildingsync.rb /path/to/csv scenario_file.json'
     puts '.csv files only'
     puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
-    puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
+    puts 'The scenario_file.json shall be located in the INPUT_DIR directory.'
     puts "The key shall designate the BDGP 'primary_building_type' column, and the value"
     puts "shall designate the desired OpenStudio occupancy classification."
     puts 'Valid values for primary_building_type: Office, College Classroom, Primary/Secondary Classroom, '

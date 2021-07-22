@@ -135,7 +135,7 @@ class BuildingPortfolio
         File.open(path, 'w') do |f|
             f.write(JSON.pretty_generate(monthly_electricity))
         end
-        puts "elec absolute path: #{path}"
+
         path
     end
 
@@ -174,7 +174,7 @@ class BuildingPortfolio
         File.open(path, 'w') do |f|
             f.write(JSON.pretty_generate(monthly_gas))
         end
-        puts "gas absolute path: #{path}"
+
         path
     end
 
@@ -182,7 +182,7 @@ class BuildingPortfolio
         json_single = {}
         Dir.glob(File.join(path, '/*.xml')).each do |xml|
             json_single["baseline_osm_path"] = File.expand_path(File.join(path, 'in.osm'))
-            puts "baseline_osm_path: #{json_single["baseline_osm_path"]}"
+
             doc = REXML::Document.new(File.open(xml, 'r+'))
             json_single["bldg_type"] = get_bldg_type(doc)
             json_single["electricity"] = get_monthly_electricity(doc)
@@ -197,7 +197,6 @@ class BuildingPortfolio
             end
 
             json_single["epw_path"] = File.expand_path(File.join(File.dirname(__FILE__), '..', DEFAULT_WEATHERDATA_DIR, 'temporary.epw'))
-            puts "json_single epw absolute path: #{json_single["epw_path"]}"
             json_single["year"] = get_year(doc)
         end
 
@@ -228,7 +227,7 @@ class Calibration
         runner_single = OpenStudio::BldgsCalibration::CalibrateRunnerSingle.new
         max_runs = 30
 
-        calibration_output_dir = File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
+        calibration_output_dir = File.expand_path(File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR))
         (1..portfolio.length).each do |i|
             portfolio[i]["bldg_type"] = 'office' if portfolio[i]["bldg_type"].downcase == 'commercial'
             runner_single.run(portfolio[i]["baseline_osm_path"], 
@@ -237,7 +236,7 @@ class Calibration
                               portfolio[i]["electricity"], 
                               portfolio[i]["gas"], 
                               portfolio[i]["epw_path"], 
-                              calibration_output_dir, 
+                              calibration_output_dir,
                               max_runs, 
                               portfolio[i]["year"])
         end

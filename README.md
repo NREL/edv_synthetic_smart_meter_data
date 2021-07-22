@@ -155,8 +155,17 @@ rake simulate_batch_xml
 - The generated simulation files as well as updated BuildingSync XMLs will be saved in the ```workflow_results/Simulation_Files``` directory.
 
 
+#### Step 6: Run building calibration
 
-#### Step 6: Calculate metrics with real and synthetic data
+- This rake task runs calibration on 2 levels: single building calibration and portfolio calibration:
+```
+rake calibration
+```
+
+- Result files are stores in ```workflow_results/Calibration_Files``` directory.
+
+
+#### Step 7: Calculate metrics with real and synthetic data
 
 - This rake task calculates Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
 ```
@@ -166,7 +175,7 @@ rake generate_metrics_result <Simulation_Files_Dir>
 - Currently, only monthly data metric calculation is implmented.
 
 
-#### Step 7: Generate synthetic time-series data
+#### Step 8: Generate synthetic time-series data
 
 - This rake task combines before and after intervention time-series data and creates a new set of time-series data that indicates before and after intervention content (e.g., energy efficiency measure, non-routine event) based on the timing of the interventions. Intervention scenarios are defined in a separate csv file. 
 ```

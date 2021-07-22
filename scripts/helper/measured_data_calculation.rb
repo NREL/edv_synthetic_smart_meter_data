@@ -106,6 +106,7 @@ class MeasuredDataCalculation
         calculate_annual_value(file_native_value, file_total_value, file_peak_value_array, measured_scenario_element, year, fuel)
       end
     end
+
     time_series_data = REXML::Element.new("#{ns}:TimeSeriesData")
     measured_scenario_element.add_element(time_series_data)
     ts_elements.each do |ts|
@@ -150,7 +151,7 @@ class MeasuredDataCalculation
     resource_use.add_element(annual_peak_native_units)
     resource_use.add_element(annual_peak_consistent_units)
 
-    # Add user_defined_field for multi-year annual total
+    # Add user_defined_field for multi-year and multi-fuel annual total
     user_defined_fields = REXML::Element.new("#{ns}:UserDefinedFields")
     user_defined_field = REXML::Element.new("#{ns}:UserDefinedField")
     field_name = REXML::Element.new("#{ns}:FieldName")
@@ -159,7 +160,7 @@ class MeasuredDataCalculation
     field_value.text = year
     user_defined_field.add_element(field_name)
     user_defined_field.add_element(field_value)
-    user_defined_field.add_element(user_defined_field)
+    user_defined_fields.add_element(user_defined_field)
     resource_uses.add_element(user_defined_fields)
 
     annual_total
@@ -242,7 +243,6 @@ class MeasuredDataCalculation
 
     csv_table.each do |csv_row|
       datetime = DateTime.parse(csv_row["timestamp"])
-      puts "datetime: #{datetime}"
       if datetime.hour.nil?
         interval = 'Month'
       else
