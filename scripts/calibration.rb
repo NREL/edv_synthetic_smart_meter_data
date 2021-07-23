@@ -67,84 +67,83 @@ input_json = {
 
 class BuildingPortfolio
 
-    def initialize
+  def initialize
 
-        @ns = 'auc'
-        @portfolio = {}
+    @ns = 'auc'
+    @portfolio = {}
 
-        json_portfolio
+    json_portfolio
+  end
+
+  def get_bldg_type(doc)
+
+    doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Sites/#{@ns}:Site/#{@ns}:Buildings/#{@ns}:Building/#{@ns}:BuildingClassification"].text
+
+  end
+
+  def get_year(doc)
+    year = ''
+    scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
+    scenarios.each_element do |scenario|
+      if scenario.attributes['ID'] == 'Baseline' && !scenario.elements["#{@ns}:TimeSeriesData"].nil?
+        scenario.elements["#{@ns}:ResourceUses"].each_element do |resource|
+          scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
+            year = DateTime.parse(ts.elements["#{@ns}:StartTimestamp"].text).year
+          end
+        end
+      end
     end
+      year
+  end
 
-    def get_bldg_type(doc)
+  def get_monthly_electricity(doc)
 
-        doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Sites/#{@ns}:Site/#{@ns}:Buildings/#{@ns}:Building/#{@ns}:BuildingClassification"].text
+    # return monthly electricity data
+    # TODO: 6/28. Need to generate data for all months
+    monthly_electricity = {}
+    monthly_electricity["data"] = []
 
-    end
-
-    def get_year(doc)
-        year = ''
-        scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
-        scenarios.each_element do |scenario|
-            if scenario.attributes['ID'] == 'Baseline' && !scenario.elements["#{@ns}:TimeSeriesData"].nil?
-                scenario.elements["#{@ns}:ResourceUses"].each_element do |resource|
-                    scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
-                        year = DateTime.parse(ts.elements["#{@ns}:StartTimestamp"].text).year
-                    end
+    scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
+    scenarios.each_element do |scenario|
+      if scenario.attributes['ID'] == 'Baseline'
+        if !scenario.elements["#{@ns}:TimeSeriesData"].nil?
+          scenario.elements["#{@ns}:ResourceUses"].each_element do |resource|
+            if resource.elements["#{@ns}:EnergyResource"].text == 'Electricity'
+              scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
+                if ts.attributes['ID'].include?(resource.attributes['ID'])
+                  monthly_electricity["data"].push({"accounts": 1,
+                                                    "from": ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
+                                                    "peak": 0,
+                                                    "to": ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
+                                                    "tot_kwh": ts.elements["#{@ns}:IntervalReading"].text.to_f})
                 end
+              end
             end
+          end
         end
-        
-        year
+      end
     end
 
-    def get_monthly_electricity(doc)
+    # write to a electricity json file
+    calibration_output_dir = File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
+    FileUtils.rm_rf(calibration_output_dir) if File.exists?(calibration_output_dir)
+    sleep(0.1)
+    Dir.mkdir(calibration_output_dir)
 
-        # return monthly electricity data
-        # TODO: 6/28. Need to generate data for all months
-        monthly_electricity = {}
-        monthly_electricity["data"] = []
-
-        scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
-        scenarios.each_element do |scenario|
-            if scenario.attributes['ID'] == 'Baseline'
-                if !scenario.elements["#{@ns}:TimeSeriesData"].nil?
-                    scenario.elements["#{@ns}:ResourceUses"].each_element do |resource|
-                        if resource.elements["#{@ns}:EnergyResource"].text == 'Electricity'
-                            scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
-                                if ts.attributes['ID'].include?(resource.attributes['ID'])
-                                    monthly_electricity["data"].push({"accounts": 1,
-                                                                "from": ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
-                                                                "peak": 0,
-                                                                "to": ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
-                                                                "tot_kwh": ts.elements["#{@ns}:IntervalReading"].text.to_f})
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-
-        # write to a electricity json file
-        calibration_output_dir = File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
-        FileUtils.rm_rf(calibration_output_dir) if File.exists?(calibration_output_dir)
-        sleep(0.1)
-        Dir.mkdir(calibration_output_dir)
-
-        path = File.expand_path(File.join(File.dirname(__FILE__), '..', calibration_output_dir, 'true_electricity.json'))
-        File.open(path, 'w') do |f|
-            f.write(JSON.pretty_generate(monthly_electricity))
-        end
-
-        path
+    path = File.expand_path(File.join(File.dirname(__FILE__), '..', calibration_output_dir, 'true_electricity.json'))
+    File.open(path, 'w') do |f|
+      f.write(JSON.pretty_generate(monthly_electricity))
     end
 
-    def get_monthly_gas(doc)
+    path
+  end
 
-        # return monthly natural gas data
-        # TODO: 6/28. Need to generate data for all months
-        monthly_gas = {}
-        monthly_gas["data"] = []
+  def get_monthly_gas(doc)
+
+    # return monthly natural gas data
+    # TODO: 6/28. Need to generate data for all months
+    monthly_gas = {}
+    monthly_gas["data"] = []
 
         scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
         scenarios.each_element do |scenario|
@@ -228,6 +227,7 @@ class Calibration
         max_runs = 30
 
         calibration_output_dir = File.expand_path(File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR))
+=begin
         (1..portfolio.length).each do |i|
             portfolio[i]["bldg_type"] = 'office' if portfolio[i]["bldg_type"].downcase == 'commercial'
             runner_single.run(portfolio[i]["baseline_osm_path"], 
@@ -244,6 +244,7 @@ class Calibration
         File.open(File.join(calibration_output_dir, 'calibration_report.json'), 'w') do |f|
             f.write(JSON.pretty_generate(runner_single.cali_report))
         end
+=end
     end
 end
 
