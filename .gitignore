@@ -29,3 +29,4 @@ workflow_results
 !sample_input_file.csv
 /JupyterNotebook/images
 /data/processed
+/workflow_results
