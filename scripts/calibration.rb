@@ -70,6 +70,12 @@ class BuildingPortfolio
   def initialize
 
     @ns = 'auc'
+
+    @calibration_output_dir = File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
+    FileUtils.rm_rf(@calibration_output_dir) if File.exists?(@calibration_output_dir)
+    sleep(0.1)
+    Dir.mkdir(@calibration_output_dir)
+
     @portfolio = {}
 
     json_portfolio
@@ -96,10 +102,7 @@ class BuildingPortfolio
       year
   end
 
-  def get_monthly_electricity(doc)
-
-    # return monthly electricity data
-    # TODO: 6/28. Need to generate data for all months
+  def get_monthly_electricity(building, doc)
     monthly_electricity = {}
     monthly_electricity["data"] = []
 
@@ -124,13 +127,9 @@ class BuildingPortfolio
       end
     end
 
-    # write to a electricity json file
-    calibration_output_dir = File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
-    FileUtils.rm_rf(calibration_output_dir) if File.exists?(calibration_output_dir)
-    sleep(0.1)
-    Dir.mkdir(calibration_output_dir)
-
-    path = File.expand_path(File.join(File.dirname(__FILE__), '..', calibration_output_dir, 'true_electricity.json'))
+    dir = File.join(File.dirname(__FILE__), '..', @calibration_output_dir, building)
+    Dir.mkdir(dir) unless File.exists?(dir)
+    path = File.expand_path(File.join(dir, 'true_electricity.json'))
     File.open(path, 'w') do |f|
       f.write(JSON.pretty_generate(monthly_electricity))
     end
@@ -138,117 +137,120 @@ class BuildingPortfolio
     path
   end
 
-  def get_monthly_gas(doc)
-
-    # return monthly natural gas data
-    # TODO: 6/28. Need to generate data for all months
+  def get_monthly_gas(building, doc)
     monthly_gas = {}
     monthly_gas["data"] = []
 
-        scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
-        scenarios.each_element do |scenario|
-            if scenario.attributes['ID'] == 'Baseline'
-                if !scenario.elements["#{@ns}:TimeSeriesData"].nil?
-                    scenario.elements["#{@ns}:ResourceUses"].each_element do |resource|
-                        if resource.elements["#{@ns}:EnergyResource"].text == 'Natural gas'
-                            scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
-                                if ts.attributes['ID'].include?(resource.attributes['ID'])
-                                    monthly_gas["data"].push({"accounts": 1,
-                                                            "from": ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
-                                                            "peak": 0,
-                                                            "to": ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
-                                                            "tot_therms": ts.elements["#{@ns}:IntervalReading"].text.to_f})
-                                end
-                            end
-                        end
-                    end
+    scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
+    scenarios.each_element do |scenario|
+      if scenario.attributes['ID'] == 'Baseline'
+        if !scenario.elements["#{@ns}:TimeSeriesData"].nil?
+          scenario.elements["#{@ns}:ResourceUses"].each_element do |resource|
+            if resource.elements["#{@ns}:EnergyResource"].text == 'Natural gas'
+              scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
+                if ts.attributes['ID'].include?(resource.attributes['ID'])
+                  monthly_gas["data"].push({"accounts": 1,
+                                            "from": ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
+                                            "peak": 0,
+                                            "to": ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
+                                            "tot_therms": ts.elements["#{@ns}:IntervalReading"].text.to_f + 1}) # TODO: fix gas consumption from BuidlingSync
                 end
+              end
             end
+          end
         end
-
-        # write to a gas json file
-        calibration_output_dir = File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
-
-        path = File.expand_path(File.join(File.dirname(__FILE__), '..', calibration_output_dir, 'true_gas.json'))
-        File.open(path, 'w') do |f|
-            f.write(JSON.pretty_generate(monthly_gas))
-        end
-
-        path
+      end
     end
 
-    def json_single(path)
-        json_single = {}
-        Dir.glob(File.join(path, '/*.xml')).each do |xml|
-            json_single["baseline_osm_path"] = File.expand_path(File.join(path, 'in.osm'))
-
-            doc = REXML::Document.new(File.open(xml, 'r+'))
-            json_single["bldg_type"] = get_bldg_type(doc)
-            json_single["electricity"] = get_monthly_electricity(doc)
-            json_single["gas"] = get_monthly_gas(doc)
-
-            if json_single["gas"].nil?
-                json_single["hvac_sys_type"] = "Centralized system"
-            elsif json_single["electricity"].nil?
-                json_single["hvac_sys_type"] = "Heat pump"
-            else
-                json_single["hvac_sys_type"] = "Packaged system"
-            end
-
-            json_single["epw_path"] = File.expand_path(File.join(File.dirname(__FILE__), '..', DEFAULT_WEATHERDATA_DIR, 'temporary.epw'))
-            json_single["year"] = get_year(doc)
-        end
-
-        json_single
+    dir = File.join(File.dirname(__FILE__), '..', @calibration_output_dir, building)
+    Dir.mkdir(dir) unless File.exists?(dir)
+    path = File.expand_path(File.join(dir, 'true_gas.json'))
+    File.open(path, 'w') do |f|
+      f.write(JSON.pretty_generate(monthly_gas))
     end
 
-    def json_portfolio
-        sim_dir = File.join(WORKFLOW_OUTPUT_DIR, SIM_FILES_DIR)
-        puts "Missing Simulation Files" if !File.exist?(sim_dir)
+    path
+  end
 
-        i = 1
-        Dir.entries(sim_dir).each do |f|
-            osm_path = File.join(sim_dir, f)
-            if File.exist?(File.join(osm_path, 'in.osm'))
-                @portfolio[i] = json_single(osm_path)
-                i = i + 1
-            end
-        end
+  def json_single(path)
+    json_single = {}
+
+    Dir.glob(File.join(path, '/*.xml')).each do |xml|
+      building = File.basename(xml, '.xml')
+
+      json_single["baseline_osm_path"] = File.expand_path(File.join(path, 'in.osm'))
+
+      doc = REXML::Document.new(File.open(xml, 'r+'))
+      json_single["building_id"] = building
+      json_single["bldg_type"] = get_bldg_type(doc)
+      json_single["electricity"] = get_monthly_electricity(building, doc)
+      json_single["gas"] = get_monthly_gas(building, doc)
+
+      if json_single["gas"].nil?
+        json_single["hvac_sys_type"] = "Centralized system"
+      elsif json_single["electricity"].nil?
+        json_single["hvac_sys_type"] = "Heat pump"
+      else
+        json_single["hvac_sys_type"] = "Packaged system"
+      end
+
+      json_single["epw_path"] = File.expand_path(File.join(File.dirname(__FILE__), '..', DEFAULT_WEATHERDATA_DIR, 'temporary.epw'))
+      json_single["year"] = get_year(doc)
     end
 
-    attr_reader :portfolio
+    json_single
+  end
+
+  def json_portfolio
+    sim_dir = File.join(WORKFLOW_OUTPUT_DIR, SIM_FILES_DIR)
+    puts "Missing Simulation Files" if !File.exist?(sim_dir)
+
+    i = 1
+    Dir.entries(sim_dir).each do |f|
+      osm_path = File.join(sim_dir, f)
+      if File.exist?(File.join(osm_path, 'in.osm'))
+        @portfolio[i] = json_single(osm_path)
+        i = i + 1
+      end
+    end
+  end
+
+  attr_reader :portfolio, :calibration_output_dir
 end
 
 class Calibration
-    def calibration(portfolio)
+  def calibration(portfolio, calibration_output_dir)
 
-        # calibrate single building
-        runner_single = OpenStudio::BldgsCalibration::CalibrateRunnerSingle.new
-        max_runs = 30
+    # calibrate single building
+    runner_single = OpenStudio::BldgsCalibration::CalibrateRunnerSingle.new
+    max_runs = 30
+    puts "portfolio: #{portfolio}"
+    (1..portfolio.length).each do |i|
+      puts "Run single building calibration:"
+      portfolio[i]["bldg_type"] = 'office' if portfolio[i]["bldg_type"].downcase == 'commercial'
 
-        calibration_output_dir = File.expand_path(File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR))
-=begin
-        (1..portfolio.length).each do |i|
-            portfolio[i]["bldg_type"] = 'office' if portfolio[i]["bldg_type"].downcase == 'commercial'
-            runner_single.run(portfolio[i]["baseline_osm_path"], 
-                              portfolio[i]["bldg_type"], 
-                              portfolio[i]["hvac_sys_type"], 
-                              portfolio[i]["electricity"], 
-                              portfolio[i]["gas"], 
-                              portfolio[i]["epw_path"], 
-                              calibration_output_dir,
-                              max_runs, 
-                              portfolio[i]["year"])
-        end
+      # calibration_path = File.path("/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Calibration_Files/#{portfolio[i]['building_id']}")
+      calibration_path = File.expand_path("../#{calibration_output_dir}/#{portfolio[i]['building_id']}/", File.dirname(__FILE__))
+      puts "calibration_path: #{calibration_output_dir}/#{portfolio[i]['building_id']} - #{calibration_path}"
 
-        File.open(File.join(calibration_output_dir, 'calibration_report.json'), 'w') do |f|
-            f.write(JSON.pretty_generate(runner_single.cali_report))
-        end
-=end
+      runner_single.run(portfolio[i]["baseline_osm_path"], 
+                        portfolio[i]["bldg_type"], 
+                        portfolio[i]["hvac_sys_type"], 
+                        portfolio[i]["electricity"], 
+                        portfolio[i]["gas"], 
+                        portfolio[i]["epw_path"], 
+                        calibration_path,
+                        max_runs, 
+                        portfolio[i]["year"])
+
+      File.open(File.join(calibration_path, "calibration_report.json"), 'w') do |f|
+       f.write(JSON.pretty_generate(runner_single.cali_report))
+      end
+
     end
+  end
 end
-
 
 building_portfolio = BuildingPortfolio.new
 building_calibration = Calibration.new
-building_calibration.calibration(building_portfolio.portfolio)
+building_calibration.calibration(building_portfolio.portfolio, building_portfolio.calibration_output_dir)
