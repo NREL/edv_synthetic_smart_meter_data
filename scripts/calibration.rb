@@ -231,8 +231,9 @@ class Calibration
 
       # calibration_path = File.path("/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Calibration_Files/#{portfolio[i]['building_id']}")
       calibration_path = File.absolute_path(File.join(calibration_output_dir, portfolio[i]["building_id"]))
-      calibration_path = calibration_path.split('/')[0, calibration_path.split('/').find_index("pre_run")].join('/') if calibration_path.include?("pre_run")
+      calibration_path = calibration_path.split('/')[0, calibration_path.split('/').find_index("pre_run") - 1].join('/') + "/#{portfolio[i]['building_id']}" if calibration_path.include?("pre_run")
       calibration_path = calibration_path.split('/')[0, calibration_path.split('/').find_index("step_1_EPD") - 1].join('/') + "/#{portfolio[i]['building_id']}" if calibration_path.include?("step_1_EPD")
+      puts "building_id #{i}: #{portfolio[i]['building_id']} - #{calibration_path}"
 
       runner_single.run(portfolio[i]["baseline_osm_path"], 
                         portfolio[i]["bldg_type"], 
@@ -247,6 +248,7 @@ class Calibration
       File.open(File.join(calibration_path, "calibration_report.json"), 'w') do |f|
        f.write(JSON.pretty_generate(runner_single.cali_report))
       end
+
     end
   end
 end
