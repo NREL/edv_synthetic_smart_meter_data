@@ -91,7 +91,6 @@ puts "Copying electricity timeseries data into timeseriesdata.csv file"
 timeseries_electricity = CSV.read(timeseries_electricity_bdgp2)
 header = CSV.open(timeseries_electricity_bdgp2, &:readline)
 header.insert(1, 'fuel_type')
-puts "header: #{header}"
 
 CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "w", :headers => true) do |csv|
   csv << header
