@@ -1,0 +1,3 @@
+building_id,site_id,building_id_kaggle,site_id_kaggle,primaryspaceusage,sub_primaryspaceusage,sqm,sqft,lat,lng,timezone,electricity,hotwater,chilledwater,steam,water,irrigation,solar,gas,industry,subindustry,heatingtype,yearbuilt,date_opened,numberoffloors,occupants,energystarscore,eui,site_eui,source_eui,leed_level,rating
+Panther_office_Danica,Panther,99,0,Office,Office,210,2260,28.51768858,-81.3790388,US/Eastern,Yes,,,,Yes,,,,,,,2016,,,,,79,,,Silver,
+Panther_office_Christin,Panther,102,0,Office,Office,1474.9,15876,28.51768858,-81.3790388,US/Eastern,Yes,,,,,,,Yes,,,,1983,,,,,64,,,None,

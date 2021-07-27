@@ -50,7 +50,7 @@ def map_location_with_latlng(file, outdir, options = {headers: true, header_conv
 end
 
 def copy_columns(file, std_labels, outdir, updated_features, options = {headers: true, header_converters: :symbol})
-  metadata_file = File.open(outdir + '/metadata_bdgp.csv', 'w+')
+  metadata_file = File.open(outdir + '/metadata.csv', 'w+')
 
   puts "Adding standard labels (header names) into metadata.csv file"
   metadata_file.puts std_labels
@@ -93,17 +93,14 @@ header = CSV.open(timeseries_electricity_bdgp2, &:readline)
 header.insert(1, 'fuel_type')
 puts "header: #{header}"
 
-CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "w", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
   csv << header
   timeseries_electricity.each_with_index do |row,i| 
     next if i == 0;
 
-    split_date = row[0].split(' ')[0].split('/')
-    # for DateTime.parse, YYYY-MM-DD
-    date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
-    time = row[0].split(' ')[-1]
-    row[0] = date + ' ' + time
-    row[1] = 'Electricity'
+    d = DateTime.strptime(row[0], '%m/%d/%Y %k:%M')
+    row[0] = d
+    row.insert(1, 'Electricity')
 
     csv << row
   end
@@ -111,16 +108,13 @@ end
 
 puts "Copying gas timeseries data into timeseriesdata.csv file"
 timeseries_gas = CSV.read(timeseries_gas_bdgp2)
-CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "a", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata.csv', "a", :headers => true) do |csv|
   timeseries_gas.each_with_index do |row,i| 
     next if i == 0;
 
-    split_date = row[0].split(' ')[0].split('/')
-    # for DateTime.parse, YYYY-MM-DD
-    date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
-    time = row[0].split(' ')[-1]
-    row[0] = date + ' ' + time
-    row[1] = 'NaturalGas'
+    d = DateTime.strptime(row[0], '%m/%d/%Y %k:%M')
+    row[0] = d
+    row.insert(1, 'NaturalGas')
 
     csv << row
   end

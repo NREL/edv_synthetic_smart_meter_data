@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby '~>2.5'
 
 allow_local = false
-allow_local_bsync = false
+allow_local_bsync = true
 
 gem 'rake', '~>13.0.1'
 gem 'rexml', '3.2.4'
@@ -44,7 +44,7 @@ end
 if allow_local && File.exist?('../openstudio-standards-gem')
   gem 'openstudio-standards', path: '../openstudio-standards'
 else
-  gem 'openstudio-standards'
+  gem 'openstudio-standards', github: 'NREL/openstudio-standards', :tag => 'v0.2.14'
 end
 
 ########################################################################
