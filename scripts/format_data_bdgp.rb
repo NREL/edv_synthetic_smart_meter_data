@@ -94,7 +94,7 @@ header.insert(1, 'fuel_type')
 
 CSV.open(outdir + '/timeseriesdata_bdgp.csv', "w", :headers => true) do |csv|
   csv << header
-  timeseries_electricity.each_with_index do |row, i| 
+  timeseries_electricity.each_with_index do |row, i|
     next if i == 0;
 
     split_date = row[0].split(' ')[0].split('/')
