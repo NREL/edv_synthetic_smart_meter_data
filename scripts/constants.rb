@@ -7,7 +7,7 @@ RUN_TYPE = "processed"
 
 # Options: true, false
 BASELINE_ONLY = true
-OCC_VAR = true
+OCC_VAR = false
 NON_ROUTINE_VAR = {
     :DR_GTA_os => false,
     :DR_Lighting_os => false,
@@ -71,3 +71,4 @@ RESULTS_FILE_NAME = 'results.csv'
 # Change this arg to a cmd line arg
 SF_MONTHLY = true
 BDGP = false
+
