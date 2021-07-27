@@ -71,7 +71,7 @@ class BuildingPortfolio
 
     @ns = 'auc'
 
-    @calibration_output_dir = File.join(WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
+    @calibration_output_dir = File.join(File.expand_path(File.dirname(__FILE__ )), "..", WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
     FileUtils.rm_rf(@calibration_output_dir) if File.exists?(@calibration_output_dir)
     sleep(0.1)
     Dir.mkdir(@calibration_output_dir)
@@ -127,9 +127,9 @@ class BuildingPortfolio
       end
     end
 
-    dir = File.join(File.dirname(__FILE__), '..', @calibration_output_dir, building)
-    Dir.mkdir(dir) unless File.exists?(dir)
-    path = File.expand_path(File.join(dir, 'true_electricity.json'))
+    output_dir = File.join(@calibration_output_dir, building, 'output')
+    FileUtils.mkdir_p(output_dir) unless File.exists?(output_dir)
+    path = File.join(output_dir, 'true_electricity.json')
     File.open(path, 'w') do |f|
       f.write(JSON.pretty_generate(monthly_electricity))
     end
@@ -162,9 +162,9 @@ class BuildingPortfolio
       end
     end
 
-    dir = File.join(File.dirname(__FILE__), '..', @calibration_output_dir, building)
-    Dir.mkdir(dir) unless File.exists?(dir)
-    path = File.expand_path(File.join(dir, 'true_gas.json'))
+    output_dir = File.join(@calibration_output_dir, building, 'output')
+    FileUtils.mkdir_p(output_dir) unless File.exists?(output_dir)
+    path = File.join(output_dir, 'true_gas.json')
     File.open(path, 'w') do |f|
       f.write(JSON.pretty_generate(monthly_gas))
     end
@@ -227,11 +227,9 @@ class Calibration
 
     (1..portfolio.length).each do |i|
       puts "Run single building calibration:"
+
       portfolio[i]["bldg_type"] = 'office' if portfolio[i]["bldg_type"].downcase == 'commercial'
-
-      calibration_path = File.absolute_path(File.join(calibration_output_dir, portfolio[i]["building_id"]))
-      calibration_path = calibration_path.split('/')[0, calibration_path.split('/').find_index("pre_run") - 1].join('/') + "/#{portfolio[i]['building_id']}" if calibration_path.include?("pre_run")
-
+      calibration_path = File.absolute_path(File.join(calibration_output_dir, portfolio[i]["building_id"], 'output'))
       runner_single.run(portfolio[i]["baseline_osm_path"], 
                         portfolio[i]["bldg_type"], 
                         portfolio[i]["hvac_sys_type"], 
