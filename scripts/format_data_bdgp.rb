@@ -5,9 +5,9 @@ require 'fileutils'
 require_relative 'constants'
 require 'geocoder'
 
-metadata_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'metadata_bdgp.csv')
-timeseries_electricity_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'electricity_bdgp.csv')
-timeseries_gas_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'gas_bdgp.csv')
+metadata_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'metadata_bdgp2.csv')
+timeseries_electricity_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'electricity_bdgp2.csv')
+timeseries_gas_bdgp2 = File.join(__dir__, '../', 'data', 'example', 'gas_bdgp2.csv')
 
 # output directory
 outdir = "./data/processed"
@@ -92,9 +92,9 @@ timeseries_electricity = CSV.read(timeseries_electricity_bdgp2)
 header = CSV.open(timeseries_electricity_bdgp2, &:readline)
 header.insert(1, 'fuel_type')
 
-CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "w", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata_bdgp.csv', "w", :headers => true) do |csv|
   csv << header
-  timeseries_electricity.each_with_index do |row,i| 
+  timeseries_electricity.each_with_index do |row, i| 
     next if i == 0;
 
     split_date = row[0].split(' ')[0].split('/')
@@ -102,7 +102,7 @@ CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "w", :headers => true) do
     date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
     time = row[0].split(' ')[-1]
     row[0] = date + ' ' + time
-    row[1] = 'Electricity'
+    row.insert(1, 'Electricity')
 
     csv << row
   end
@@ -110,7 +110,7 @@ end
 
 puts "Copying gas timeseries data into timeseriesdata.csv file"
 timeseries_gas = CSV.read(timeseries_gas_bdgp2)
-CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "a", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata_bdgp.csv', "a", :headers => true) do |csv|
   timeseries_gas.each_with_index do |row,i| 
     next if i == 0;
 
@@ -119,7 +119,7 @@ CSV.open(outdir + '/timeseriesdata_temp_with_gas.csv', "a", :headers => true) do
     date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
     time = row[0].split(' ')[-1]
     row[0] = date + ' ' + time
-    row[1] = 'NaturalGas'
+    row.insert(1, 'NaturalGas')
 
     csv << row
   end
