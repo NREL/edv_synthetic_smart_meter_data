@@ -50,7 +50,7 @@ def map_location_with_latlng(file, outdir, options = {headers: true, header_conv
 end
 
 def copy_columns(file, std_labels, outdir, updated_features, options = {headers: true, header_converters: :symbol})
-  metadata_file = File.open(outdir + '/metadata_bdgp.csv', 'w+')
+  metadata_file = File.open(outdir + '/metadata.csv', 'w+')
 
   puts "Adding standard labels (header names) into metadata.csv file"
   metadata_file.puts std_labels
@@ -92,7 +92,7 @@ timeseries_electricity = CSV.read(timeseries_electricity_bdgp2)
 header = CSV.open(timeseries_electricity_bdgp2, &:readline)
 header.insert(1, 'fuel_type')
 
-CSV.open(outdir + '/timeseriesdata_bdgp.csv', "w", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
   csv << header
   timeseries_electricity.each_with_index do |row, i|
     next if i == 0;
@@ -110,7 +110,7 @@ end
 
 puts "Copying gas timeseries data into timeseriesdata.csv file"
 timeseries_gas = CSV.read(timeseries_gas_bdgp2)
-CSV.open(outdir + '/timeseriesdata_bdgp.csv', "a", :headers => true) do |csv|
+CSV.open(outdir + '/timeseriesdata.csv', "a", :headers => true) do |csv|
   timeseries_gas.each_with_index do |row,i| 
     next if i == 0;
 
