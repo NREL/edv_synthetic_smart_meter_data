@@ -44,7 +44,7 @@ end
 if allow_local && File.exist?('../openstudio-standards-gem')
   gem 'openstudio-standards', path: '../openstudio-standards'
 else
-  gem 'openstudio-standards'
+  gem 'openstudio-standards', github: 'NREL/openstudio-standards', :tag => 'v0.2.14'
 end
 
 ########################################################################
