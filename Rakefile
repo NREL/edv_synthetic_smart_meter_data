@@ -2,7 +2,7 @@
 # RSpec::Core::RakeTask.new(:spec)
 require_relative 'scripts/constants'
 
-default_path_to_add_measured = "#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
+default_path_to_add_measured_data = "#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 #############################################################################################
 desc 'convert raw data to standardized data format'
 task :format_data, [:data_option] do |task, args|
@@ -75,7 +75,7 @@ task :generate_control_csv do
   processed_weather = "../edv-experiment-1-files/weather" #private weather data
 
   if SF_MONTHLY
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{processed_metadata_file}"
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{processed_metadata_file}"
   else
     if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
       # ARGV[4] should be a path to a directory with weather files
@@ -89,10 +89,10 @@ task :generate_control_csv do
     elsif ARGV[1]
       # ARGV[1] should be a path to a directory with BldgSync files (root_dir)
       ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} "
-    elsif RUN_TYPE == 'default' && Dir.exist?(default_path_to_add_measured) && File.exist?(default_metadata_file) && Dir.exist?(default_weather)
-      ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{default_metadata_file} #{default_weather}"
-    elsif RUN_TYPE == 'processed' && Dir.exist?(default_path_to_add_measured) && File.exist?(processed_metadata_file) && Dir.exist?(processed_weather)
-      ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured} nil #{processed_metadata_file} #{processed_weather}"
+    elsif RUN_TYPE == 'default' && Dir.exist?(default_path_to_add_measured_data) && File.exist?(default_metadata_file) && Dir.exist?(default_weather)
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{default_metadata_file} #{default_weather}"
+    elsif RUN_TYPE == 'processed' && Dir.exist?(default_path_to_add_measured_data) && File.exist?(processed_metadata_file) && Dir.exist?(processed_weather)
+      ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{processed_metadata_file} #{processed_weather}"
     else
       # need path to a directory with BldgSync files
       puts "Error - No directory with BuildingSync files specified"
@@ -273,5 +273,5 @@ end
 #############################################################################################
 desc 'Apply typical operation hours detection to hourly measured data'
 task :typical_operation_hours do
-  exec("python", "scripts/algorithm_typical_operation_hours.py", default_path_to_add_measured)
+  exec("python", "scripts/algorithm_typical_operation_hours.py", default_path_to_add_measured_data)
 end

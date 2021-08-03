@@ -112,7 +112,7 @@ rake generate_xmls
 
 - The generated XML files will be saved ```workflow_results/Bldg_Sync_Files``` direcotry specified in ```constant.rb```. These data are not to be committed.
 
-- Skip if [BuildingSync](https://buildingsync.net/) files with sufficient building metadata imported direclty from [SEED](https://bricr.seed-platform.org/).
+- Skip if [BuildingSync](https://buildingsync.net/) files with sufficient building metadata are imported direclty from [SEED](https://bricr.seed-platform.org/).
 
 
 
@@ -167,7 +167,7 @@ rake calibration
 
 #### Step 7: Calculate metrics with real and synthetic data
 
-- This rake task calculates Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
+- This rake task calculates Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity/gas data.
 ```
 rake generate_metrics_result <Simulation_Files_Dir>
 ```
