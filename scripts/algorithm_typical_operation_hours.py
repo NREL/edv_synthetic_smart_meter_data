@@ -139,6 +139,7 @@ def typical_operation_hours(dir_path):
                     # filter list that detected both start and stop times
                     ################################################################
                     list_combined = [[a,b] for a,b in zip(list_hist_start_final,list_hist_stop_final) if a*b != 0]
+
     except Exception as e:
         logging.error(e)
     finally:

@@ -275,3 +275,27 @@ desc 'Apply typical operation hours detection to hourly measured data'
 task :typical_operation_hours do
   exec("python", "scripts/algorithm_typical_operation_hours.py", default_path_to_add_measured_data)
 end
+
+#############################################################################################
+desc 'eemeter takes il-electricity-cdd-hdd-daily object'
+task :eemeter_object, [:file] do |task, args|
+  if args[:file]
+    ruby "scripts/bsync_to_eemeter.rb #{args[:file]}"
+  else
+    ruby "scripts/bsync_to_eemeter.rb"
+  end
+end
+# argv should be path to a directory of al buildingsync files to feed all hourly data from .xml to NMEC
+desc 'eemeter takes il-electricity-cdd-hdd-daily.csv file'
+task :eemeter_file do
+  if ARGV[1]
+    ruby "scripts/bsync_to_eemeter.rb #{ARGV[1]}"
+  else
+    ruby "scripts/bsync_to_eemeter.rb"
+  end
+end
+# BuildingSync eemeter
+desc 'eemeter takes bsync file'
+task :bsync_eemeter do
+  ruby "scripts/bsync_to_eemeter.rb"
+end

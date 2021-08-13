@@ -91,15 +91,15 @@ puts "Copying electricity timeseries data into timeseriesdata.csv file"
 timeseries_electricity = CSV.read(timeseries_electricity_bdgp2)
 header = CSV.open(timeseries_electricity_bdgp2, &:readline)
 header.insert(1, 'fuel_type')
-
+require "date"
 CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
   csv << header
   timeseries_electricity.each_with_index do |row, i|
     next if i == 0;
 
-    split_date = row[0].split(' ')[0].split('/')
     # for DateTime.parse, YYYY-MM-DD
-    date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
+    split_date = row[0].split(' ')[0].split('/')
+    date = split_date[-1] + '-' + split_date[0] + '-' + split_date[1]
     time = row[0].split(' ')[-1]
     row[0] = date + ' ' + time
     row.insert(1, 'Electricity')
@@ -112,11 +112,11 @@ puts "Copying gas timeseries data into timeseriesdata.csv file"
 timeseries_gas = CSV.read(timeseries_gas_bdgp2)
 CSV.open(outdir + '/timeseriesdata.csv', "a", :headers => true) do |csv|
   timeseries_gas.each_with_index do |row,i| 
-    next if i == 0;
+    next if i == 0
 
-    split_date = row[0].split(' ')[0].split('/')
     # for DateTime.parse, YYYY-MM-DD
-    date = split_date[-1].insert(0, '20') + '/' + split_date[0] + '/' + split_date[1]
+    split_date = row[0].split(' ')[0].split('/')
+    date = split_date[-1] + '-' + split_date[0] + '-' + split_date[1]
     time = row[0].split(' ')[-1]
     row[0] = date + ' ' + time
     row.insert(1, 'NaturalGas')
