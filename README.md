@@ -17,12 +17,14 @@ gem install bundler -v 2.1
 
 ### [OpenStudio](https://www.openstudio.net/downloads)
 
+Use OpenStudio 3.1.X.
+
 - Windows
 
 Create a file ```C:\ruby-2.5.5-x64-mingw32\lib\ruby\site_ruby\openstudio.rb``` and point it to your OpenStudio installation by editing the contents.  E.g.:
 
 ```ruby
-require 'C:\openstudio-3.0.0\Ruby\openstudio.rb'
+require 'C:\openstudio-3.1.0\Ruby\openstudio.rb'
 ```
 
 Verify your OpenStudio and Ruby configuration:
@@ -33,9 +35,9 @@ ruby -e "require 'openstudio'" -e "puts OpenStudio::Model::Model.new"
 - macOS
 
 Add the RUBYLIB environment variable to your `bash_profile` (or similar) file. It should point to the Ruby folder within
-the OpenStudio Application you just downloaded (replace 3.0.0 with the version you are using):
+the OpenStudio Application you just downloaded (replace 3.1.0 with the version you are using):
 ```
-export RUBYLIB=/Applications/OpenStudio-3.0.0/Ruby
+export RUBYLIB=/Applications/OpenStudio-3.1.0/Ruby
 ```
 
 

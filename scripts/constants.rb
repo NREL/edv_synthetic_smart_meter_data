@@ -7,7 +7,7 @@ RUN_TYPE = "processed"
 
 # Options: true, false
 BASELINE_ONLY = true
-OCC_VAR = true
+OCC_VAR = false
 NON_ROUTINE_VAR = {
     :DR_GTA_os => false,
     :DR_Lighting_os => false,
