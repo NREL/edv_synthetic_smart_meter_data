@@ -28,10 +28,10 @@ jobs:
         ruby-version: 2.5.5
     - name: Setup
         # bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-      run: |
-         gem install bundle
+      run:
+         # gem install bundle
          bundle install
 
     - name: Initial test
-      run: rspec spec/tests/initial_test.rb
+      run: bundle exec rspec spec/tests/initial_test.rb
       if: always()
