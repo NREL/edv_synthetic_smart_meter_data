@@ -35,5 +35,6 @@ jobs:
         bundle install
     - name: Initial test
       run: | 
-        bundle exec rspec ./../spec/tests/initial_test.rb
+        pwd
+        bundle exec rspec spec/tests/initial_test.rb
       if: always()
