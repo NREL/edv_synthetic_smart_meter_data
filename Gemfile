@@ -78,7 +78,7 @@ end
 ########################################################################
 
 # Version compatibility: after downloading openstudio-bldgs-calibration-gem, modify gem to use v0.2.6 openstudio-extension-gem locally
-gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
+# gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
 
 ########################################################################
 ########################################################################
