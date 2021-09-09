@@ -155,7 +155,7 @@ RSpec.describe 'EDV Experiment 1' do
         measured_total_csv_data = measured_total_csv_data * 3.142
 
         measured_total_xml_data = 0
-        bldg_sync_office_caleb = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}/#{column_headers[i]}.xml")
+        bldg_sync_office_caleb = File.join(File.expand_path('../../.', File.dirname(__FILE__)), "#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}/#{column_headers[i]}.xml")
         doc = nil
         File.open(bldg_sync_office_caleb, 'r') do |bldg_sync_office_caleb|
           doc = REXML::Document.new(bldg_sync_office_caleb)

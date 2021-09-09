@@ -8,7 +8,13 @@ class Metrics
   def self.add_eui(resource_element, eui, ns)
     begin
       electricity_resource_use_element = nil?
-      if resource_element.elements["#{ns}:EnergyResource"].text == "Electricity"
+      if resource_element.elements["#{ns}:EnergyResource"].nil?
+        resource_element.elements["#{ns}:ResourceUses"].each do |resource|
+          if resource.class == REXML::Element
+            electricity_resource_use_element = resource if resource.elements["#{ns}:EnergyResource"].text == "Electricity"
+          end
+        end
+      elsif resource_element.elements["#{ns}:EnergyResource"].text == "Electricity"
         electricity_resource_use_element = resource_element
       end
       if electricity_resource_use_element.nil?
@@ -78,7 +84,7 @@ class Metrics
     begin
       electricity_resource_use_element = nil
       resource_uses = scenario_element.elements["#{ns}:ResourceUses"]
-      resource_uses.each do |resource_use_element|
+      resource_uses.each_element do |resource_use_element|
         if !resource_use_element.elements["#{ns}:EnergyResource"].nil?
           if resource_use_element.elements["#{ns}:EnergyResource"].first == "Electricity"
             electricity_resource_use_element = resource_use_element

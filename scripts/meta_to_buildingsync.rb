@@ -13,7 +13,7 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
   puts 'usage: bundle exec ruby meta_to_buildingsync.rb /path/to/csv scenario_file.json'
   puts '.csv files only'
   puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
-  puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
+  puts 'The scenario_file.json shall be located in the INPUT_DIR directory.'
   puts "The key shall designate the BDGP 'primary_building_type' column, and the value"
   puts "shall designate the desired OpenStudio occupancy classification."
   puts 'Valid values for primary_building_type: Office, College Classroom, Primary/Secondary Classroom, '
@@ -23,8 +23,8 @@ if ARGV[0].nil? || !File.exist?(ARGV[0])
 
 end
 
-occ_classification_file = NAME_OF_INPUT_DIR + '/default_scenario.json'
-state_hash_file = NAME_OF_INPUT_DIR + "/state_hash.json"
+occ_classification_file = INPUT_DIR + '/default_scenario.json'
+state_hash_file = INPUT_DIR + "/state_hash.json"
 scenario_hash = nil
 if !ARGV[1].nil?
   if File.exist?(ARGV[1])
@@ -33,7 +33,7 @@ if !ARGV[1].nil?
     puts 'usage: bundle exec ruby meta_to_buildingsync.rb /path/to/csv scenario_file.json'
     puts '.csv files only'
     puts 'scenario_file.json is optional. If provided, it shall be a valid JSON document'
-    puts 'The scenario_file.json shall be located in the NAME_OF_INPUT_DIR directory.'
+    puts 'The scenario_file.json shall be located in the INPUT_DIR directory.'
     puts "The key shall designate the BDGP 'primary_building_type' column, and the value"
     puts "shall designate the desired OpenStudio occupancy classification."
     puts 'Valid values for primary_building_type: Office, College Classroom, Primary/Secondary Classroom, '
@@ -68,7 +68,9 @@ def convert(value, unit_in, unit_out)
 end
 
 def get_building_id(feature)
+
   feature[:building_id]
+
 end
 
 def get_floor_area(feature)
@@ -82,21 +84,22 @@ end
 
 def get_year_built(feature)
   # remove "pre" and "post"
-  yrblt = feature[:vintage]
-  unless yrblt.nil?
-    yrblt.gsub('pre ', '')
-    yrblt.gsub('Pre ', '')
-    yrblt.gsub('post ', '')
-    yrblt.gsub('Post ', '')
+  yr_blt = feature[:vintage]
+
+  unless yr_blt.nil?
+    yr_blt.gsub('pre ', '')
+    yr_blt.gsub('Pre ', '')
+    yr_blt.gsub('post ', '')
+    yr_blt.gsub('Post ', '')
 
     # take last number if given a range
-    yrs = yrblt.split('-')
-    yrblt = yrs[-1]
+    yrs = yr_blt.split('-')
+    yr_blt = yrs[-1]
   end
-  if !/\A\d+\z/.match(yrblt)
+  if !/\A\d+\z/.match(yr_blt)
     return ''
   else
-    return yrblt
+    return yr_blt
   end
 end
 
@@ -154,6 +157,8 @@ def get_building_classification(feature)
     result = 'Commercial'
   when 'Other'
     result = 'Commercial'
+  when 'Strip Mall'
+    result = 'Commercial'
   else
     raise "Unknown classification #{classification}"
   end
@@ -208,7 +213,9 @@ def get_occupancy_classification(feature, scenario_hash = nil)
   when 'Technology/science'
     result = scenario_hash[:"Office"]
   when 'Other'
-	result = scenario_hash[:"Office"]
+    result = scenario_hash[:"Office"]
+  when 'Strip Mall'
+    result = scenario_hash[:"Office"]
   else
     raise "Unknown classification #{classification}"
   end
@@ -280,7 +287,6 @@ def create_site(feature, scenario_hash = nil, state_hash)
       address.add_element(country)
     end
     site.add_element(address)
-
   end
 
   # climate zone
@@ -352,8 +358,9 @@ def create_site(feature, scenario_hash = nil, state_hash)
   building.add_element(occupancy_classification)
 
   floors_above_grade = REXML::Element.new('auc:FloorsAboveGrade')
-  numberoffloors = [feature[:number_of_stories].to_i, 1].max # DLM: assume 1 story if no information
-  floors_above_grade.text = numberoffloors
+  number_of_floors = [feature[:number_of_stories].to_i, 1].max # DLM: assume 1 story if no information
+
+  floors_above_grade.text = number_of_floors
   building.add_element(floors_above_grade)
 
   floors_below_grade = REXML::Element.new('auc:FloorsBelowGrade')
@@ -361,7 +368,6 @@ def create_site(feature, scenario_hash = nil, state_hash)
   building.add_element(floors_below_grade)
 
   floor_areas = REXML::Element.new('auc:FloorAreas')
-
   floor_area = REXML::Element.new('auc:FloorArea')
   floor_area_type = REXML::Element.new('auc:FloorAreaType')
   floor_area_type.text = 'Gross'
@@ -469,58 +475,63 @@ end
 
 def create_system(feature)
   hvac_systems = nil
-  
+
   unless feature[:fuel_type].nil?
+    hvac_systems = REXML::Element.new('auc:HVACSystems')
 
-    # add heating system with primary fuel UNLESS value = District Heating, then add a Plant
-    # Biomass, District Heating, Electric, Electricity, Gas, Heat Network, and Steam, Oil
-    new_fuel = nil
-    fuel = feature[:fuel_type].downcase
-    case fuel
-    when 'electricity'
-      new_fuel = 'Electricity'
-    when 'electric'
-      new_fuel = 'Electricity'
-    when 'gas'
-      new_fuel = 'Natural gas'
-    when 'oil'
-      new_fuel = 'Fuel oil'
-    when 'steam'
-      new_fuel = 'Dry steam' # or Flash steam
-    when 'biomass'
-      new_fuel = 'Biomass'
-    end
+    feature[:fuel_type].split('/').each do |fuel|
 
-    if fuel === 'district heating' || fuel === 'heat network'
-      # add plant
-      hvac_systems = REXML::Element.new('auc:HVACSystems')
-      hvac_system = REXML::Element.new('auc:HVACSystem')
-      plants = REXML::Element.new('auc:Plants')
-      heating_plants = REXML::Element.new('auc:HeatingPlants')
-      heating_plant = REXML::Element.new('auc:HeatingPlant')
-      district_heating = REXML::Element.new('auc:DistrictHeating')
-      dh_type = REXML::Element.new('auc:DistrictHeatingType')
-      dh_type.text = 'Unknown'
-      district_heating.add_element(dh_type)
-      heating_plant.add_element(district_heating)
-      heating_plants.add_element(heating_plant)
-      plants.add_element(heating_plants)
-      hvac_system.add_element(plants)
-      hvac_systems.add_element(hvac_system)
+      # add heating system with primary fuel UNLESS value = District Heating, then add a Plant
+      # Biomass, District Heating, Electric, Electricity, Gas, Heat Network, and Steam, Oil
+      new_fuel = nil
+      # fuel = feature[:fuel_type].downcase
+      case fuel
+        when 'electricity'
+          new_fuel = 'Electricity'
+        when 'electric'
+          new_fuel = 'Electricity'
+        when 'gas'
+          new_fuel = 'Natural gas'
+        when 'oil'
+          new_fuel = 'Fuel oil'
+        when 'steam'
+          new_fuel = 'Dry steam' # or Flash steam
+        when 'biomass'
+          new_fuel = 'Biomass'
+      end
 
-    elsif !new_fuel.nil?
-      # add system
-      hvac_systems = REXML::Element.new('auc:HVACSystems')
-      hvac_system = REXML::Element.new('auc:HVACSystem')
-      h_and_c = REXML::Element.new('auc:HeatingAndCoolingSystems')
-      heating_sources = REXML::Element.new('auc:HeatingSources')
-      heating_source = REXML::Element.new('auc:HeatingSource')
-      primary_fuel = REXML::Element.new('auc:PrimaryFuel')
-      primary_fuel.text = new_fuel
-      heating_source.add_element(primary_fuel)
-      heating_sources.add_element(heating_source)
-      h_and_c.add_element(heating_sources)
-      hvac_system.add_element(h_and_c)
+      if fuel === 'district heating' || fuel === 'heat network'
+        # add plant
+        # hvac_systems = REXML::Element.new('auc:HVACSystems')
+        hvac_system = REXML::Element.new('auc:HVACSystem')
+        plants = REXML::Element.new('auc:Plants')
+        heating_plants = REXML::Element.new('auc:HeatingPlants')
+        heating_plant = REXML::Element.new('auc:HeatingPlant')
+        district_heating = REXML::Element.new('auc:DistrictHeating')
+        dh_type = REXML::Element.new('auc:DistrictHeatingType')
+        dh_type.text = 'Unknown'
+        district_heating.add_element(dh_type)
+        heating_plant.add_element(district_heating)
+        heating_plants.add_element(heating_plant)
+        plants.add_element(heating_plants)
+        hvac_system.add_element(plants)
+        # hvac_systems.add_element(hvac_system)
+
+      elsif !new_fuel.nil?
+        # add system
+        # hvac_systems = REXML::Element.new('auc:HVACSystems')
+        hvac_system = REXML::Element.new('auc:HVACSystem')
+        h_and_c = REXML::Element.new('auc:HeatingAndCoolingSystems')
+        heating_sources = REXML::Element.new('auc:HeatingSources')
+        heating_source = REXML::Element.new('auc:HeatingSource')
+        primary_fuel = REXML::Element.new('auc:PrimaryFuel')
+        primary_fuel.text = new_fuel
+        heating_source.add_element(primary_fuel)
+        heating_sources.add_element(heating_source)
+        h_and_c.add_element(heating_sources)
+        hvac_system.add_element(h_and_c)
+        # hvac_systems.add_element(hvac_system)
+      end
       hvac_systems.add_element(hvac_system)
     end
   end
@@ -951,26 +962,23 @@ def create_scenarios(feature)
     start_ts = REXML::Element.new('auc:StartTimestamp')
     end_ts = REXML::Element.new('auc:EndTimestamp')
 
-    splitdate = feature[:measurement_start_date].split('/')
-    splityr = splitdate[2].split(' ')
-    splittime = splityr[1].split(':')
+    start_date = DateTime.parse(feature[:measurement_start_date])
+    d = start_date.day
+    m = start_date.month
+    y = start_date.year
+    h = start_date.hour
+    min = start_date.minute
 
-    d = splitdate[0]
-    m = splitdate[1]
-    y = splityr[0]
-    h = splittime[0]
-    min = splittime[1]
+    start_ts.text = start_date
 
-    start_ts.text = '20' + y + '-' + m + '-' + d + ' ' + h + ':' + min + ':00'
-    # puts "reformatted starttime: #{start_ts}"
+    end_date = DateTime.parse(feature[:measurement_end_date])
+    d = end_date.day
+    m = end_date.month
+    y = end_date.year
+    h = end_date.hour
+    min = end_date.minute
 
-    d = feature[:measurement_end_date][0, 2]
-    m = feature[:measurement_end_date][3, 2]
-    y = feature[:measurement_end_date][6, 2]
-    h = feature[:measurement_end_date][9, 2]
-    min = feature[:measurement_end_date][12, 2]
-
-    end_ts.text = '20' + y + '-' + m + '-' + d + ' ' + h + ':' + min + ':00'
+    end_ts.text = end_date
 
     time_series.add_element(start_ts)
     time_series.add_element(end_ts)
@@ -1214,7 +1222,6 @@ def convert_building(feature, scenario_hash = nil, state_hash)
 
   building_id = get_building_id(feature)
   floor_area = get_floor_area(feature)
-  
   source = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>
   <auc:BuildingSync #{xml_namespace}>
   	<auc:Facilities>
@@ -1265,7 +1272,7 @@ def convert_building(feature, scenario_hash = nil, state_hash)
 end
 
 # output directory
-outdir = "./#{NAME_OF_OUTPUT_DIR}/#{GENERATE_DIR}"
+outdir = "./#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
 
 # summary file
@@ -1293,7 +1300,6 @@ puts "###############################################"
 total_number_of_buildings = CSV.read(ARGV[0], :headers => true).count
 
 CSV.foreach(ARGV[0], options).with_index do |feature, i|
-
   puts "Processing building #{i.next} from a total of #{total_number_of_buildings} buildings"
   
   building_id = feature[:building_id]
@@ -1308,9 +1314,7 @@ CSV.foreach(ARGV[0], options).with_index do |feature, i|
     end
   rescue => e
     puts "Building #{building_id} not converted, #{e.message}"
-    # puts e.backtrace # DLM: uncomment for debugging
     next
   end
   puts "###############################################"
 end
-

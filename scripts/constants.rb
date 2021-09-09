@@ -1,5 +1,5 @@
-NAME_OF_OUTPUT_DIR = "workflow_results"
-NAME_OF_INPUT_DIR = "inputs"
+WORKFLOW_OUTPUT_DIR = "workflow_results"
+INPUT_DIR = "inputs"
 
 # EDITABLE
 # Options include: ['default', 'processed']
@@ -7,7 +7,7 @@ RUN_TYPE = "processed"
 
 # Options: true, false
 BASELINE_ONLY = true
-OCC_VAR = true
+OCC_VAR = false
 NON_ROUTINE_VAR = {
     :DR_GTA_os => false,
     :DR_Lighting_os => false,
@@ -36,7 +36,7 @@ NON_ROUTINE_VAR = {
 # Directory within edv-experiment-1 where raw or processed data exists
 RAW_DATA_DIR = "data/raw"
 PROCESSED_DATA_DIR = "data/processed"
-DEFAULT_WEATHERDATA_DIR = "data/weather"
+DEFAULT_WEATHERDATA_DIR = "data/weather/temporary"
 
 # Input file names for generate_xmls, assumed location depends on RUN_TYPE
 DEFAULT_METADATA_FILE = "metadata_template.csv"
@@ -57,9 +57,17 @@ CONTROL_SUMMARY_FILE_NAME = "all.csv"
 # Output location for files produced by simulation
 SIM_FILES_DIR = "Simulation_Files"
 
+# Calibration output directory
+CALIBRATION_OUTPUT_DIR = "Calibration_Files"
+
 # Output location for files after metrics added
 CALC_METRICS_DIR = "Calc_Metrics"
 
 # Final results directory
 RESULTS_DIR = "Results"
 RESULTS_FILE_NAME = 'results.csv'
+
+# SF DATA
+# Change this arg to a cmd line arg
+SF_MONTHLY = true
+BDGP = false

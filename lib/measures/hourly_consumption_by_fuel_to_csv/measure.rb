@@ -40,7 +40,7 @@ class HourlyConsumptionByFuelToCSV < OpenStudio::Ruleset::ReportingUserScript
     end
 
     request_elec = OpenStudio::IdfObject.load("Output:Meter,Electricity:Facility,Hourly;").get
-    request_gas = OpenStudio::IdfObject.load("Output:Meter,Gas:Facility,Hourly;").get
+    request_gas = OpenStudio::IdfObject.load("Output:Meter,NaturalGas:Facility,Hourly;").get
     request_clg = OpenStudio::IdfObject.load("Output:Meter,DistrictCooling:Facility,Hourly;").get
     request_htg = OpenStudio::IdfObject.load("Output:Meter,DistrictHeating:Facility,Hourly;").get
 
@@ -114,8 +114,8 @@ class HourlyConsumptionByFuelToCSV < OpenStudio::Ruleset::ReportingUserScript
       if sqlFile.timeSeries(ann_env_pd, time_step, "Electricity:Facility", key_value).is_initialized
         time_series_data['Electricity'] = sqlFile.timeSeries(ann_env_pd, time_step, "Electricity:Facility", key_value).get.values
       end
-      if sqlFile.timeSeries(ann_env_pd, time_step, "Gas:Facility", key_value).is_initialized
-        time_series_data['Gas'] = sqlFile.timeSeries(ann_env_pd, time_step, "Gas:Facility", key_value).get.values
+      if sqlFile.timeSeries(ann_env_pd, time_step, "NaturalGas:Facility", key_value).is_initialized
+        time_series_data['NaturalGas'] = sqlFile.timeSeries(ann_env_pd, time_step, "NaturalGas:Facility", key_value).get.values
       end
       if sqlFile.timeSeries(ann_env_pd, time_step, "DistrictCooling:Facility", key_value).is_initialized
         time_series_data['DistrictCooling'] = sqlFile.timeSeries(ann_env_pd, time_step, "DistrictCooling:Facility", key_value).get.values
@@ -156,8 +156,8 @@ class HourlyConsumptionByFuelToCSV < OpenStudio::Ruleset::ReportingUserScript
         else
           col_a = nil
         end
-        if time_series_data.has_key?('Gas')
-          col_b = time_series_data['Gas'][i]
+        if time_series_data.has_key?('NaturalGas')
+          col_b = time_series_data['NaturalGas'][i]
         else
           col_b = nil
         end

@@ -13,12 +13,12 @@ class MeasuredDataCalculation
     # This is a stub, used for indexing
   end
 
-  def add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years)
+  def add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years, fuels)
     ns = 'auc'
     doc = create_xml_file_object(xml_file)
     measured_scenario_element = nil
     scenario_elements = doc.elements["/#{ns}:BuildingSync/#{ns}:Facilities/#{ns}:Facility/#{ns}:Reports/#{ns}:Report/#{ns}:Scenarios"]
-    scenario_elements.each do |scenario_element|
+    scenario_elements.each_element do |scenario_element|
       begin
         measured_scenario_element = scenario_element if scenario_element.attributes['ID'] == 'Measured'
       rescue
@@ -48,7 +48,7 @@ class MeasuredDataCalculation
     end
     ts_elements = []
 
-    def add_interval_reading(name_space, interval, interval_reading_value, start_time, end_time)
+    def add_interval_reading(name_space, interval, interval_reading_value, start_time, end_time, fuel)
       ns = name_space
       time_series = REXML::Element.new("#{ns}:TimeSeries")
       reading_type = REXML::Element.new("#{ns}:ReadingType")
@@ -63,45 +63,50 @@ class MeasuredDataCalculation
       interval_frequency.text = interval
       interval_reading = REXML::Element.new("#{ns}:IntervalReading")
       interval_reading.text = interval_reading_value
+      resource_use_id = REXML::Element.new("#{ns}:ResourceUseID")
+      resource_use_id.add_attribute('IDref', "#{fuel}")
       time_series.add_element(reading_type)
       time_series.add_element(time_series_reading_quantity)
       time_series.add_element(start_time_stamp)
       time_series.add_element(end_time_stamp)
       time_series.add_element(interval_frequency)
       time_series.add_element(interval_reading)
+      time_series.add_element(resource_use_id)
       time_series
     end
 
-    years.each do |year|
-      file_native_value = []
-      file_total_value = []
-      file_peak_value_array = []
-
-      csv_month_class_collection.each do |single_csv_class|
-        if single_csv_class.year == year
-          if interval.downcase == 'month'
-            ts_elements.push(add_interval_reading(ns, interval, single_csv_class.kwh_total[counter], 
-              single_csv_class.start_time_stamp, single_csv_class.end_time_stamp))
-          elsif interval.downcase == 'hour'
-            start_time_hourly = []
-            end_time_hourly = []
-            single_csv_class.start_time_stamp.drop(1).each do |time|
-              time.each do |start|
-                start_time_hourly.push start
-                end_time_hourly.push ((start.split(' ')[0]) + ' ' + (start.split(' ')[1].to_i+1).to_s+":00:00")
+    fuels.each do |fuel|
+      years.each do |year|
+        file_native_value = []
+        file_total_value = []
+        file_peak_value_array = []
+        csv_month_class_collection.each do |single_csv_class|
+          if single_csv_class.year == year && single_csv_class.fuel == fuel
+            if interval.downcase == 'month'
+              ts_elements.push(add_interval_reading(ns, interval, single_csv_class.total_native_value[counter], 
+                single_csv_class.start_time_stamp, single_csv_class.end_time_stamp, fuel))
+            elsif interval.downcase == 'hour'
+              start_time_hourly = []
+              end_time_hourly = []
+              single_csv_class.start_time_stamp.drop(1).each do |time|
+                time.each do |start|
+                  start_time_hourly.push start
+                  end_time_hourly.push ((start.split(' ')[0]) + ' ' + (start.split(' ')[1].to_i+1).to_s+":00:00")
+                end
+              end
+              single_csv_class.hourly_values[counter].each_with_index do |hourly_value, i|
+                ts_elements.push(add_interval_reading(ns, interval, hourly_value, start_time_hourly[i], end_time_hourly[i], fuel))
               end
             end
-            single_csv_class.hourly_values[counter].each_with_index do |hourly_value, i|
-              ts_elements.push(add_interval_reading(ns, interval, hourly_value, start_time_hourly[i], end_time_hourly[i]))
-            end
+            file_native_value.push(single_csv_class.total_native_value[counter])
+            file_total_value.push(single_csv_class.total_value[counter])
+            file_peak_value_array.push(single_csv_class.peak_value_array[counter]) if interval == 'Hour'
           end
-          file_native_value.push(single_csv_class.kwh_total[counter])
-          file_total_value.push(single_csv_class.kbtu_total[counter])
-          file_peak_value_array.push(single_csv_class.peak_value_array[counter])
         end
+        calculate_annual_value(file_native_value, file_total_value, file_peak_value_array, measured_scenario_element, year, fuel)
       end
-      calculate_annual_value(file_native_value, file_total_value, file_peak_value_array, measured_scenario_element, year)
     end
+
     time_series_data = REXML::Element.new("#{ns}:TimeSeriesData")
     measured_scenario_element.add_element(time_series_data)
     ts_elements.each do |ts|
@@ -110,7 +115,7 @@ class MeasuredDataCalculation
     save_xml(xml_file.gsub("#{GENERATE_DIR}", "#{ADD_MEASURED_DIR}"), doc)
   end
 
-  def calculate_annual_value(file_native_value, file_total_value, file_peak_value_array, scenario_element, year)
+  def calculate_annual_value(file_native_value, file_total_value, file_peak_value_array, scenario_element, year, fuel)
     ns = 'auc'
     annual_native_total = file_native_value.inject(0, :+)
     annual_total = file_total_value.inject(0, :+)
@@ -118,8 +123,9 @@ class MeasuredDataCalculation
 
     resource_uses = REXML::Element.new("#{ns}:ResourceUses")
     resource_use = REXML::Element.new("#{ns}:ResourceUse")
+    resource_use.add_attribute('IDref', "#{fuel}")
     energy_resource = REXML::Element.new("#{ns}:EnergyResource")
-    energy_resource.text = 'Electricity'
+    energy_resource.text = fuel
     resource_units = REXML::Element.new("#{ns}:ResourceUnits")
     resource_units.text = 'kBtu'
     annual_fuel_use_native_units = REXML::Element.new("#{ns}:AnnualFuelUseNativeUnits")
@@ -145,7 +151,7 @@ class MeasuredDataCalculation
     resource_use.add_element(annual_peak_native_units)
     resource_use.add_element(annual_peak_consistent_units)
 
-    # Add user_defined_field for multi-year annual total
+    # Add user_defined_field for multi-year and multi-fuel annual total
     user_defined_fields = REXML::Element.new("#{ns}:UserDefinedFields")
     user_defined_field = REXML::Element.new("#{ns}:UserDefinedField")
     field_name = REXML::Element.new("#{ns}:FieldName")
@@ -154,7 +160,7 @@ class MeasuredDataCalculation
     field_value.text = year
     user_defined_field.add_element(field_name)
     user_defined_field.add_element(field_value)
-    user_defined_field.add_element(user_defined_field)
+    user_defined_fields.add_element(user_defined_field)
     resource_uses.add_element(user_defined_fields)
 
     annual_total
@@ -178,19 +184,19 @@ class MeasuredDataCalculation
     doc
   end
 
-  def create_monthly_csv_data(csv_row_collection, interval)
+  def create_monthly_csv_data(csv_row_collection, interval, fuel_type)
     monthly_csv_obj = MonthlyData.new
-    # datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%y")
     datetime = DateTime.parse(csv_row_collection[0][0])
+    # datetime = DateTime.strptime(csv_row_collection[0][0], "%m/%d/%Y")
+
     monthly_csv_obj.update_month(datetime.month)
     monthly_csv_obj.update_year(datetime.year)
-    monthly_csv_obj.initialize_native_value
-    monthly_csv_obj.initialize_total_value
+    monthly_csv_obj.update_fuel(fuel_type)
 
     if interval.downcase == 'hour'
       csv_row_collection.each do |time|
-        # monthly_csv_obj.update_day(DateTime.strptime(time[0], "%m/%d/%y %H:%M").day)
-        monthly_csv_obj.update_day(DateTime.parse(time[0]).day)
+        monthly_csv_obj.update_day(DateTime.parse(csv_row_collection[0][0]).day)
+        # monthly_csv_obj.update_day(DateTime.strptime(time[0], "%m/%d/%Y %H:%M").day)
         monthly_csv_obj.update_start_time_hourly(time[0])
       end
       monthly_csv_obj.get_hourly_start_timestamp
@@ -202,7 +208,7 @@ class MeasuredDataCalculation
     csv_row_collection.each do |single_row|
       counter = 0
       single_row.headers.each do |header|
-        next if header == 'timestamp' || header.nil?
+        next if header == 'timestamp' || header == 'fuel_type' || header.nil?
         monthly_csv_obj.update_hourly_values(single_row[header], counter) if interval.downcase == 'hour'
         monthly_csv_obj.update_total_values(single_row[header], counter)
         counter += 1
@@ -216,8 +222,8 @@ class MeasuredDataCalculation
       end
     end
     monthly_csv_obj.get_peak_value_array
-    monthly_csv_obj.get_kwh_total
-    monthly_csv_obj.get_kbtu_total
+    monthly_csv_obj.get_native_total_values
+    monthly_csv_obj.get_total_values
 
     monthly_csv_obj
   end
@@ -231,42 +237,50 @@ class MeasuredDataCalculation
     csv_month_value = 0
     months = []
     years = []
+    fuels = []
     interval = ''
+    fuel_type = ''
 
     csv_table.each do |csv_row|
-      # datetime = DateTime.strptime(csv_row["timestamp"], "%m/%d/%y %k:%M")
       datetime = DateTime.parse(csv_row["timestamp"])
-      if !datetime.hour.nil?
-        interval = 'Hour'
-      elsif !datetime.month.nil?
+      if datetime.hour.nil?
         interval = 'Month'
+      else
+        interval = 'Hour'
       end
       years.push(datetime.year)
       months.push(datetime.month)
+      if csv_row['fuel_type'].nil?
+        csv_row['fuel_type'] = "electricity"
+      end
+      fuels.push(csv_row['fuel_type'])
     end
 
-    years.uniq.each do |year|
-      months.uniq.each do |month|
-        csv_table.each do |row|
-          # if DateTime.strptime(row["timestamp"], "%m/%d/%y").year == year &&
-            # DateTime.strptime(row["timestamp"], "%m/%d/%y").month == month
-          if DateTime.parse(row["timestamp"]).year == year &&
-            DateTime.parse(row["timestamp"]).month == month
-            csv_row_collection.push(row)
+    fuels.uniq.each do |fuel|
+      years.uniq.each do |year|
+        months.uniq.each do |month|
+          csv_table.each do |row|
+            f = row['fuel_type']
+            y = DateTime.parse(row["timestamp"]).year
+            m = DateTime.parse(row["timestamp"]).month
+            if y == year && m == month && f == fuel
+              fuel_type = f
+              csv_row_collection.push(row)
+            end
           end
+          csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, interval, fuel_type))
+          csv_row_collection.clear
         end
-        csv_month_class_collection.push(create_monthly_csv_data(csv_row_collection, interval))
-        csv_row_collection.clear
       end
     end
 
     counter = 0
     completed_files = 0
     header_name.drop(1).each do |file_name|
-      next if file_name.nil?
+      next if file_name.nil? || file_name == 'fuel_type'
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
       if File.exist?(xml_file)
-        add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years.uniq)
+        add_measured_data_to_xml_file(xml_file, interval, csv_month_class_collection, counter, years.uniq, fuels.uniq)
         completed_files += 1
       else
         puts "No #{file_name} found!"

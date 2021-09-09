@@ -1,58 +1,66 @@
-# Installation
+
+# Energy Data Vault
+
+These instructions are for installing and configuring environment to properly running EDV workflow.
 
 In order to execute the workflow properly, certain environments listed below need to be installed.
 
-- Install Ruby and OpenStudio
+### Ruby 2.5.x
 
-  - Current working versions,
-    - [Ruby 2.2.4](https://rubyinstaller.org/downloads/archives/)
-    - Bundler 1.17.1 (use ```gem install bundler -v 1.17```)
-    - [OpenStudio 2.9.0](https://github.com/NREL/OpenStudio/releases/tag/v2.9.0) 
-  - Follow the [instruction](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) for current working versions.
+For OSX users, it is recommended that you install [rbenv](https://github.com/rbenv/rbenv) to manage different versions of Ruby. rbenv can be installed via [Homebrew](https://brew.sh/).
 
-- Clone this repository and run commands below in the highest directory of the repository.
+### Bundler 2.1.x
+
 ```
-bundle install
+gem install bundler -v 2.1
 ```
+
+### [OpenStudio](https://www.openstudio.net/downloads)
+
+Use OpenStudio 3.1.X.
+
+- Windows
+
+Create a file ```C:\ruby-2.5.5-x64-mingw32\lib\ruby\site_ruby\openstudio.rb``` and point it to your OpenStudio installation by editing the contents.  E.g.:
+
+```ruby
+require 'C:\openstudio-3.1.0\Ruby\openstudio.rb'
 ```
-bundle update
-``` 
 
-- TODO,
-  - update installation instructions when transitioning to OpenStudio 3.0 and Ruby 2.5.5
+Verify your OpenStudio and Ruby configuration:
+```
+ruby -e "require 'openstudio'" -e "puts OpenStudio::Model::Model.new"
+```
+
+- macOS
+
+Add the RUBYLIB environment variable to your `bash_profile` (or similar) file. It should point to the Ruby folder within
+the OpenStudio Application you just downloaded (replace 3.1.0 with the version you are using):
+```
+export RUBYLIB=/Applications/OpenStudio-3.1.0/Ruby
+```
 
 
-
-# Script Overview
-
-The following figure contains an overview of the workflow.
-
+## Workflow Overview
 
 ![alt text](ScriptOverview.PNG)
 
-- TODO,
-  - update figure
-  
-  
+### Configurations
 
-# Configurations Before Running the Entire Workflow
+Workflow can be configured in various ways per user desire. Configurations listed below are defined in ```scripts/constants.rb```:
 
-There are different ways to control and configure the workflow based on included capabilities. ```constants.rb``` file under ```scripts``` folder includes configurations listed below.
+- Data source: input data for workflow.
+- Simulation type: baseline only scenarios or pre-defined energy efficiency measures.
+- Input and output directories.
+- Variability application type: variability in building operation to be implemented in the simulation.
 
-- selection of the data source: which data is going to be used as an input to the workflow?
-- selection of simulation type: are simulations going to consider baseline scenarios only? or will be considering pre-defined energy efficiency measures?
-- configuration of directories: where do inputs read from? and where do outputs being saved?
-- configuration of variability application: what kind of variability in building operation is going to be implemented in the simulation?
+### Input Data Source Standardization
 
+Custom metadata and time-series data can be standardized for creating synthetic smart meter dataset. All processed data shall be stored in ```data/processed``` directory.
 
+- Sample metadata [metadata_template](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/metadata_template.csv) and sample time-series data [timeseriesdata_template](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/timeseriesdata_template.csv) can be found in ```data/raw``` direcotry.
 
-# Standardized Input Data Source
-
-User can use their own data for creating synthetic smart meter data set by standardizing the format of metadata and timeseries data as described below.
-
-- Sample template files for [metadata](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/metadata_template.csv) and [timeseries data](https://github.com/NREL/edv-experiment-1/blob/develop/data/raw/timeseriesdata_template.csv) that represent the standard input format are included under ```data/raw``` folder
-
-  - metadata information that can be used in the current workflow are,
+  - metadata used in the current workflow:
     - ```building_id```
     - ```xml_filename```
     - ```primary_building_type```
@@ -72,116 +80,114 @@ User can use their own data for creating synthetic smart meter data set by stand
     - ```measurement_end_date```
     - ```weather_file_name_epw```
     - ```weather_file_name_ddy```
-    
-  - format of timeseries file can be referred to the template file ```timeseriesdata_template.csv``` and the column headers representing the building id should match with ```building_id``` in the metadata file.
 
-- Custom weather data can be stored in ```data/weather``` folder 
+- Custom weather data can be stored in ```data/weather``` directory.
 
 
 
-# Executing the Workflow: Step-by-step for Every Task
+### Executing the Workflow:
+#### To run rake task without warnings: export RUBYOPT=-W0 ####
 
-All rake commands are executed in the highest directory of this repository.
+Execute all rake tasks from root directory.
 
-
-
-### Step 0 (optional): Convert raw data format from Building Data Genome Project to standardized input format
-
-- Run the following command to convert raw data to standardized format:
+To run rake task without warnings, add following command to your ```bash_profile``` (or similar) file:
 ```
-bundle exec rake standardize_metadata_and_timeseriesdata
+export RUBYOPT=-W0
 ```
 
-- This step is only necessary when [Building Data Genome Project](https://github.com/buds-lab/building-data-genome-project-2) data is being used.
+#### Step 1 (optional): convert raw data to standard input data format. Example:
 
-- This step can be skipped if importing [BuildingSync](https://buildingsync.net/) XML files from [SEED](https://bricr.seed-platform.org/) and if the XML files are already including sufficient metadata information of buildings.
-
-
-
-### Step 1: Generate BuildingSync XMLs from standardized building metadata
-
-- Run the following command to generate BuildingSync XMLs from CSV data:
 ```
-bundle exec rake generate_xmls
+rake format_data[data_option]
 ```
 
-- The generated XML files will be saved in a location specified in the configuration ```constant.rb``` file.
+- Note that rake task ```format_data``` works exclusively for [Building Data Genome Project](https://github.com/buds-lab/building-data-genome-project-2) or San Francisco monthly data. Users should create a custom rake task to convert raw input data to standard format.
 
-- This step can be skipped if importing BuildingSync XML files from SEED and if the XML files are already including sufficient metadata information of buildings.
-
-- Note: make sure not to commit data that includes private information to this repo.
+- Skip if [BuildingSync](https://buildingsync.net/) files with sufficient building metadata imported direclty from [SEED](https://bricr.seed-platform.org/) are used as input data source.
 
 
+#### Step 2: Generate BuildingSync XMLs
 
-### Step 2: Add measured data into BuildingSync XMLs from standardized timeseries data  
-
-- Run the following command to add measured energy consumptions to the BuildingSync XMLs generated in step 1:
 ```
-bundle exec rake add_measured_data
+rake generate_xmls
 ```
 
-- The updated XML files will be saved based on the configuration in ```constant.rb``` file.
+- The generated XML files will be saved ```workflow_results/Bldg_Sync_Files``` direcotry specified in ```constant.rb```. These data are not to be committed.
 
-- Currently, monthly interval data are only calculated and stored back to xmls.
-
-- This step can be skipped if importing BuildingSync XML files from SEED and if the XML files are already including sufficient metadata information of buildings.
-
-- TODO,
-  - add capability for adding granular (e.g., daily, hourly) timeseries data to XML files. 
+- Skip if [BuildingSync](https://buildingsync.net/) files with sufficient building metadata are imported direclty from [SEED](https://bricr.seed-platform.org/).
 
 
 
-### Step 3: Generate the simulation control file
+#### Step 3: Add measured time-series data to BuildingSync XMLs
 
-- The following script will generate a csv file that creates a list of simulation scenarios specifying BuildingSync XML files and associated weather files. 
 ```
-bundle exec rake generate_control_csv
+rake add_measured_data
+```
+
+- Previously generated BuildingSync XMLs are now updated with time-series energy consumption data.
+
+- Skip if [BuildingSync](https://buildingsync.net/) files with sufficient building metadata imported direclty from [SEED](https://bricr.seed-platform.org/).
+
+
+
+#### Step 4: Generate simulation control file
+
+- The following rake task will generate a csv file that contains a list of simulation scenarios specifying dedicated BuildingSync XML files and associated weather files. 
+```
+rake generate_control_csv
 ```
 
 - The output control file contains the name of the BuildingSync file, the Standard to define buildings, and weather file names.
 
-- The output control file will be saved based on the configuration in ```constant.rb``` file.
+- The output control file is saved in ```Control_Files``` directory per ```constants.rb```.
 
-- If user has imported/downloaded BuildingSync XMLs from SEED, then the location to the folder that contains BuildingSync XMLs should be specified as an argument to the rake command.
+- If BuildingSync XMLs imported from SEED are to be used, the location of the directory where these XMLs are stored should be used as an additional argument to rake task.
 
-- Users need to acquire weather files (EPWs and DDYs) separately and weather files could be saved under ```data/weather``` folder as a default location.
+- Weather files (EPWs and DDYs) are required. As default, all weather files are saved in ```data/weather``` directory.
 
 
 
-### Step 4: Run building simulations (generate synthetic data) for all buildings
+#### Step 5: Run building simulations (generate synthetic data) for all buildings
 
-- Run the following command to translate BuildingSync XMLs to OSMs/OSWs and run simulations:
+- This rake task translates BuildingSync XMLs into OSMs/OSWs for simulations:
 ```
-bundle exec rake simulate_batch_xml
-```
-
-- The generated simulation files as well as updated BuildingSync XMLs will be saved in the NAME_OF_OUTPUT_DIR/Simulation_Files directory.
-
-
-
-### Step 5: Calculate metrics based on information from both real and synthetic data
-
-- Run the following command to calculate Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity data.
-```
-bundle exec rake calculate_metrics path/to/simulation/results/created/from/previous/step
+rake simulate_batch_xml
 ```
 
-- Currently, metric calculations based on monthly data are only possible.
-
-- TODO,
-  - include capability for granular (e.g., daily, hourly) timeseries data.
+- The generated simulation files as well as updated BuildingSync XMLs will be saved in the ```workflow_results/Simulation_Files``` directory.
 
 
+#### Step 6: Run building calibration
 
-### Step 6: Generate stitched timeseries synthetic data
-
-- The following script will create a single timeseries data that includes both pre- and post- interventions (e.g., energy efficiency measure, non-routine event) by stitching them together based on the definitions of when interventions happened. The scenarios for defining interventions are configured in another csv file. 
+- This rake task runs calibration on 2 levels: single building calibration and portfolio calibration:
 ```
-bundle exec rake export_synthetic_data path/and/name/of/configuration/csv/file
+rake calibration
 ```
 
-- The format of the configuration file is shown [here](https://github.com/NREL/edv-experiment-1/blob/develop/spec/files/generation_script.csv)
+- Result files are stores in ```workflow_results/Calibration_Files``` directory.
 
 
+#### Step 7: Calculate metrics with real and synthetic data
+
+- This rake task calculates Actual EUI, Modeled EUI, CVRMSE, and NMBE from measured and simulated electricity/gas data.
+```
+rake generate_metrics_result <Simulation_Files_Dir>
+```
+
+- Currently, only monthly data metric calculation is implmented.
 
 
+#### Step 8: Generate synthetic time-series data
+
+- This rake task combines before and after intervention time-series data and creates a new set of time-series data that indicates before and after intervention content (e.g., energy efficiency measure, non-routine event) based on the timing of the interventions. Intervention scenarios are defined in a separate csv file. 
+```
+rake export_synthetic_data path/to/configuration/csv/file
+```
+
+- See [format](https://github.com/NREL/edv-experiment-1/blob/develop/spec/files/generation_script.csv) of configuration csv file.
+
+
+# TODO
+
+- [ ] Update figures;
+- [ ] To include capability for more granular timeseries data for step 5.

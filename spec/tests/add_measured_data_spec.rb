@@ -7,7 +7,7 @@ require_relative '../../scripts/constants'
 
 ns = 'auc'
 ts_file = "#{PROCESSED_DATA_DIR}/timeseriesdata.csv"
-bsync_files = Dir["#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}/*.xml"]
+bsync_files = Dir["#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}/*.xml"]
 
 class String
     def red; "\033[31m#{self}\033[0m" end

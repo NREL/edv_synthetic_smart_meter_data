@@ -1,7 +1,8 @@
 # Run a BuildingSync XML file to generate synthetic smart meter data
 
+require 'bundler/setup'
 require 'openstudio/extension'
-require 'openstudio/model_articulation/os_lib_model_generation_bricr'
+require 'openstudio/model_articulation'
 require 'buildingsync'
 require 'buildingsync/translator'
 require 'openstudio/occupant_variability'
@@ -22,7 +23,7 @@ if ARGV[0].nil?
   exit(1)
 end
 
-bldg_sync_file_dir = "../#{NAME_OF_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
+bldg_sync_file_dir = "../#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
 if !ARGV[1].nil?
   bldg_sync_file_dir = File.expand_path(ARGV[1])
 end
