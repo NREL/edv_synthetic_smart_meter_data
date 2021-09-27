@@ -1,4 +1,4 @@
-Energy Data Vault(R), Copyright (c) 2018-2021, Alliance for Sustainable Energy, LLC.
+Energy Data Vault, Copyright (c) 2018-2021, Alliance for Sustainable Energy, LLC.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
