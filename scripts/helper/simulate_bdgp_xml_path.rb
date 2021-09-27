@@ -11,9 +11,12 @@ require_relative '../constants'
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only, occ_var, non_routine_var)
   simulation_file_path = File.join(File.expand_path(WORKFLOW_OUTPUT_DIR), SIM_FILES_DIR)
-  if !File.exist?(simulation_file_path)
-    FileUtils.mkdir_p(simulation_file_path)
+  # delete simulation folder and recreate (otherwise you will have mixed files from different runs in there)
+  # TODO: is this too aggressive to delete everything in "Simulation_Files" directory? It should probably be handled by bsync-gem
+  if File.exist?(simulation_file_path)
+    FileUtils.rm_rf(simulation_file_path)    
   end
+  FileUtils.mkdir_p(simulation_file_path)
 
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.basename(xml_file_path)
@@ -23,10 +26,11 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
     facility = translator.get_facility
     facility.add_cb_modeled('Baseline')
-
-    measure_dir = File.join(root_dir, 'lib', 'measures', 'hourly_consumption_by_fuel_to_csv')
-    translator.add_measure_path(measure_dir)
-    translator.insert_measure_into_workflow('ReportingMeasure', measure_dir, 0, nil)
+    
+    measure_dir = 'hourly_consumption_by_fuel_to_csv'
+    measure_path = File.join(root_dir, 'lib', 'measures')
+    translator.add_measure_path(measure_path)
+    translator.insert_measure_into_workflow('ReportingMeasure', measure_dir, 0, {})
     translator.setup_and_sizing_run
 
     ###########################################################################################
