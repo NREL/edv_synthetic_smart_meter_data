@@ -147,7 +147,7 @@ class BuildingPortfolio
                                             "from": ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
                                             "peak": 0,
                                             "to": ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
-                                            "tot_therms": ts.elements["#{@ns}:IntervalReading"].text.to_f + 1}) # TODO: fix gas consumption from BuidlingSync
+                                            "tot_therms": ts.elements["#{@ns}:IntervalReading"].text.to_f}) # TODO: fix gas consumption from BuidlingSync
                   annual_gas += ts.elements["#{@ns}:IntervalReading"].text.to_f
                 end
               end
