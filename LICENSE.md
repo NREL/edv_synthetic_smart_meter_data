@@ -15,11 +15,6 @@ modification, are permitted provided that the following conditions are met:
    contributors may be used to endorse or promote products derived from
    this software without specific prior written permission from the respective
    party.
-   
-4. Other than as required in clauses 1 and 2, distributions in any form of 
-   modifications or other derivative works may not use the "Energy Data Vault"
-   trademarks, "EDV" or any other confusingly similar designation without
-   specific prior written permission from Alliance for Sustainable Energy, LLC.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
