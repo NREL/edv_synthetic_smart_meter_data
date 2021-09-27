@@ -1,0 +1,14 @@
+AllCops:
+  Exclude:
+    - gems/**/*
+    - measures/**/*
+    - spec/files/**/measures/**/*
+
+Metrics/BlockLength:
+  Exclude:
+    - 'Rakefile'
+    - '**/*.rake'
+    - 'test/**/*.rb'
+  
+Style/FrozenStringLiteralComment:
+  Enabled: false
