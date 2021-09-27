@@ -17,14 +17,14 @@ gem install bundler -v 2.1
 
 ### [OpenStudio](https://www.openstudio.net/downloads)
 
-Use OpenStudio 3.1.X.
+Use OpenStudio 3.0.1.
 
 - Windows
 
 Create a file ```C:\ruby-2.5.5-x64-mingw32\lib\ruby\site_ruby\openstudio.rb``` and point it to your OpenStudio installation by editing the contents.  E.g.:
 
 ```ruby
-require 'C:\openstudio-3.1.0\Ruby\openstudio.rb'
+require 'C:\openstudio-3.0.1\Ruby\openstudio.rb'
 ```
 
 Verify your OpenStudio and Ruby configuration:
@@ -35,9 +35,9 @@ ruby -e "require 'openstudio'" -e "puts OpenStudio::Model::Model.new"
 - macOS
 
 Add the RUBYLIB environment variable to your `bash_profile` (or similar) file. It should point to the Ruby folder within
-the OpenStudio Application you just downloaded (replace 3.1.0 with the version you are using):
+the OpenStudio Application you just downloaded (replace 3.0.1 with the version you are using):
 ```
-export RUBYLIB=/Applications/OpenStudio-3.1.0/Ruby
+export RUBYLIB=/Applications/OpenStudio-3.0.1/Ruby
 ```
 
 
@@ -189,5 +189,7 @@ rake export_synthetic_data path/to/configuration/csv/file
 
 # TODO
 
-- [ ] Update figures;
-- [ ] To include capability for more granular timeseries data for step 5.
+- [ ] Update BuildingSync files with calibrated or modeled results for CVRMSE/NMBE;
+- [ ] Upgrade to Openstudio-common-measures-gem v0.3.2;
+- [ ] Upgrade to OpenStudio-cli 3.2.0 once BuildingSync-gem is upgraded;
+- [ ] Single building and portfolio level calibration implementation.
