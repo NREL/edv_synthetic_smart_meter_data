@@ -35,12 +35,14 @@ end
 ########################################################################
 ########################################################################
 
+# Temporary
+=begin
 if allow_local && File.exist?('../openstudio-common-measures-gem')
   gem 'openstudio-common-measures', path: '../openstudio-common-measures-gem'
 else
   gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', tag: 'v0.2.1'
 end
-
+=end
 ########################################################################
 ########################################################################
 
@@ -56,7 +58,7 @@ end
 if allow_local_bsync && File.exists?('../BuildingSync-gem')
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
-  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', :tag => 'v0.2.0'
+  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', :tag => 'v0.2.1'
 end
 
 ########################################################################
@@ -81,7 +83,7 @@ end
 ########################################################################
 
 # Version compatibility: after downloading openstudio-bldgs-calibration-gem, modify gem to use v0.2.6 openstudio-extension-gem locally
-# gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
+gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
 
 ########################################################################
 ########################################################################

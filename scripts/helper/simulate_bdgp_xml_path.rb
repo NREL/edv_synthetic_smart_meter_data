@@ -19,7 +19,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
   out_xml = File.basename(xml_file_path)
   root_dir = File.expand_path('../..', File.dirname(__FILE__))
 
-  # begin
+  begin
     translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
     facility = translator.get_facility
     facility.add_cb_modeled('Baseline')

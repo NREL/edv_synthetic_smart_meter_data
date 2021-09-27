@@ -216,7 +216,6 @@ end
 
 class Calibration
   def calibration(portfolio, calibration_output_dir)
-=begin
     # calibrate single building
     puts "Run single building calibration:"
     runner_single = OpenStudio::BldgsCalibration::CalibrateRunnerSingle.new
@@ -240,12 +239,13 @@ class Calibration
        f.write(JSON.pretty_generate(runner_single.cali_report))
       end
     end
-=end
+=begin
     # calibration portfolio
     puts "Run portfolio building calibration:"
     calibration_path = File.join(calibration_output_dir, 'portfolio_calibration')
     runner_portfolio = OpenStudio::BldgsCalibration::CalibrateRunnerPortfolio.new(calibration_path)
     runner_portfolio.portfolio_calibrate(portfolio)
+=end
   end
 end
 
