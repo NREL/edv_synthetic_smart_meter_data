@@ -24,7 +24,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
     facility = translator.get_facility
     facility.add_cb_modeled('Baseline')
 
-    measure_dir = 'hourly_consumption_by_fuel_to_csv'
+    measure_dir = 'HourlyConsumptionByFuelToCSV'
     measure_path = File.join(root_dir, 'lib', 'measures')
     translator.add_measure_path(measure_path)
     translator.insert_measure_into_workflow('ReportingMeasure', measure_dir, 0, {})
