@@ -1,0 +1,4 @@
+building_id,site_id,building_id_kaggle,site_id_kaggle,primaryspaceusage,sub_primaryspaceusage,sqm,sqft,lat,lng,timezone,electricity,hotwater,chilledwater,steam,water,irrigation,solar,gas,industry,subindustry,heatingtype,yearbuilt,date_opened,numberoffloors,occupants,energystarscore,eui,site_eui,source_eui,leed_level,rating
+Panther_lodging_Hattie,Panther,33,0,Lodging/residential,Residence Hall,3594,38686,28.51768858,-81.3790388,US/Eastern,Yes,,,,Yes,,,Yes,,,,2002,,,,,325,,,None,
+Panther_education_Jerome,Panther,76,0,Education,Research,11974,128887,28.51768858,-81.3790388,US/Eastern,Yes,,Yes,,Yes,,,Yes,,,,2009,,,,,515,,,Gold,
+Panther_office_Patti,Panther,80,0,Office,Office,14503.2,156111,28.51768858,-81.3790388,US/Eastern,Yes,,,,Yes,,,Yes,,,,2001,,,,,124,,,Gold,

@@ -48,7 +48,7 @@ PROCESSED_TIMESERIESDATA_FILE = "timeseriesdata.csv"
 GENERATE_DIR = "Bldg_Sync_Files"
 
 # Output location for add_measured_data task
-ADD_MEASURED_DIR = "Add_Measured_Data_Files"
+MEASURED_DATA_DIR = "Measured_Data_Files"
 
 # Output location for generate_control_csv_1 task and name of summary file
 CONTROL_FILES_DIR = "Control_Files"

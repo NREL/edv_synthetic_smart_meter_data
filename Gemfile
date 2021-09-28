@@ -4,12 +4,11 @@ ruby '~>2.5'
 allow_local = false
 allow_local_bsync = false
 
+gem 'geocoder', '1.6.4'
+gem 'multipart-post', '2.1.1'
 gem 'rake', '~>13.0.1'
 gem 'rexml', '3.2.4'
-
 gem 'rspec', '~>3.10'
-gem 'multipart-post', '2.1.1'
-gem 'geocoder', '1.6.4'
 
 ########################################################################
 ########################################################################
@@ -35,34 +34,36 @@ end
 ########################################################################
 ########################################################################
 
+# Temporary
+=begin
 if allow_local && File.exist?('../openstudio-common-measures-gem')
   gem 'openstudio-common-measures', path: '../openstudio-common-measures-gem'
 else
   gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', tag: 'v0.2.1'
 end
-
+=end
 ########################################################################
 ########################################################################
 
 if allow_local && File.exist?('../openstudio-standards-gem')
   gem 'openstudio-standards', path: '../openstudio-standards'
 else
-  gem 'openstudio-standards', github: 'NREL/openstudio-standards', :tag => 'v0.2.14'
+  gem 'openstudio-standards', github: 'NREL/openstudio-standards', tag: 'v0.2.14'
 end
 
 ########################################################################
 ########################################################################
 
-if allow_local_bsync && File.exists?('../BuildingSync-gem')
+if allow_local_bsync && File.exist?('../BuildingSync-gem')
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
-  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', :tag => 'v0.2.0'
+  gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', tag: 'v0.2.1'
 end
 
 ########################################################################
 ########################################################################
 
-if allow_local && File.exists?('../openstudio-occupant-variability-gem')
+if allow_local && File.exist?('../openstudio-occupant-variability-gem')
   gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
 else
   gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'ruby_upgrade'
@@ -71,7 +72,7 @@ end
 ########################################################################
 ########################################################################
 
-if allow_local && File.exists?('../openstudio-variability-gem')
+if allow_local && File.exist?('../openstudio-variability-gem')
   gem 'openstudio-variability', path: '../openstudio-variability-gem'
 else
   gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'ruby_upgrade'
@@ -80,8 +81,8 @@ end
 ########################################################################
 ########################################################################
 
-# Version compatibility: after downloading openstudio-bldgs-calibration-gem, modify gem to use v0.2.6 openstudio-extension-gem locally
-# gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
+# openstudio-bldgs-calibration-gem requires openstudio-extension-gem v0.2.6
+gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
 
 ########################################################################
 ########################################################################

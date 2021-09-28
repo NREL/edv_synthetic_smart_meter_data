@@ -2,7 +2,7 @@
 # RSpec::Core::RakeTask.new(:spec)
 require_relative 'scripts/constants'
 
-default_path_to_add_measured_data = "#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
+default_path_to_add_measured_data = "#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"
 #############################################################################################
 desc 'convert raw data to standardized data format'
 task :format_data, [:data_option] do |_, args|

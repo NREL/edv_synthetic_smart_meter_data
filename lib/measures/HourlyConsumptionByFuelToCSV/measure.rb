@@ -1,7 +1,7 @@
 # see the URL below for information on how to write OpenStudio measures
 # http://nrel.github.io/OpenStudio-user-documentation/reference/measure_writing_guide/
 
-#start the measure
+# start the measure
 class HourlyConsumptionByFuelToCSV < OpenStudio::Ruleset::ReportingUserScript
 
   # human readable name
