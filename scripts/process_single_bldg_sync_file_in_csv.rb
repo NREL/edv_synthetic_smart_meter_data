@@ -11,7 +11,7 @@ end
 start = Time.now
 puts "Simulation script started at #{start}"
 
-bldg_sync_file_dir = "../#{WORKFLOW_OUTPUT_DIR}/#{ADD_MEASURED_DIR}"
+bldg_sync_file_dir = "../#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"
 if !ARGV[1].nil?
   bldg_sync_file_dir = File.expand_path(ARGV[1])
 end
