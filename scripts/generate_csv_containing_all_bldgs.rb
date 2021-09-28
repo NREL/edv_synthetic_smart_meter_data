@@ -45,7 +45,10 @@ if !ARGV[3].nil?  && Dir.exist?(ARGV[3])
   weather_file_source_dir = ARGV[3]
 end
 
-csv_file_path = File.expand_path("../#{WORKFLOW_OUTPUT_DIR}/Control_Files/all.csv", File.dirname(__FILE__))
+csv_file_path = File.expand_path("../#{WORKFLOW_OUTPUT_DIR}/#{CONTROL_FILES_DIR}/all.csv", File.dirname(__FILE__))
+if File.exist?(csv_file_path)
+  FileUtils.rm_rf(csv_file_path)
+end
 FileUtils.mkdir_p File.dirname(csv_file_path)
 
 csv = File.open(csv_file_path, 'w')

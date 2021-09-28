@@ -53,8 +53,8 @@ def copy_columns(file, std_labels, outdir, updated_features, options = {headers:
     fuel_type = 'electricity/gas'
     measurement_start_date = '1/2018'
     measurement_end_date = '12/2018'
-    weather_file_name_epw = File.join(DEFAULT_WEATHERDATA_DIR, 'USA_CA_San.Francisco.Intl.AP.724940_TMY3', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw')
-    weather_file_name_ddy = File.join(DEFAULT_WEATHERDATA_DIR, 'USA_CA_San.Francisco.Intl.AP.724940_TMY3', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.ddy')
+    weather_file_name_epw = File.join(DEFAULT_WEATHERDATA_DIR, '../', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw')
+    weather_file_name_ddy = File.join(DEFAULT_WEATHERDATA_DIR, '../', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.ddy')
 
     metadata_file.puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
 

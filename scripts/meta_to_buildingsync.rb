@@ -1273,7 +1273,10 @@ end
 
 # output directory
 outdir = "./#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"
-FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
+if File.exist?(outdir)
+  FileUtils.rm_rf(outdir)
+end
+FileUtils.mkdir_p(outdir)
 
 # summary file
 #summary_file = File.open(outdir + '/meta_summary.csv', 'w')
