@@ -4,12 +4,11 @@ ruby '~>2.5'
 allow_local = false
 allow_local_bsync = false
 
+gem 'geocoder', '1.6.4'
+gem 'multipart-post', '2.1.1'
 gem 'rake', '~>13.0.1'
 gem 'rexml', '3.2.4'
-
 gem 'rspec', '~>3.10'
-gem 'multipart-post', '2.1.1'
-gem 'geocoder', '1.6.4'
 
 ########################################################################
 ########################################################################
@@ -82,7 +81,7 @@ end
 ########################################################################
 ########################################################################
 
-# Version compatibility: after downloading openstudio-bldgs-calibration-gem, modify gem to use v0.2.6 openstudio-extension-gem locally
+# openstudio-bldgs-calibration-gem requires openstudio-extension-gem v0.2.6
 gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
 
 ########################################################################
