@@ -274,15 +274,14 @@ class MeasuredDataCalculation
       end
     end
 
-    counter = 0
-    completed_files = 0
     measured_data_dir = File.expand_path("#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}")
-
     if File.exist?(measured_data_dir)
       FileUtils.rm_rf(measured_data_dir)
     end
     FileUtils.mkdir_p(measured_data_dir)
-
+    
+    counter = 0
+    completed_files = 0
     header_name.drop(1).each do |file_name|
       next if file_name.nil? || file_name == 'fuel_type'
       xml_file = File.expand_path("#{file_name}.xml", xml_file_path.to_s)
