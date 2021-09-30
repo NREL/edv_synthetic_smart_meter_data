@@ -24,10 +24,10 @@ jobs:
       uses: ruby/setup-ruby@v1 
       with:
         ruby-version: 2.5.5
-    - name: Rubocop
-      run: |
-        sudo gem install rubocop
-        rubocop
+    # - name: Rubocop
+    #   run: |
+    #     sudo gem install rubocop
+    #     rubocop
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Workflow set up
@@ -37,18 +37,18 @@ jobs:
     - name: Initial test spec
       run: bundle exec rspec spec/tests/initial_spec.rb
       if: always()
-    - name: Add measured data spec
-      run: bundle exec rspec spec/tests/add_measured_data_spec.rb
-      if: always()
-    - name: Driving scripts spec
-      run: bundle exec rspec spec/tests/driving_scripts_spec.rb
-      if: always()
-    - name: Experiment spec
-      run: bundle exec rspec spec/tests/experiment_spec.rb
-      if: always()
-    - name: Metrics calculation spec
-      run: bundle exec rspec spec/tests/metrics_calculation_spec.rb
-      if: always()
-    - name: Occupancy simulator spec
-      run: bundle exec rspec spec/tests/occupancy_simulator_spec.rb
-      if: always()
+#     - name: Add measured data spec
+#       run: bundle exec rspec spec/tests/add_measured_data_spec.rb
+#       if: always()
+#     - name: Driving scripts spec
+#       run: bundle exec rspec spec/tests/driving_scripts_spec.rb
+#       if: always()
+#     - name: Experiment spec
+#       run: bundle exec rspec spec/tests/experiment_spec.rb
+#       if: always()
+#     - name: Metrics calculation spec
+#       run: bundle exec rspec spec/tests/metrics_calculation_spec.rb
+#       if: always()
+#     - name: Occupancy simulator spec
+#       run: bundle exec rspec spec/tests/occupancy_simulator_spec.rb
+#       if: always()
