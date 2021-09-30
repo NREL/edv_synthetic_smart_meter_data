@@ -82,7 +82,8 @@ end
 ########################################################################
 
 # openstudio-bldgs-calibration-gem requires openstudio-extension-gem v0.2.6
-gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
+# temporary disable for repo release.
+# gem 'openstudio-bldgs-calibration', path: '../openstudio-bldgs-calibration-gem'
 
 ########################################################################
 ########################################################################
