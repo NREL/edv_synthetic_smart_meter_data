@@ -179,6 +179,7 @@ rake export_synthetic_data path/to/configuration/csv/file
 
 # TODO
 
+- [ ] Rubocop setting;
 - [ ] Update BuildingSync files with calibrated or modeled results for CVRMSE/NMBE;
 - [ ] Upgrade to Openstudio-common-measures-gem v0.3.2;
 - [ ] Upgrade to OpenStudio-cli 3.2.0 once BuildingSync-gem is upgraded;
