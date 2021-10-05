@@ -13,43 +13,43 @@ include REXML
 =begin
 input_json = {
 	1 => {
-    "osmPath"=>"/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Simulation_Files/Panther_lodging_Hattie/in.osm", 
+    'osmPath'=>"/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Simulation_Files/Panther_lodging_Hattie/in.osm", 
     "building_id"=>"Panther_lodging_Hattie", 
     "bldgType"=>"Commercial", 
     "electricity"=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_lodging_Hattie/output/true_electricity.json", 
-    "annual_elec"=>408801.1205351751, 
-    "gas"=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_lodging_Hattie/output/true_gas.json", 
+    'annual_elec'=>408801.1205351751, 
+    'gas'=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_lodging_Hattie/output/true_gas.json", 
     "annual_gas"=>0.0, 
-    "hvac_sys_type"=>"Packaged system", 
-    "epwPath"=>"/Users/llin/Documents/repo/edv-experiment-1/data/weather/temporary/temporary.epw", 
-    "vintage"=>2019, 
-    "cz"=>"cz3"
+    'hvac_sys_type'=>"Packaged system", 
+    'epwPath'=>"/Users/llin/Documents/repo/edv-experiment-1/data/weather/temporary/temporary.epw", 
+    'vintage'=>2019, 
+    'cz'=>"cz3"
   }, 
   2 => {
-    "osmPath"=>"/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Simulation_Files/Panther_office_Patti/in.osm", 
+    'osmPath'=>"/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Simulation_Files/Panther_office_Patti/in.osm", 
     "building_id"=>"Panther_office_Patti", 
     "bldgType"=>"Commercial", 
     "electricity"=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_office_Patti/output/true_electricity.json", 
-    "annual_elec"=>1620716.6529876138, 
-    "gas"=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_office_Patti/output/true_gas.json", 
+    'annual_elec'=>1620716.6529876138, 
+    'gas'=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_office_Patti/output/true_gas.json", 
     "annual_gas"=>0.0, 
-    "hvac_sys_type"=>"Packaged system", 
-    "epwPath"=>"/Users/llin/Documents/repo/edv-experiment-1/data/weather/temporary/temporary.epw", 
-    "vintage"=>2019, 
-    "cz"=>"cz3"
+    'hvac_sys_type'=>"Packaged system", 
+    'epwPath'=>"/Users/llin/Documents/repo/edv-experiment-1/data/weather/temporary/temporary.epw", 
+    'vintage'=>2019, 
+    'cz'=>"cz3"
   }, 
   3 => {
-    "osmPath"=>"/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Simulation_Files/Panther_education_Jerome/in.osm", 
+    'osmPath'=>"/Users/llin/Documents/repo/edv-experiment-1/workflow_results/Simulation_Files/Panther_education_Jerome/in.osm", 
     "building_id"=>"Panther_education_Jerome", 
     "bldgType"=>"Commercial", 
     "electricity"=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_education_Jerome/output/true_electricity.json", 
-    "annual_elec"=>791610.8834447582, 
-    "gas"=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_education_Jerome/output/true_gas.json", 
+    'annual_elec'=>791610.8834447582, 
+    'gas'=>"/Users/llin/Documents/repo/edv-experiment-1/scripts/../workflow_results/Calibration_Files/Panther_education_Jerome/output/true_gas.json", 
     "annual_gas"=>0.0, 
-    "hvac_sys_type"=>"Packaged system", 
-    "epwPath"=>"/Users/llin/Documents/repo/edv-experiment-1/data/weather/temporary/temporary.epw", 
-    "vintage"=>2019, 
-    "cz"=>"cz3"
+    'hvac_sys_type'=>"Packaged system", 
+    'epwPath'=>"/Users/llin/Documents/repo/edv-experiment-1/data/weather/temporary/temporary.epw", 
+    'vintage'=>2019, 
+    'cz'=>"cz3"
   }
 }
 =end
@@ -60,7 +60,7 @@ class BuildingPortfolio
 
     @ns = 'auc'
 
-    @calibration_output_dir = File.join(File.expand_path(File.dirname(__FILE__ )), "..", WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
+    @calibration_output_dir = File.join(File.expand_path(File.dirname(__FILE__ )), '..', WORKFLOW_OUTPUT_DIR, CALIBRATION_OUTPUT_DIR)
     FileUtils.rm_rf(@calibration_output_dir) if File.exists?(@calibration_output_dir)
     sleep(0.1)
     Dir.mkdir(@calibration_output_dir)
@@ -73,7 +73,7 @@ class BuildingPortfolio
   def get_bldg_type(doc)
 
     building_type = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Sites/#{@ns}:Site/#{@ns}:Buildings/#{@ns}:Building/#{@ns}:BuildingClassification"].text
-    buidling_type = "office" if building_type.downcase == "commercial"
+    buidling_type = 'office' if building_type.downcase == 'commercial'
 
     building_type
   end
@@ -95,7 +95,7 @@ class BuildingPortfolio
 
   def get_monthly_electricity(building, doc)
     monthly_electricity = {}
-    monthly_electricity["data"] = []
+    monthly_electricity['data'] = []
     annual_electricity = 0
 
     scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
@@ -106,11 +106,11 @@ class BuildingPortfolio
             if resource.elements["#{@ns}:EnergyResource"].text == 'Electricity'
               scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
                 if ts.attributes['ID'].include?(resource.attributes['ID'])
-                  monthly_electricity["data"].push({"accounts": 1,
-                                                    "from": ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
-                                                    "peak": 0,
-                                                    "to": ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
-                                                    "tot_kwh": ts.elements["#{@ns}:IntervalReading"].text.to_f})
+                  monthly_electricity['data'].push({'accounts': 1,
+                                                    'from': ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
+                                                    'peak': 0,
+                                                    'to': ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
+                                                    'tot_kwh': ts.elements["#{@ns}:IntervalReading"].text.to_f})
                   annual_electricity += ts.elements["#{@ns}:IntervalReading"].text.to_f
                 end
               end
@@ -120,7 +120,7 @@ class BuildingPortfolio
       end
     end
 
-    output_dir = File.join(@calibration_output_dir, building, 'output')
+    output_dir = File.join(@calibration_output_dir, building)
     FileUtils.mkdir_p(output_dir) unless File.exists?(output_dir)
     path = File.join(output_dir, 'true_electricity.json')
     File.open(path, 'w') do |f|
@@ -132,7 +132,7 @@ class BuildingPortfolio
 
   def get_monthly_gas(building, doc)
     monthly_gas = {}
-    monthly_gas["data"] = []
+    monthly_gas['data'] = []
     annual_gas = 0
 
     scenarios = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Reports/#{@ns}:Report/#{@ns}:Scenarios"]
@@ -143,11 +143,11 @@ class BuildingPortfolio
             if resource.elements["#{@ns}:EnergyResource"].text == 'Natural gas'
               scenario.elements["#{@ns}:TimeSeriesData"].each_element do |ts|
                 if ts.attributes['ID'].include?(resource.attributes['ID'])
-                  monthly_gas["data"].push({"accounts": 1,
-                                            "from": ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
-                                            "peak": 0,
-                                            "to": ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
-                                            "tot_therms": ts.elements["#{@ns}:IntervalReading"].text.to_f}) # TODO: fix gas consumption from BuidlingSync
+                  monthly_gas['data'].push({'accounts': 1,
+                                            'from': ts.elements["#{@ns}:StartTimestamp"].text.insert(-1, 'Z'),
+                                            'peak': 0,
+                                            'to': ts.elements["#{@ns}:EndTimestamp"].text.insert(-1, 'Z'),
+                                            'tot_therms': ts.elements["#{@ns}:IntervalReading"].text.to_f})
                   annual_gas += ts.elements["#{@ns}:IntervalReading"].text.to_f
                 end
               end
@@ -157,7 +157,7 @@ class BuildingPortfolio
       end
     end
 
-    output_dir = File.join(@calibration_output_dir, building, 'output')
+    output_dir = File.join(@calibration_output_dir, building)
     FileUtils.mkdir_p(output_dir) unless File.exists?(output_dir)
     path = File.join(output_dir, 'true_gas.json')
     File.open(path, 'w') do |f|
@@ -167,46 +167,71 @@ class BuildingPortfolio
     [path, annual_gas]
   end
 
-  def json_single(path)
-    json_single = {}
+  def get_climate_zone(doc)
+    climate_zone = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Sites/#{@ns}:Site/#{@ns}:ClimateZoneType/#{@ns}:ASHRAE/#{@ns}:ClimateZone"]
 
-    Dir.glob(File.join(path, '/*.xml')).each do |xml|
-      building = File.basename(xml, '.xml')
-
-      json_single["osmPath"] = File.expand_path(File.join(path, 'in.osm'))
-
-      doc = REXML::Document.new(File.open(xml, 'r+'))
-      json_single["building_id"] = building
-      json_single["bldgType"] = "office" # get_bldg_type(doc)
-      json_single["electricity"], json_single["annual_elec"] = get_monthly_electricity(building, doc)
-      json_single["gas"], json_single["annual_gas"] = get_monthly_gas(building, doc)
-
-      if json_single["gas"].nil?
-        json_single["hvac_sys_type"] = "Centralized system"
-      elsif json_single["electricity"].nil?
-        json_single["hvac_sys_type"] = "Heat pump"
-      else
-        json_single["hvac_sys_type"] = "Packaged system"
+    if climate_zone.nil?
+      user_defined_fields = doc.elements["/#{@ns}:BuildingSync/#{@ns}:Facilities/#{@ns}:Facility/#{@ns}:Sites/#{@ns}:Site/#{@ns}:Buildings/#{@ns}:Building/#{@ns}:UserDefinedFields"]
+      user_defined_fields.each_element do |user_defined_field|
+        if user_defined_field.elements["#{@ns}:FieldName"].text == 'ModelWeatherFileCity'
+          climate_zone = 'cz'.concat(user_defined_field.elements["#{@ns}:FieldValue"].text[/\d+/])
+        end
       end
-
-      json_single["epwPath"] = File.expand_path(File.join(File.dirname(__FILE__), '..', DEFAULT_WEATHERDATA_DIR, 'temporary.epw'))
-      json_single["vintage"] = get_vintage(doc)
+    else
+      climate_zone = climate_zone.text
     end
-    json_single["cz"] = "cz6"
+
+    climate_zone
+  end
+
+  def json_single(path)
+    if !File.basename(path).start_with?('.')
+      json_single = {}
+      raise "Error: No simulated BuidlingSync file found in #{path}." unless Dir[File.join(path, '/**/*.xml')].any?
+
+      Dir.glob(File.join(path, '/*.xml')).each do |xml|
+        building = File.basename(xml, '.xml')
+
+        json_single['osmPath'] = File.expand_path(File.join(path, 'in.osm'))
+
+        doc = REXML::Document.new(File.open(xml, 'r+'))
+        json_single['building_id'] = building
+        json_single['bldgType'] = 'office' # get_bldg_type(doc)
+        json_single['electricity'], json_single['annual_elec'] = get_monthly_electricity(building, doc)
+        json_single['gas'], json_single["annual_gas"] = get_monthly_gas(building, doc)
+
+        if json_single['gas'].nil?
+          json_single['hvac_sys_type'] = 'Centralized system'
+        elsif json_single['electricity'].nil?
+          json_single['hvac_sys_type'] = 'Heat pump'
+        else
+          json_single['hvac_sys_type'] = 'Packaged system'
+        end
+
+        json_single['epwPath'] = File.expand_path(File.join(File.dirname(__FILE__), '..', DEFAULT_WEATHERDATA_DIR, 'temporary.epw'))
+        json_single['vintage'] = get_vintage(doc)
+        json_single['cz'] = get_climate_zone(doc)
+        puts "climate zone: #{json_single['cz']}"
+      end
+    end
 
     json_single
   end
 
   def json_portfolio
     sim_dir = File.join(WORKFLOW_OUTPUT_DIR, SIM_FILES_DIR)
-    puts "Missing Simulation Files" if !File.exist?(sim_dir)
 
     i = 1
     Dir.entries(sim_dir).each do |f|
-      osm_path = File.join(sim_dir, f)
-      if File.exist?(File.join(osm_path, 'in.osm'))
+      begin
+        osm_path = File.join(sim_dir, f)
+        next if File.basename(osm_path).start_with?('.')
+        raise "Error: no in.osm found in #{osm_path}" unless File.exist?(File.join(osm_path, 'in.osm')) 
         @portfolio[i] = json_single(osm_path)
         i = i + 1
+      rescue => e
+        puts e
+        next
       end
     end
   end
@@ -217,35 +242,39 @@ end
 class Calibration
   def calibration(portfolio, calibration_output_dir)
     # calibrate single building
-    puts "Run single building calibration:"
     runner_single = OpenStudio::BldgsCalibration::CalibrateRunnerSingle.new
     max_runs = 30
 
     (1..portfolio.length).each do |i|
-      next if portfolio[i]["calibration_level"] == "portfolio"
-      portfolio[i]["bldgType"] = 'office' if portfolio[i]["bldgType"].downcase == 'commercial'
-      calibration_path = File.join(calibration_output_dir, portfolio[i]["building_id"], 'output')
-      runner_single.run(portfolio[i]["osmPath"], 
-                        portfolio[i]["bldgType"], 
-                        portfolio[i]["hvac_sys_type"], 
-                        portfolio[i]["electricity"], 
-                        portfolio[i]["gas"], 
-                        portfolio[i]["epwPath"], 
-                        calibration_path,
-                        max_runs, 
-                        portfolio[i]["vintage"])
+      begin
+        next if portfolio[i].nil?
+        next if portfolio[i]['calibration_level'] == 'portfolio'
+        portfolio[i]['bldgType'] = 'office' if portfolio[i]['bldgType'].downcase == 'commercial'
+        calibration_path = File.join(calibration_output_dir, portfolio[i]['building_id'], 'output')
+        runner_single.run(portfolio[i]['osmPath'], 
+                          portfolio[i]["bldgType"], 
+                          portfolio[i]['hvac_sys_type'], 
+                          portfolio[i]["electricity"], 
+                          portfolio[i]['gas'], 
+                          portfolio[i]['epwPath'], 
+                          calibration_path,
+                          max_runs, 
+                          portfolio[i]['vintage'])
 
-      File.open(File.join(calibration_path, "calibration_report.json"), 'w') do |f|
-       f.write(JSON.pretty_generate(runner_single.cali_report))
+        File.open(File.join(calibration_path, 'calibration_report.jso'), 'w') do |f|
+        f.write(JSON.pretty_generate(runner_single.cali_report))
+        end
+      rescue => e
+        puts "Error: #{e}"
+        next
       end
     end
-=begin
+
     # calibration portfolio
-    puts "Run portfolio building calibration:"
+    puts 'Run portfolio building calibration:'
     calibration_path = File.join(calibration_output_dir, 'portfolio_calibration')
     runner_portfolio = OpenStudio::BldgsCalibration::CalibrateRunnerPortfolio.new(calibration_path)
     runner_portfolio.portfolio_calibrate(portfolio)
-=end
   end
 end
 
