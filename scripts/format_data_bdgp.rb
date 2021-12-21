@@ -82,10 +82,10 @@ def copy_columns(file, std_labels, outdir, updated_features, options = {headers:
   
 end
 
-#updated_features = map_location_with_latlng(metadata_bdgp2, outdir)
+updated_features = map_location_with_latlng(metadata_bdgp2, outdir)
 
-#std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
-#copy_columns(metadata_bdgp2, std_labels, outdir, updated_features)
+std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
+copy_columns(metadata_bdgp2, std_labels, outdir, updated_features)
 
 puts "Copying electricity timeseries data into timeseriesdata.csv file"
 timeseries_electricity = CSV.read(timeseries_electricity_bdgp2)
