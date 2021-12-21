@@ -5,7 +5,7 @@ require 'fileutils'
 require_relative 'constants'
 
 # sf monthly
-sf_monthly_energy_file = File.join(__dir__, '../', 'data', 'example', 'monthlyenergy_bricr_filtered.csv')
+sf_monthly_energy_file = File.join(__dir__, '../', 'data', 'example', 'monthlyenergy_bricr_filtered2.csv')
 
 # output directory
 outdir = "./data/processed"
