@@ -7,11 +7,13 @@ if !ARGV[0].nil? && Dir.exist?(ARGV[0])
 else
   root_dir = File.expand_path('../', File.dirname(__FILE__))
 end
+puts "% searching BSync XML files from #{root_dir}"
 
 standard_to_be_used = 'ASHRAE90.1'
 if !ARGV[1].nil? && (ARGV[1] == 'CaliforniaTitle24' || ARGV[1] == 'ASHRAE90.1')
   standard_to_be_used = ARGV[1]
 end
+puts "% building standard to be used: #{standard_to_be_used}"
 
 epw_file = 'temporary.epw'
 ddy_file = 'temporary.ddy'
@@ -19,8 +21,11 @@ temp_dir = File.expand_path('../', File.dirname(__FILE__))
 epw_arr = []
 if !ARGV[2].nil? && File.exist?(ARGV[2])
 
+  puts "% lookup file for matching building against weather read from: #{ARGV[2]}"
+
   options = {headers:true, header_converters: :symbol}
   CSV.foreach(ARGV[2], options) do |row|
+
     the_hash = {}
     the_hash[:building_id] = row[:building_id]
 

@@ -2,7 +2,7 @@ source 'http://rubygems.org'
 ruby '~>2.5'
 
 allow_local = false
-allow_local_bsync = false
+allow_local_bsync = true
 
 gem 'geocoder', '1.6.4'
 gem 'multipart-post', '2.1.1'
@@ -55,6 +55,7 @@ end
 ########################################################################
 
 if allow_local_bsync && File.exist?('../BuildingSync-gem')
+  puts "<<<<<<------DEBUGGING------>>>>>> using local BSync gem"
   gem 'buildingsync', path: '../BuildingSync-gem'
 else
   gem 'buildingsync', github: 'BuildingSync/BuildingSync-gem', tag: 'v0.2.1'
@@ -63,20 +64,20 @@ end
 ########################################################################
 ########################################################################
 
-if allow_local && File.exist?('../openstudio-occupant-variability-gem')
-  gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
-else
-  gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'ruby_upgrade'
-end
+# if allow_local && File.exist?('../openstudio-occupant-variability-gem')
+#   gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
+# else
+#   gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'ruby_upgrade'
+# end
 
 ########################################################################
 ########################################################################
 
-if allow_local && File.exist?('../openstudio-variability-gem')
-  gem 'openstudio-variability', path: '../openstudio-variability-gem'
-else
-  gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'ruby_upgrade'
-end
+# if allow_local && File.exist?('../openstudio-variability-gem')
+#   gem 'openstudio-variability', path: '../openstudio-variability-gem'
+# else
+#   gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'ruby_upgrade'
+# end
 
 ########################################################################
 ########################################################################
