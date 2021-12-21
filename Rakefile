@@ -8,10 +8,13 @@ desc 'convert raw data to standardized data format'
 task :format_data, [:data_option] do |_, args|
   case args.data_option.downcase
   when 'bdgp'
+    puts 'standardizing the format of BDGP2 data'
     ruby 'scripts/format_data_bdgp.rb'
   when 'sf'
+    puts 'standardizing the format of SF data'
     ruby 'scripts/format_data_sf.rb'
   when 'sf_monthly'
+    puts 'standardizing the format of SF data'
     ruby 'scripts/format_data_sf.rb'
   else
     puts 'Usage: rake format_data[data_option] path/to/metadata path/to/timeseriesdata'
