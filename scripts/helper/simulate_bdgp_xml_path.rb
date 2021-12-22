@@ -3,8 +3,8 @@ require 'openstudio/extension'
 require 'openstudio/model_articulation'
 require 'buildingsync'
 require 'buildingsync/translator'
-require 'openstudio/occupant_variability'
-require 'openstudio-variability'
+#require 'openstudio/occupant_variability'
+#require 'openstudio-variability'
 require 'rexml/document'
 
 require_relative '../constants'
@@ -27,6 +27,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
 
   begin
     translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
+    puts "<<<<<<------DEBUGGING------>>>>>> epw_file_path = #{epw_file_path}"
     facility = translator.get_facility
     facility.add_cb_modeled('Baseline')
 
