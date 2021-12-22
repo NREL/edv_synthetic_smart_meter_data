@@ -5,7 +5,7 @@ require 'openstudio/extension'
 require 'openstudio/model_articulation'
 require 'buildingsync'
 require 'buildingsync/translator'
-require 'openstudio/occupant_variability'
+#require 'openstudio/occupant_variability'
 require_relative 'constants'
 require_relative 'helper/simulate_bdgp_xml_path'
 
@@ -26,12 +26,12 @@ end
 bldg_sync_file_dir = "../#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"
 if !ARGV[1].nil?
   bldg_sync_file_dir = File.expand_path(ARGV[1])
-  puts "%%%DEBUGGING%%% BSync XML files reading from: #{bldg_sync_file_dir}"
+  puts "<<<<<<------DEBUGGING------>>>>>> BSync XML files reading from: #{bldg_sync_file_dir}"
 elsif File.exist?(bldg_sync_file_dir)
-  puts "%%%DEBUGGING%%% BSync XML files reading from: #{bldg_sync_file_dir}"
+  puts "<<<<<<------DEBUGGING------>>>>>> BSync XML files reading from: #{bldg_sync_file_dir}"
 else
   bldg_sync_file_dir = "../#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"
-  puts "%%%DEBUGGING%%% BSync XML files reading from: #{bldg_sync_file_dir}"
+  puts "<<<<<<------DEBUGGING------>>>>>> BSync XML files reading from: #{bldg_sync_file_dir}"
 end
 
 
@@ -49,7 +49,7 @@ csv_table = CSV.read(csv_file_path)
 log = File.open(log_file_path, 'w')
 
 Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, epw_file, ddy_file|
-  puts "%%%DEBUGGING%%% processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}"
+  puts "<<<<<<------DEBUGGING------>>>>>> processing xml_file: #{xml_file} - standard: #{standard} - epw_file: #{epw_file}"
 
   xml_file_path = File.expand_path("#{bldg_sync_file_dir}/#{xml_file}/", File.dirname(__FILE__))
   out_path = File.expand_path("#{bldg_sync_file_dir}/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
@@ -61,7 +61,7 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
     epw_file_path = File.expand_path("../scripts/#{epw_file}/", File.dirname(__FILE__))
   end
 
-  puts "%%%DEBUGGING%%% epw file path: #{epw_file_path}" 
+  puts "<<<<<<------DEBUGGING------>>>>>> epw file path: #{epw_file_path}" 
   
   ddy_file_path = ''
   if !ddy_file.nil?
@@ -71,12 +71,12 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
     ddy_file_path = File.expand_path("../scripts/#{ddy_file}/", File.dirname(__FILE__))
   end
 
-  puts "%%%DEBUGGING%%% ddy file path: #{epw_file_path}" 
+  puts "<<<<<<------DEBUGGING------>>>>>> ddy file path: #{epw_file_path}" 
 
   result = simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, BASELINE_ONLY, OCC_VAR, NON_ROUTINE_VAR)
 
   #puts "...completed: #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
-  puts "%%%DEBUGGING%%% #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
+  puts "<<<<<<------DEBUGGING------>>>>>> #{result} and osm file exist: #{File.exist?("#{out_path}/in.osm")}"
 
   output_dirs = []
   Dir.glob("#{out_path}/**/") { |output_dir| output_dirs << output_dir }
@@ -96,6 +96,6 @@ end
 log.close
 
 finish = Time.now
-puts "%%%DEBUGGING%%% Simulation script completed at #{finish}"
+puts "<<<<<<------DEBUGGING------>>>>>> Simulation script completed at #{finish}"
 diff = finish - start
-puts "%%%DEBUGGING%%% Simulation script completed in #{diff} seconds, #{(diff.to_f/60).round(2)} minutes, #{(diff.to_f/3600).round(2)} hours, #{(diff.to_f/3600/24).round(2)} days"
+puts "<<<<<<------DEBUGGING------>>>>>> Simulation script completed in #{diff} seconds, #{(diff.to_f/60).round(2)} minutes, #{(diff.to_f/3600).round(2)} hours, #{(diff.to_f/3600/24).round(2)} days"
