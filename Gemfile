@@ -3,6 +3,7 @@ ruby '~>2.5'
 
 allow_local = false
 allow_local_bsync = true
+allow_local_ext = true
 
 gem 'geocoder', '1.6.4'
 gem 'multipart-post', '2.1.1'
@@ -16,7 +17,7 @@ gem 'rspec', '~>3.10'
 ########################################################################
 ########################################################################
 
-if allow_local && File.exist?('../OpenStudio-extension-gem')
+if allow_local_ext && File.exist?('../OpenStudio-extension-gem')
   gem 'openstudio-extension', path: '../OpenStudio-extension-gem'
 else
   gem 'openstudio-extension', github: 'NREL/OpenStudio-extension-gem', tag: 'v0.2.6'
