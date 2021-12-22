@@ -2,8 +2,8 @@
 # RSpec::Core::RakeTask.new(:spec)
 require_relative 'scripts/constants'
 
-default_path_to_add_measured_data = "#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"
 #############################################################################################
+
 desc 'convert raw data to standardized data format'
 task :format_data, [:data_option] do |_, args|
   case args.data_option.downcase
@@ -20,7 +20,9 @@ task :format_data, [:data_option] do |_, args|
     puts 'Usage: rake format_data[data_option] path/to/metadata path/to/timeseriesdata'
   end
 end
+
 #############################################################################################
+
 desc 'generate BuildingSync XMLs'
 task :generate_xmls do
   default_metadata_file = "#{RAW_DATA_DIR}/#{DEFAULT_METADATA_FILE}"
@@ -41,7 +43,9 @@ task :generate_xmls do
     puts 'Usage: rake generate_xmls path/to/metadata/csv/file'
   end
 end
+
 #############################################################################################
+
 desc 'read the CSV file and update the BuildingSync files'
 task :add_measured_data do
   default_timeseries_file = "#{RAW_DATA_DIR}/#{DEFAULT_TIMESERIESDATA_FILE}"
@@ -62,45 +66,72 @@ task :add_measured_data do
     puts 'Usage: rake add_measured_data path/to/timeseriesdata/csv/file /path/to/buildingsync/XML/files/folder'
   end
 end
+
 #############################################################################################
+
 desc 'generate csv control file'
 task :generate_control_csv do
   default_metadata_file = "#{RAW_DATA_DIR}/#{DEFAULT_METADATA_FILE}"
   processed_metadata_file = "#{PROCESSED_DATA_DIR}/#{PROCESSED_METADATA_FILE}"
-  default_weather = DEFAULT_WEATHERDATA_DIR.to_s
-  processed_weather = '../edv-experiment-1-files/weather' # private weather data
+  weather_dir = "#{DEFAULT_WEATHERDATA_DIR}"
 
-  if SF_MONTHLY
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{processed_metadata_file}"
-  elsif ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
+  if ARGV[1] && ARGV[2] && ARGV[3] && ARGV[4]
     # ARGV[4] should be a path to a directory with weather files
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]} #{ARGV[4]}"
+
   elsif ARGV[1] && ARGV[2] && ARGV[3]
     # ARGV[3] should be a path to csv_file_with_EPWs
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]} #{ARGV[3]}"
+
   elsif ARGV[1] && ARGV[2]
     # ARGV[2] should be the standard_to_be_used
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} #{ARGV[2]}"
+
   elsif ARGV[1]
     # ARGV[1] should be a path to a directory with BldgSync files (root_dir)
     ruby "scripts/generate_csv_containing_all_bldgs.rb #{ARGV[1]} "
-  elsif RUN_TYPE == 'default' && Dir.exist?(default_path_to_add_measured_data) && File.exist?(default_metadata_file) && Dir.exist?(default_weather)
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{default_metadata_file} #{default_weather}"
-  elsif RUN_TYPE == 'processed' && Dir.exist?(default_path_to_add_measured_data) && File.exist?(processed_metadata_file) && Dir.exist?(processed_weather)
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{processed_metadata_file} #{processed_weather}"
+
+  elsif RUN_TYPE == 'default' && Dir.exist?("#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}") && File.exist?(default_metadata_file) && Dir.exist?(weather_dir)
+    puts "reading BSync files from #{"#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"}"
+    puts "reading metadata from #{default_metadata_file}"
+    puts "reading weather files from #{weather_dir}"
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{"#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"} nil #{default_metadata_file} #{weather_dir}"
+
+  elsif RUN_TYPE == 'default' && Dir.exist?("#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}") && File.exist?(default_metadata_file) && Dir.exist?(weather_dir)
+    puts "reading BSync files from #{"#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"}"
+    puts "reading metadata from #{default_metadata_file}"
+    puts "reading weather files from #{weather_dir}"
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{"#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"} nil #{default_metadata_file} #{weather_dir}"
+
+  elsif RUN_TYPE == 'processed' && Dir.exist?("#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}") && File.exist?(processed_metadata_file) && Dir.exist?(weather_dir)
+    puts "reading BSync files from #{"#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"}"
+    puts "reading metadata from #{processed_metadata_file}"
+    puts "reading weather files from #{weather_dir}"
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{processed_metadata_file} #{weather_dir}"
+
+  elsif RUN_TYPE == 'processed' && Dir.exist?("#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}") && File.exist?(processed_metadata_file) && Dir.exist?(weather_dir)
+    puts "reading BSync files from #{"#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"}"
+    puts "reading metadata from #{processed_metadata_file}"
+    puts "reading weather files from #{weather_dir}"
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{"#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"} nil #{processed_metadata_file} #{weather_dir}"
+
   else
     puts 'Error - No BuildingSync files specified'
     puts 'Usage: rake generate_csv_containing_all_bldgs <bsync_files_Dir> (optional) <standard_to_be_used> <metadata_file> <weather_file>'
   end
 end
+
 #############################################################################################
+
 desc 'simulate a single BuildingSync XML files'
 task :single_file_run do
   output_dir = WORKFLOW_OUTPUT_DIR
   all_csv_file = output_dir + "/#{CONTROL_FILES_DIR}/#{CONTROL_SUMMARY_FILE_NAME}"
   ruby "scripts/process_single_bldg_sync_file_in_csv.rb #{all_csv_file}"
 end
+
 #############################################################################################
+
 desc 'simulate a batch of BuildingSync XML files'
 task :simulate_batch_xml do
   output_dir = WORKFLOW_OUTPUT_DIR
@@ -119,12 +150,16 @@ task :simulate_batch_xml do
     puts 'Usage: rake process_all_bldg_sync_files_in_csv path/to/csv/file (optional) path/to/dir/with/bldgsyncfiles'
   end
 end
+
 #############################################################################################
+
 desc 'building calibration'
 task :calibration do
   ruby 'scripts/calibration.rb'
 end
+
 #############################################################################################
+
 desc 'create synthetic data that are stictched between different scenarios'
 task :export_synthetic_data do
   if ARGV[1]
@@ -136,7 +171,9 @@ task :export_synthetic_data do
     puts 'Usage: rake export_synthetic_data path/to/scenario/configuration/csv/file'
   end
 end
+
 #############################################################################################
+
 desc 'append lat/lng/zipcode information to CSV'
 task :geocode_meta_csv do
   if ARGV[1] && ARGV[2]
@@ -148,7 +185,9 @@ task :geocode_meta_csv do
     puts 'Usage: rake geocode_meta_csv /path/to/meta/csv /path/to/latlng/csv'
   end
 end
+
 #############################################################################################
+
 desc 'lookup and append climate_zone information to CSV'
 task :lookup_climate_zone_csv do
   if ARGV[1] && ARGV[2]
@@ -160,7 +199,9 @@ task :lookup_climate_zone_csv do
     puts 'Usage: rake lookup_climate_zone_csv /path/to/meta/with/zipcodes/csv /path/to/climate/lookup/csv'
   end
 end
+
 #############################################################################################
+
 desc 'read the directory, iterate over BldgSync files and calcuate the metrics'
 task :generate_metrics_result do
   if ARGV[1]
@@ -173,14 +214,18 @@ task :generate_metrics_result do
     puts 'Usage: rake calculate_metrics /path/to/dir/with/simulated/data'
   end
 end
+
 #############################################################################################
+
 desc 'run steps through generating all.csv'
 task :workflow_part1 do
   Rake::Task['generate_xmls'].execute
   Rake::Task['add_measured_data'].execute
   Rake::Task['generate_control_csv'].execute
 end
+
 #############################################################################################
+
 desc 'simulate batch and calculate metrics'
 task :workflow_part2 do
   output_dir = WORKFLOW_OUTPUT_DIR
@@ -232,12 +277,14 @@ task :workflow_part2 do
 end
 
 #############################################################################################
+
 desc 'Apply typical operation hours detection to hourly measured data'
 task :typical_operation_hours do
   exec('python', 'scripts/algorithm_typical_operation_hours.py', default_path_to_add_measured_data)
 end
 
 #############################################################################################
+
 desc 'eemeter takes il-electricity-cdd-hdd-daily object'
 task :eemeter_object, [:file] do |_, args|
   if args[:file]
