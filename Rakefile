@@ -107,7 +107,7 @@ task :generate_control_csv do
     puts "reading BSync files from #{"#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"}"
     puts "reading metadata from #{processed_metadata_file}"
     puts "reading weather files from #{weather_dir}"
-    ruby "scripts/generate_csv_containing_all_bldgs.rb #{default_path_to_add_measured_data} nil #{processed_metadata_file} #{weather_dir}"
+    ruby "scripts/generate_csv_containing_all_bldgs.rb #{"#{WORKFLOW_OUTPUT_DIR}/#{MEASURED_DATA_DIR}"} nil #{processed_metadata_file} #{weather_dir}"
 
   elsif RUN_TYPE == 'processed' && Dir.exist?("#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}") && File.exist?(processed_metadata_file) && Dir.exist?(weather_dir)
     puts "reading BSync files from #{"#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"}"
