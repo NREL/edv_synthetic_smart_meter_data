@@ -36,7 +36,7 @@ NON_ROUTINE_VAR = {
 # Directory within edv-experiment-1 where raw or processed data exists
 RAW_DATA_DIR = "data/raw"
 PROCESSED_DATA_DIR = "data/processed"
-DEFAULT_WEATHERDATA_DIR = "data/weather/temporary"
+DEFAULT_WEATHERDATA_DIR = "data/weather"
 
 # Input file names for generate_xmls, assumed location depends on RUN_TYPE
 DEFAULT_METADATA_FILE = "metadata_template.csv"
@@ -69,5 +69,5 @@ RESULTS_FILE_NAME = 'results.csv'
 
 # SF DATA
 # Change this arg to a cmd line arg
-SF_MONTHLY = false
+SF_MONTHLY = true
 BDGP = false
