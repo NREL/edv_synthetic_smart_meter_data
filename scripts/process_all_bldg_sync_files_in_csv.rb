@@ -54,6 +54,9 @@ Parallel.each(csv_table, in_threads:BUILDINGS_PARALLEL) do |xml_file, standard, 
   xml_file_path = File.expand_path("#{bldg_sync_file_dir}/#{xml_file}/", File.dirname(__FILE__))
   out_path = File.expand_path("#{bldg_sync_file_dir}/#{File.basename(xml_file, File.extname(xml_file))}/", File.dirname(__FILE__))
 
+  puts "<<<<<<------DEBUGGING------>>>>>> xml_file_path: #{xml_file_path}" 
+  puts "<<<<<<------DEBUGGING------>>>>>> out_path: #{out_path}" 
+
   epw_file_path = ''
   if File.exist?(epw_file)
     epw_file_path = epw_file
