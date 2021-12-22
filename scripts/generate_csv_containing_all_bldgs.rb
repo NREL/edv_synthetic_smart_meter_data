@@ -5,15 +5,15 @@ require_relative 'constants'
 if !ARGV[0].nil? && Dir.exist?(ARGV[0])
   root_dir = ARGV[0] 
 else
-  root_dir = File.expand_path('../', File.dirname(__FILE__))
+  root_dir = "./#{WORKFLOW_OUTPUT_DIR}/#{GENERATE_DIR}"
 end
-puts "% searching BSync XML files from #{root_dir}"
+puts "<<<<<<------DEBUGGING------>>>>>> searching BSync XML files from #{root_dir}"
 
 standard_to_be_used = 'ASHRAE90.1'
 if !ARGV[1].nil? && (ARGV[1] == 'CaliforniaTitle24' || ARGV[1] == 'ASHRAE90.1')
   standard_to_be_used = ARGV[1]
 end
-puts "% building standard to be used: #{standard_to_be_used}"
+puts "<<<<<<------DEBUGGING------>>>>>> building standard to be used: #{standard_to_be_used}"
 
 epw_file = 'temporary.epw'
 ddy_file = 'temporary.ddy'
@@ -21,7 +21,7 @@ temp_dir = File.expand_path('../', File.dirname(__FILE__))
 epw_arr = []
 if !ARGV[2].nil? && File.exist?(ARGV[2])
 
-  puts "% lookup file for matching building against weather read from: #{ARGV[2]}"
+  puts "<<<<<<------DEBUGGING------>>>>>> metadata reading from: #{ARGV[2]}"
 
   options = {headers:true, header_converters: :symbol}
   CSV.foreach(ARGV[2], options) do |row|
@@ -49,6 +49,8 @@ weather_file_source_dir = ""
 if !ARGV[3].nil?  && Dir.exist?(ARGV[3])
   weather_file_source_dir = ARGV[3]
 end
+
+puts "<<<<<<------DEBUGGING------>>>>>> weather_file_source_dir = #{ARGV[3]}"
 
 csv_file_path = File.expand_path("../#{WORKFLOW_OUTPUT_DIR}/Control_Files/all.csv", File.dirname(__FILE__))
 FileUtils.mkdir_p File.dirname(csv_file_path)
