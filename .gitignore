@@ -14,6 +14,6 @@ gems/
 .vscode
 __pycache__
 workflow_results
-/jupyter_notebook/images
-/jupyter_notebook/*.csv
-/data/processed
+jupyter_notebook/images
+jupyter_notebook/TimeseriesData
+data/processed
