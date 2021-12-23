@@ -1296,14 +1296,13 @@ else
   puts "No scenario file available.  Using the following mapping: #{scenario_hash}"
 end
 
-puts "###############################################"
 total_number_of_buildings = CSV.read(ARGV[0], :headers => true).count
 
 CSV.foreach(ARGV[0], options).with_index do |feature, i|
-  puts "Processing building #{i.next}/#{total_number_of_buildings}"
-  puts "feature = #{feature}"
   
   building_id = feature[:building_id]
+
+  puts "Converting building #{i.next}/#{total_number_of_buildings}: building_id = #{building_id}  | bldgtype = #{feature[2]}  | location = #{feature[7]} #{feature[8]}"
 
   state_hash = json_to_hash(state_hash_file)
 
@@ -1317,5 +1316,4 @@ CSV.foreach(ARGV[0], options).with_index do |feature, i|
     puts "Building #{building_id} not converted, #{e.message}"
     next
   end
-  puts "###############################################"
 end
