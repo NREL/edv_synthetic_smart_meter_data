@@ -5,7 +5,6 @@ require 'openstudio/extension'
 require 'openstudio/model_articulation'
 require 'buildingsync'
 require 'buildingsync/translator'
-#require 'openstudio/occupant_variability'
 require_relative 'constants'
 require_relative 'helper/simulate_bdgp_xml_path'
 
