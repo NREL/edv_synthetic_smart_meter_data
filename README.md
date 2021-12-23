@@ -1,9 +1,11 @@
 
 # Energy Data Vault
 
-These instructions are for installing and configuring environment to properly running EDV workflow.
+The work saved in this repository is part of the [Energy Data Vault (EDV)](https://www.energy.gov/eere/buildings/energy-data-vault) project supported by the Department of Energy. Instructions below are for 1) installing and configuring environment properly and 2) for executing the synthetic meter data generation workflow from an input data source including metadata (e.g., BuildingSync XML) of buildings.
 
-In order to execute the workflow properly, certain environments listed below need to be installed.
+### Installation
+
+Setting up an environment with Ruby connected to the OpenStudio is the same as the [instructions](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) described for OpenStudio developers.
 
 ### Ruby 2.5.x
 
@@ -17,14 +19,14 @@ gem install bundler -v 2.1
 
 ### [OpenStudio](https://www.openstudio.net/downloads)
 
-Use OpenStudio 3.0.1.
+Use OpenStudio 3.1.0.
 
 - Windows
 
 Create a file ```C:\ruby-2.5.5-x64-mingw32\lib\ruby\site_ruby\openstudio.rb``` and point it to your OpenStudio installation by editing the contents.  E.g.:
 
 ```ruby
-require 'C:\openstudio-3.0.1\Ruby\openstudio.rb'
+require 'C:\openstudio-3.1.0\Ruby\openstudio.rb'
 ```
 
 Verify your OpenStudio and Ruby configuration:
