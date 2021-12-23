@@ -544,49 +544,49 @@ def create_measures(feature)
   floor_area = get_floor_area(feature).to_f
 
   measures = []
-  measures << {ID: 'Measure1',
-               SingleMeasure: true,
-               SystemCategoryAffected: 'Lighting',
-               TechnologyCategory: 'LightingImprovements',
-               MeasureName: 'Retrofit with light emitting diode technologies',
-               LongDescription: 'Retrofit with light emitting diode technologies',
-               ScenarioName: 'LED',
-               OpenStudioMeasureName: 'TBD',
-               UsefulLife: 12,
-               MeasureTotalFirstCost: 3.85 * floor_area}
+  # measures << {ID: 'Measure1',
+  #              SingleMeasure: true,
+  #              SystemCategoryAffected: 'Lighting',
+  #              TechnologyCategory: 'LightingImprovements',
+  #              MeasureName: 'Retrofit with light emitting diode technologies',
+  #              LongDescription: 'Retrofit with light emitting diode technologies',
+  #              ScenarioName: 'LED',
+  #              OpenStudioMeasureName: 'TBD',
+  #              UsefulLife: 12,
+  #              MeasureTotalFirstCost: 3.85 * floor_area}
 
-  measures << {ID: 'Measure2',
-               SingleMeasure: true,
-               SystemCategoryAffected: 'Plug Load',
-               TechnologyCategory: 'PlugLoadReductions',
-               MeasureName: 'Replace with ENERGY STAR rated',
-               LongDescription: 'Replace with ENERGY STAR rated',
-               ScenarioName: 'Electric_Appliance_30%_Reduction',
-               OpenStudioMeasureName: 'TBD',
-               UsefulLife: 9,
-               MeasureTotalFirstCost: 0.51 * floor_area}
+  # measures << {ID: 'Measure2',
+  #              SingleMeasure: true,
+  #              SystemCategoryAffected: 'Plug Load',
+  #              TechnologyCategory: 'PlugLoadReductions',
+  #              MeasureName: 'Replace with ENERGY STAR rated',
+  #              LongDescription: 'Replace with ENERGY STAR rated',
+  #              ScenarioName: 'Electric_Appliance_30%_Reduction',
+  #              OpenStudioMeasureName: 'TBD',
+  #              UsefulLife: 9,
+  #              MeasureTotalFirstCost: 0.51 * floor_area}
 
-  measures << {ID: 'Measure3',
-               SingleMeasure: true,
-               SystemCategoryAffected: 'Wall',
-               TechnologyCategory: 'BuildingEnvelopeModifications',
-               MeasureName: 'Air seal envelope',
-               LongDescription: 'Air seal envelope',
-               ScenarioName: 'Air_Seal_Infiltration_30%_More_Airtight',
-               OpenStudioMeasureName: 'TBD',
-               UsefulLife: 11,
-               MeasureTotalFirstCost: 2.34 * floor_area}
+  # measures << {ID: 'Measure3',
+  #              SingleMeasure: true,
+  #              SystemCategoryAffected: 'Wall',
+  #              TechnologyCategory: 'BuildingEnvelopeModifications',
+  #              MeasureName: 'Air seal envelope',
+  #              LongDescription: 'Air seal envelope',
+  #              ScenarioName: 'Air_Seal_Infiltration_30%_More_Airtight',
+  #              OpenStudioMeasureName: 'TBD',
+  #              UsefulLife: 11,
+  #              MeasureTotalFirstCost: 2.34 * floor_area}
 
-  measures << {ID: 'Measure4',
-               SingleMeasure: true,
-               SystemCategoryAffected: 'Cooling System',
-               TechnologyCategory: 'OtherHVAC',
-               MeasureName: 'Replace package units',
-               LongDescription: 'Replace package units',
-               ScenarioName: 'Cooling_System_SEER 14',
-               OpenStudioMeasureName: 'TBD',
-               UsefulLife: 15,
-               MeasureTotalFirstCost: 4.18 * floor_area}
+  # measures << {ID: 'Measure4',
+  #              SingleMeasure: true,
+  #              SystemCategoryAffected: 'Cooling System',
+  #              TechnologyCategory: 'OtherHVAC',
+  #              MeasureName: 'Replace package units',
+  #              LongDescription: 'Replace package units',
+  #              ScenarioName: 'Cooling_System_SEER 14',
+  #              OpenStudioMeasureName: 'TBD',
+  #              UsefulLife: 15,
+  #              MeasureTotalFirstCost: 4.18 * floor_area}
 
   # measures << {ID: 'Measure5',
   # SingleMeasure: true,
@@ -1300,7 +1300,8 @@ puts "###############################################"
 total_number_of_buildings = CSV.read(ARGV[0], :headers => true).count
 
 CSV.foreach(ARGV[0], options).with_index do |feature, i|
-  puts "Processing building #{i.next} from a total of #{total_number_of_buildings} buildings"
+  puts "Processing building #{i.next}/#{total_number_of_buildings}"
+  puts "feature = #{feature}"
   
   building_id = feature[:building_id]
 
