@@ -66,8 +66,3 @@ CALC_METRICS_DIR = "Calc_Metrics"
 # Final results directory
 RESULTS_DIR = "Results"
 RESULTS_FILE_NAME = 'results.csv'
-
-# SF DATA
-# Change this arg to a cmd line arg
-SF_MONTHLY = true
-BDGP = false
