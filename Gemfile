@@ -42,6 +42,7 @@ else
   gem 'openstudio-common-measures', github: 'NREL/openstudio-common-measures-gem', tag: 'v0.2.1'
 end
 =end
+
 ########################################################################
 ########################################################################
 
@@ -66,20 +67,22 @@ end
 ########################################################################
 ########################################################################
 
-# if allow_local && File.exist?('../openstudio-occupant-variability-gem')
-#   gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
-# else
-#   gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'ruby_upgrade'
-# end
+if allow_local && File.exist?('../openstudio-occupant-variability-gem')
+  puts "<<<<<<------DEBUGGING------>>>>>> using local occ var gem"
+  gem 'openstudio-occupant-variability', path: '../openstudio-occupant-variability-gem'
+else
+  gem 'openstudio-occupant-variability', github: 'LBNL-ETA/openstudio-occupant-variability-gem', branch: 'ruby_upgrade'
+end
 
 ########################################################################
 ########################################################################
 
-# if allow_local && File.exist?('../openstudio-variability-gem')
-#   gem 'openstudio-variability', path: '../openstudio-variability-gem'
-# else
-#   gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'ruby_upgrade'
-# end
+if allow_local && File.exist?('../openstudio-variability-gem')
+  puts "<<<<<<------DEBUGGING------>>>>>> using local var gem"
+  gem 'openstudio-variability', path: '../openstudio-variability-gem'
+else
+  gem 'openstudio-variability', github: 'LBNL-ETA/openstudio-variability-gem', branch: 'ruby_upgrade'
+end
 
 ########################################################################
 ########################################################################
