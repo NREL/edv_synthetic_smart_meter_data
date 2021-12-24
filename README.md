@@ -5,7 +5,7 @@ Efforts saved in this repository is part of the [Energy Data Vault (EDV)](https:
 
 ## Installation
 
-Setting up an environment with Ruby connected to the OpenStudio is the same as the [instructions](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) described for OpenStudio developers. Once 1) Ruby is installed, 2) [EnergyPlus](https://energyplus.net/downloads) is installed, 3) [OpenStudio](https://github.com/NREL/OpenStudio/releases) is installed, and 4) OpenStudio is connected to Ruby (via `openstudio.rb`), `bundle install` should be executed to install all [gems](https://github.com/NREL/edv_synthetic_smart_meter_data/blob/develop/Gemfile) necessary for this workflow. Current working version leverages Ruby 2.5.8 and OpenStudio 3.1.0.
+Setting up an environment with Ruby connected to the OpenStudio is the same as the [instructions](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) described for OpenStudio developers. Once 1) [Ruby](https://rubyinstaller.org/downloads/archives/) is installed, 2) [EnergyPlus](https://energyplus.net/downloads) is installed, 3) [OpenStudio](https://github.com/NREL/OpenStudio/releases) is installed, and 4) OpenStudio is connected to Ruby (via `openstudio.rb`), `bundle install` should be executed to install all [gems](https://github.com/NREL/edv_synthetic_smart_meter_data/blob/develop/Gemfile) necessary for this workflow. Current working version leverages Ruby 2.5.8 and OpenStudio 3.1.0.
 
 ## Workflow Overview
 
