@@ -1,0 +1,3 @@
+building_id,site_id,building_id_kaggle,site_id_kaggle,primaryspaceusage,sub_primaryspaceusage,sqm,sqft,lat,lng,timezone,electricity,hotwater,chilledwater,steam,water,irrigation,solar,gas,industry,subindustry,heatingtype,yearbuilt,date_opened,numberoffloors,occupants,energystarscore,eui,site_eui,source_eui,leed_level,rating
+Panther_education_Teofila,Panther,30,0,Education,Classroom,8723.3,93897,28.51768858,-81.3790388,US/Eastern,Yes,,Yes,,Yes,,,Yes,,,,1999,,,,,146,,,None,
+Panther_lodging_Hattie,Panther,33,0,Lodging/residential,Residence Hall,3594,38686,28.51768858,-81.3790388,US/Eastern,Yes,,,,Yes,,,Yes,,,,2002,,,,,325,,,None,

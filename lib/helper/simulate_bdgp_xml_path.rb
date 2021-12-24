@@ -11,30 +11,38 @@ require_relative '../constants'
 
 def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path, baseline_only, occ_var, non_routine_var)
   simulation_file_path = File.join(File.expand_path(WORKFLOW_OUTPUT_DIR), SIM_FILES_DIR)
-  if File.exist?(simulation_file_path)
-    FileUtils.rm_rf(simulation_file_path)
+  puts "<<<<<<------DEBUGGING------>>>>>> simulation file path: #{simulation_file_path}"
+  if !File.exist?(simulation_file_path)
+    FileUtils.mkdir_p(simulation_file_path)
   end
-  FileUtils.mkdir_p(simulation_file_path)
 
   out_path = File.expand_path("#{simulation_file_path}/#{File.basename(xml_file_path, File.extname(xml_file_path))}/", File.dirname(__FILE__))
   out_xml = File.basename(xml_file_path)
   root_dir = File.expand_path('../..', File.dirname(__FILE__))
 
+  puts "<<<<<<------DEBUGGING------>>>>>> out_path file path: #{out_path}"
+  puts "<<<<<<------DEBUGGING------>>>>>> out_xml file path: #{out_xml}"
+  puts "<<<<<<------DEBUGGING------>>>>>> root_dir file path: #{root_dir}"
+
   begin
     translator = BuildingSync::Translator.new(xml_file_path, out_path, epw_file_path, standard, false)
+    puts "<<<<<<------DEBUGGING------>>>>>> epw_file_path = #{epw_file_path}"
     facility = translator.get_facility
     facility.add_cb_modeled('Baseline')
 
+    puts "<<<<<<------DEBUGGING------>>>>>> adding measure: HourlyConsumptionByFuelToCSV"
     measure_dir = 'HourlyConsumptionByFuelToCSV'
     measure_path = File.join(root_dir, 'lib', 'measures')
     translator.add_measure_path(measure_path)
     translator.insert_measure_into_workflow('ReportingMeasure', measure_dir, 0, {})
+    puts "<<<<<<------DEBUGGING------>>>>>> conducting sizing run"
     translator.setup_and_sizing_run
 
     ###########################################################################################
     # This block of code is a work-around for avoiding leap year issue in occupant simulator.
     # This block should be removed once the issue is resolved on occupant simulator side.
     ###########################################################################################
+    puts "<<<<<<------DEBUGGING------>>>>>> setting simulation year"
     m = OpenStudio::Model::Model.load(File.join(out_path, 'in.osm'))
     m = m.get
     yr = 2019
@@ -71,7 +79,7 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
       if NON_ROUTINE_VAR[:DR_Precool_Preheat_os]
         translator.insert_measure_into_workflow('ModelMeasure', 'DR_Precool_Preheat_os', 0, {})
       end
-=begin
+
       ## 2. Faulty operation measures
       if NON_ROUTINE_VAR[:Fault_AirHandlingUnitFanMotorDegradation_ep]
         translator.insert_measure_into_workflow('EnergyPlusMeasure', 'Fault_AirHandlingUnitFanMotorDegradation_ep', 0, {})
@@ -112,7 +120,6 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
       if NON_ROUTINE_VAR[:Fault_thermostat_offset_ep]
         translator.insert_measure_into_workflow('EnergyPlusMeasure', 'Fault_thermostat_offset_ep', 0, {})
       end
-=end
 
       ## 3. Retrofit measures
       if NON_ROUTINE_VAR[:Retrofit_equipment_os]
@@ -130,9 +137,13 @@ def simulate_bdgp_xml_path(xml_file_path, standard, epw_file_path, ddy_file_path
 
     end
 
+    puts "<<<<<<------DEBUGGING------>>>>>> write osw"
     translator.write_osws
+    puts "<<<<<<------DEBUGGING------>>>>>> run osw"
     translator.run_osws(baseline_only)
+    puts "<<<<<<------DEBUGGING------>>>>>> gather results"
     translator.gather_results(m2.assumedYear, BASELINE_ONLY)
+    puts "<<<<<<------DEBUGGING------>>>>>> prepare final XML"
     translator.prepare_final_xml
     translator.save_xml(out_xml)
 

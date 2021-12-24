@@ -5,7 +5,7 @@ require 'fileutils'
 require_relative 'constants'
 
 # sf monthly
-sf_monthly_energy_file = File.join(__dir__, '../', 'data', 'example', 'monthlyenergy_bricr_filtered.csv')
+sf_monthly_energy_file = File.join(__dir__, '../', 'data', 'raw', 'monthlyenergy_bricr_filtered2.csv')
 
 # output directory
 outdir = "./data/processed"
@@ -24,6 +24,8 @@ def map_location_with_latlng(file, outdir, options = {headers: true, header_conv
     feature[:zipcode] = ""
     feature[:city] = "San Francisco"
     feature[:state] = "California"
+    feature[:lat] = 37.7749
+    feature[:lng] = 122.4194
 
     updated_features << feature
 
@@ -53,8 +55,8 @@ def copy_columns(file, std_labels, outdir, updated_features, options = {headers:
     fuel_type = 'electricity/gas'
     measurement_start_date = '1/2018'
     measurement_end_date = '12/2018'
-    weather_file_name_epw = File.join(DEFAULT_WEATHERDATA_DIR, 'USA_CA_San.Francisco.Intl.AP.724940_TMY3', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw')
-    weather_file_name_ddy = File.join(DEFAULT_WEATHERDATA_DIR, 'USA_CA_San.Francisco.Intl.AP.724940_TMY3', 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.ddy')
+    weather_file_name_epw = 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.epw'
+    weather_file_name_ddy = 'USA_CA_San.Francisco.Intl.AP.724940_TMY3.ddy'
 
     metadata_file.puts "#{building_id},#{building_id}.xml,#{primary_building_type},#{floor_area_sqft},#{vintage},#{climate_zone},#{zipcode},#{city},#{us_state},#{longitude},#{latitude},#{number_of_stories},#{number_of_occupants},#{fuel_type},#{measurement_start_date},#{measurement_end_date},#{weather_file_name_epw},#{weather_file_name_ddy}"
 

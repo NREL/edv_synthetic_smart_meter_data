@@ -7,7 +7,7 @@ RUN_TYPE = "processed"
 
 # Options: true, false
 BASELINE_ONLY = true
-OCC_VAR = false
+OCC_VAR = true
 NON_ROUTINE_VAR = {
     :DR_GTA_os => false,
     :DR_Lighting_os => false,
@@ -36,7 +36,7 @@ NON_ROUTINE_VAR = {
 # Directory within edv-experiment-1 where raw or processed data exists
 RAW_DATA_DIR = "data/raw"
 PROCESSED_DATA_DIR = "data/processed"
-DEFAULT_WEATHERDATA_DIR = "data/weather/temporary"
+DEFAULT_WEATHERDATA_DIR = "data/weather"
 
 # Input file names for generate_xmls, assumed location depends on RUN_TYPE
 DEFAULT_METADATA_FILE = "metadata_template.csv"
@@ -66,8 +66,3 @@ CALC_METRICS_DIR = "Calc_Metrics"
 # Final results directory
 RESULTS_DIR = "Results"
 RESULTS_FILE_NAME = 'results.csv'
-
-# SF DATA
-# Change this arg to a cmd line arg
-SF_MONTHLY = true
-BDGP = false

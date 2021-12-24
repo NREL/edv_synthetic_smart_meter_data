@@ -1,45 +1,11 @@
 
 # Energy Data Vault
 
-These instructions are for installing and configuring environment to properly running EDV workflow.
+The work saved in this repository is part of the [Energy Data Vault (EDV)](https://www.energy.gov/eere/buildings/energy-data-vault) project supported by the Department of Energy. Instructions below are for 1) installing and configuring environment properly and 2) for executing the synthetic meter data generation workflow from an input data source including metadata (e.g., BuildingSync XML) of buildings.
 
-In order to execute the workflow properly, certain environments listed below need to be installed.
+## Installation
 
-### Ruby 2.5.x
-
-For OSX users, it is recommended that you install [rbenv](https://github.com/rbenv/rbenv) to manage different versions of Ruby. rbenv can be installed via [Homebrew](https://brew.sh/).
-
-### Bundler 2.1.x
-
-```
-gem install bundler -v 2.1
-```
-
-### [OpenStudio](https://www.openstudio.net/downloads)
-
-Use OpenStudio 3.0.1.
-
-- Windows
-
-Create a file ```C:\ruby-2.5.5-x64-mingw32\lib\ruby\site_ruby\openstudio.rb``` and point it to your OpenStudio installation by editing the contents.  E.g.:
-
-```ruby
-require 'C:\openstudio-3.0.1\Ruby\openstudio.rb'
-```
-
-Verify your OpenStudio and Ruby configuration:
-```
-ruby -e "require 'openstudio'" -e "puts OpenStudio::Model::Model.new"
-```
-
-- macOS
-
-Add the RUBYLIB environment variable to your `bash_profile` (or similar) file. It should point to the Ruby folder within
-the OpenStudio Application you just downloaded (replace 3.0.1 with the version you are using):
-```
-export RUBYLIB=/Applications/OpenStudio-3.0.1/Ruby
-```
-
+Setting up an environment with Ruby connected to the OpenStudio is the same as the [instructions](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) described for OpenStudio developers. Current working version leverages Ruby 2.5.8 and OpenStudio 3.1.0.
 
 ## Workflow Overview
 
@@ -86,14 +52,6 @@ Custom metadata and time-series data can be standardized for creating synthetic 
 
 
 ### Executing the Workflow:
-#### To run rake task without warnings: export RUBYOPT=-W0 ####
-
-Execute all rake tasks from root directory.
-
-To run rake task without warnings, add following command to your ```bash_profile``` (or similar) file:
-```
-export RUBYOPT=-W0
-```
 
 #### Step 1 (optional): convert raw data to standard input data format. Example:
 
