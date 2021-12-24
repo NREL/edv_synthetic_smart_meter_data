@@ -1,11 +1,11 @@
 
-# Energy Data Vault
+# Synthetic Smart Meter Data Creation
 
-The work saved in this repository is part of the [Energy Data Vault (EDV)](https://www.energy.gov/eere/buildings/energy-data-vault) project supported by the Department of Energy. Instructions below are for 1) installing and configuring environment properly and 2) for executing the synthetic meter data generation workflow from an input data source including metadata (e.g., BuildingSync XML) of buildings.
+Efforts saved in this repository is part of the [Energy Data Vault (EDV)](https://www.energy.gov/eere/buildings/energy-data-vault) project supported by the Department of Energy. The main purpose of the workflow reflected in this repository is to 1) leverage and extract building parameters from building audit data (e.g., Auto Template, BuildingSync) and 2) use those parameters to generate synthetic meter (e.g., electricity and gas) data with the building energy simulation tool.
 
 ## Installation
 
-Setting up an environment with Ruby connected to the OpenStudio is the same as the [instructions](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) described for OpenStudio developers. Current working version leverages Ruby 2.5.8 and OpenStudio 3.1.0.
+Setting up an environment with Ruby connected to the OpenStudio is the same as the [instructions](https://github.com/NREL/openstudio-standards/blob/master/docs/DeveloperInformation.md) described for OpenStudio developers. Once 1) Ruby is installed, 2) EnergyPlus is installed, 3) OpenStudio is installed, and 4) OpenStudio is connected to Ruby (via `openstudio.rb`), `bundle install` should be executed to install all [gems](https://github.com/NREL/edv_synthetic_smart_meter_data/blob/develop/Gemfile) necessary for this workflow. Current working version leverages Ruby 2.5.8 and OpenStudio 3.1.0.
 
 ## Workflow Overview
 
@@ -13,7 +13,7 @@ Setting up an environment with Ruby connected to the OpenStudio is the same as t
 
 ### Configurations
 
-Workflow can be configured in various ways per user desire. Configurations listed below are defined in ```scripts/constants.rb```:
+Workflow can be configured in various ways per user desire. Configurations listed below are defined in ```lib/constants.rb```:
 
 - Data source: input data for workflow.
 - Simulation type: baseline only scenarios or pre-defined energy efficiency measures.
