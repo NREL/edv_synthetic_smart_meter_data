@@ -13,9 +13,6 @@ task :format_data, [:data_option] do |_, args|
   when 'sf'
     puts 'standardizing the format of SF data'
     ruby 'lib/format_data_sf.rb'
-  when 'sf_monthly'
-    puts 'standardizing the format of SF data'
-    ruby 'lib/format_data_sf.rb'
   else
     puts 'Usage: rake format_data[data_option] path/to/metadata path/to/timeseriesdata'
   end
