@@ -13,7 +13,7 @@ puts "Simulation script started at #{start}"
 
 OpenStudio::Extension::Extension::DO_SIMULATIONS = true
 OpenStudio::Extension::Extension::NUM_PARALLEL = 1
-BUILDINGS_PARALLEL = 5
+BUILDINGS_PARALLEL = 20
 BuildingSync::Extension::SIMULATE_BASELINE_ONLY = BASELINE_ONLY
 
 if ARGV[0].nil?
