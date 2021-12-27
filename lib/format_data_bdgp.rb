@@ -9,6 +9,10 @@ metadata_bdgp2 = File.join(__dir__, '../', 'data', 'raw', 'metadata_bdgp2.csv')
 timeseries_electricity_bdgp2 = File.join(__dir__, '../', 'data', 'raw', 'electricity_bdgp2.csv')
 timeseries_gas_bdgp2 = File.join(__dir__, '../', 'data', 'raw', 'gas_bdgp2.csv')
 
+# metadata_bdgp2 = File.join(__dir__, '../../building-data-genome-project-2/data/metadata/metadata.csv')
+# timeseries_electricity_bdgp2 = File.join(__dir__, '../../building-data-genome-project-2/data/meters/cleaned/electricity_cleaned.csv')
+# timeseries_gas_bdgp2 = File.join(__dir__, '../../building-data-genome-project-2/data/meters/cleaned/gas_cleaned.csv')
+
 # output directory
 outdir = "./data/processed"
 FileUtils.mkdir_p(outdir) unless File.exist?(outdir)
@@ -87,7 +91,7 @@ updated_features = map_location_with_latlng(metadata_bdgp2, outdir)
 std_labels = 'building_id,xml_filename,primary_building_type,floor_area_sqft,vintage,climate_zone,zipcode,city,us_state,longitude,latitude,number_of_stories,number_of_occupants,fuel_type,energystar_score,measurement_start_date,measurement_end_date,weather_file_name_epw,weather_file_name_ddy'
 copy_columns(metadata_bdgp2, std_labels, outdir, updated_features)
 
-puts "%%%DEBUGGING%%% Copying electricity timeseries data into timeseriesdata.csv file"
+puts "<<<<<<------DEBUGGING------>>>>>> Copying electricity timeseries data into timeseriesdata.csv file"
 timeseries_electricity = CSV.read(timeseries_electricity_bdgp2)
 header = CSV.open(timeseries_electricity_bdgp2, &:readline)
 header.insert(1, 'fuel_type')
@@ -108,7 +112,7 @@ CSV.open(outdir + '/timeseriesdata.csv', "w", :headers => true) do |csv|
   end
 end
 
-puts "%%%DEBUGGING%%% Copying gas timeseries data into timeseriesdata.csv file"
+puts "<<<<<<------DEBUGGING------>>>>>> Copying gas timeseries data into timeseriesdata.csv file"
 timeseries_gas = CSV.read(timeseries_gas_bdgp2)
 CSV.open(outdir + '/timeseriesdata.csv', "a", :headers => true) do |csv|
   timeseries_gas.each_with_index do |row,i| 
